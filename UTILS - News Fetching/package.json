@@ -1,0 +1,15 @@
+{
+  "name": "utils---news-fetching",
+  "version": "1.0.0",
+  "main": "fetchNews.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "google-news-json": "^2.1.0"
+  }
+}

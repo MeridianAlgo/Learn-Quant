@@ -1,0 +1,25 @@
+<<<<<<< HEAD
+{
+  "name": "gemini-chatbot",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^1.8.0",
+    "@google/generative-ai": "^0.3.0",
+    "dotenv": "^16.6.1",
+    "readline-sync": "^1.4.10"
+  }
+}
+=======
+{
+  "name": "gemini-chatbot",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^1.8.0",
+    "@google/generative-ai": "^0.3.0",
+    "dotenv": "^16.6.1",
+    "readline-sync": "^1.4.10"
+  }
+}
+>>>>>>> 8944b09 (Initial commit: Comprehensive Python & JS Finance Utilities for Beginners (API & API-free, with detailed docs))
