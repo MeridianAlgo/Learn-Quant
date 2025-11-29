@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+google-genai
+=======
+google-genai
+>>>>>>> 8944b09 (Initial commit: Comprehensive Python & JS Finance Utilities for Beginners (API & API-free, with detailed docs))
+python-dotenv 
