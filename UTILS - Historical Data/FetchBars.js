@@ -6,7 +6,7 @@
 
 require('dotenv').config();
 const readline = require('readline');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
 // Load Alpaca API credentials from environment variables
 const API_KEY = process.env.ALPACA_API_KEY;
