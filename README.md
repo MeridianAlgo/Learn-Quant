@@ -1,4 +1,4 @@
-# Utils-main: Quantitative Finance & Python Utilities (v1.1.0)
+# Utils-main: Quantitative Finance & Python Utilities (v1.2.0)
 
 Welcome to **Utils-main**, a comprehensive, beginner-friendly toolkit for learning and practicing quantitative finance, data analysis, coding, and financial engineering in Python!
 
@@ -69,6 +69,29 @@ A curated, growing collection of Python modules and reference material to help y
 - `UTILS - Logging/` — Professional and educational logging (Python & JS)
 - `UTILS - AI Development/` — Templates for basic AI/chatbots in Python/JS
 
+### 🔧 Utility Libraries (NEW in v1.2.0)
+**Comprehensive utility collections organized by category:**
+
+- **🔧 UTILS - Data Processing** — Data validation, string manipulation, and cleaning
+  - `data_validation_utils.py` — Email, phone, stock symbol validation, sanitization
+  - `string_utils.py` — Case conversion, truncation, currency formatting, slug generation
+
+- **⚙️ UTILS - System Utilities** — File operations and configuration management
+  - `file_io_utils.py` — JSON/CSV operations, backup, file management
+  - `config_utils.py` — Configuration loading, dot notation access, environment variables
+
+- **🧮 UTILS - Core Utilities** — Mathematical and date/time foundations
+  - `datetime_utils.py` — Trading days, market hours, timestamp operations
+  - `math_utils.py` — Financial calculations, CAGR, moving averages, regression
+
+- **💼 UTILS - Portfolio Management** — Portfolio analysis and risk metrics
+  - `portfolio_utils.py` — Portfolio valuation, allocation, rebalancing, diversification
+  - `risk_utils.py` — VaR, drawdown, Sharpe/Sortino ratios, stress testing, correlations
+
+- **📊 UTILS - Market Data** — Data processing and API integration
+  - `market_data_utils.py` — Returns, outliers, sentiment analysis, data validation
+  - `api_utils.py` — HTTP requests, retry logic, API key management, error handling
+
 ### 📚 Learning Platform
 - `UTILS - Learning Platform/` — Extendable Python learning hub
 - `Documentation/` — Learning paths, tutorials, reference, examples, quizzes, and extra resources
@@ -87,10 +110,20 @@ A curated, growing collection of Python modules and reference material to help y
 1. Clone this repo: `git clone https://github.com/MeridianAlgo/Learn-Quant`
 2. Install Python 3.8+ and required packages:
    ```bash
-   pip install numpy pandas scipy matplotlib
+   pip install numpy pandas scipy matplotlib requests
    ```
 3. Explore any folder, read the README, and run the Python script for live examples
 4. Visit the `Documentation/` folder for guided paths and exercises
+
+---
+
+## 🆕 What's New in v1.2.0
+- **🔧 5 New Utility Libraries**: Comprehensive utility collections organized by category
+- **📊 Enhanced Portfolio Tools**: Advanced portfolio management and risk analysis utilities
+- **🌐 Market Data Processing**: Professional-grade data validation and API integration
+- **⚙️ System Integration**: Robust file I/O and configuration management
+- **🧮 Core Mathematical Functions**: Financial calculations and date/time utilities
+- **📚 Improved Documentation**: Each utility includes comprehensive README and examples
 
 ---
 
@@ -99,5 +132,6 @@ A curated, growing collection of Python modules and reference material to help y
 
 ---
 
-**Learn-Quant** v1.1.0  
+**Learn-Quant** v1.2.0  
+_25 files added, 5,720+ lines of new utility code_  
 _Made with ❤️ by MeridianAlgo_
