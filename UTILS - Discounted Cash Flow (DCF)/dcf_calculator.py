@@ -3,6 +3,8 @@ Discounted Cash Flow (DCF) Calculator
 ---------------------------------------
 DCF is one of the key methods for valuing stocks, businesses, projects, and investments!
 """
+
+
 def discounted_cash_flow(future_cash_flows, discount_rate):
     """
     Calculate the present value of future cash flows using DCF.
@@ -16,6 +18,7 @@ def discounted_cash_flow(future_cash_flows, discount_rate):
     for t, cash in enumerate(future_cash_flows, 1):
         npv += cash / (1 + discount_rate) ** t
     return npv
+
 
 if __name__ == "__main__":
     # Example: Value a project with cash flows over 4 years

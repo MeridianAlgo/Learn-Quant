@@ -9,7 +9,8 @@
 import json
 import os
 
-RATES_FILE = 'rates.json'  # Default file for saving/loading rates
+RATES_FILE = "rates.json"  # Default file for saving/loading rates
+
 
 # ExchangeRate class: represents a single currency pair and rate
 class ExchangeRate:
@@ -23,7 +24,8 @@ class ExchangeRate:
 
     @staticmethod
     def from_dict(d):
-        return ExchangeRate(d['base'], d['quote'], d['rate'])
+        return ExchangeRate(d["base"], d["quote"], d["rate"])
+
 
 # Print the main menu for the CLI
 def print_menu():
@@ -35,6 +37,7 @@ def print_menu():
     print("5. View all rates")
     print("6. Exit")
 
+
 # Add a new exchange rate
 def add_rate(rates):
     base = input("Enter base currency (e.g., USD): ").strip().upper()
@@ -43,12 +46,14 @@ def add_rate(rates):
     rates.append(ExchangeRate(base, quote, rate))
     print("Rate added!")
 
+
 # Find rate by base and quote
 def find_rate(rates, base, quote):
     for i, r in enumerate(rates):
         if r.base == base.upper() and r.quote == quote.upper():
             return i
     return -1
+
 
 # Edit an existing rate
 def edit_rate(rates):
@@ -62,6 +67,7 @@ def edit_rate(rates):
     rates[idx].rate = rate
     print("Rate updated!")
 
+
 # Remove a rate
 def remove_rate(rates):
     base = input("Enter base currency to remove: ").strip().upper()
@@ -72,6 +78,7 @@ def remove_rate(rates):
         return
     del rates[idx]
     print("Rate removed!")
+
 
 # Convert between two currencies
 def convert_currency(rates):
@@ -86,6 +93,7 @@ def convert_currency(rates):
     converted = amount * rate
     print(f"{amount:.2f} {base} = {converted:.2f} {quote}")
 
+
 # View all stored rates
 def view_all_rates(rates):
     if not rates:
@@ -95,56 +103,62 @@ def view_all_rates(rates):
     for r in rates:
         print(f"1 {r.base} = {r.rate:.4f} {r.quote}")
 
+
 # Save rates to a file
 def save_rates(rates):
     fname = RATES_FILE
     data = [r.to_dict() for r in rates]
-    with open(fname, 'w') as f:
+    with open(fname, "w") as f:
         json.dump(data, f, indent=2)
     print(f"Rates saved to {fname}.")
+
 
 # Load rates from a file
 def load_rates():
     fname = RATES_FILE
     if not os.path.exists(fname):
         return []
-    with open(fname, 'r') as f:
+    with open(fname, "r") as f:
         data = json.load(f)
     rates = [ExchangeRate.from_dict(d) for d in data]
     return rates
 
+
 # Main workflow for the CLI
 def main():
-    print("""
+    print(
+        """
 ====================================
 Welcome to the Currency Converter!
 This tool helps you learn Python and FX basics by converting currencies with your own rates.
 - No APIs or real market data are used.
 - All code is commented for beginners.
 ====================================
-""")
+"""
+    )
     rates = load_rates()
     while True:
         print_menu()
         choice = input("Enter your choice: ").strip()
-        if choice == '1':
+        if choice == "1":
             add_rate(rates)
             save_rates(rates)
-        elif choice == '2':
+        elif choice == "2":
             edit_rate(rates)
             save_rates(rates)
-        elif choice == '3':
+        elif choice == "3":
             remove_rate(rates)
             save_rates(rates)
-        elif choice == '4':
+        elif choice == "4":
             convert_currency(rates)
-        elif choice == '5':
+        elif choice == "5":
             view_all_rates(rates)
-        elif choice == '6':
+        elif choice == "6":
             print("Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()

@@ -3,6 +3,8 @@ Bond Price and Yield Calculator
 -------------------------------
 Simple tools for finding the present value (price) of a plain-vanilla bond, and estimating yield to maturity (YTM).
 """
+
+
 def bond_price(face_value, coupon_rate, periods, ytm):
     """
     Calculate the price of a fixed-rate bond.
@@ -19,6 +21,7 @@ def bond_price(face_value, coupon_rate, periods, ytm):
         price += (face_value * coupon_rate) / (1 + ytm) ** t
     price += face_value / (1 + ytm) ** periods
     return price
+
 
 def estimate_ytm(face_value, coupon_rate, periods, price, tol=1e-5):
     """
@@ -41,6 +44,7 @@ def estimate_ytm(face_value, coupon_rate, periods, price, tol=1e-5):
         else:
             high = mid
     return (low + high) / 2
+
 
 if __name__ == "__main__":
     # Example: Price a 3-year, 5% coupon bond, $1000 face, YTM 6%

@@ -10,7 +10,14 @@ PACKAGE_ROOT = Path(__file__).resolve().parent
 if str(PACKAGE_ROOT) not in sys.path:  # Ensure local imports work via runpy
     sys.path.insert(0, str(PACKAGE_ROOT))
 
-from content import LESSONS, Lesson, LessonSection, QuizQuestion, get_lesson_by_slug, list_lessons
+from content import (
+    LESSONS,
+    Lesson,
+    LessonSection,
+    QuizQuestion,
+    get_lesson_by_slug,
+    list_lessons,
+)
 
 BORDER = "=" * 80
 SOURCE_FILE = Path(__file__).resolve()
@@ -27,7 +34,9 @@ def print_banner() -> None:
 def main_menu() -> None:
     print("Available lessons:\n")
     for index, lesson in enumerate(list_lessons(), start=1):
-        print(f"  {index}. {lesson['title']} ({lesson['difficulty']}, {lesson['estimated_minutes']} min)")
+        print(
+            f"  {index}. {lesson['title']} ({lesson['difficulty']}, {lesson['estimated_minutes']} min)"
+        )
         print(f"     ↳ {lesson['summary']}")
     print("\nCommands:")
     print("  [number] → open lesson")

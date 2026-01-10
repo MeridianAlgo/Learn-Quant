@@ -13,9 +13,7 @@ Version: 1.0.0
 """
 
 import numpy as np
-from typing import Union, List, Tuple, Optional
-import pandas as pd
-import matplotlib.pyplot as plt
+from typing import Tuple
 from scipy import stats
 
 
@@ -60,10 +58,17 @@ class ArrayOperations:
         # 5. Show slicing
         print(f"First three elements (slicing): {numpy_array[:3]}")
 
-        print("Python Tip: Arrays start at index 0, so [:3] grabs positions 0, 1, and 2.\n")
+        print(
+            "Python Tip: Arrays start at index 0, so [:3] grabs positions 0, 1, and 2.\n"
+        )
 
-    def create_price_series(self, start_price: float, periods: int,
-                          drift: float = 0.0, volatility: float = 0.1) -> np.ndarray:
+    def create_price_series(
+        self,
+        start_price: float,
+        periods: int,
+        drift: float = 0.0,
+        volatility: float = 0.1,
+    ) -> np.ndarray:
         """
         Create a simulated price series using geometric Brownian motion.
 
@@ -76,7 +81,7 @@ class ArrayOperations:
         Returns:
             np.ndarray: Array of price values
         """
-        dt = 1/252  # Daily time step (assuming 252 trading days)
+        dt = 1 / 252  # Daily time step (assuming 252 trading days)
 
         # Generate random shocks
         shocks = self.rng.standard_normal(periods) * np.sqrt(dt)
@@ -86,14 +91,15 @@ class ArrayOperations:
         price_series[0] = start_price
 
         for i in range(1, periods + 1):
-            price_series[i] = price_series[i-1] * np.exp(
-                (drift - 0.5 * volatility**2) * dt + volatility * shocks[i-1]
+            price_series[i] = price_series[i - 1] * np.exp(
+                (drift - 0.5 * volatility**2) * dt + volatility * shocks[i - 1]
             )
 
         return price_series
 
-    def calculate_returns(self, prices: np.ndarray,
-                         method: str = 'arithmetic') -> np.ndarray:
+    def calculate_returns(
+        self, prices: np.ndarray, method: str = "arithmetic"
+    ) -> np.ndarray:
         """
         Calculate returns from price series.
 
@@ -104,9 +110,9 @@ class ArrayOperations:
         Returns:
             np.ndarray: Array of return values
         """
-        if method == 'arithmetic':
+        if method == "arithmetic":
             returns = np.diff(prices) / prices[:-1]
-        elif method == 'logarithmic':
+        elif method == "logarithmic":
             returns = np.diff(np.log(prices))
         else:
             raise ValueError("Method must be 'arithmetic' or 'logarithmic'")
@@ -129,8 +135,9 @@ class ArrayOperations:
 
         return np.dot(weights, returns)
 
-    def portfolio_volatility(self, weights: np.ndarray,
-                           cov_matrix: np.ndarray) -> float:
+    def portfolio_volatility(
+        self, weights: np.ndarray, cov_matrix: np.ndarray
+    ) -> float:
         """
         Calculate portfolio volatility.
 
@@ -170,9 +177,12 @@ class ArrayOperations:
         """
         return np.corrcoef(returns)
 
-    def optimal_portfolio_weights(self, expected_returns: np.ndarray,
-                                 cov_matrix: np.ndarray,
-                                 risk_free_rate: float = 0.02) -> np.ndarray:
+    def optimal_portfolio_weights(
+        self,
+        expected_returns: np.ndarray,
+        cov_matrix: np.ndarray,
+        risk_free_rate: float = 0.02,
+    ) -> np.ndarray:
         """
         Calculate optimal portfolio weights using mean-variance optimization.
 
@@ -202,8 +212,9 @@ class ArrayOperations:
 
         return weights / np.sum(weights)  # Normalize
 
-    def monte_carlo_simulation(self, s0: float, mu: float, sigma: float,
-                              t: float, n_paths: int, n_steps: int) -> np.ndarray:
+    def monte_carlo_simulation(
+        self, s0: float, mu: float, sigma: float, t: float, n_paths: int, n_steps: int
+    ) -> np.ndarray:
         """
         Perform Monte Carlo simulation for asset price paths.
 
@@ -224,14 +235,15 @@ class ArrayOperations:
 
         for i in range(1, n_steps + 1):
             z = self.rng.standard_normal(n_paths)
-            price_paths[:, i] = price_paths[:, i-1] * np.exp(
+            price_paths[:, i] = price_paths[:, i - 1] * np.exp(
                 (mu - 0.5 * sigma**2) * dt + sigma * np.sqrt(dt) * z
             )
 
         return price_paths
 
-    def value_at_risk(self, returns: np.ndarray,
-                     confidence_level: float = 0.95) -> float:
+    def value_at_risk(
+        self, returns: np.ndarray, confidence_level: float = 0.95
+    ) -> float:
         """
         Calculate Value at Risk (VaR) using historical simulation.
 
@@ -244,8 +256,9 @@ class ArrayOperations:
         """
         return -np.percentile(returns, (1 - confidence_level) * 100)
 
-    def expected_shortfall(self, returns: np.ndarray,
-                          confidence_level: float = 0.95) -> float:
+    def expected_shortfall(
+        self, returns: np.ndarray, confidence_level: float = 0.95
+    ) -> float:
         """
         Calculate Expected Shortfall (CVaR) using historical simulation.
 
@@ -260,7 +273,9 @@ class ArrayOperations:
         tail_losses = returns[returns <= -var_threshold]
         return -np.mean(tail_losses)
 
-    def linear_regression(self, x: np.ndarray, y: np.ndarray) -> Tuple[float, float, float]:
+    def linear_regression(
+        self, x: np.ndarray, y: np.ndarray
+    ) -> Tuple[float, float, float]:
         """
         Perform linear regression analysis.
 
@@ -272,14 +287,15 @@ class ArrayOperations:
             Tuple[float, float, float]: slope, intercept, r_squared
         """
         n = len(x)
-        slope = (n * np.sum(x * y) - np.sum(x) * np.sum(y)) / \
-                (n * np.sum(x**2) - np.sum(x)**2)
+        slope = (n * np.sum(x * y) - np.sum(x) * np.sum(y)) / (
+            n * np.sum(x**2) - np.sum(x) ** 2
+        )
 
         intercept = (np.sum(y) - slope * np.sum(x)) / n
 
         y_pred = slope * x + intercept
-        ss_res = np.sum((y - y_pred)**2)
-        ss_tot = np.sum((y - np.mean(y))**2)
+        ss_res = np.sum((y - y_pred) ** 2)
+        ss_tot = np.sum((y - np.mean(y)) ** 2)
         r_squared = 1 - (ss_res / ss_tot)
 
         return slope, intercept, r_squared
@@ -291,11 +307,9 @@ class ArrayOperations:
         print("=== Matrix Operations Demo ===")
 
         # Create sample covariance matrix
-        cov_matrix = np.array([
-            [0.04, 0.02, 0.01],
-            [0.02, 0.03, 0.015],
-            [0.01, 0.015, 0.025]
-        ])
+        cov_matrix = np.array(
+            [[0.04, 0.02, 0.01], [0.02, 0.03, 0.015], [0.01, 0.015, 0.025]]
+        )
 
         print("Covariance Matrix:")
         print(cov_matrix)
@@ -329,22 +343,23 @@ class ArrayOperations:
             dict: Dictionary containing statistical measures
         """
         return {
-            'mean': np.mean(data),
-            'median': np.median(data),
-            'std': np.std(data),
-            'var': np.var(data),
-            'skewness': stats.skew(data),
-            'kurtosis': stats.kurtosis(data),
-            'min': np.min(data),
-            'max': np.max(data),
-            'range': np.max(data) - np.min(data),
-            'q25': np.percentile(data, 25),
-            'q75': np.percentile(data, 75),
-            'iqr': np.percentile(data, 75) - np.percentile(data, 25)
+            "mean": np.mean(data),
+            "median": np.median(data),
+            "std": np.std(data),
+            "var": np.var(data),
+            "skewness": stats.skew(data),
+            "kurtosis": stats.kurtosis(data),
+            "min": np.min(data),
+            "max": np.max(data),
+            "range": np.max(data) - np.min(data),
+            "q25": np.percentile(data, 25),
+            "q75": np.percentile(data, 75),
+            "iqr": np.percentile(data, 75) - np.percentile(data, 25),
         }
 
-    def hypothesis_testing(self, sample1: np.ndarray, sample2: np.ndarray,
-                          test_type: str = 't_test') -> dict:
+    def hypothesis_testing(
+        self, sample1: np.ndarray, sample2: np.ndarray, test_type: str = "t_test"
+    ) -> dict:
         """
         Perform hypothesis testing between two samples.
 
@@ -356,15 +371,15 @@ class ArrayOperations:
         Returns:
             dict: Test results
         """
-        if test_type == 't_test':
+        if test_type == "t_test":
             t_stat, p_value = stats.ttest_ind(sample1, sample2)
-            return {'t_statistic': t_stat, 'p_value': p_value}
-        elif test_type == 'f_test':
+            return {"t_statistic": t_stat, "p_value": p_value}
+        elif test_type == "f_test":
             f_stat, p_value = stats.f_oneway(sample1, sample2)
-            return {'f_statistic': f_stat, 'p_value': p_value}
-        elif test_type == 'ks_test':
+            return {"f_statistic": f_stat, "p_value": p_value}
+        elif test_type == "ks_test":
             ks_stat, p_value = stats.ks_2samp(sample1, sample2)
-            return {'ks_statistic': ks_stat, 'p_value': p_value}
+            return {"ks_statistic": ks_stat, "p_value": p_value}
         else:
             raise ValueError("Unsupported test type")
 
@@ -384,7 +399,7 @@ def main():
     # Demo 1: Price Series Simulation
     print("1. Price Series Simulation:")
     prices = arrays.create_price_series(100, 100, 0.08, 0.20)
-    returns = arrays.calculate_returns(prices, 'logarithmic')
+    returns = arrays.calculate_returns(prices, "logarithmic")
     print(f"Initial price: ${prices[0]:.2f}")
     print(f"Final price: ${prices[-1]:.2f}")
     print(f"Total return: {(prices[-1] / prices[0] - 1):.2%}")
@@ -394,14 +409,16 @@ def main():
     print("2. Portfolio Analysis:")
     n_assets = 3
     sample_returns = np.random.multivariate_normal(
-        [0.001, 0.0008, 0.0012], arrays.covariance_matrix(
-            np.random.randn(100, n_assets)
-        ), 100
+        [0.001, 0.0008, 0.0012],
+        arrays.covariance_matrix(np.random.randn(100, n_assets)),
+        100,
     )
 
     weights = np.array([0.5, 0.3, 0.2])
     port_return = arrays.portfolio_return(weights, np.mean(sample_returns, axis=0))
-    port_vol = arrays.portfolio_volatility(weights, arrays.covariance_matrix(sample_returns))
+    port_vol = arrays.portfolio_volatility(
+        weights, arrays.covariance_matrix(sample_returns)
+    )
 
     print(f"Portfolio return: {port_return:.4f}")
     print(f"Portfolio volatility: {port_vol:.4f}")

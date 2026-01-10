@@ -12,8 +12,8 @@ Author: MeridianAlgo
 Version: 1.1.0-Beta
 """
 
-from typing import Dict, List, Any, Optional, Union
-from collections import defaultdict, OrderedDict
+from typing import Dict, List, Any, Optional
+from collections import defaultdict
 from datetime import datetime
 import json
 
@@ -37,7 +37,9 @@ class DictionaryOperations:
         self.portfolio_registry = {}
         self.market_data = {}
 
-    def create_asset_database(self, assets: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    def create_asset_database(
+        self, assets: List[Dict[str, Any]]
+    ) -> Dict[str, Dict[str, Any]]:
         """
         Create a structured asset database from asset data.
 
@@ -50,25 +52,28 @@ class DictionaryOperations:
         database = {}
 
         for asset in assets:
-            ticker = asset.get('ticker')
+            ticker = asset.get("ticker")
             if ticker:
                 database[ticker] = {
-                    'company': asset.get('company', ''),
-                    'sector': asset.get('sector', 'Unknown'),
-                    'industry': asset.get('industry', ''),
-                    'price': asset.get('price', 0.0),
-                    'market_cap': asset.get('market_cap', 0),
-                    'pe_ratio': asset.get('pe_ratio', 0),
-                    'dividend_yield': asset.get('dividend_yield', 0),
-                    'beta': asset.get('beta', 1.0),
-                    'last_updated': asset.get('last_updated', datetime.now().isoformat())
+                    "company": asset.get("company", ""),
+                    "sector": asset.get("sector", "Unknown"),
+                    "industry": asset.get("industry", ""),
+                    "price": asset.get("price", 0.0),
+                    "market_cap": asset.get("market_cap", 0),
+                    "pe_ratio": asset.get("pe_ratio", 0),
+                    "dividend_yield": asset.get("dividend_yield", 0),
+                    "beta": asset.get("beta", 1.0),
+                    "last_updated": asset.get(
+                        "last_updated", datetime.now().isoformat()
+                    ),
                 }
 
         self.asset_database = database
         return database
 
-    def update_asset_price(self, ticker: str, price: float,
-                          volume: Optional[int] = None) -> None:
+    def update_asset_price(
+        self, ticker: str, price: float, volume: Optional[int] = None
+    ) -> None:
         """
         Update asset price and related data.
 
@@ -78,11 +83,11 @@ class DictionaryOperations:
             volume: Trading volume (optional)
         """
         if ticker in self.asset_database:
-            self.asset_database[ticker]['price'] = price
-            self.asset_database[ticker]['last_updated'] = datetime.now().isoformat()
+            self.asset_database[ticker]["price"] = price
+            self.asset_database[ticker]["last_updated"] = datetime.now().isoformat()
 
             if volume:
-                self.asset_database[ticker]['volume'] = volume
+                self.asset_database[ticker]["volume"] = volume
 
     def get_asset_info(self, ticker: str) -> Dict[str, Any]:
         """
@@ -120,16 +125,16 @@ class DictionaryOperations:
 
                 # Simple comparison (can be extended for complex queries)
                 if isinstance(value, dict):
-                    if '$gt' in value and asset_value <= value['$gt']:
+                    if "$gt" in value and asset_value <= value["$gt"]:
                         match = False
                         break
-                    if '$lt' in value and asset_value >= value['$lt']:
+                    if "$lt" in value and asset_value >= value["$lt"]:
                         match = False
                         break
-                    if '$gte' in value and asset_value < value['$gte']:
+                    if "$gte" in value and asset_value < value["$gte"]:
                         match = False
                         break
-                    if '$lte' in value and asset_value > value['$lte']:
+                    if "$lte" in value and asset_value > value["$lte"]:
                         match = False
                         break
                 else:
@@ -142,7 +147,9 @@ class DictionaryOperations:
 
         return matches
 
-    def create_portfolio_registry(self, portfolios: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    def create_portfolio_registry(
+        self, portfolios: List[Dict[str, Any]]
+    ) -> Dict[str, Dict[str, Any]]:
         """
         Create a portfolio registry for multiple portfolios.
 
@@ -155,15 +162,17 @@ class DictionaryOperations:
         registry = {}
 
         for portfolio in portfolios:
-            portfolio_id = portfolio.get('id')
+            portfolio_id = portfolio.get("id")
             if portfolio_id:
                 registry[portfolio_id] = {
-                    'name': portfolio.get('name', ''),
-                    'holdings': portfolio.get('holdings', {}),
-                    'cash': portfolio.get('cash', 0),
-                    'total_value': portfolio.get('total_value', 0),
-                    'created_date': portfolio.get('created_date', datetime.now().isoformat()),
-                    'last_updated': datetime.now().isoformat()
+                    "name": portfolio.get("name", ""),
+                    "holdings": portfolio.get("holdings", {}),
+                    "cash": portfolio.get("cash", 0),
+                    "total_value": portfolio.get("total_value", 0),
+                    "created_date": portfolio.get(
+                        "created_date", datetime.now().isoformat()
+                    ),
+                    "last_updated": datetime.now().isoformat(),
                 }
 
         self.portfolio_registry = registry
@@ -183,15 +192,15 @@ class DictionaryOperations:
             return 0.0
 
         portfolio = self.portfolio_registry[portfolio_id]
-        total_value = portfolio['cash']
+        total_value = portfolio["cash"]
 
-        for ticker, shares in portfolio['holdings'].items():
+        for ticker, shares in portfolio["holdings"].items():
             if ticker in self.asset_database:
-                price = self.asset_database[ticker]['price']
+                price = self.asset_database[ticker]["price"]
                 total_value += shares * price
 
-        portfolio['total_value'] = total_value
-        portfolio['last_updated'] = datetime.now().isoformat()
+        portfolio["total_value"] = total_value
+        portfolio["last_updated"] = datetime.now().isoformat()
 
         return total_value
 
@@ -215,9 +224,9 @@ class DictionaryOperations:
             return {}
 
         allocation = {}
-        for ticker, shares in portfolio['holdings'].items():
+        for ticker, shares in portfolio["holdings"].items():
             if ticker in self.asset_database:
-                price = self.asset_database[ticker]['price']
+                price = self.asset_database[ticker]["price"]
                 value = shares * price
                 allocation[ticker] = value / total_value
 
@@ -232,7 +241,7 @@ class DictionaryOperations:
         """
         self.market_data = market_data
 
-    def get_market_data(self, ticker: str, data_type: str = 'price') -> Any:
+    def get_market_data(self, ticker: str, data_type: str = "price") -> Any:
         """
         Get cached market data.
 
@@ -254,9 +263,9 @@ class DictionaryOperations:
         print("=== Dictionary Comprehension Examples ===")
 
         # Sample data
-        tickers = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA']
+        tickers = ["AAPL", "GOOGL", "MSFT", "AMZN", "TSLA"]
         prices = [150.25, 2800.50, 350.75, 3200.00, 850.25]
-        sectors = ['Technology', 'Technology', 'Technology', 'Consumer', 'Technology']
+        sectors = ["Technology", "Technology", "Technology", "Consumer", "Technology"]
 
         # Create price dictionary
         price_dict = {ticker: price for ticker, price in zip(tickers, prices)}
@@ -267,15 +276,17 @@ class DictionaryOperations:
         print(f"Sector Dictionary: {sector_dict}")
 
         # Filter expensive stocks
-        expensive_stocks = {ticker: price for ticker, price in price_dict.items() if price > 1000}
+        expensive_stocks = {
+            ticker: price for ticker, price in price_dict.items() if price > 1000
+        }
         print(f"Expensive Stocks: {expensive_stocks}")
 
         # Create nested market data
         market_data = {
             ticker: {
-                'price': price,
-                'sector': sector,
-                'category': 'Large Cap' if price > 500 else 'Mid Cap'
+                "price": price,
+                "sector": sector,
+                "category": "Large Cap" if price > 500 else "Mid Cap",
             }
             for ticker, price, sector in zip(tickers, prices, sectors)
         }
@@ -314,7 +325,7 @@ class DictionaryOperations:
             filename: Output filename
             data: Data to export
         """
-        with open(filename, 'w') as f:
+        with open(filename, "w") as f:
             json.dump(data, f, indent=2, default=str)
 
     def import_from_json(self, filename: str) -> Dict[str, Any]:
@@ -328,7 +339,7 @@ class DictionaryOperations:
             Dict[str, Any]: Imported data
         """
         try:
-            with open(filename, 'r') as f:
+            with open(filename, "r") as f:
                 return json.load(f)
         except FileNotFoundError:
             return {}
@@ -342,26 +353,29 @@ class DictionaryOperations:
         print("=== Performance Comparison ===")
 
         # Create large dataset
-        large_dict = {f'ASSET_{i}': {
-            'price': 100 + i * 0.1,
-            'volume': 1000000 + i * 1000,
-            'sector': 'Technology' if i % 2 == 0 else 'Financial'
-        } for i in range(1000)}
+        large_dict = {
+            f"ASSET_{i}": {
+                "price": 100 + i * 0.1,
+                "volume": 1000000 + i * 1000,
+                "sector": "Technology" if i % 2 == 0 else "Financial",
+            }
+            for i in range(1000)
+        }
 
         # Test regular dict access
         start_time = time.time()
         for i in range(10000):
-            _ = large_dict.get(f'ASSET_{i % 1000}', {}).get('price', 0)
+            _ = large_dict.get(f"ASSET_{i % 1000}", {}).get("price", 0)
         regular_time = time.time() - start_time
 
         # Test defaultdict
-        dd = defaultdict(lambda: {'price': 0})
+        dd = defaultdict(lambda: {"price": 0})
         for key, value in large_dict.items():
             dd[key] = value
 
         start_time = time.time()
         for i in range(10000):
-            _ = dd[f'ASSET_{i % 1000}']['price']
+            _ = dd[f"ASSET_{i % 1000}"]["price"]
         defaultdict_time = time.time() - start_time
 
         print(f"Regular dict access: {regular_time:.4f}s")
@@ -381,10 +395,30 @@ def main():
     # Demo 1: Asset Database
     print("1. Asset Database:")
     assets = [
-        {'ticker': 'AAPL', 'company': 'Apple Inc.', 'sector': 'Technology', 'price': 150.25},
-        {'ticker': 'GOOGL', 'company': 'Alphabet Inc.', 'sector': 'Technology', 'price': 2800.50},
-        {'ticker': 'MSFT', 'company': 'Microsoft Corp.', 'sector': 'Technology', 'price': 350.75},
-        {'ticker': 'JPM', 'company': 'JPMorgan Chase', 'sector': 'Financial', 'price': 125.50}
+        {
+            "ticker": "AAPL",
+            "company": "Apple Inc.",
+            "sector": "Technology",
+            "price": 150.25,
+        },
+        {
+            "ticker": "GOOGL",
+            "company": "Alphabet Inc.",
+            "sector": "Technology",
+            "price": 2800.50,
+        },
+        {
+            "ticker": "MSFT",
+            "company": "Microsoft Corp.",
+            "sector": "Technology",
+            "price": 350.75,
+        },
+        {
+            "ticker": "JPM",
+            "company": "JPMorgan Chase",
+            "sector": "Financial",
+            "price": 125.50,
+        },
     ]
 
     database = dict_ops.create_asset_database(assets)
@@ -394,20 +428,20 @@ def main():
     print("\n2. Portfolio Registry:")
     portfolios = [
         {
-            'id': 'portfolio_001',
-            'name': 'Tech Portfolio',
-            'holdings': {'AAPL': 100, 'GOOGL': 10, 'MSFT': 50},
-            'cash': 50000
+            "id": "portfolio_001",
+            "name": "Tech Portfolio",
+            "holdings": {"AAPL": 100, "GOOGL": 10, "MSFT": 50},
+            "cash": 50000,
         }
     ]
 
     registry = dict_ops.create_portfolio_registry(portfolios)
-    value = dict_ops.calculate_portfolio_value('portfolio_001')
+    value = dict_ops.calculate_portfolio_value("portfolio_001")
     print(f"Portfolio value: ${value:,.2f}")
 
     # Demo 3: Search and Filter
     print("\n3. Search and Filter:")
-    tech_stocks = dict_ops.search_assets({'sector': 'Technology'})
+    tech_stocks = dict_ops.search_assets({"sector": "Technology"})
     print(f"Technology stocks: {tech_stocks}")
 
     # Demo 4: Dictionary Comprehensions

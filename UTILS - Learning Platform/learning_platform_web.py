@@ -7,7 +7,7 @@ from typing import List
 
 from flask import Flask, abort, render_template_string, url_for
 
-from content import LESSONS, Lesson, LessonSection, QuizQuestion, get_lesson_by_slug, list_lessons
+from content import LessonSection, get_lesson_by_slug, list_lessons
 
 app = Flask(__name__)
 
@@ -90,8 +90,14 @@ def home() -> str:
         <p>Select a lesson to view guided sections, quizzes, and practice prompts.</p>
         {cards}
       </section>
-    """.format(cards="\n".join(cards))
-    return _render(template, title="Learning Platform", header="Interactive Python Learning Platform")
+    """.format(
+        cards="\n".join(cards)
+    )
+    return _render(
+        template,
+        title="Learning Platform",
+        header="Interactive Python Learning Platform",
+    )
 
 
 @app.get("/lesson/<slug>")

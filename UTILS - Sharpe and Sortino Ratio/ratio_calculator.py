@@ -4,7 +4,9 @@ Sharpe and Sortino Ratio Calculator
 This script provides beginner-friendly functions to calculate the Sharpe Ratio and Sortino Ratio for a set of asset returns.
 Both ratios are used widely in finance to evaluate the risk-adjusted performance of investments.
 """
+
 import numpy as np
+
 
 def sharpe_ratio(returns, risk_free_rate=0.0, periods_per_year=252):
     """
@@ -23,6 +25,7 @@ def sharpe_ratio(returns, risk_free_rate=0.0, periods_per_year=252):
     sharpe = (mean_excess_return / std_dev) * np.sqrt(periods_per_year)
     return sharpe
 
+
 def sortino_ratio(returns, risk_free_rate=0.0, periods_per_year=252):
     """
     Calculate the Sortino Ratio.
@@ -36,13 +39,16 @@ def sortino_ratio(returns, risk_free_rate=0.0, periods_per_year=252):
     returns = np.array(returns)
     excess_returns = returns - (risk_free_rate / periods_per_year)
     mean_excess_return = excess_returns.mean()
-    downside_std = np.sqrt(((np.minimum(0, excess_returns))**2).mean())
+    downside_std = np.sqrt(((np.minimum(0, excess_returns)) ** 2).mean())
     sortino = (mean_excess_return / downside_std) * np.sqrt(periods_per_year)
     return sortino
 
+
 if __name__ == "__main__":
     # Example usage with fake data
-    daily_returns = np.random.normal(0.0005, 0.01, 252)  # Simulate 1 year of daily returns
+    daily_returns = np.random.normal(
+        0.0005, 0.01, 252
+    )  # Simulate 1 year of daily returns
     sharpe = sharpe_ratio(daily_returns)
     sortino = sortino_ratio(daily_returns)
     print(f"Sharpe Ratio: {sharpe:.2f}")

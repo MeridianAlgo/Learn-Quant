@@ -3,6 +3,8 @@ CAPM (Capital Asset Pricing Model) Utility
 ------------------------------------------
 This script calculates the expected return of an investment using CAPM, one of the most iconic models in finance.
 """
+
+
 def capm_expected_return(risk_free_rate, beta, market_return):
     """
     Calculate the expected return using CAPM.
@@ -14,6 +16,7 @@ def capm_expected_return(risk_free_rate, beta, market_return):
         float: Expected return using CAPM
     """
     return risk_free_rate + beta * (market_return - risk_free_rate)
+
 
 if __name__ == "__main__":
     # Example usage

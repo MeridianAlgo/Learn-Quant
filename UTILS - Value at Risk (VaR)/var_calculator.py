@@ -3,8 +3,10 @@ Value at Risk (VaR) Calculator
 -------------------------------
 This module calculates Value at Risk using the basic (parametric) approach, helping users estimate potential portfolio losses.
 """
+
 import numpy as np
 import scipy.stats as stats
+
 
 def value_at_risk(returns, confidence_level=0.95):
     """
@@ -21,6 +23,7 @@ def value_at_risk(returns, confidence_level=0.95):
     alpha = 1 - confidence_level
     var = -(mu + sigma * stats.norm.ppf(alpha))
     return var
+
 
 if __name__ == "__main__":
     # Example usage

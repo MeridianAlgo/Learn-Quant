@@ -4,15 +4,16 @@
 
 import os
 
-LOG_FILE = 'log.txt'  # Name of the log file
+LOG_FILE = "log.txt"  # Name of the log file
+
 
 def add_log(entry):
     """
     Add a new log entry to the log file.
     :param entry: String to be added as a log entry.
     """
-    with open(LOG_FILE, 'a', encoding='utf-8') as f:
-        f.write(entry + '\n')  # Write the entry followed by a newline
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(entry + "\n")  # Write the entry followed by a newline
 
 
 def read_logs():
@@ -22,7 +23,7 @@ def read_logs():
     """
     if not os.path.exists(LOG_FILE):
         return []  # Return empty list if log file doesn't exist
-    with open(LOG_FILE, 'r', encoding='utf-8') as f:
+    with open(LOG_FILE, "r", encoding="utf-8") as f:
         return f.readlines()  # Return all lines as a list
 
 
@@ -35,8 +36,8 @@ def edit_log(line_number, new_entry):
     """
     logs = read_logs()
     if 0 <= line_number < len(logs):
-        logs[line_number] = new_entry + '\n'  # Replace the specified line
-        with open(LOG_FILE, 'w', encoding='utf-8') as f:
+        logs[line_number] = new_entry + "\n"  # Replace the specified line
+        with open(LOG_FILE, "w", encoding="utf-8") as f:
             f.writelines(logs)  # Write all lines back to the file
         return True
     return False  # Return False if line_number is out of range
@@ -51,7 +52,7 @@ def delete_log(line_number):
     logs = read_logs()
     if 0 <= line_number < len(logs):
         del logs[line_number]  # Remove the specified line
-        with open(LOG_FILE, 'w', encoding='utf-8') as f:
+        with open(LOG_FILE, "w", encoding="utf-8") as f:
             f.writelines(logs)  # Write remaining lines back to the file
         return True
     return False  # Return False if line_number is out of range
@@ -67,11 +68,11 @@ def main():
         print("4. Delete a log entry")
         print("5. Exit")
         choice = input("Choose an option (1-5): ")
-        if choice == '1':
+        if choice == "1":
             entry = input("Enter a log entry: ")
             add_log(entry)
             print("Log entry added.")
-        elif choice == '2':
+        elif choice == "2":
             logs = read_logs()
             if logs:
                 print("\nAll log entries:")
@@ -79,7 +80,7 @@ def main():
                     print(f"{i}: {log.strip()}")
             else:
                 print("No log entries found.")
-        elif choice == '3':
+        elif choice == "3":
             logs = read_logs()
             if not logs:
                 print("No log entries to edit.")
@@ -95,7 +96,7 @@ def main():
                     print("Invalid line number.")
             except ValueError:
                 print("Please enter a valid number.")
-        elif choice == '4':
+        elif choice == "4":
             logs = read_logs()
             if not logs:
                 print("No log entries to delete.")
@@ -110,7 +111,7 @@ def main():
                     print("Invalid line number.")
             except ValueError:
                 print("Please enter a valid number.")
-        elif choice == '5':
+        elif choice == "5":
             print("Exiting log program.")
             break
         else:
