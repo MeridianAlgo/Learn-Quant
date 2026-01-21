@@ -105,9 +105,9 @@ if __name__ == "__main__":
     print("=== Options Greeks Calculator ===\n")
     print(f"Stock Price: ${S}")
     print(f"Strike Price: ${K}")
-    print(f"Time to Expiration: {T*365:.0f} days")
-    print(f"Risk-Free Rate: {r*100:.1f}%")
-    print(f"Volatility: {sigma*100:.1f}%\n")
+    print(f"Time to Expiration: {T * 365:.0f} days")
+    print(f"Risk-Free Rate: {r * 100:.1f}%")
+    print(f"Volatility: {sigma * 100:.1f}%\n")
 
     # Call Greeks
     call_greeks = calculate_all_greeks(S, K, T, r, sigma, "call")

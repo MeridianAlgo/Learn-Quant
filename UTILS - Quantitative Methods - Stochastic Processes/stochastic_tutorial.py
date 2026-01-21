@@ -50,7 +50,7 @@ def brownian_motion() -> None:
 
     print("\nFinal Values W(T):")
     for i in range(n_sims):
-        print(f"  Sim {i+1}: {W[i, -1]:.4f}")
+        print(f"  Sim {i + 1}: {W[i, -1]:.4f}")
 
     print("\nExpected Mean: 0.00")
     print(f"Actual Mean: {np.mean(W[:, -1]):.4f}")

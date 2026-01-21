@@ -3,10 +3,10 @@ Graph Algorithms Implementation
 A comprehensive collection of graph algorithms with detailed explanations and examples.
 """
 
-from typing import Dict, List, Set, Tuple, Union
-from collections import deque, defaultdict
 import heapq
 import math
+from collections import defaultdict, deque
+from typing import Dict, List, Set, Tuple, Union
 
 
 class Graph:
@@ -141,7 +141,7 @@ def dijkstra(graph: Graph, start: str) -> Dict[str, Union[int, List[str]]]:
     Returns:
         Dictionary with shortest distances and paths from start vertex
     """
-    distances = {vertex: math.inf for vertex in graph.vertices}
+    distances = dict.fromkeys(graph.vertices, math.inf)
     distances[start] = 0
     parents = {start: None}
     visited = set()
@@ -199,7 +199,7 @@ def bellman_ford(graph: Graph, start: str) -> Dict[str, Union[int, List[str], bo
     Returns:
         Dictionary with distances, paths, and negative cycle detection
     """
-    distances = {vertex: math.inf for vertex in graph.vertices}
+    distances = dict.fromkeys(graph.vertices, math.inf)
     distances[start] = 0
     parents = {start: None}
 
@@ -257,7 +257,7 @@ def floyd_warshall(graph: Graph) -> Dict[str, Union[Dict[str, int], List[str]]]:
     vertices = list(graph.vertices)
 
     # Initialize distance matrix
-    distances = {u: {v: math.inf for v in vertices} for u in vertices}
+    distances = {u: dict.fromkeys(vertices, math.inf) for u in vertices}
     for u in vertices:
         distances[u][u] = 0
 
@@ -348,9 +348,7 @@ def kruskal_mst(graph: Graph) -> Dict[str, Union[List[Tuple[str, str, int]], int
     return {"edges": mst_edges, "total_weight": total_weight}
 
 
-def prim_mst(
-    graph: Graph, start: str
-) -> Dict[str, Union[List[Tuple[str, str, int]], int]]:
+def prim_mst(graph: Graph, start: str) -> Dict[str, Union[List[Tuple[str, str, int]], int]]:
     """
     Prim's Algorithm: Minimum Spanning Tree using min-heap.
     Grows MST from a starting vertex.
@@ -455,11 +453,7 @@ def demonstrate_graph_algorithms():
     print("Distance matrix:")
     for u in fw_result["vertices"]:
         row = [
-            (
-                f"{fw_result['distances'][u][v]:3}"
-                if fw_result["distances"][u][v] != math.inf
-                else " ∞"
-            )
+            (f"{fw_result['distances'][u][v]:3}" if fw_result["distances"][u][v] != math.inf else " ∞")
             for v in fw_result["vertices"]
         ]
         print(f"{u}: {row}")

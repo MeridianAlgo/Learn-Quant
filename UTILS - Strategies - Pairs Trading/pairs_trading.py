@@ -10,9 +10,10 @@ Key Concepts:
 - Z-Score: Measuring how far the spread is from its mean in standard deviations.
 """
 
+from typing import Tuple
+
 import numpy as np
 import pandas as pd
-from typing import Tuple
 
 
 def generate_synthetic_data(n_points=100) -> Tuple[pd.Series, pd.Series]:
@@ -35,9 +36,7 @@ def generate_synthetic_data(n_points=100) -> Tuple[pd.Series, pd.Series]:
     return X, Y
 
 
-def calculate_spread(
-    series_x: pd.Series, series_y: pd.Series, hedge_ratio: float = 1.0
-) -> pd.Series:
+def calculate_spread(series_x: pd.Series, series_y: pd.Series, hedge_ratio: float = 1.0) -> pd.Series:
     """
     Calculates the spread between two assets.
     Spread = Y - hedge_ratio * X
@@ -71,9 +70,7 @@ def calculate_zscore(spread: pd.Series, window: int = 20) -> pd.Series:
     return z_score
 
 
-def get_signal(
-    z_score: pd.Series, entry_thresh: float = 2.0, exit_thresh: float = 0.5
-) -> pd.Series:
+def get_signal(z_score: pd.Series, entry_thresh: float = 2.0, exit_thresh: float = 0.5) -> pd.Series:
     """
     Generates trading signals based on Z-Score.
     - Short Spread (Short Y, Long X) when Z > entry_thresh
@@ -121,9 +118,7 @@ if __name__ == "__main__":
     signals = get_signal(z_score)
 
     # 5. Output
-    df = pd.DataFrame(
-        {"X": X, "Y": Y, "Spread": spread, "Z-Score": z_score, "Signal": signals}
-    )
+    df = pd.DataFrame({"X": X, "Y": Y, "Spread": spread, "Z-Score": z_score, "Signal": signals})
     print("Strategy Sample (Last 10 rows):")
     print(df.tail(10))
 

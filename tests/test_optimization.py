@@ -1,17 +1,17 @@
 """Test suite for Quantitative Methods - Optimization utility."""
 
+import os
+import sys
 import unittest
+
 import numpy as np
 from scipy.optimize import minimize
-import sys
-import os
 
 # Add project root to path to import modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 class TestOptimization(unittest.TestCase):
-
     def setUp(self):
         np.random.seed(42)
 

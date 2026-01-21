@@ -1,4 +1,6 @@
-# Learn-Quant: Wanna learn quant through code? (v1.5.0)
+# Learn-Quant: Wanna learn quant through code? (v1.6.0)
+
+[![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
 Welcome to **Learn-Quant**, your comprehensive, beginner-friendly toolkit for mastering quantitative finance, algorithmic trading, and Python programming!
 
@@ -6,24 +8,14 @@ Welcome to **Learn-Quant**, your comprehensive, beginner-friendly toolkit for ma
 
 ## What is This Repo?
 A massive, curated collection of Python modules, strategies, and reference materials designed to help you:
-- **NEW IN v1.5.0:** Master advanced strategies like **Pairs Trading** and **Kalman Filters**.
-- **NEW IN v1.5.0:** Learn high-frequency data engineering with **AsyncIO**.
+- Master advanced strategies like **Pairs Trading** and **Kalman Filters**.
+- Learn high-frequency data engineering with **AsyncIO**.
 - Understand core quant concepts (Risk, Return, Derivatives, Portfolio Theory).
 - Practice with realistic trading algorithms and backtesting simulators.
 - Learn Python from scratch: from basic loops to advanced OOP and Decorators.
 - Master computer science algorithms (Sorting, Searching, Graphs, DP) tailored for finance.
 
 ---
-
-## NEW: Interactive Learning Platform
-
-**Experience algorithms like never before with our browser-based learning platform!**
-
-### Features
-- **Interactive Algorithm Browser**: Filter by category and difficulty.
-- **In-Browser Python Execution**: Run code directly using PyScript.
-- **Live Code Editor**: Edit and test algorithms in real-time.
-- **Visual Output**: See results instantly in your browser.
 
 ### Quick Start
 ```bash
@@ -65,7 +57,10 @@ python run_learning_platform.py demo
 - `UTILS - Quantitative Methods - Regression/` — Beta calculation and factor models.
 
 ### Finance Utilities & Simulators
-- `UTILS - Strategies - Pairs Trading/` — **(New)** Statistical arbitrage simulation.
+- `UTILS - Strategies - Pairs Trading/` — Statistical arbitrage simulation.
+- `UTILS - Finance - Beta Calculator/` — **(New)** Beta, levered/unlevered beta, upside/downside beta.
+- `UTILS - Finance - Volatility Calculator/` — **(New)** Historical, Parkinson, Garman-Klass, EWMA volatility.
+- `UTILS - Finance - Correlation Analysis/` — **(New)** Pearson, rolling, EWMA, tail correlation.
 - `UTILS - Black-Scholes Option Pricing/` — Valuation of derivatives.
 - `UTILS - Portfolio Optimizer/` — Efficient Frontier and Sharpe Ratio maximization.
 - `UTILS - Monte Carlo Portfolio Simulator/` — Stress testing portfolios.
@@ -118,6 +113,6 @@ We welcome contributions!
 
 ---
 
-**Learn-Quant** v1.5.0
+**Learn-Quant** v1.6.0
 _Quantitative Finance, Algorithms, and Python Mastery._
 _Made by MeridianAlgo_

@@ -47,9 +47,7 @@ class Portfolio:
             # Update average cost
             prev_qty = self.holdings[asset] - qty
             prev_cost = self.avg_cost.get(asset, 0) * prev_qty
-            self.avg_cost[asset] = (
-                (prev_cost + cost) / (prev_qty + qty) if (prev_qty + qty) > 0 else price
-            )
+            self.avg_cost[asset] = (prev_cost + cost) / (prev_qty + qty) if (prev_qty + qty) > 0 else price
         else:  # sell
             if self.holdings.get(asset, 0) < qty:
                 print("Not enough holdings to sell.")
@@ -141,9 +139,7 @@ def view_portfolio(portfolio):
         if qty > 0:
             print(f"{asset:<10} {qty:>8.2f} {portfolio.avg_cost.get(asset, 0):>10.2f}")
     print(f"Realized P&L: {portfolio.realized_pnl():.2f}")
-    print(
-        f"Total Portfolio Value (prompt for prices): {portfolio.portfolio_value():.2f}"
-    )
+    print(f"Total Portfolio Value (prompt for prices): {portfolio.portfolio_value():.2f}")
 
 
 # View trade history
@@ -151,17 +147,12 @@ def view_trades(portfolio):
     print("\nTrade History:")
     print(f"{'Side':<6} {'Asset':<8} {'Qty':>6} {'Price':>10} {'Type':>8}")
     for t in portfolio.trades:
-        print(
-            f"{t.side:<6} {t.asset:<8} {t.qty:>6.2f} {t.price:>10.2f} {t.order_type:>8}"
-        )
+        print(f"{t.side:<6} {t.asset:<8} {t.qty:>6.2f} {t.price:>10.2f} {t.order_type:>8}")
 
 
 # Save portfolio and trades to a file
 def save(portfolio):
-    fname = (
-        input("Enter filename to save (default: sim_portfolio.json): ").strip()
-        or "sim_portfolio.json"
-    )
+    fname = input("Enter filename to save (default: sim_portfolio.json): ").strip() or "sim_portfolio.json"
     with open(fname, "w") as f:
         json.dump(portfolio.to_dict(), f, indent=2)
     print(f"Saved to {fname}.")
@@ -169,14 +160,11 @@ def save(portfolio):
 
 # Load portfolio and trades from a file
 def load():
-    fname = (
-        input("Enter filename to load (default: sim_portfolio.json): ").strip()
-        or "sim_portfolio.json"
-    )
+    fname = input("Enter filename to load (default: sim_portfolio.json): ").strip() or "sim_portfolio.json"
     if not os.path.exists(fname):
         print("File not found.")
         return Portfolio()
-    with open(fname, "r") as f:
+    with open(fname) as f:
         d = json.load(f)
     print(f"Loaded from {fname}.")
     return Portfolio.from_dict(d)

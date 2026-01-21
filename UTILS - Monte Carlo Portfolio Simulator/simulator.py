@@ -4,8 +4,8 @@ Monte Carlo Portfolio Simulator
 This tool uses random simulation to show how a portfolio might grow or shrink over time—one of the core ideas in modern finance!
 """
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def monte_carlo_sim(initial_investment, mu, sigma, periods, simulations=1000):

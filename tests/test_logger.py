@@ -7,9 +7,7 @@ SCRIPT_PATH = Path(__file__).resolve().parents[1] / "UTILS - Logging" / "logger.
 
 def test_script_runs():
     print("Testing if logger.py runs...")
-    result = subprocess.run(
-        [sys.executable, str(SCRIPT_PATH)], input=b"5\n", capture_output=True
-    )
+    result = subprocess.run([sys.executable, str(SCRIPT_PATH)], input=b"5\n", capture_output=True)
     stdout = result.stdout.decode(errors="ignore") if result.stdout else ""
     stderr = result.stderr.decode(errors="ignore") if result.stderr else ""
     debug_message = f"STDOUT:\n{stdout}\nSTDERR:\n{stderr}"

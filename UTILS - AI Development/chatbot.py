@@ -10,13 +10,13 @@ from __future__ import annotations
 
 import os
 import sys
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 if TYPE_CHECKING:
     from google import genai
 
 
-def initialize_client() -> Optional["genai.Client"]:
+def initialize_client() -> Optional[genai.Client]:
     """Initialise the Gemini client when dependencies and keys are available."""
 
     try:
@@ -37,7 +37,7 @@ def initialize_client() -> Optional["genai.Client"]:
         return None
 
 
-def chat_loop(client: "genai.Client") -> None:
+def chat_loop(client: genai.Client) -> None:
     """Interactive chat loop using an initialised Gemini client."""
 
     print("Gemini Chatbot (type 'exit' to quit)")

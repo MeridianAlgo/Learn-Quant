@@ -7,9 +7,10 @@ This module teaches mathematical optimization using scipy.optimize,
 focusing on portfolio optimization and curve fitting.
 """
 
-import numpy as np
-from scipy.optimize import minimize, curve_fit
 import warnings
+
+import numpy as np
+from scipy.optimize import curve_fit, minimize
 
 warnings.filterwarnings("ignore")
 
@@ -150,9 +151,7 @@ def curve_fitting() -> None:
 
     # Simulated market data (Maturity in years, Yield in %)
     maturities = np.array([0.25, 0.5, 1, 2, 3, 5, 7, 10, 20, 30])
-    market_yields = np.array(
-        [5.25, 5.30, 5.35, 5.20, 5.10, 5.05, 5.15, 5.25, 5.50, 5.60]
-    )
+    market_yields = np.array([5.25, 5.30, 5.35, 5.20, 5.10, 5.05, 5.15, 5.25, 5.50, 5.60])
 
     # Fit model to data
     # Initial guess: β0=5, β1=-1, β2=1, τ=2
@@ -223,9 +222,7 @@ def root_finding() -> None:
 
         # Verify
         price_check = bs_call(S, K, T, r, implied_vol)
-        print(
-            f"Price with IV: ${price_check:.2f} (Diff: ${price_check - market_price:.4f})"
-        )
+        print(f"Price with IV: ${price_check:.2f} (Diff: ${price_check - market_price:.4f})")
 
     except Exception as e:
         print(f"Root finding failed: {e}")

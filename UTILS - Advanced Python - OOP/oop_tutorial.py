@@ -6,9 +6,9 @@ Run with:
 This module teaches OOP concepts through building trading and portfolio classes.
 """
 
-from typing import List, Dict, Optional
 from datetime import datetime
 from decimal import Decimal
+from typing import Dict, List, Optional
 
 
 def intro() -> None:
@@ -70,9 +70,7 @@ class Stock:
 
     def __repr__(self) -> str:
         """Developer-friendly representation."""
-        return (
-            f"Stock(ticker='{self.ticker}', price={self.price}, shares={self.shares})"
-        )
+        return f"Stock(ticker='{self.ticker}', price={self.price}, shares={self.shares})"
 
 
 class Portfolio:
@@ -170,10 +168,10 @@ class Portfolio:
 
     def __str__(self) -> str:
         """String representation of portfolio."""
-        lines = [f"\n{'='*60}"]
+        lines = [f"\n{'=' * 60}"]
         lines.append(f"Portfolio: {self.name}")
         lines.append(f"Created: {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}")
-        lines.append(f"{'='*60}")
+        lines.append(f"{'=' * 60}")
 
         for stock in self.holdings.values():
             lines.append(f"  {stock}")
@@ -194,9 +192,7 @@ class Trade:
 
     trade_counter = 0  # Class variable to track trade IDs
 
-    def __init__(
-        self, ticker: str, entry_price: float, shares: int, direction: str = "LONG"
-    ):
+    def __init__(self, ticker: str, entry_price: float, shares: int, direction: str = "LONG"):
         """
         Initialize a Trade.
 
@@ -283,9 +279,7 @@ class TradingAccount:
         self.trades: List[Trade] = []
         self.open_positions: Dict[str, Trade] = {}
 
-    def enter_trade(
-        self, ticker: str, entry_price: float, shares: int, direction: str = "LONG"
-    ) -> Optional[Trade]:
+    def enter_trade(self, ticker: str, entry_price: float, shares: int, direction: str = "LONG") -> Optional[Trade]:
         """
         Enter a new trade.
 
@@ -368,15 +362,13 @@ class TradingAccount:
         """String representation."""
         perf = self.get_performance_summary()
 
-        lines = [f"\n{'='*60}"]
+        lines = [f"\n{'=' * 60}"]
         lines.append(f"Trading Account: {self.account_id}")
-        lines.append(f"{'='*60}")
+        lines.append(f"{'=' * 60}")
         lines.append(f"  Balance: ${perf['current_balance']:,.2f}")
         lines.append(f"  Total P&L: ${perf['total_pnl']:,.2f}")
         lines.append(f"  Return: {perf['return_pct']:.2%}")
-        lines.append(
-            f"  Trades: {perf['total_trades']} ({perf['closed_trades']} closed)"
-        )
+        lines.append(f"  Trades: {perf['total_trades']} ({perf['closed_trades']} closed)")
         lines.append(f"  Win Rate: {perf['win_rate']:.1%}")
         lines.append("=" * 60)
 

@@ -8,10 +8,10 @@ This module teaches:
 - Generators: Memory-efficient iteration (streaming data)
 """
 
-import time
 import functools
-from typing import Iterator, List, Callable
 import random
+import time
+from typing import Callable, Iterator, List
 
 
 def intro() -> None:
@@ -178,7 +178,7 @@ def generators_demo() -> None:
     # Consume only 5 items from infinite stream
     for i in range(5):
         price = next(stream)
-        print(f"  Tick {i+1}: ${price:.2f}")
+        print(f"  Tick {i + 1}: ${price:.2f}")
 
     # 3. Generator Expression (Memory Efficient)
     print("\n3. Generator Expression vs List Comprehension:")
@@ -241,7 +241,7 @@ def practical_example_backtest() -> None:
         """Yield market data for each period."""
         for i in range(periods):
             data = {
-                "date": f"2023-01-{i+1:02d}",
+                "date": f"2023-01-{i + 1:02d}",
                 "prices": {t: random.uniform(100, 200) for t in tickers},
             }
             yield data
@@ -301,9 +301,7 @@ def main() -> None:
     generators_demo()
     practical_example_backtest()
     print("\n🎉 Decorators and Generators tutorial complete!")
-    print(
-        "Use decorators for cross-cutting concerns and generators for efficient data pipelines."
-    )
+    print("Use decorators for cross-cutting concerns and generators for efficient data pipelines.")
 
 
 if __name__ == "__main__":

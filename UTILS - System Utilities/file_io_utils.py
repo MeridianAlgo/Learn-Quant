@@ -9,10 +9,10 @@ Author: Generated for Learn-Quant Project
 Version: 1.0.0
 """
 
-import os
-import json
 import csv
-from typing import List, Dict, Any
+import json
+import os
+from typing import Any, Dict, List
 
 
 def ensure_directory_exists(file_path: str) -> None:
@@ -50,7 +50,7 @@ def read_json_file(file_path: str) -> Dict[str, Any]:
         >>> print(data["api_key"])
         "your_api_key_here"
     """
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -88,14 +88,12 @@ def read_csv_file(file_path: str, delimiter: str = ",") -> List[Dict[str, str]]:
         >>> print(trades[0]["symbol"])
         "AAPL"
     """
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, encoding="utf-8") as f:
         reader = csv.DictReader(f, delimiter=delimiter)
         return list(reader)
 
 
-def write_csv_file(
-    data: List[Dict[str, str]], file_path: str, delimiter: str = ","
-) -> None:
+def write_csv_file(data: List[Dict[str, str]], file_path: str, delimiter: str = ",") -> None:
     """
     Write data to CSV file.
 

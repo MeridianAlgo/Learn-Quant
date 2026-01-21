@@ -5,9 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List
 
-from flask import Flask, abort, render_template_string, url_for
-
 from content import LessonSection, get_lesson_by_slug, list_lessons
+from flask import Flask, abort, render_template_string, url_for
 
 app = Flask(__name__)
 
@@ -90,9 +89,7 @@ def home() -> str:
         <p>Select a lesson to view guided sections, quizzes, and practice prompts.</p>
         {cards}
       </section>
-    """.format(
-        cards="\n".join(cards)
-    )
+    """.format(cards="\n".join(cards))
     return _render(
         template,
         title="Learning Platform",
@@ -117,38 +114,29 @@ def lesson_detail(slug: str) -> str:
         items="".join(f"<li>{item}</li>" for item in lesson.follow_up)
     )
 
-    template = """
+    template = f"""
       <article>
-        <h2>{title}</h2>
+        <h2>{lesson.title}</h2>
         <p class="metadata">
-          <span class="badge">{difficulty}</span>
-          <span>Estimated: {minutes} min</span>
+          <span class="badge">{lesson.difficulty}</span>
+          <span>Estimated: {lesson.estimated_minutes} min</span>
         </p>
-        <p>{summary}</p>
+        <p>{lesson.summary}</p>
         <section>
           <h3>Objectives</h3>
-          {objectives}
+          {objectives_html}
         </section>
-        {sections}
+        {sections_html}
         <section>
           <h3>Practice Prompts</h3>
-          {practice}
+          {practice_html}
         </section>
         <section>
           <h3>Suggested Follow-Up</h3>
-          {follow_up}
+          {follow_up_html}
         </section>
       </article>
-    """.format(
-        title=lesson.title,
-        difficulty=lesson.difficulty,
-        minutes=lesson.estimated_minutes,
-        summary=lesson.summary,
-        objectives=objectives_html,
-        sections=sections_html,
-        practice=practice_html,
-        follow_up=follow_up_html,
-    )
+    """
 
     return _render(template, title=f"Lesson – {lesson.title}", header=lesson.title)
 
@@ -164,36 +152,25 @@ def _render_section(section: LessonSection) -> str:
         for idx, question in enumerate(section.quiz, start=1):
             options = "".join(f"<li>{choice}</li>" for choice in question.choices)
             quiz_items.append(
-                """
+                f"""
                 <div class="quiz">
-                  <h4>Quiz {idx}: {prompt}</h4>
+                  <h4>Quiz {idx}: {question.prompt}</h4>
                   <ul>{options}</ul>
-                  <p><strong>Answer:</strong> {answer}</p>
-                  <p>{explanation}</p>
+                  <p><strong>Answer:</strong> {question.choices[question.answer_index]}</p>
+                  <p>{question.explanation}</p>
                 </div>
-                """.format(
-                    idx=idx,
-                    prompt=question.prompt,
-                    options=options,
-                    answer=question.choices[question.answer_index],
-                    explanation=question.explanation,
-                )
+                """
             )
         quiz_block = "".join(quiz_items)
 
-    return """
+    return f"""
       <section>
-        <h3>{title}</h3>
-        <p>{body}</p>
-        {code}
-        {quiz}
+        <h3>{section.title}</h3>
+        <p>{section.body}</p>
+        {code_block}
+        {quiz_block}
       </section>
-    """.format(
-        title=section.title,
-        body=section.body,
-        code=code_block,
-        quiz=quiz_block,
-    )
+    """
 
 
 if __name__ == "__main__":

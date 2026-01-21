@@ -8,9 +8,9 @@ Note: This example uses `asyncio.sleep` to simulate network IO to avoid external
 """
 
 import asyncio
-import time
 import random
-from typing import List, Dict
+import time
+from typing import Dict, List
 
 
 async def fetch_ticker(symbol: str) -> Dict[str, float]:

@@ -6,8 +6,8 @@ Run with:
 This module teaches robust error handling for financial applications.
 """
 
-from typing import Optional, List
 import logging
+from typing import List, Optional
 
 
 def intro() -> None:
@@ -150,9 +150,7 @@ def custom_exceptions() -> None:
         def __init__(self, required: float, available: float):
             self.required = required
             self.available = available
-            super().__init__(
-                f"Insufficient funds: need ${required:,.2f}, have ${available:,.2f}"
-            )
+            super().__init__(f"Insufficient funds: need ${required:,.2f}, have ${available:,.2f}")
 
     class InvalidTickerError(TradingError):
         """Raised when ticker symbol is invalid."""
@@ -162,9 +160,7 @@ def custom_exceptions() -> None:
             super().__init__(f"Invalid ticker symbol: {ticker}")
 
     # Use custom exceptions
-    def execute_trade(
-        ticker: str, price: float, shares: int, account_balance: float
-    ) -> None:
+    def execute_trade(ticker: str, price: float, shares: int, account_balance: float) -> None:
         """Execute trade with custom error handling."""
         # Validate ticker
         valid_tickers = ["AAPL", "GOOGL", "MSFT"]
@@ -323,9 +319,7 @@ def assertion_checking() -> None:
     print("ASSERTIONS")
     print("=" * 60)
 
-    def calculate_sharpe_ratio(
-        returns: List[float], risk_free_rate: float = 0.02
-    ) -> float:
+    def calculate_sharpe_ratio(returns: List[float], risk_free_rate: float = 0.02) -> float:
         """
         Calculate Sharpe ratio with assertions.
 
@@ -333,9 +327,7 @@ def assertion_checking() -> None:
         """
         # Assertions for debugging (removed in production with -O flag)
         assert len(returns) > 0, "Returns list cannot be empty"
-        assert all(
-            isinstance(r, (int, float)) for r in returns
-        ), "Returns must be numbers"
+        assert all(isinstance(r, (int, float)) for r in returns), "Returns must be numbers"
         assert 0 <= risk_free_rate <= 1, "Risk-free rate must be between 0 and 1"
 
         avg_return = sum(returns) / len(returns)

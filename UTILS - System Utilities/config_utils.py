@@ -11,7 +11,7 @@ Version: 1.0.0
 
 import json
 import os
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
@@ -30,7 +30,7 @@ def load_config(config_path: str) -> Dict[str, Any]:
         "your_api_key_here"
     """
     try:
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
         return {}
@@ -117,9 +117,7 @@ def set_config_value(config: Dict[str, Any], key_path: str, value: Any) -> None:
     current[keys[-1]] = value
 
 
-def merge_configs(
-    base_config: Dict[str, Any], override_config: Dict[str, Any]
-) -> Dict[str, Any]:
+def merge_configs(base_config: Dict[str, Any], override_config: Dict[str, Any]) -> Dict[str, Any]:
     """
     Merge two configuration dictionaries.
 
@@ -166,9 +164,7 @@ def validate_config(config: Dict[str, Any], schema: Dict[str, Any]) -> bool:
         True
     """
 
-    def _validate_recursive(
-        config_part: Dict[str, Any], schema_part: Dict[str, Any]
-    ) -> bool:
+    def _validate_recursive(config_part: Dict[str, Any], schema_part: Dict[str, Any]) -> bool:
         for key, expected_type in schema_part.items():
             if key not in config_part:
                 return False

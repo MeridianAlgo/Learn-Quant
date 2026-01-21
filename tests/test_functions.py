@@ -10,7 +10,7 @@ Or directly:
 
 import sys
 from pathlib import Path
-from typing import List, Dict, Tuple, Optional
+from typing import Dict, List, Optional, Tuple
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -35,9 +35,7 @@ def test_basic_function_definition():
 def test_default_parameters():
     """Test functions with default parameters."""
 
-    def calculate_position_size(
-        account_balance: float, risk_percent: float = 0.02
-    ) -> float:
+    def calculate_position_size(account_balance: float, risk_percent: float = 0.02) -> float:
         """Calculate position size with default 2% risk."""
         return account_balance * risk_percent
 

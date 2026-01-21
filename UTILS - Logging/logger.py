@@ -23,7 +23,7 @@ def read_logs():
     """
     if not os.path.exists(LOG_FILE):
         return []  # Return empty list if log file doesn't exist
-    with open(LOG_FILE, "r", encoding="utf-8") as f:
+    with open(LOG_FILE, encoding="utf-8") as f:
         return f.readlines()  # Return all lines as a list
 
 

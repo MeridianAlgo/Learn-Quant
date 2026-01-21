@@ -9,16 +9,14 @@ Author: Generated for Learn-Quant Project
 Version: 1.0.0
 """
 
-from typing import List, Dict, Any
-import statistics
 import math
+import statistics
+from typing import Any, Dict, List
 
 try:
     import numpy as np
 except ImportError:
-    print(
-        "Warning: numpy not found. Some functions may not work optimally. Install with: pip install numpy"
-    )
+    print("Warning: numpy not found. Some functions may not work optimally. Install with: pip install numpy")
     np = None
 
 
@@ -104,9 +102,7 @@ def calculate_max_drawdown(prices: List[float]) -> Dict[str, float]:
     }
 
 
-def calculate_volatility(
-    returns: List[float], annualize: bool = True, periods_per_year: int = 252
-) -> float:
+def calculate_volatility(returns: List[float], annualize: bool = True, periods_per_year: int = 252) -> float:
     """
     Calculate volatility (standard deviation of returns).
 
@@ -141,9 +137,7 @@ def calculate_volatility(
     return volatility
 
 
-def calculate_sharpe_ratio(
-    returns: List[float], risk_free_rate: float = 0.02, periods_per_year: int = 252
-) -> float:
+def calculate_sharpe_ratio(returns: List[float], risk_free_rate: float = 0.02, periods_per_year: int = 252) -> float:
     """
     Calculate Sharpe ratio.
 
@@ -179,9 +173,7 @@ def calculate_sharpe_ratio(
     return excess_return / volatility
 
 
-def calculate_sortino_ratio(
-    returns: List[float], risk_free_rate: float = 0.02, periods_per_year: int = 252
-) -> float:
+def calculate_sortino_ratio(returns: List[float], risk_free_rate: float = 0.02, periods_per_year: int = 252) -> float:
     """
     Calculate Sortino ratio (downside risk-adjusted return).
 
@@ -212,9 +204,7 @@ def calculate_sortino_ratio(
         return float("inf") if total_return > risk_free_rate else 0.0
 
     mean_negative = statistics.mean(negative_returns)
-    downside_variance = sum((r - mean_negative) ** 2 for r in negative_returns) / len(
-        negative_returns
-    )
+    downside_variance = sum((r - mean_negative) ** 2 for r in negative_returns) / len(negative_returns)
     downside_deviation = math.sqrt(downside_variance) * math.sqrt(periods_per_year)
 
     if downside_deviation == 0:
@@ -260,9 +250,7 @@ def calculate_correlation_matrix(
             mean1 = statistics.mean(returns1)
             mean2 = statistics.mean(returns2)
 
-            numerator = sum(
-                (r1 - mean1) * (r2 - mean2) for r1, r2 in zip(returns1, returns2)
-            )
+            numerator = sum((r1 - mean1) * (r2 - mean2) for r1, r2 in zip(returns1, returns2))
 
             var1 = sum((r1 - mean1) ** 2 for r1 in returns1)
             var2 = sum((r2 - mean2) ** 2 for r2 in returns2)
@@ -353,10 +341,7 @@ def calculate_beta(asset_returns: List[float], market_returns: List[float]) -> f
     asset_mean = statistics.mean(asset_returns)
     market_mean = statistics.mean(market_returns)
 
-    covariance = sum(
-        (ar - asset_mean) * (mr - market_mean)
-        for ar, mr in zip(asset_returns, market_returns)
-    )
+    covariance = sum((ar - asset_mean) * (mr - market_mean) for ar, mr in zip(asset_returns, market_returns))
     market_variance = sum((mr - market_mean) ** 2 for mr in market_returns)
 
     if market_variance == 0:
@@ -366,9 +351,7 @@ def calculate_beta(asset_returns: List[float], market_returns: List[float]) -> f
     return beta
 
 
-def calculate_information_ratio(
-    portfolio_returns: List[float], benchmark_returns: List[float]
-) -> float:
+def calculate_information_ratio(portfolio_returns: List[float], benchmark_returns: List[float]) -> float:
     """
     Calculate Information Ratio (active return divided by tracking error).
 
@@ -397,10 +380,7 @@ def calculate_information_ratio(
         return 0.0
 
     mean_active = statistics.mean(active_returns)
-    tracking_error = math.sqrt(
-        sum((ar - mean_active) ** 2 for ar in active_returns)
-        / (len(active_returns) - 1)
-    )
+    tracking_error = math.sqrt(sum((ar - mean_active) ** 2 for ar in active_returns) / (len(active_returns) - 1))
 
     if tracking_error == 0:
         return 0.0

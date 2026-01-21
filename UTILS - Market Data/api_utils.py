@@ -9,11 +9,11 @@ Author: Generated for Learn-Quant Project
 Version: 1.0.0
 """
 
-import json
 import hashlib
+import json
 import secrets
 import time
-from typing import Dict, Any
+from typing import Any, Dict
 
 try:
     import requests
@@ -53,9 +53,7 @@ def make_api_request(
         150.25
     """
     if requests is None:
-        raise ImportError(
-            "requests library is required. Install with: pip install requests"
-        )
+        raise ImportError("requests library is required. Install with: pip install requests")
 
     try:
         response = requests.request(
@@ -85,9 +83,7 @@ def make_api_request(
         raise requests.RequestException(f"Unexpected error: {e}")
 
 
-def retry_api_request(
-    url: str, max_retries: int = 3, delay: float = 1.0, **kwargs
-) -> Dict[str, Any]:
+def retry_api_request(url: str, max_retries: int = 3, delay: float = 1.0, **kwargs) -> Dict[str, Any]:
     """
     Make API request with retry logic.
 

@@ -3,8 +3,8 @@ Dynamic Programming Algorithms Implementation
 A comprehensive collection of DP algorithms with detailed explanations and examples.
 """
 
-from typing import List, Tuple
 import sys
+from typing import List, Tuple
 
 
 def fibonacci_memoization(n: int) -> int:
@@ -167,9 +167,7 @@ def knapsack_01(weights: List[int], values: List[int], capacity: int) -> int:
     for i in range(1, n + 1):
         for w in range(capacity + 1):
             if weights[i - 1] <= w:
-                dp[i][w] = max(
-                    values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]
-                )
+                dp[i][w] = max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w])
             else:
                 dp[i][w] = dp[i - 1][w]
 
@@ -398,11 +396,7 @@ def matrix_chain_multiplication(dimensions: List[int]) -> int:
             dp[i][j] = sys.maxsize
 
             for k in range(i, j):
-                cost = (
-                    dp[i][k]
-                    + dp[k + 1][j]
-                    + dimensions[i - 1] * dimensions[k] * dimensions[j]
-                )
+                cost = dp[i][k] + dp[k + 1][j] + dimensions[i - 1] * dimensions[k] * dimensions[j]
                 dp[i][j] = min(dp[i][j], cost)
 
     return dp[1][n]

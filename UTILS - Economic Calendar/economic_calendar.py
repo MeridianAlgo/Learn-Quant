@@ -122,9 +122,7 @@ def simulate_event_impact(events):
         print("Event not found.")
         return
     e = events[idx]
-    print(
-        f"Simulating impact of {e.event_type} on {e.date} ({e.impact}): {e.description}"
-    )
+    print(f"Simulating impact of {e.event_type} on {e.date} ({e.impact}): {e.description}")
     # For learning: let user input a sample portfolio value and see a random impact
     value = float(input("Enter your sample portfolio value: "))
     if e.impact == "High":
@@ -138,9 +136,7 @@ def simulate_event_impact(events):
         new_value = value + change
     else:
         new_value = value - change
-    print(
-        f"Your portfolio changed from {value:.2f} to {new_value:.2f} due to this event."
-    )
+    print(f"Your portfolio changed from {value:.2f} to {new_value:.2f} due to this event.")
 
 
 # Save events to a file
@@ -157,7 +153,7 @@ def load_events():
     fname = EVENTS_FILE
     if not os.path.exists(fname):
         return []
-    with open(fname, "r") as f:
+    with open(fname) as f:
         data = json.load(f)
     events = [EconomicEvent.from_dict(d) for d in data]
     return events

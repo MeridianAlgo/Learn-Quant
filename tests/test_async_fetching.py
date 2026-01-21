@@ -1,9 +1,9 @@
-import os
-import unittest
 import asyncio
 
 # Dynamic Import Helper
 import importlib.util
+import os
+import unittest
 
 
 def load_module_from_path(module_name, path):
@@ -13,14 +13,11 @@ def load_module_from_path(module_name, path):
     return module
 
 
-af_path = os.path.join(
-    os.getcwd(), "UTILS - Advanced Python - AsyncIO", "async_fetching.py"
-)
+af_path = os.path.join(os.getcwd(), "UTILS - Advanced Python - AsyncIO", "async_fetching.py")
 af_module = load_module_from_path("async_fetching", af_path)
 
 
 class TestAsyncFetching(unittest.TestCase):
-
     def test_fetch_returns_dict(self):
         # We need to run the coroutine in the event loop
         loop = asyncio.new_event_loop()

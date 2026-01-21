@@ -118,7 +118,7 @@ def load_rates():
     fname = RATES_FILE
     if not os.path.exists(fname):
         return []
-    with open(fname, "r") as f:
+    with open(fname) as f:
         data = json.load(f)
     rates = [ExchangeRate.from_dict(d) for d in data]
     return rates

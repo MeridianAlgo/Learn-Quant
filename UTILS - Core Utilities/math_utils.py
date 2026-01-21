@@ -9,8 +9,8 @@ Author: Generated for Learn-Quant Project
 Version: 1.0.0
 """
 
-from typing import List, Tuple
 import math
+from typing import List, Tuple
 
 
 def round_to_nearest(number: float, nearest: float) -> float:
@@ -58,9 +58,7 @@ def calculate_percentage_change(old_value: float, new_value: float) -> float:
     return ((new_value - old_value) / old_value) * 100
 
 
-def compound_interest(
-    principal: float, rate: float, periods: int, compound_frequency: int = 1
-) -> float:
+def compound_interest(principal: float, rate: float, periods: int, compound_frequency: int = 1) -> float:
     """
     Calculate compound interest.
 

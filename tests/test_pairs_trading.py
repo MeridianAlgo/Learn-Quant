@@ -1,9 +1,9 @@
-import os
-import unittest
-import pandas as pd
-
 # Dynamic Import Helper
 import importlib.util
+import os
+import unittest
+
+import pandas as pd
 
 
 def load_module_from_path(module_name, path):
@@ -13,14 +13,11 @@ def load_module_from_path(module_name, path):
     return module
 
 
-pt_path = os.path.join(
-    os.getcwd(), "UTILS - Strategies - Pairs Trading", "pairs_trading.py"
-)
+pt_path = os.path.join(os.getcwd(), "UTILS - Strategies - Pairs Trading", "pairs_trading.py")
 pt_module = load_module_from_path("pairs_trading", pt_path)
 
 
 class TestPairsTrading(unittest.TestCase):
-
     def test_spread_calculation(self):
         x = pd.Series([100, 101, 102])
         y = pd.Series([105, 106, 107])

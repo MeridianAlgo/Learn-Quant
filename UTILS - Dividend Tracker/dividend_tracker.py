@@ -30,9 +30,7 @@ class Dividend:
 
     @staticmethod
     def from_dict(d):
-        return Dividend(
-            d["ticker"], d["ex_date"], d["pay_date"], d["amount"], d["shares"]
-        )
+        return Dividend(d["ticker"], d["ex_date"], d["pay_date"], d["amount"], d["shares"])
 
 
 # Helper to get a date from user input
@@ -85,9 +83,7 @@ def edit_dividend(dividends):
         print("Dividend not found.")
         return
     d = dividends[idx]
-    print(
-        f"Editing {d.ticker} ex-date {d.ex_date}: {d.amount} per share, {d.shares} shares"
-    )
+    print(f"Editing {d.ticker} ex-date {d.ex_date}: {d.amount} per share, {d.shares} shares")
     d.pay_date = input_date("Enter new pay date (YYYY-MM-DD): ")
     d.amount = float(input("Enter new dividend amount per share: "))
     d.shares = float(input("Enter new number of shares: "))
@@ -138,7 +134,7 @@ def load_dividends():
     fname = DIVIDENDS_FILE
     if not os.path.exists(fname):
         return []
-    with open(fname, "r") as f:
+    with open(fname) as f:
         data = json.load(f)
     dividends = [Dividend.from_dict(d) for d in data]
     return dividends

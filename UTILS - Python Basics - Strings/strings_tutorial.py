@@ -52,11 +52,7 @@ def formatting_examples() -> None:
     change_pct = 0.0125
 
     print(f"f-string example: {ticker} closed at ${price:.2f} ({change_pct:.2%}).")
-    print(
-        "str.format example: {} closed at ${:.2f} ({:.2%}).".format(
-            ticker, price, change_pct
-        )
-    )
+    print(f"str.format example: {ticker} closed at ${price:.2f} ({change_pct:.2%}).")
 
 
 def common_methods() -> None:
@@ -107,9 +103,7 @@ def mini_project() -> None:
     raw_input = " AAPL, msft , GOOGL, amzn "
     print(f"Raw input: '{raw_input}'")
 
-    cleaned = [
-        ticker.strip().upper() for ticker in raw_input.split(",") if ticker.strip()
-    ]
+    cleaned = [ticker.strip().upper() for ticker in raw_input.split(",") if ticker.strip()]
     print(f"Cleaned tickers: {cleaned}")
 
     if cleaned:
@@ -123,9 +117,7 @@ def main() -> None:
     common_methods()
     validation_examples()
     mini_project()
-    print(
-        "\n🎉 Strings tutorial complete! Continue exploring Python Basics in the UTILS folders."
-    )
+    print("\n🎉 Strings tutorial complete! Continue exploring Python Basics in the UTILS folders.")
 
 
 if __name__ == "__main__":

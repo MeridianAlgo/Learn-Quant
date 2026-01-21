@@ -67,7 +67,7 @@ def sets_basics() -> None:
 
     # Example 1: Unique tickers
     # Duplicates are automatically removed
-    tickers = {"AAPL", "GOOGL", "MSFT", "AAPL", "TSLA", "MSFT"}
+    tickers = {"AAPL", "GOOGL", "MSFT", "TSLA"}
 
     print(f"Unique Tickers: {tickers}")
     print(f"Count: {len(tickers)}")

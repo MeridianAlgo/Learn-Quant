@@ -12,8 +12,9 @@ Author: MeridianAlgo
 Version: 1.0.0
 """
 
-import numpy as np
 from typing import Tuple
+
+import numpy as np
 from scipy import stats
 
 
@@ -58,9 +59,7 @@ class ArrayOperations:
         # 5. Show slicing
         print(f"First three elements (slicing): {numpy_array[:3]}")
 
-        print(
-            "Python Tip: Arrays start at index 0, so [:3] grabs positions 0, 1, and 2.\n"
-        )
+        print("Python Tip: Arrays start at index 0, so [:3] grabs positions 0, 1, and 2.\n")
 
     def create_price_series(
         self,
@@ -97,9 +96,7 @@ class ArrayOperations:
 
         return price_series
 
-    def calculate_returns(
-        self, prices: np.ndarray, method: str = "arithmetic"
-    ) -> np.ndarray:
+    def calculate_returns(self, prices: np.ndarray, method: str = "arithmetic") -> np.ndarray:
         """
         Calculate returns from price series.
 
@@ -135,9 +132,7 @@ class ArrayOperations:
 
         return np.dot(weights, returns)
 
-    def portfolio_volatility(
-        self, weights: np.ndarray, cov_matrix: np.ndarray
-    ) -> float:
+    def portfolio_volatility(self, weights: np.ndarray, cov_matrix: np.ndarray) -> float:
         """
         Calculate portfolio volatility.
 
@@ -235,15 +230,11 @@ class ArrayOperations:
 
         for i in range(1, n_steps + 1):
             z = self.rng.standard_normal(n_paths)
-            price_paths[:, i] = price_paths[:, i - 1] * np.exp(
-                (mu - 0.5 * sigma**2) * dt + sigma * np.sqrt(dt) * z
-            )
+            price_paths[:, i] = price_paths[:, i - 1] * np.exp((mu - 0.5 * sigma**2) * dt + sigma * np.sqrt(dt) * z)
 
         return price_paths
 
-    def value_at_risk(
-        self, returns: np.ndarray, confidence_level: float = 0.95
-    ) -> float:
+    def value_at_risk(self, returns: np.ndarray, confidence_level: float = 0.95) -> float:
         """
         Calculate Value at Risk (VaR) using historical simulation.
 
@@ -256,9 +247,7 @@ class ArrayOperations:
         """
         return -np.percentile(returns, (1 - confidence_level) * 100)
 
-    def expected_shortfall(
-        self, returns: np.ndarray, confidence_level: float = 0.95
-    ) -> float:
+    def expected_shortfall(self, returns: np.ndarray, confidence_level: float = 0.95) -> float:
         """
         Calculate Expected Shortfall (CVaR) using historical simulation.
 
@@ -273,9 +262,7 @@ class ArrayOperations:
         tail_losses = returns[returns <= -var_threshold]
         return -np.mean(tail_losses)
 
-    def linear_regression(
-        self, x: np.ndarray, y: np.ndarray
-    ) -> Tuple[float, float, float]:
+    def linear_regression(self, x: np.ndarray, y: np.ndarray) -> Tuple[float, float, float]:
         """
         Perform linear regression analysis.
 
@@ -287,9 +274,7 @@ class ArrayOperations:
             Tuple[float, float, float]: slope, intercept, r_squared
         """
         n = len(x)
-        slope = (n * np.sum(x * y) - np.sum(x) * np.sum(y)) / (
-            n * np.sum(x**2) - np.sum(x) ** 2
-        )
+        slope = (n * np.sum(x * y) - np.sum(x) * np.sum(y)) / (n * np.sum(x**2) - np.sum(x) ** 2)
 
         intercept = (np.sum(y) - slope * np.sum(x)) / n
 
@@ -307,9 +292,7 @@ class ArrayOperations:
         print("=== Matrix Operations Demo ===")
 
         # Create sample covariance matrix
-        cov_matrix = np.array(
-            [[0.04, 0.02, 0.01], [0.02, 0.03, 0.015], [0.01, 0.015, 0.025]]
-        )
+        cov_matrix = np.array([[0.04, 0.02, 0.01], [0.02, 0.03, 0.015], [0.01, 0.015, 0.025]])
 
         print("Covariance Matrix:")
         print(cov_matrix)
@@ -357,9 +340,7 @@ class ArrayOperations:
             "iqr": np.percentile(data, 75) - np.percentile(data, 25),
         }
 
-    def hypothesis_testing(
-        self, sample1: np.ndarray, sample2: np.ndarray, test_type: str = "t_test"
-    ) -> dict:
+    def hypothesis_testing(self, sample1: np.ndarray, sample2: np.ndarray, test_type: str = "t_test") -> dict:
         """
         Perform hypothesis testing between two samples.
 
@@ -416,9 +397,7 @@ def main():
 
     weights = np.array([0.5, 0.3, 0.2])
     port_return = arrays.portfolio_return(weights, np.mean(sample_returns, axis=0))
-    port_vol = arrays.portfolio_volatility(
-        weights, arrays.covariance_matrix(sample_returns)
-    )
+    port_vol = arrays.portfolio_volatility(weights, arrays.covariance_matrix(sample_returns))
 
     print(f"Portfolio return: {port_return:.4f}")
     print(f"Portfolio volatility: {port_vol:.4f}")

@@ -1,16 +1,16 @@
 """Test suite for Quantitative Methods - Stochastic Processes utility."""
 
-import unittest
-import numpy as np
-import sys
 import os
+import sys
+import unittest
+
+import numpy as np
 
 # Add project root to path to import modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
 class TestStochastic(unittest.TestCase):
-
     def setUp(self):
         np.random.seed(42)
 
