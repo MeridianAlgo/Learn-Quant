@@ -59,7 +59,7 @@ def test_volatility_cone():
     prices = (100 * np.exp(np.cumsum(np.random.normal(0, 0.01, 200)))).tolist()
     cone = volatility_cone(prices, windows=[10, 20, 30])
     assert len(cone) > 0
-    for window, stats in cone.items():
+    for _window, stats in cone.items():
         assert "min" in stats
         assert "max" in stats
         assert "mean" in stats

@@ -35,7 +35,7 @@ def load_config(config_path: str) -> Dict[str, Any]:
     except FileNotFoundError:
         return {}
     except json.JSONDecodeError as e:
-        raise ValueError(f"Invalid JSON in config file: {e}")
+        raise ValueError(f"Invalid JSON in config file: {e}") from e
 
 
 def save_config(config: Dict[str, Any], config_path: str) -> None:

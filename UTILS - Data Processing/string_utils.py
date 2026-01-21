@@ -135,8 +135,8 @@ def clean_currency_string(currency_str: str) -> float:
 
     try:
         return float(clean)
-    except ValueError:
-        raise ValueError(f"Invalid currency format: {currency_str}")
+    except ValueError as e:
+        raise ValueError(f"Invalid currency format: {currency_str}") from e
 
 
 def format_currency(amount: float, currency: str = "USD") -> str:

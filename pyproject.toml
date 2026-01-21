@@ -8,7 +8,6 @@ select = [
     "W",   # pycodestyle warnings
     "F",   # pyflakes
     "I",   # isort
-    "N",   # pep8-naming
     "UP",  # pyupgrade
     "B",   # flake8-bugbear
     "C4",  # flake8-comprehensions
@@ -17,11 +16,18 @@ ignore = [
     "E501",  # line too long (handled by formatter)
     "B008",  # do not perform function calls in argument defaults
     "B905",  # zip without explicit strict parameter
+    "E731",  # lambda assignment (common in tutorials)
+    "N803",  # argument name should be lowercase (S, K, T are standard in finance)
+    "N806",  # variable name should be lowercase (X, Y, Z are standard in ML/math)
+    "N999",  # invalid module name (folder names with spaces)
+    "UP006", # use list instead of List (keeping for compatibility)
+    "UP045", # use X | None (keeping for compatibility)
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
-"tests/*" = ["F401", "F811"]
+"tests/*" = ["F401", "F811", "B007"]
+"*tutorial*.py" = ["F841"]  # unused variables in tutorials are for demonstration
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

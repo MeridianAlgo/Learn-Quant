@@ -19,7 +19,6 @@ def mean_variance_optimizer(expected_returns, cov_matrix, risk_free_rate=0.0):
     """
     excess_returns = expected_returns - risk_free_rate
     inv_cov = np.linalg.inv(cov_matrix)
-    ones = np.ones(expected_returns.shape)
     weights = inv_cov @ excess_returns
     weights /= np.sum(weights)
     return weights

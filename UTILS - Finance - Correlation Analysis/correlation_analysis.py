@@ -66,7 +66,6 @@ def correlation_matrix(returns_dict: Dict[str, List[float]]) -> Tuple[np.ndarray
         Tuple of (correlation matrix, list of asset names)
     """
     assets = list(returns_dict.keys())
-    n_assets = len(assets)
 
     returns_matrix = np.array([returns_dict[asset] for asset in assets])
     corr_matrix = np.corrcoef(returns_matrix)

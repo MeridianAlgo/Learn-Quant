@@ -108,7 +108,7 @@ def multiple_regression() -> None:
     print(f"{'Alpha':<15} {alpha_true:>11.5f} {alpha_est:>11.5f}")
     print(f"{'Market Beta':<15} {beta_market:>11.3f} {beta_market_est:>11.3f}")
     print(f"{'SMB Beta':<15} {beta_smb:>11.3f} {beta_smb_est:>11.3f}")
-    print(f"{'HML Beta':<15} {beta_hml:>11.3f} {betahml_est:>11.3f}")
+    print(f"{'HML Beta':<15} {beta_hml:>11.3f} {beta_hml_est:>11.3f}")
     print("-" * 60)
 
     # Calculate R-squared
@@ -147,10 +147,6 @@ def beta_calculation() -> None:
 
         # Calculate beta using covariance method
         # β = Cov(stock, market) / Var(market)
-        covariance = np.cov(stock_returns, market_returns)[0, 1]
-        market_variance = np.var(market_returns)
-        beta_cov = covariance / market_variance
-
         # Calculate using regression
         coeffs = np.polyfit(market_returns, stock_returns, deg=1)
         beta_reg = coeffs[0]

@@ -142,7 +142,7 @@ def practical_example_deduplication() -> None:
     unique_trades = set(raw_trades)
 
     # Convert back to sorted list
-    clean_trades = sorted(list(unique_trades), key=lambda x: x[2])
+    clean_trades = sorted(unique_trades, key=lambda x: x[2])
 
     print(f"\nCleaned Trades ({len(clean_trades)}):")
     for t in clean_trades:

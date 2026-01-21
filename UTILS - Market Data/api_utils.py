@@ -73,14 +73,14 @@ def make_api_request(
         except json.JSONDecodeError:
             return {"text": response.text}
 
-    except requests.exceptions.Timeout:
-        raise requests.RequestException(f"Request timeout after {timeout} seconds")
-    except requests.exceptions.ConnectionError:
-        raise requests.RequestException("Connection error")
+    except requests.exceptions.Timeout as e:
+        raise requests.RequestException(f"Request timeout after {timeout} seconds") from e
+    except requests.exceptions.ConnectionError as e:
+        raise requests.RequestException("Connection error") from e
     except requests.exceptions.HTTPError as e:
-        raise requests.RequestException(f"HTTP error: {e}")
+        raise requests.RequestException(f"HTTP error: {e}") from e
     except Exception as e:
-        raise requests.RequestException(f"Unexpected error: {e}")
+        raise requests.RequestException(f"Unexpected error: {e}") from e
 
 
 def retry_api_request(url: str, max_retries: int = 3, delay: float = 1.0, **kwargs) -> Dict[str, Any]:

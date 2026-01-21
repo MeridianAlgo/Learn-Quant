@@ -266,7 +266,6 @@ class ListOperations:
             return {}
 
         total_value = sum(asset["value"] for asset in portfolio)
-        total_shares = sum(asset["shares"] for asset in portfolio)
 
         # Sector allocation
         sectors = {}
@@ -428,7 +427,7 @@ class ListOperations:
         return {
             "total_return": cumulative_return,
             "annualized_return": avg_return * 252,  # Assuming daily returns
-            "volatility": volatility * np.sqrt(252),  # Annualized
+            "volatility": volatility * (252**0.5),  # Annualized
             "sharpe_ratio": sharpe_ratio,
             "max_drawdown": max_drawdown,
             "win_rate": len([r for r in returns if r > 0]) / len(returns),

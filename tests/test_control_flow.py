@@ -42,7 +42,7 @@ def test_for_loop_iteration():
     portfolio = {"AAPL": 50, "GOOGL": 20, "MSFT": 30}
 
     total_shares = 0
-    for ticker, shares in portfolio.items():
+    for _ticker, shares in portfolio.items():
         total_shares += shares
 
     assert total_shares == 100, "Total shares should equal 100"

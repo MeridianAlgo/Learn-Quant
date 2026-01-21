@@ -258,11 +258,11 @@ class DictionaryOperations:
         sectors = ["Technology", "Technology", "Technology", "Consumer", "Technology"]
 
         # Create price dictionary
-        price_dict = {ticker: price for ticker, price in zip(tickers, prices)}
+        price_dict = dict(zip(tickers, prices))
         print(f"Price Dictionary: {price_dict}")
 
         # Create sector mapping
-        sector_dict = {ticker: sector for ticker, sector in zip(tickers, sectors)}
+        sector_dict = dict(zip(tickers, sectors))
         print(f"Sector Dictionary: {sector_dict}")
 
         # Filter expensive stocks

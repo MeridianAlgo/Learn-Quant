@@ -371,7 +371,7 @@ def calculate_market_timing_indicators(prices: List[float], volumes: List[float]
             obv.append(obv[-1])
 
     # Money Flow Index (MFI) - simplified version
-    typical_prices = [(prices[i] + prices[i] + volumes[i]) / 3 for i in range(len(prices))]  # Simplified
+    # Placeholder implementation
 
     # Accumulation/Distribution Line
     ad_line = 0.0
@@ -439,7 +439,7 @@ def smooth_data(data: List[float], method: str = "moving_average", window: int =
             try:
                 smoothed_array = signal.savgol_filter(data, window, 3)
                 return smoothed_array.tolist()
-            except:
+            except Exception:
                 pass
 
         # Fallback to moving average

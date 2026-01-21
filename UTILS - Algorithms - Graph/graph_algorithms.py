@@ -366,7 +366,7 @@ def prim_mst(graph: Graph, start: str) -> Dict[str, Union[List[Tuple[str, str, i
     if graph.directed:
         raise ValueError("Prim's algorithm requires undirected graph")
 
-    visited = set([start])
+    visited = {start}
     mst_edges = []
     total_weight = 0
     heap = []

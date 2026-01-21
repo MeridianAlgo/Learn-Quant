@@ -136,7 +136,6 @@ def rebalance_portfolio(
         "BUY"
     """
     trades = {}
-    current_allocation = calculate_portfolio_allocation(holdings, prices)
 
     for symbol, target_pct in target_allocation.items():
         target_value = portfolio_value * target_pct

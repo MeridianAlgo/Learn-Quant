@@ -185,7 +185,7 @@ class TimeValueMoney:
         try:
             irr = newton(npv_function, guess)
             return irr if irr != guess else None
-        except:
+        except Exception:
             return None
 
     def profitability_index(self, initial_investment: float, cash_flows: List[float], discount_rate: float) -> float:
@@ -366,7 +366,7 @@ class TimeValueMoney:
         try:
             ytm = newton(price_function, guess)
             return ytm
-        except:
+        except Exception:
             return None
 
     def retirement_planning(

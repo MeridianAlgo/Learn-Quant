@@ -2,34 +2,20 @@
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
-Welcome to **Learn-Quant**, your comprehensive, beginner-friendly toolkit for mastering quantitative finance, algorithmic trading, and Python programming!
-
----
+Welcome to Learn-Quant, your comprehensive, beginner-friendly toolkit for mastering quantitative finance, algorithmic trading, and Python programming.
 
 ## What is This Repo?
 A massive, curated collection of Python modules, strategies, and reference materials designed to help you:
-- Master advanced strategies like **Pairs Trading** and **Kalman Filters**.
-- Learn high-frequency data engineering with **AsyncIO**.
-- Understand core quant concepts (Risk, Return, Derivatives, Portfolio Theory).
-- Practice with realistic trading algorithms and backtesting simulators.
-- Learn Python from scratch: from basic loops to advanced OOP and Decorators.
-- Master computer science algorithms (Sorting, Searching, Graphs, DP) tailored for finance.
-
----
-
-### Quick Start
-```bash
-# Option 1: Interactive launcher (Recommended)
-python run_learning_platform.py interactive
-
-# Option 2: Full platform demo
-python run_learning_platform.py demo
-```
-
----
+- Master advanced strategies like Pairs Trading and Kalman Filters
+- Learn high-frequency data engineering with AsyncIO
+- Calculate beta, volatility, and correlation metrics
+- Understand core quant concepts (Risk, Return, Derivatives, Portfolio Theory)
+- Practice with realistic trading algorithms and backtesting simulators
+- Learn Python from scratch: from basic loops to advanced OOP and Decorators
+- Master computer science algorithms (Sorting, Searching, Graphs, DP) tailored for finance
 
 ## What's Inside?
-**Every folder is a self-contained lesson. Pick a topic and dive in!**
+Every folder is a self-contained lesson. Pick a topic and dive in.
 
 ### Python Basics (Level 1)
 - `UTILS - Python Basics - Numbers/` — Financial math and precision.
@@ -44,75 +30,61 @@ python run_learning_platform.py demo
 - `UTILS - Algorithms - Graph/` — Shortest paths for arbitrage.
 - `UTILS - Algorithms - Dynamic Programming/` — Optimization techniques.
 
-### Advanced Python & Engineering (Level 3) - NEW!
-- `UTILS - Advanced Python - AsyncIO/` — **(New)** Concurrent data fetching for high-frequency setups.
-- `UTILS - Advanced Python - OOP/` — Building a scalable trading engine.
-- `UTILS - Advanced Python - Decorators/` — Measuring execution time and logging.
+### Advanced Python & Engineering (Level 3)
+- `UTILS - Advanced Python - AsyncIO/` — Concurrent data fetching for high-frequency setups
+- `UTILS - Advanced Python - OOP/` — Building a scalable trading engine
+- `UTILS - Advanced Python - Decorators/` — Measuring execution time and logging
 
-### Quantitative Methods (Math & Stats) - NEW!
-- `UTILS - Quantitative Methods - Kalman Filter/` — **(New)** Dynamic hedging and noise filtering.
-- `UTILS - Quantitative Methods - Statistics/` — Hypothesis testing and distributions.
-- `UTILS - Quantitative Methods - Linear Algebra/` — Portfolio math.
-- `UTILS - Quantitative Methods - Stochastic Processes/` — Geometric Brownian Motion.
-- `UTILS - Quantitative Methods - Regression/` — Beta calculation and factor models.
+### Quantitative Methods (Math & Stats)
+- `UTILS - Quantitative Methods - Kalman Filter/` — Dynamic hedging and noise filtering
+- `UTILS - Quantitative Methods - Statistics/` — Hypothesis testing and distributions
+- `UTILS - Quantitative Methods - Linear Algebra/` — Portfolio math
+- `UTILS - Quantitative Methods - Stochastic Processes/` — Geometric Brownian Motion
+- `UTILS - Quantitative Methods - Regression/` — Beta calculation and factor models
 
 ### Finance Utilities & Simulators
-- `UTILS - Strategies - Pairs Trading/` — Statistical arbitrage simulation.
-- `UTILS - Finance - Beta Calculator/` — **(New)** Beta, levered/unlevered beta, upside/downside beta.
-- `UTILS - Finance - Volatility Calculator/` — **(New)** Historical, Parkinson, Garman-Klass, EWMA volatility.
-- `UTILS - Finance - Correlation Analysis/` — **(New)** Pearson, rolling, EWMA, tail correlation.
-- `UTILS - Black-Scholes Option Pricing/` — Valuation of derivatives.
-- `UTILS - Portfolio Optimizer/` — Efficient Frontier and Sharpe Ratio maximization.
-- `UTILS - Monte Carlo Portfolio Simulator/` — Stress testing portfolios.
-- `UTILS - Risk Metrics/` — VaR, Drawdown, Sortino Ratio.
-- `UTILS - Technical Indicators/` — RSI, MACD, Bollinger Bands implementation.
+- `UTILS - Strategies - Pairs Trading/` — Statistical arbitrage simulation
+- `UTILS - Finance - Beta Calculator/` — Beta, levered/unlevered beta, upside/downside beta
+- `UTILS - Finance - Volatility Calculator/` — Historical, Parkinson, Garman-Klass, EWMA volatility
+- `UTILS - Finance - Correlation Analysis/` — Pearson, rolling, EWMA, tail correlation
+- `UTILS - Black-Scholes Option Pricing/` — Valuation of derivatives
+- `UTILS - Portfolio Optimizer/` — Efficient Frontier and Sharpe Ratio maximization
+- `UTILS - Monte Carlo Portfolio Simulator/` — Stress testing portfolios
+- `UTILS - Risk Metrics/` — VaR, Drawdown, Sortino Ratio
+- `UTILS - Technical Indicators/` — RSI, MACD, Bollinger Bands implementation
 
 ### Data & AI
-- `UTILS - AI Development/` — Chatbots and simple market predictors.
-- `UTILS - Sentiment Analysis on News/` — Natural Language Processing for trading.
-- `UTILS - Websocket Connection/` — Real-time exchange streaming.
-
----
+- `UTILS - AI Development/` — Chatbots and simple market predictors
+- `UTILS - Sentiment Analysis on News/` — Natural Language Processing for trading
+- `UTILS - Websocket Connection/` — Real-time exchange streaming
 
 ## Who Is This For?
-1. **Aspiring Quants**: Bridge the gap between theory and code.
-2. **Students & Developers**: Learn algorithms with a financial context.
-3. **Traders**: Prototype strategies like Pairs Trading or Option Pricing.
-4. **Educators**: Use the interactive platform for teaching.
-
----
+1. Aspiring Quants: Bridge the gap between theory and code
+2. Students & Developers: Learn algorithms with a financial context
+3. Traders: Prototype strategies like Pairs Trading or Option Pricing
 
 ## Getting Started
 
-### 1. Installation
+### Installation
 Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/MeridianAlgo/Learn-Quant
-pip install numpy pandas scipy matplotlib requests
+pip install -r requirements.txt
 ```
 
-### 2. Run a Lesson
+### Run a Lesson
 Navigate to any folder and run the Python script. For example, to try Pairs Trading:
 ```bash
 cd "UTILS - Strategies - Pairs Trading"
 python pairs_trading.py
 ```
 
-### 3. Run the Web Platform
-```bash
-python run_learning_platform.py interactive
-```
-
----
-
 ## Contributing
-We welcome contributions!
-- Found a bug? Open an issue.
-- Want to add a strategy? Submit a Pull Request.
-- **Learn-Quant** is designed to grow with the community.
+We welcome contributions:
+- Found a bug? Open an issue
+- Want to add a strategy? Submit a Pull Request
+- Learn-Quant is designed to grow with the community
 
----
-
-**Learn-Quant** v1.6.0
-_Quantitative Finance, Algorithms, and Python Mastery._
-_Made by MeridianAlgo_
+Learn-Quant v1.6.0
+Quantitative Finance, Algorithms, and Python Mastery.
+Made by MeridianAlgo
