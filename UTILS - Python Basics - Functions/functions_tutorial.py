@@ -278,7 +278,7 @@ def lambda_functions() -> None:
     daily_returns = [0.02, -0.01, 0.03, -0.015, 0.01]
 
     # Convert to percentages
-    pct_returns = list(map(lambda x: f"{x:.2%}", daily_returns))
+    pct_returns = [f"{x:.2%}" for x in daily_returns]
 
     print("\nDaily Returns:")
     for i, ret in enumerate(pct_returns, 1):

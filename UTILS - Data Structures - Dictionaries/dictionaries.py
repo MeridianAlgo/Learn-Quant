@@ -423,7 +423,7 @@ def main():
         }
     ]
 
-    registry = dict_ops.create_portfolio_registry(portfolios)
+    dict_ops.create_portfolio_registry(portfolios)
     value = dict_ops.calculate_portfolio_value("portfolio_001")
     print(f"Portfolio value: ${value:,.2f}")
 

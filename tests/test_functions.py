@@ -118,7 +118,7 @@ def test_lambda_functions():
 
     # Lambda with map
     returns = [0.02, -0.01, 0.03]
-    scaled_returns = list(map(lambda x: x * 100, returns))
+    scaled_returns = [x * 100 for x in returns]
     assert scaled_returns == [2.0, -1.0, 3.0], "Lambda map failed"
 
     # Lambda with sorted

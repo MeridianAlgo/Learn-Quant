@@ -257,7 +257,7 @@ def demo_file_io():
         if os.path.exists(dir_path):
             try:
                 shutil.rmtree(dir_path)
-            except:
+            except Exception:
                 pass
 
     print("\n  ✓ Cleaned up demo files")

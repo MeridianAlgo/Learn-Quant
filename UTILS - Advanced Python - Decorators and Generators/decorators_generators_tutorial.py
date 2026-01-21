@@ -205,8 +205,7 @@ def generators_demo() -> None:
             {"symbol": "AAPL", "price": 151, "volume": 200},
             {"symbol": "MSFT", "price": 300, "volume": 150},
         ]
-        for t in trades:
-            yield t
+        yield from trades
 
     def filter_symbol(trades, symbol):
         """Filter trades by symbol."""

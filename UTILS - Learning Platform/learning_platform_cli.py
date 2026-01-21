@@ -10,7 +10,9 @@ PACKAGE_ROOT = Path(__file__).resolve().parent
 if str(PACKAGE_ROOT) not in sys.path:  # Ensure local imports work via runpy
     sys.path.insert(0, str(PACKAGE_ROOT))
 
-from content import (
+# Module-level imports must be at top, but we need to modify sys.path first
+# This is a valid exception to E402 for dynamic path modification
+from content import (  # noqa: E402
     LESSONS,
     Lesson,
     LessonSection,

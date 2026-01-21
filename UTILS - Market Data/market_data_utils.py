@@ -195,12 +195,12 @@ def fill_missing_data(data: List[Union[float, None]], method: str = "linear") ->
         # Backward fill
         # First pass: find next valid values
         next_valid = None
-        for i in range(n - 1, -1, -1):
-            if data[i] is not None:
-                next_valid = data[i]
+        for idx in range(n - 1, -1, -1):
+            if data[idx] is not None:
+                next_valid = data[idx]
                 break
 
-        for i, value in enumerate(data):
+        for value in data:
             if value is not None:
                 filled_data.append(value)
                 next_valid = value
@@ -362,11 +362,11 @@ def calculate_market_timing_indicators(prices: List[float], volumes: List[float]
 
     # On-Balance Volume (OBV)
     obv = [volumes[0]]
-    for i in range(1, len(prices)):
-        if prices[i] > prices[i - 1]:
-            obv.append(obv[-1] + volumes[i])
-        elif prices[i] < prices[i - 1]:
-            obv.append(obv[-1] - volumes[i])
+    for idx in range(1, len(prices)):
+        if prices[idx] > prices[idx - 1]:
+            obv.append(obv[-1] + volumes[idx])
+        elif prices[idx] < prices[idx - 1]:
+            obv.append(obv[-1] - volumes[idx])
         else:
             obv.append(obv[-1])
 

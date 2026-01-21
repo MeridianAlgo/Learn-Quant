@@ -36,7 +36,7 @@ class LinearRegression:
         self.bias = 0
 
         # Gradient descent
-        for i in range(self.n_iterations):
+        for _ in range(self.n_iterations):
             # Forward pass
             y_predicted = np.dot(X, self.weights) + self.bias
 
@@ -96,7 +96,7 @@ class LogisticRegression:
         self.bias = 0
 
         # Gradient descent
-        for i in range(self.n_iterations):
+        for _ in range(self.n_iterations):
             # Forward pass
             linear_model = np.dot(X, self.weights) + self.bias
             y_predicted = self._sigmoid(linear_model)
@@ -186,7 +186,7 @@ class KMeans:
         random_indices = np.random.choice(n_samples, self.k, replace=False)
         self.centroids = X[random_indices]
 
-        for i in range(self.max_iterations):
+        for _ in range(self.max_iterations):
             # Assign clusters
             distances = np.sqrt(((X - self.centroids[:, np.newaxis]) ** 2).sum(axis=2))
             self.labels = np.argmin(distances, axis=0)
@@ -330,15 +330,15 @@ class NaiveBayes:
         self.class_feature_vars = np.zeros((n_classes, n_features))
 
         # Calculate statistics for each class
-        for i, c in enumerate(self.classes):
+        for idx, c in enumerate(self.classes):
             X_c = X[y == c]
 
             # Prior probability
-            self.class_priors[i] = len(X_c) / len(X)
+            self.class_priors[idx] = len(X_c) / len(X)
 
             # Mean and variance for each feature
-            self.class_feature_means[i] = np.mean(X_c, axis=0)
-            self.class_feature_vars[i] = np.var(X_c, axis=0) + 1e-9  # Avoid division by zero
+            self.class_feature_means[idx] = np.mean(X_c, axis=0)
+            self.class_feature_vars[idx] = np.var(X_c, axis=0) + 1e-9  # Avoid division by zero
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """Make predictions."""
@@ -349,7 +349,7 @@ class NaiveBayes:
         """Predict for a single sample."""
         posteriors = []
 
-        for i, c in enumerate(self.classes):
+        for i in range(len(self.classes)):
             # Log prior
             log_prior = np.log(self.class_priors[i])
 
