@@ -55,7 +55,9 @@ def test_for_loop_iteration():
         cumulative *= 1 + ret
 
     expected = 1.02 * 0.99 * 1.03 * 1.015 * 0.995
-    assert abs(cumulative - expected) < 0.0001, "Cumulative return calculation incorrect"
+    assert (
+        abs(cumulative - expected) < 0.0001
+    ), "Cumulative return calculation incorrect"
 
     print("✓ For loop iteration tests passed")
 
@@ -87,11 +89,15 @@ def test_list_comprehensions():
     # Test percentage change calculations
     prices = [100, 102, 98, 101, 105, 103]
 
-    pct_changes = [(prices[i] - prices[i - 1]) / prices[i - 1] for i in range(1, len(prices))]
+    pct_changes = [
+        (prices[i] - prices[i - 1]) / prices[i - 1] for i in range(1, len(prices))
+    ]
 
     assert len(pct_changes) == 5, "Should have 5 price changes for 6 prices"
     assert abs(pct_changes[0] - 0.02) < 0.0001, "First change should be +2%"
-    assert abs(pct_changes[1] - (-0.0392)) < 0.01, "Second change should be approximately -3.92%"
+    assert (
+        abs(pct_changes[1] - (-0.0392)) < 0.01
+    ), "Second change should be approximately -3.92%"
 
     # Test filtering profitable trades
     trades = [
@@ -104,13 +110,17 @@ def test_list_comprehensions():
     profitable = [trade for trade in trades if trade["pnl"] > 0]
 
     assert len(profitable) == 2, "Should have 2 profitable trades"
-    assert all(trade["pnl"] > 0 for trade in profitable), "All filtered trades should be profitable"
+    assert all(
+        trade["pnl"] > 0 for trade in profitable
+    ), "All filtered trades should be profitable"
 
     # Test dictionary comprehension
     holdings = {"AAPL": 50, "GOOGL": 20}
     prices_dict = {"AAPL": 175.50, "GOOGL": 140.25}
 
-    portfolio_values = {ticker: holdings[ticker] * prices_dict[ticker] for ticker in holdings}
+    portfolio_values = {
+        ticker: holdings[ticker] * prices_dict[ticker] for ticker in holdings
+    }
 
     assert abs(portfolio_values["AAPL"] - 8775.0) < 0.01, "AAPL value incorrect"
     assert abs(portfolio_values["GOOGL"] - 2805.0) < 0.01, "GOOGL value incorrect"
@@ -182,13 +192,17 @@ def test_nested_loops():
 
     # Check diagonal is all 1.0
     for i in range(len(tickers)):
-        assert correlation_matrix[i][i] == 1.0, f"Diagonal element [{i}][{i}] should be 1.0"
+        assert (
+            correlation_matrix[i][i] == 1.0
+        ), f"Diagonal element [{i}][{i}] should be 1.0"
 
     # Check off-diagonal are 0.0
     for i in range(len(tickers)):
         for j in range(len(tickers)):
             if i != j:
-                assert correlation_matrix[i][j] == 0.0, f"Element [{i}][{j}] should be 0.0"
+                assert (
+                    correlation_matrix[i][j] == 0.0
+                ), f"Element [{i}][{j}] should be 0.0"
 
     print("✓ Nested loop tests passed")
 

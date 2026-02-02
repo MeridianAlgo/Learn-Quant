@@ -89,7 +89,9 @@ def home() -> str:
         <p>Select a lesson to view guided sections, quizzes, and practice prompts.</p>
         {cards}
       </section>
-    """.format(cards="\n".join(cards))
+    """.format(
+        cards="\n".join(cards)
+    )
     return _render(
         template,
         title="Learning Platform",

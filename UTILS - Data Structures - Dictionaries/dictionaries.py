@@ -37,7 +37,9 @@ class DictionaryOperations:
         self.portfolio_registry = {}
         self.market_data = {}
 
-    def create_asset_database(self, assets: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    def create_asset_database(
+        self, assets: List[Dict[str, Any]]
+    ) -> Dict[str, Dict[str, Any]]:
         """
         Create a structured asset database from asset data.
 
@@ -61,13 +63,17 @@ class DictionaryOperations:
                     "pe_ratio": asset.get("pe_ratio", 0),
                     "dividend_yield": asset.get("dividend_yield", 0),
                     "beta": asset.get("beta", 1.0),
-                    "last_updated": asset.get("last_updated", datetime.now().isoformat()),
+                    "last_updated": asset.get(
+                        "last_updated", datetime.now().isoformat()
+                    ),
                 }
 
         self.asset_database = database
         return database
 
-    def update_asset_price(self, ticker: str, price: float, volume: Optional[int] = None) -> None:
+    def update_asset_price(
+        self, ticker: str, price: float, volume: Optional[int] = None
+    ) -> None:
         """
         Update asset price and related data.
 
@@ -141,7 +147,9 @@ class DictionaryOperations:
 
         return matches
 
-    def create_portfolio_registry(self, portfolios: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    def create_portfolio_registry(
+        self, portfolios: List[Dict[str, Any]]
+    ) -> Dict[str, Dict[str, Any]]:
         """
         Create a portfolio registry for multiple portfolios.
 
@@ -161,7 +169,9 @@ class DictionaryOperations:
                     "holdings": portfolio.get("holdings", {}),
                     "cash": portfolio.get("cash", 0),
                     "total_value": portfolio.get("total_value", 0),
-                    "created_date": portfolio.get("created_date", datetime.now().isoformat()),
+                    "created_date": portfolio.get(
+                        "created_date", datetime.now().isoformat()
+                    ),
                     "last_updated": datetime.now().isoformat(),
                 }
 
@@ -266,7 +276,9 @@ class DictionaryOperations:
         print(f"Sector Dictionary: {sector_dict}")
 
         # Filter expensive stocks
-        expensive_stocks = {ticker: price for ticker, price in price_dict.items() if price > 1000}
+        expensive_stocks = {
+            ticker: price for ticker, price in price_dict.items() if price > 1000
+        }
         print(f"Expensive Stocks: {expensive_stocks}")
 
         # Create nested market data

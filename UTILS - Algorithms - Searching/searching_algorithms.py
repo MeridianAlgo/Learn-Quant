@@ -61,7 +61,9 @@ def binary_search(arr: List[T], target: T) -> Optional[int]:
     return None
 
 
-def binary_search_recursive(arr: List[T], target: T, left: int = 0, right: int = None) -> Optional[int]:
+def binary_search_recursive(
+    arr: List[T], target: T, left: int = 0, right: int = None
+) -> Optional[int]:
     """
     Recursive version of binary search.
 
@@ -246,7 +248,9 @@ def fibonacci_search(arr: List[T], target: T) -> Optional[int]:
     return None
 
 
-def compare_searching_algorithms(arr: List[T], target: T, algorithms: List[Callable] = None) -> dict:
+def compare_searching_algorithms(
+    arr: List[T], target: T, algorithms: List[Callable] = None
+) -> dict:
     """
     Compare performance of different searching algorithms.
 

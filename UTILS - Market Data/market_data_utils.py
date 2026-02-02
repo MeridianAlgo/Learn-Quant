@@ -62,7 +62,9 @@ def calculate_returns(prices: List[float], method: str = "simple") -> List[float
     return returns
 
 
-def detect_outliers(data: List[float], method: str = "iqr", threshold: float = 1.5) -> List[int]:
+def detect_outliers(
+    data: List[float], method: str = "iqr", threshold: float = 1.5
+) -> List[int]:
     """
     Detect outliers in data series.
 
@@ -126,7 +128,9 @@ def detect_outliers(data: List[float], method: str = "iqr", threshold: float = 1
     return outliers
 
 
-def fill_missing_data(data: List[Union[float, None]], method: str = "linear") -> List[float]:
+def fill_missing_data(
+    data: List[Union[float, None]], method: str = "linear"
+) -> List[float]:
     """
     Fill missing data points in time series.
 
@@ -221,7 +225,9 @@ def fill_missing_data(data: List[Union[float, None]], method: str = "linear") ->
     return filled_data
 
 
-def calculate_market_sentiment(news_data: List[Dict[str, str]], keywords: Dict[str, List[str]]) -> Dict[str, float]:
+def calculate_market_sentiment(
+    news_data: List[Dict[str, str]], keywords: Dict[str, List[str]]
+) -> Dict[str, float]:
     """
     Calculate market sentiment from news data.
 
@@ -273,7 +279,9 @@ def calculate_market_sentiment(news_data: List[Dict[str, str]], keywords: Dict[s
     if positive_score + negative_score == 0:
         overall_sentiment = 0.0
     else:
-        overall_sentiment = (positive_score - negative_score) / (positive_score + negative_score)
+        overall_sentiment = (positive_score - negative_score) / (
+            positive_score + negative_score
+        )
 
     return {
         "overall": overall_sentiment,
@@ -333,7 +341,9 @@ def validate_market_data(data: Dict[str, Any], schema: Dict[str, Any]) -> bool:
     return True
 
 
-def calculate_market_timing_indicators(prices: List[float], volumes: List[float]) -> Dict[str, float]:
+def calculate_market_timing_indicators(
+    prices: List[float], volumes: List[float]
+) -> Dict[str, float]:
     """
     Calculate market timing indicators.
 
@@ -396,7 +406,9 @@ def calculate_market_timing_indicators(prices: List[float], volumes: List[float]
     }
 
 
-def smooth_data(data: List[float], method: str = "moving_average", window: int = 5) -> List[float]:
+def smooth_data(
+    data: List[float], method: str = "moving_average", window: int = 5
+) -> List[float]:
     """
     Smooth noisy data using various methods.
 
@@ -487,11 +499,15 @@ def calculate_market_microstructure(
 
     # Tick frequency (ticks per minute)
     if len(tick_data) > 1:
-        timestamps = [tick.get("timestamp") for tick in tick_data if "timestamp" in tick]
+        timestamps = [
+            tick.get("timestamp") for tick in tick_data if "timestamp" in tick
+        ]
         if timestamps:
             # Simplified - assuming timestamps are in order
             duration_minutes = len(tick_data)  # Simplified assumption
-            tick_frequency = len(tick_data) / duration_minutes if duration_minutes > 0 else 0
+            tick_frequency = (
+                len(tick_data) / duration_minutes if duration_minutes > 0 else 0
+            )
         else:
             tick_frequency = 0
     else:
@@ -553,7 +569,9 @@ def demo_market_data_utils():
     filled_linear = fill_missing_data(data_with_gaps, "linear")
     filled_forward = fill_missing_data(data_with_gaps, "forward")
     print(f"  Original: {data_with_gaps}")
-    print(f"  Linear fill: {[round(x, 2) if x is not None else None for x in filled_linear]}")
+    print(
+        f"  Linear fill: {[round(x, 2) if x is not None else None for x in filled_linear]}"
+    )
     print(f"  Forward fill: {filled_forward}")
 
     print("\n4. Market Sentiment Analysis:")
@@ -608,7 +626,9 @@ def demo_market_data_utils():
     smooth_ma = smooth_data(noisy_data, "moving_average", 3)
     smooth_exp = smooth_data(noisy_data, "exponential", 3)
     print(f"  Original: {noisy_data[:5]}...")
-    print(f"  Moving Avg: {[round(x, 2) if x is not None else None for x in smooth_ma[:5]]}...")
+    print(
+        f"  Moving Avg: {[round(x, 2) if x is not None else None for x in smooth_ma[:5]]}..."
+    )
     print(f"  Exponential: {[round(x, 2) for x in smooth_exp[:5]]}...")
 
     print("\n8. Market Microstructure:")

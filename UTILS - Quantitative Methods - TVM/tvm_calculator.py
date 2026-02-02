@@ -34,7 +34,9 @@ class TimeValueMoney:
         """Initialize the TimeValueMoney class."""
         pass
 
-    def future_value_single(self, pv: float, rate: float, periods: int, compounding: int = 1) -> float:
+    def future_value_single(
+        self, pv: float, rate: float, periods: int, compounding: int = 1
+    ) -> float:
         """
         Calculate future value of a single present value.
 
@@ -51,7 +53,9 @@ class TimeValueMoney:
         effective_periods = periods * compounding
         return pv * (1 + effective_rate) ** effective_periods
 
-    def present_value_single(self, fv: float, rate: float, periods: int, compounding: int = 1) -> float:
+    def present_value_single(
+        self, fv: float, rate: float, periods: int, compounding: int = 1
+    ) -> float:
         """
         Calculate present value of a single future value.
 
@@ -68,7 +72,9 @@ class TimeValueMoney:
         effective_periods = periods * compounding
         return fv / (1 + effective_rate) ** effective_periods
 
-    def future_value_annuity(self, pmt: float, rate: float, periods: int, type: int = 0, compounding: int = 1) -> float:
+    def future_value_annuity(
+        self, pmt: float, rate: float, periods: int, type: int = 0, compounding: int = 1
+    ) -> float:
         """
         Calculate future value of an ordinary annuity.
 
@@ -88,7 +94,12 @@ class TimeValueMoney:
         if type == 0:  # Ordinary annuity
             fv = pmt * ((1 + effective_rate) ** effective_periods - 1) / effective_rate
         else:  # Annuity due
-            fv = pmt * ((1 + effective_rate) ** effective_periods - 1) / effective_rate * (1 + effective_rate)
+            fv = (
+                pmt
+                * ((1 + effective_rate) ** effective_periods - 1)
+                / effective_rate
+                * (1 + effective_rate)
+            )
 
         return fv
 
@@ -112,13 +123,24 @@ class TimeValueMoney:
         effective_periods = periods * compounding
 
         if type == 0:  # Ordinary annuity
-            pv = pmt * (1 - 1 / (1 + effective_rate) ** effective_periods) / effective_rate
+            pv = (
+                pmt
+                * (1 - 1 / (1 + effective_rate) ** effective_periods)
+                / effective_rate
+            )
         else:  # Annuity due
-            pv = pmt * (1 - 1 / (1 + effective_rate) ** effective_periods) / effective_rate * (1 + effective_rate)
+            pv = (
+                pmt
+                * (1 - 1 / (1 + effective_rate) ** effective_periods)
+                / effective_rate
+                * (1 + effective_rate)
+            )
 
         return pv
 
-    def annuity_payment(self, pv: float, rate: float, periods: int, type: int = 0, compounding: int = 1) -> float:
+    def annuity_payment(
+        self, pv: float, rate: float, periods: int, type: int = 0, compounding: int = 1
+    ) -> float:
         """
         Calculate required payment for a loan or annuity.
 
@@ -136,13 +158,24 @@ class TimeValueMoney:
         effective_periods = periods * compounding
 
         if type == 0:  # Ordinary annuity
-            payment = pv * effective_rate / (1 - 1 / (1 + effective_rate) ** effective_periods)
+            payment = (
+                pv
+                * effective_rate
+                / (1 - 1 / (1 + effective_rate) ** effective_periods)
+            )
         else:  # Annuity due
-            payment = pv * effective_rate / (1 - 1 / (1 + effective_rate) ** effective_periods) / (1 + effective_rate)
+            payment = (
+                pv
+                * effective_rate
+                / (1 - 1 / (1 + effective_rate) ** effective_periods)
+                / (1 + effective_rate)
+            )
 
         return payment
 
-    def net_present_value(self, initial_investment: float, cash_flows: List[float], discount_rate: float) -> float:
+    def net_present_value(
+        self, initial_investment: float, cash_flows: List[float], discount_rate: float
+    ) -> float:
         """
         Calculate Net Present Value of an investment.
 
@@ -188,7 +221,9 @@ class TimeValueMoney:
         except Exception:
             return None
 
-    def profitability_index(self, initial_investment: float, cash_flows: List[float], discount_rate: float) -> float:
+    def profitability_index(
+        self, initial_investment: float, cash_flows: List[float], discount_rate: float
+    ) -> float:
         """
         Calculate Profitability Index.
 
@@ -200,7 +235,9 @@ class TimeValueMoney:
         Returns:
             float: Profitability Index
         """
-        pv_future_cash_flows = sum(cf / (1 + discount_rate) ** (t + 1) for t, cf in enumerate(cash_flows))
+        pv_future_cash_flows = sum(
+            cf / (1 + discount_rate) ** (t + 1) for t, cf in enumerate(cash_flows)
+        )
         return pv_future_cash_flows / initial_investment
 
     def loan_payment(
@@ -274,7 +311,9 @@ class TimeValueMoney:
 
         return schedule
 
-    def effective_annual_rate(self, nominal_rate: float, compounding_freq: int) -> float:
+    def effective_annual_rate(
+        self, nominal_rate: float, compounding_freq: int
+    ) -> float:
         """
         Calculate effective annual rate.
 
@@ -361,7 +400,12 @@ class TimeValueMoney:
         """
 
         def price_function(yield_rate):
-            return self.bond_price(face_value, coupon_rate, years, yield_rate, payments_per_year) - bond_price
+            return (
+                self.bond_price(
+                    face_value, coupon_rate, years, yield_rate, payments_per_year
+                )
+                - bond_price
+            )
 
         try:
             ytm = newton(price_function, guess)
@@ -400,28 +444,38 @@ class TimeValueMoney:
         years_in_retirement = life_expectancy - retirement_age
 
         # Future value of current savings
-        fv_savings = self.future_value_single(current_savings, expected_return, years_to_retirement)
+        fv_savings = self.future_value_single(
+            current_savings, expected_return, years_to_retirement
+        )
 
         # Future value of contributions
         if annual_contribution > 0:
-            fv_contributions = self.future_value_annuity(annual_contribution, expected_return, years_to_retirement)
+            fv_contributions = self.future_value_annuity(
+                annual_contribution, expected_return, years_to_retirement
+            )
         else:
             fv_contributions = 0
 
         total_at_retirement = fv_savings + fv_contributions
 
         # Present value of retirement income need
-        retirement_income_pv = self.present_value_annuity(desired_income, expected_return, years_in_retirement)
+        retirement_income_pv = self.present_value_annuity(
+            desired_income, expected_return, years_in_retirement
+        )
 
         # Inflation adjustment
-        inflation_adjusted_need = retirement_income_pv * (1 + inflation_rate) ** years_to_retirement
+        inflation_adjusted_need = (
+            retirement_income_pv * (1 + inflation_rate) ** years_to_retirement
+        )
 
         # Savings gap
         savings_gap = max(0, inflation_adjusted_need - total_at_retirement)
 
         # Required additional contribution
         if years_to_retirement > 0 and expected_return > 0:
-            required_contribution = self.annuity_payment(savings_gap, expected_return, years_to_retirement)
+            required_contribution = self.annuity_payment(
+                savings_gap, expected_return, years_to_retirement
+            )
         else:
             required_contribution = 0
 
@@ -457,7 +511,10 @@ class TimeValueMoney:
             scenario = base_scenario.copy()
             scenario[variable] = value
 
-            if "analysis_type" in scenario and scenario["analysis_type"] == "retirement":
+            if (
+                "analysis_type" in scenario
+                and scenario["analysis_type"] == "retirement"
+            ):
                 result = self.retirement_planning(
                     scenario["current_age"],
                     scenario["retirement_age"],
@@ -564,13 +621,19 @@ def main():
 
     print(f"Total at retirement: ${retirement_analysis['total_at_retirement']:,.2f}")
     print(f"Savings gap: ${retirement_analysis['savings_gap']:,.2f}")
-    print(f"Required additional contribution: ${retirement_analysis['required_annual_contribution']:,.2f}\n")
+    print(
+        f"Required additional contribution: ${retirement_analysis['required_annual_contribution']:,.2f}\n"
+    )
 
     # Demo 4: Bond Pricing
     print("4. Bond Pricing:")
-    bond_price = tvm.bond_price(face_value=1000, coupon_rate=0.05, years=10, market_rate=0.06)
+    bond_price = tvm.bond_price(
+        face_value=1000, coupon_rate=0.05, years=10, market_rate=0.06
+    )
 
-    ytm = tvm.bond_yield_to_maturity(bond_price=950, face_value=1000, coupon_rate=0.05, years=10)
+    ytm = tvm.bond_yield_to_maturity(
+        bond_price=950, face_value=1000, coupon_rate=0.05, years=10
+    )
 
     print(f"Bond price: ${bond_price:.2f}")
     print(f"Yield to maturity: {ytm:.4f}" if ytm else "Could not calculate YTM")

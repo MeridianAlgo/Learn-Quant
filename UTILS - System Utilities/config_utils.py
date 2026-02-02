@@ -117,7 +117,9 @@ def set_config_value(config: Dict[str, Any], key_path: str, value: Any) -> None:
     current[keys[-1]] = value
 
 
-def merge_configs(base_config: Dict[str, Any], override_config: Dict[str, Any]) -> Dict[str, Any]:
+def merge_configs(
+    base_config: Dict[str, Any], override_config: Dict[str, Any]
+) -> Dict[str, Any]:
     """
     Merge two configuration dictionaries.
 
@@ -164,7 +166,9 @@ def validate_config(config: Dict[str, Any], schema: Dict[str, Any]) -> bool:
         True
     """
 
-    def _validate_recursive(config_part: Dict[str, Any], schema_part: Dict[str, Any]) -> bool:
+    def _validate_recursive(
+        config_part: Dict[str, Any], schema_part: Dict[str, Any]
+    ) -> bool:
         for key, expected_type in schema_part.items():
             if key not in config_part:
                 return False

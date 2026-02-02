@@ -27,6 +27,8 @@ def mean_variance_optimizer(expected_returns, cov_matrix, risk_free_rate=0.0):
 if __name__ == "__main__":
     # Example: Optimize a portfolio of 3 assets
     means = np.array([0.08, 0.10, 0.12])  # 8%, 10%, 12%
-    cov = np.array([[0.04, 0.01, 0.01], [0.01, 0.09, 0.02], [0.01, 0.02, 0.16]])  # Covariance matrix
+    cov = np.array(
+        [[0.04, 0.01, 0.01], [0.01, 0.09, 0.02], [0.01, 0.02, 0.16]]
+    )  # Covariance matrix
     w = mean_variance_optimizer(means, cov, risk_free_rate=0.03)
     print("Optimal Portfolio Weights:", w)

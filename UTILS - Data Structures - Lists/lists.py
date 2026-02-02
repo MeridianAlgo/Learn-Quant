@@ -57,7 +57,9 @@ class ListOperations:
 
         print("Tip: Lists keep order and can hold any Python objects.\n")
 
-    def create_portfolio_list(self, assets: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    def create_portfolio_list(
+        self, assets: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
         """
         Create a structured portfolio list from asset data.
 
@@ -77,12 +79,16 @@ class ListOperations:
                     "value": asset.get("shares", 0) * asset.get("price", 0),
                     "weight": 0.0,  # Will be calculated
                     "sector": asset.get("sector", "Unknown"),
-                    "date_added": asset.get("date_added", datetime.now().strftime("%Y-%m-%d")),
+                    "date_added": asset.get(
+                        "date_added", datetime.now().strftime("%Y-%m-%d")
+                    ),
                 }
             )
         return portfolio
 
-    def calculate_portfolio_weights(self, portfolio: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    def calculate_portfolio_weights(
+        self, portfolio: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
         """
         Calculate portfolio weights based on current values.
 
@@ -146,7 +152,9 @@ class ListOperations:
         """
         return [tx for tx in self.transaction_log if tx["ticker"] == ticker]
 
-    def calculate_position_pnl(self, ticker: str, current_price: float) -> Dict[str, Any]:
+    def calculate_position_pnl(
+        self, ticker: str, current_price: float
+    ) -> Dict[str, Any]:
         """
         Calculate profit/loss for a position.
 
@@ -187,7 +195,9 @@ class ListOperations:
         unrealized_pnl = market_value - total_cost
 
         # Calculate realized P&L (simplified)
-        realized_pnl = sum(tx["value"] for tx in ticker_transactions if tx["type"] == "SELL")
+        realized_pnl = sum(
+            tx["value"] for tx in ticker_transactions if tx["type"] == "SELL"
+        )
 
         return {
             "ticker": ticker,
@@ -252,7 +262,9 @@ class ListOperations:
 
         return filtered
 
-    def calculate_portfolio_statistics(self, portfolio: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def calculate_portfolio_statistics(
+        self, portfolio: List[Dict[str, Any]]
+    ) -> Dict[str, Any]:
         """
         Calculate comprehensive portfolio statistics.
 
@@ -288,14 +300,18 @@ class ListOperations:
             "total_positions": len(portfolio),
             "avg_position_value": total_value / len(portfolio) if portfolio else 0,
             "largest_position": max((asset["value"] for asset in portfolio), default=0),
-            "smallest_position": min((asset["value"] for asset in portfolio), default=0),
+            "smallest_position": min(
+                (asset["value"] for asset in portfolio), default=0
+            ),
             "sector_allocation": sectors,
             "top_holdings": top_holdings,
             "concentration_ratio": concentration_ratio,
             "diversification_score": 1 - concentration_ratio,  # Higher is better
         }
 
-    def moving_average_strategy(self, prices: List[float], short_window: int = 5, long_window: int = 20) -> List[str]:
+    def moving_average_strategy(
+        self, prices: List[float], short_window: int = 5, long_window: int = 20
+    ) -> List[str]:
         """
         Simple moving average crossover strategy.
 
@@ -369,7 +385,9 @@ class ListOperations:
                 value_diff = target_value - current_value
 
                 if value_diff != 0:
-                    shares_to_trade = value_diff / current_prices.get(ticker, asset["price"])
+                    shares_to_trade = value_diff / current_prices.get(
+                        ticker, asset["price"]
+                    )
                     transactions.append(
                         {
                             "ticker": ticker,
@@ -400,7 +418,9 @@ class ListOperations:
             for i in range(1, len(portfolio_values))
         ]
 
-        cumulative_return = (portfolio_values[-1] - portfolio_values[0]) / portfolio_values[0]
+        cumulative_return = (
+            portfolio_values[-1] - portfolio_values[0]
+        ) / portfolio_values[0]
 
         # Risk metrics
         avg_return = sum(returns) / len(returns)
@@ -409,7 +429,9 @@ class ListOperations:
 
         # Sharpe ratio (assuming 2% risk-free rate)
         risk_free_rate = 0.02
-        sharpe_ratio = (avg_return - risk_free_rate) / volatility if volatility > 0 else 0
+        sharpe_ratio = (
+            (avg_return - risk_free_rate) / volatility if volatility > 0 else 0
+        )
 
         # Maximum drawdown
         peak = portfolio_values[0]
@@ -451,7 +473,9 @@ class ListOperations:
         print(f"Market Caps: {[f'${cap / 1e9:.1f}B' for cap in market_caps]}")
 
         # Filter high-volume stocks
-        high_volume = [ticker for ticker, volume in zip(tickers, volumes) if volume > 700000]
+        high_volume = [
+            ticker for ticker, volume in zip(tickers, volumes) if volume > 700000
+        ]
         print(f"High Volume Stocks: {high_volume}")
 
         # Calculate percentage changes
@@ -500,7 +524,9 @@ def main():
     portfolio = list_ops.calculate_portfolio_weights(portfolio)
 
     print(f"Portfolio value: ${sum(asset['value'] for asset in portfolio):,.2f}")
-    print(f"Top holding: {list_ops.sort_portfolio_by_metric(portfolio, 'value')[0]['ticker']}")
+    print(
+        f"Top holding: {list_ops.sort_portfolio_by_metric(portfolio, 'value')[0]['ticker']}"
+    )
 
     # Demo 2: Transaction Processing
     print("\n2. Transaction Processing:")

@@ -172,7 +172,9 @@ if __name__ == "__main__":
 
     # Edit Distance
     word1, word2 = "horse", "ros"
-    print(f"Edit distance between '{word1}' and '{word2}': {edit_distance(word1, word2)}")
+    print(
+        f"Edit distance between '{word1}' and '{word2}': {edit_distance(word1, word2)}"
+    )
 
     # Longest Common Substring
     s1, s2 = "abcdxyz", "xyzabcd"

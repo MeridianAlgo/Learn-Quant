@@ -300,7 +300,9 @@ def main() -> None:
     generators_demo()
     practical_example_backtest()
     print("\n🎉 Decorators and Generators tutorial complete!")
-    print("Use decorators for cross-cutting concerns and generators for efficient data pipelines.")
+    print(
+        "Use decorators for cross-cutting concerns and generators for efficient data pipelines."
+    )
 
 
 if __name__ == "__main__":

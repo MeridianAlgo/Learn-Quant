@@ -70,7 +70,9 @@ class Stock:
 
     def __repr__(self) -> str:
         """Developer-friendly representation."""
-        return f"Stock(ticker='{self.ticker}', price={self.price}, shares={self.shares})"
+        return (
+            f"Stock(ticker='{self.ticker}', price={self.price}, shares={self.shares})"
+        )
 
 
 class Portfolio:
@@ -192,7 +194,9 @@ class Trade:
 
     trade_counter = 0  # Class variable to track trade IDs
 
-    def __init__(self, ticker: str, entry_price: float, shares: int, direction: str = "LONG"):
+    def __init__(
+        self, ticker: str, entry_price: float, shares: int, direction: str = "LONG"
+    ):
         """
         Initialize a Trade.
 
@@ -279,7 +283,9 @@ class TradingAccount:
         self.trades: List[Trade] = []
         self.open_positions: Dict[str, Trade] = {}
 
-    def enter_trade(self, ticker: str, entry_price: float, shares: int, direction: str = "LONG") -> Optional[Trade]:
+    def enter_trade(
+        self, ticker: str, entry_price: float, shares: int, direction: str = "LONG"
+    ) -> Optional[Trade]:
         """
         Enter a new trade.
 
@@ -368,7 +374,9 @@ class TradingAccount:
         lines.append(f"  Balance: ${perf['current_balance']:,.2f}")
         lines.append(f"  Total P&L: ${perf['total_pnl']:,.2f}")
         lines.append(f"  Return: {perf['return_pct']:.2%}")
-        lines.append(f"  Trades: {perf['total_trades']} ({perf['closed_trades']} closed)")
+        lines.append(
+            f"  Trades: {perf['total_trades']} ({perf['closed_trades']} closed)"
+        )
         lines.append(f"  Win Rate: {perf['win_rate']:.1%}")
         lines.append("=" * 60)
 

@@ -36,8 +36,12 @@ def on_message(ws, message):
             price = trade["p"]
             volume = trade["v"]
             timestamp = trade["t"]
-            time_str = datetime.fromtimestamp(timestamp / 1000).strftime("%Y-%m-%d %H:%M:%S")
-            print(f"Symbol: {symbol} | Price: {price} | Volume: {volume} | Time: {time_str}")
+            time_str = datetime.fromtimestamp(timestamp / 1000).strftime(
+                "%Y-%m-%d %H:%M:%S"
+            )
+            print(
+                f"Symbol: {symbol} | Price: {price} | Volume: {volume} | Time: {time_str}"
+            )
     # else: handle other message types if needed
 
 

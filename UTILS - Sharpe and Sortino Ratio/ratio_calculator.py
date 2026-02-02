@@ -46,7 +46,9 @@ def sortino_ratio(returns, risk_free_rate=0.0, periods_per_year=252):
 
 if __name__ == "__main__":
     # Example usage with fake data
-    daily_returns = np.random.normal(0.0005, 0.01, 252)  # Simulate 1 year of daily returns
+    daily_returns = np.random.normal(
+        0.0005, 0.01, 252
+    )  # Simulate 1 year of daily returns
     sharpe = sharpe_ratio(daily_returns)
     sortino = sortino_ratio(daily_returns)
     print(f"Sharpe Ratio: {sharpe:.2f}")

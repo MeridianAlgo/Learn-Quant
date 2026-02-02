@@ -53,7 +53,9 @@ def make_api_request(
         150.25
     """
     if requests is None:
-        raise ImportError("requests library is required. Install with: pip install requests")
+        raise ImportError(
+            "requests library is required. Install with: pip install requests"
+        )
 
     try:
         response = requests.request(
@@ -74,7 +76,9 @@ def make_api_request(
             return {"text": response.text}
 
     except requests.exceptions.Timeout as e:
-        raise requests.RequestException(f"Request timeout after {timeout} seconds") from e
+        raise requests.RequestException(
+            f"Request timeout after {timeout} seconds"
+        ) from e
     except requests.exceptions.ConnectionError as e:
         raise requests.RequestException("Connection error") from e
     except requests.exceptions.HTTPError as e:
@@ -83,7 +87,9 @@ def make_api_request(
         raise requests.RequestException(f"Unexpected error: {e}") from e
 
 
-def retry_api_request(url: str, max_retries: int = 3, delay: float = 1.0, **kwargs) -> Dict[str, Any]:
+def retry_api_request(
+    url: str, max_retries: int = 3, delay: float = 1.0, **kwargs
+) -> Dict[str, Any]:
     """
     Make API request with retry logic.
 

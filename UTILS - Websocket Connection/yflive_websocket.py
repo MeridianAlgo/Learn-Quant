@@ -99,13 +99,17 @@ class YFLiveWebSocket:
         """Internal WebSocket error handler."""
         self.on_error_callback(str(error))
 
-    def _on_close(self, ws: websocket.WebSocketApp, close_status_code: int, close_msg: str) -> None:
+    def _on_close(
+        self, ws: websocket.WebSocketApp, close_status_code: int, close_msg: str
+    ) -> None:
         """Internal WebSocket close handler."""
         self.on_close_callback()
 
         # Attempt to reconnect if enabled
         if self.reconnect and self.keep_running:
-            print(f"[YFLive] Attempting to reconnect in {self.reconnect_interval} seconds...")
+            print(
+                f"[YFLive] Attempting to reconnect in {self.reconnect_interval} seconds..."
+            )
             time.sleep(self.reconnect_interval)
             self.connect()
 
@@ -199,7 +203,9 @@ def example_usage():
     def on_message(data):
         # Process the received data
         if "id" in data and "price" in data:
-            print(f"{data['id']}: ${data['price']} (Change: {data.get('changePercent', 0):.2f}%)")
+            print(
+                f"{data['id']}: ${data['price']} (Change: {data.get('changePercent', 0):.2f}%)"
+            )
 
     def on_error(error):
         print(f"Error: {error}")

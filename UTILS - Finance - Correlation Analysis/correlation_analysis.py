@@ -28,7 +28,9 @@ def pearson_correlation(returns1: List[float], returns2: List[float]) -> float:
     return np.corrcoef(r1, r2)[0, 1]
 
 
-def rolling_correlation(returns1: List[float], returns2: List[float], window: int = 30) -> List[float]:
+def rolling_correlation(
+    returns1: List[float], returns2: List[float], window: int = 30
+) -> List[float]:
     """
     Calculate rolling correlation between two return series.
 
@@ -55,7 +57,9 @@ def rolling_correlation(returns1: List[float], returns2: List[float], window: in
     return correlations
 
 
-def correlation_matrix(returns_dict: Dict[str, List[float]]) -> Tuple[np.ndarray, List[str]]:
+def correlation_matrix(
+    returns_dict: Dict[str, List[float]],
+) -> Tuple[np.ndarray, List[str]]:
     """
     Calculate correlation matrix for multiple assets.
 
@@ -73,7 +77,9 @@ def correlation_matrix(returns_dict: Dict[str, List[float]]) -> Tuple[np.ndarray
     return corr_matrix, assets
 
 
-def ewma_correlation(returns1: List[float], returns2: List[float], lambda_param: float = 0.94) -> List[float]:
+def ewma_correlation(
+    returns1: List[float], returns2: List[float], lambda_param: float = 0.94
+) -> List[float]:
     """
     Calculate exponentially weighted moving average correlation.
 
@@ -98,7 +104,9 @@ def ewma_correlation(returns1: List[float], returns2: List[float], lambda_param:
     ewma_var2[0] = r2[0] ** 2
 
     for i in range(1, n):
-        ewma_cov[i] = lambda_param * ewma_cov[i - 1] + (1 - lambda_param) * r1[i] * r2[i]
+        ewma_cov[i] = (
+            lambda_param * ewma_cov[i - 1] + (1 - lambda_param) * r1[i] * r2[i]
+        )
         ewma_var1[i] = lambda_param * ewma_var1[i - 1] + (1 - lambda_param) * r1[i] ** 2
         ewma_var2[i] = lambda_param * ewma_var2[i - 1] + (1 - lambda_param) * r2[i] ** 2
 
@@ -124,7 +132,9 @@ def rank_correlation(returns1: List[float], returns2: List[float]) -> float:
     return spearmanr(returns1, returns2)[0]
 
 
-def tail_correlation(returns1: List[float], returns2: List[float], quantile: float = 0.05) -> Tuple[float, float]:
+def tail_correlation(
+    returns1: List[float], returns2: List[float], quantile: float = 0.05
+) -> Tuple[float, float]:
     """
     Calculate correlation in the tails of the distribution.
     Useful for understanding correlation during extreme events.
@@ -146,13 +156,23 @@ def tail_correlation(returns1: List[float], returns2: List[float], quantile: flo
     lower_mask = r1 <= lower_threshold
     upper_mask = r1 >= upper_threshold
 
-    lower_corr = np.corrcoef(r1[lower_mask], r2[lower_mask])[0, 1] if np.sum(lower_mask) > 1 else np.nan
-    upper_corr = np.corrcoef(r1[upper_mask], r2[upper_mask])[0, 1] if np.sum(upper_mask) > 1 else np.nan
+    lower_corr = (
+        np.corrcoef(r1[lower_mask], r2[lower_mask])[0, 1]
+        if np.sum(lower_mask) > 1
+        else np.nan
+    )
+    upper_corr = (
+        np.corrcoef(r1[upper_mask], r2[upper_mask])[0, 1]
+        if np.sum(upper_mask) > 1
+        else np.nan
+    )
 
     return lower_corr, upper_corr
 
 
-def correlation_stability(returns1: List[float], returns2: List[float], n_splits: int = 5) -> Dict[str, float]:
+def correlation_stability(
+    returns1: List[float], returns2: List[float], n_splits: int = 5
+) -> Dict[str, float]:
     """
     Test correlation stability across different time periods.
 

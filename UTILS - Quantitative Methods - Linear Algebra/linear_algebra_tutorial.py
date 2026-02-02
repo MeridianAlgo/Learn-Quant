@@ -143,7 +143,9 @@ def covariance_correlation_matrices() -> None:
     mean_returns = np.array([0.001, 0.0008, 0.0012])
 
     # Covariance matrix (symmetric, positive semi-definite)
-    cov_matrix = np.array([[0.0004, 0.0002, 0.0001], [0.0002, 0.0003, 0.00015], [0.0001, 0.00015, 0.0005]])
+    cov_matrix = np.array(
+        [[0.0004, 0.0002, 0.0001], [0.0002, 0.0003, 0.00015], [0.0001, 0.00015, 0.0005]]
+    )
 
     # Generate correlated returns
     returns = np.random.multivariate_normal(mean_returns, cov_matrix, n_days)
@@ -202,7 +204,9 @@ def eigenvalues_eigenvectors() -> None:
     print("=" * 60)
 
     # Correlation matrix from previous example
-    correlation_matrix = np.array([[1.00, 0.65, 0.45], [0.65, 1.00, 0.50], [0.45, 0.50, 1.00]])
+    correlation_matrix = np.array(
+        [[1.00, 0.65, 0.45], [0.65, 1.00, 0.50], [0.45, 0.50, 1.00]]
+    )
 
     tickers = ["AAPL", "GOOGL", "MSFT"]
 
@@ -263,7 +267,9 @@ def matrix_inverse_solving_systems() -> None:
     expected_returns = np.array([0.10, 0.12, 0.08])
 
     # Covariance matrix
-    cov_matrix = np.array([[0.04, 0.01, 0.005], [0.01, 0.05, 0.015], [0.005, 0.015, 0.03]])
+    cov_matrix = np.array(
+        [[0.04, 0.01, 0.005], [0.01, 0.05, 0.015], [0.005, 0.015, 0.03]]
+    )
 
     tickers = ["AAPL", "GOOGL", "MSFT"]
 

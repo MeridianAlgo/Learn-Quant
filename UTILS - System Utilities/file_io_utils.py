@@ -93,7 +93,9 @@ def read_csv_file(file_path: str, delimiter: str = ",") -> List[Dict[str, str]]:
         return list(reader)
 
 
-def write_csv_file(data: List[Dict[str, str]], file_path: str, delimiter: str = ",") -> None:
+def write_csv_file(
+    data: List[Dict[str, str]], file_path: str, delimiter: str = ","
+) -> None:
     """
     Write data to CSV file.
 

@@ -73,7 +73,9 @@ def analyze_and_store():
     headline = input("Enter headline: ")
     sentiment, score = analyze_headline(headline)
     print(f"Sentiment: {sentiment} (Score: {score})")
-    session_results.append({"headline": headline, "sentiment": sentiment, "score": score})
+    session_results.append(
+        {"headline": headline, "sentiment": sentiment, "score": score}
+    )
 
 
 # View summary of all analyzed headlines
@@ -87,7 +89,9 @@ def view_summary():
     pos = sum(1 for r in session_results if r["sentiment"] == "Positive")
     neg = sum(1 for r in session_results if r["sentiment"] == "Negative")
     neu = sum(1 for r in session_results if r["sentiment"] == "Neutral")
-    print(f"\nTotal: {len(session_results)} | Positive: {pos} | Negative: {neg} | Neutral: {neu}")
+    print(
+        f"\nTotal: {len(session_results)} | Positive: {pos} | Negative: {neg} | Neutral: {neu}"
+    )
 
 
 # Main workflow for the CLI

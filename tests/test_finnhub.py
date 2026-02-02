@@ -5,7 +5,9 @@ from pathlib import Path
 
 import pytest
 
-SCRIPT_PATH = Path(__file__).resolve().parents[1] / "UTILS - Websocket Connection" / "finnhub.py"
+SCRIPT_PATH = (
+    Path(__file__).resolve().parents[1] / "UTILS - Websocket Connection" / "finnhub.py"
+)
 
 
 @pytest.mark.skipif(
@@ -17,7 +19,9 @@ def test_script_runs():
     print("Testing if finnhub.py runs...")
     env = os.environ.copy()
     env.setdefault("FINNHUB_API_KEY", "FINNHUB_API_KEY")
-    result = subprocess.run([sys.executable, str(SCRIPT_PATH)], capture_output=True, env=env)
+    result = subprocess.run(
+        [sys.executable, str(SCRIPT_PATH)], capture_output=True, env=env
+    )
     stdout = result.stdout.decode(errors="ignore") if result.stdout else ""
     stderr = result.stderr.decode(errors="ignore") if result.stderr else ""
     debug_message = f"STDOUT:\n{stdout}\nSTDERR:\n{stderr}"

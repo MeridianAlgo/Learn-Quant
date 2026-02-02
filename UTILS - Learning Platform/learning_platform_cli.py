@@ -12,14 +12,8 @@ if str(PACKAGE_ROOT) not in sys.path:  # Ensure local imports work via runpy
 
 # Module-level imports must be at top, but we need to modify sys.path first
 # This is a valid exception to E402 for dynamic path modification
-from content import (  # noqa: E402
-    LESSONS,
-    Lesson,
-    LessonSection,
-    QuizQuestion,
-    get_lesson_by_slug,
-    list_lessons,
-)
+from content import (LESSONS, Lesson, LessonSection,  # noqa: E402
+                     QuizQuestion, get_lesson_by_slug, list_lessons)
 
 BORDER = "=" * 80
 SOURCE_FILE = Path(__file__).resolve()
@@ -36,7 +30,9 @@ def print_banner() -> None:
 def main_menu() -> None:
     print("Available lessons:\n")
     for index, lesson in enumerate(list_lessons(), start=1):
-        print(f"  {index}. {lesson['title']} ({lesson['difficulty']}, {lesson['estimated_minutes']} min)")
+        print(
+            f"  {index}. {lesson['title']} ({lesson['difficulty']}, {lesson['estimated_minutes']} min)"
+        )
         print(f"     ↳ {lesson['summary']}")
     print("\nCommands:")
     print("  [number] → open lesson")

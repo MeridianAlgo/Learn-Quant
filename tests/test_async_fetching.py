@@ -1,5 +1,4 @@
 import asyncio
-
 # Dynamic Import Helper
 import importlib.util
 import os
@@ -13,7 +12,9 @@ def load_module_from_path(module_name, path):
     return module
 
 
-af_path = os.path.join(os.getcwd(), "UTILS - Advanced Python - AsyncIO", "async_fetching.py")
+af_path = os.path.join(
+    os.getcwd(), "UTILS - Advanced Python - AsyncIO", "async_fetching.py"
+)
 af_module = load_module_from_path("async_fetching", af_path)
 
 

@@ -13,7 +13,9 @@ def load_module_from_path(module_name, path):
     return module
 
 
-pt_path = os.path.join(os.getcwd(), "UTILS - Strategies - Pairs Trading", "pairs_trading.py")
+pt_path = os.path.join(
+    os.getcwd(), "UTILS - Strategies - Pairs Trading", "pairs_trading.py"
+)
 pt_module = load_module_from_path("pairs_trading", pt_path)
 
 

@@ -12,7 +12,9 @@ Version: 1.0.0
 from typing import Any, Dict
 
 
-def calculate_portfolio_value(holdings: Dict[str, Dict[str, Any]], prices: Dict[str, float]) -> float:
+def calculate_portfolio_value(
+    holdings: Dict[str, Dict[str, Any]], prices: Dict[str, float]
+) -> float:
     """
     Calculate total portfolio value.
 
@@ -40,7 +42,9 @@ def calculate_portfolio_value(holdings: Dict[str, Dict[str, Any]], prices: Dict[
     return total_value
 
 
-def calculate_portfolio_allocation(holdings: Dict[str, Dict[str, Any]], prices: Dict[str, float]) -> Dict[str, float]:
+def calculate_portfolio_allocation(
+    holdings: Dict[str, Dict[str, Any]], prices: Dict[str, float]
+) -> Dict[str, float]:
     """
     Calculate portfolio allocation percentages.
 
@@ -74,7 +78,9 @@ def calculate_portfolio_allocation(holdings: Dict[str, Dict[str, Any]], prices: 
     return allocation
 
 
-def calculate_portfolio_return(holdings: Dict[str, Dict[str, Any]], prices: Dict[str, float]) -> float:
+def calculate_portfolio_return(
+    holdings: Dict[str, Dict[str, Any]], prices: Dict[str, float]
+) -> float:
     """
     Calculate total portfolio return.
 
@@ -209,7 +215,9 @@ def calculate_diversification_metrics(
         "hhi": hhi,
         "effective_positions": effective_positions,
         "top_3_concentration": (
-            sum(sorted_allocations[:3]) if len(sorted_allocations) >= 3 else sum(sorted_allocations)
+            sum(sorted_allocations[:3])
+            if len(sorted_allocations) >= 3
+            else sum(sorted_allocations)
         ),
     }
 
@@ -387,14 +395,18 @@ def demo_portfolio_utils():
 
     print("  Required Trades:")
     for symbol, trade in trades.items():
-        print(f"    {symbol}: {trade['action']} {trade['shares']:.1f} shares (${trade['value']:,.2f})")
+        print(
+            f"    {symbol}: {trade['action']} {trade['shares']:.1f} shares (${trade['value']:,.2f})"
+        )
 
     print("\n7. Position Sizing:")
     risk_per_trade = 0.02  # 2% risk per trade
     stop_loss = 0.05  # 5% stop loss
 
     for symbol, price in prices.items():
-        shares = calculate_position_size(portfolio_value, risk_per_trade, stop_loss, price)
+        shares = calculate_position_size(
+            portfolio_value, risk_per_trade, stop_loss, price
+        )
         position_value = shares * price
         print(f"  {symbol} @ ${price}: {shares} shares (${position_value:,.2f})")
 

@@ -61,10 +61,14 @@ class KalmanFilter1D:
             float: The updated estimated value.
         """
         # Calculate Kalman Gain: K = P / (P + R)
-        self.kalman_gain = self.estimation_error / (self.estimation_error + self.measurement_variance)
+        self.kalman_gain = self.estimation_error / (
+            self.estimation_error + self.measurement_variance
+        )
 
         # Update estimate: x = x + K * (z - x)
-        self.estimated_value = self.estimated_value + self.kalman_gain * (measurement - self.estimated_value)
+        self.estimated_value = self.estimated_value + self.kalman_gain * (
+            measurement - self.estimated_value
+        )
 
         # Update error covariance: P = (1 - K) * P
         self.estimation_error = (1 - self.kalman_gain) * self.estimation_error
@@ -93,7 +97,9 @@ if __name__ == "__main__":
     # Measurements are noisy around 100
 
     true_value = 100.0
-    kf = KalmanFilter1D(process_variance=1e-5, measurement_variance=0.1**2, estimated_value=98.0)
+    kf = KalmanFilter1D(
+        process_variance=1e-5, measurement_variance=0.1**2, estimated_value=98.0
+    )
 
     print(f"Initial Estimate: {kf.estimated_value}")
 
@@ -103,4 +109,6 @@ if __name__ == "__main__":
     for i, z in enumerate(measurements):
         kf.predict()
         estimate = kf.update(z)
-        print(f"Step {i + 1}: Measured={z}, Estimate={estimate:.4f}, ErrorEst={kf.estimation_error:.4f}")
+        print(
+            f"Step {i + 1}: Measured={z}, Estimate={estimate:.4f}, ErrorEst={kf.estimation_error:.4f}"
+        )
