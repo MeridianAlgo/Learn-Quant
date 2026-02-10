@@ -3,7 +3,7 @@
 ## 📋 Overview
 An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
 
-## 🚀 Quickstart (CLI)
+##  Quickstart (CLI)
 ```bash
 python "UTILS - Learning Platform/learning_platform_cli.py"
 ```
@@ -31,7 +31,7 @@ Lessons live in `content.py` and can be extended by adding new `Lesson` entries.
 - Optional quizzes (`QuizQuestion`) with explanations
 - Practice prompts and follow-up resources
 
-## 🔗 Related Modules
+##  Related Modules
 - `main.py` launcher option **5** runs the CLI directly
 - Beginner utilities in `UTILS - Python Basics - Strings/` and `...Numbers/`
 - Advanced finance walkthroughs in `Documentation/Programs/level3_financial.py` and `level4_advanced.py`

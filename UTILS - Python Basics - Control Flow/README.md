@@ -4,7 +4,7 @@
 
 This utility teaches Python control flow structures essential for building trading algorithms and financial applications. Master conditionals, loops, and comprehensions to write efficient, readable code.
 
-## 🎯 Concepts Covered
+##  Concepts Covered
 
 ### **Conditional Statements**
 - **if/elif/else**: Make decisions based on conditions
@@ -66,7 +66,7 @@ pct_changes = [(prices[i] - prices[i-1]) / prices[i-1]
 ## 📂 Files
 - `control_flow_tutorial.py`: Interactive tutorial with finance examples
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python control_flow_tutorial.py
 ```
@@ -98,7 +98,7 @@ python control_flow_tutorial.py
 - Explore `UTILS - Data Structures - Lists/` for advanced list operations
 - Apply control flow in `UTILS - Technical Indicators/` for real algorithms
 
-## 💡 Financial Applications
+##  Financial Applications
 
 ### Trading Signals
 ```python

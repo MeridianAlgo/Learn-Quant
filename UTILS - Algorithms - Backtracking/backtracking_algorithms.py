@@ -116,13 +116,7 @@ def word_search(board, word):
         if index == len(word):
             return True
 
-        if (
-            row < 0
-            or row >= rows
-            or col < 0
-            or col >= cols
-            or board[row][col] != word[index]
-        ):
+        if row < 0 or row >= rows or col < 0 or col >= cols or board[row][col] != word[index]:
             return False
 
         temp = board[row][col]

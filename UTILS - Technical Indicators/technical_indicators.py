@@ -36,10 +36,7 @@ def load_prices_csv():
 
 # Calculate Simple Moving Average (SMA)
 def sma(prices, window):
-    return [
-        sum(prices[i - window + 1 : i + 1]) / window if i >= window - 1 else None
-        for i in range(len(prices))
-    ]
+    return [sum(prices[i - window + 1 : i + 1]) / window if i >= window - 1 else None for i in range(len(prices))]
 
 
 # Calculate Exponential Moving Average (EMA)
@@ -78,17 +75,11 @@ def rsi(prices, period=14):
 def macd(prices, fast=12, slow=26, signal=9):
     ema_fast = ema(prices, fast)
     ema_slow = ema(prices, slow)
-    macd_line = [
-        f - s if f is not None and s is not None else None
-        for f, s in zip(ema_fast, ema_slow)
-    ]
+    macd_line = [f - s if f is not None and s is not None else None for f, s in zip(ema_fast, ema_slow)]
     signal_line = ema([x for x in macd_line if x is not None], signal)
     # Pad signal_line to align with macd_line
     signal_line = [None] * (len(macd_line) - len(signal_line)) + signal_line
-    hist = [
-        m - s if m is not None and s is not None else None
-        for m, s in zip(macd_line, signal_line)
-    ]
+    hist = [m - s if m is not None and s is not None else None for m, s in zip(macd_line, signal_line)]
     return macd_line, signal_line, hist
 
 

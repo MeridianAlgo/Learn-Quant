@@ -3,7 +3,7 @@
 ## 📋 Overview
 A comprehensive implementation of fundamental sorting algorithms with detailed explanations, complexity analysis, and performance comparisons.
 
-## 🚀 Algorithms Included
+##  Algorithms Included
 
 ### Basic Sorting (O(n²))
 - **Bubble Sort**: Simple comparison-based algorithm, good for educational purposes
@@ -26,7 +26,7 @@ A comprehensive implementation of fundamental sorting algorithms with detailed e
 | Quick Sort | O(n log n) | O(n log n) | O(n²) | O(log n) | No |
 | Heap Sort | O(n log n) | O(n log n) | O(n log n) | O(1) | No |
 
-## 🎯 Usage Examples
+##  Usage Examples
 
 ```python
 from sorting_algorithms import bubble_sort, quick_sort, merge_sort

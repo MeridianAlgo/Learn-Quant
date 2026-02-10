@@ -4,7 +4,7 @@
 
 Stochastic processes are mathematical models for random systems evolving over time. In finance, they are used to model asset prices, interest rates, and volatility for pricing derivatives and managing risk.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Brownian Motion (Wiener Process)**
 - **Random Walk**: Continuous-time version of a random walk
@@ -52,7 +52,7 @@ for t in range(1, N):
 ## 📂 Files
 - `stochastic_tutorial.py`: Interactive tutorial with simulations
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 pip install numpy matplotlib
 python stochastic_tutorial.py
@@ -72,7 +72,7 @@ Model the spread between two correlated assets as an Ornstein-Uhlenbeck process.
 ### 4. Volatility Modeling
 Stochastic volatility models (like Heston) assume volatility itself follows a stochastic process (often mean-reverting).
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Seed Random Numbers**: Always use `np.random.seed()` for reproducible results.
 - **Time Steps**: Use sufficiently small `dt` for accuracy, especially for mean-reverting processes.

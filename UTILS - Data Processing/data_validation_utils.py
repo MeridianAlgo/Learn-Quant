@@ -106,9 +106,7 @@ def validate_date(date_string: str, date_format: str = "%Y-%m-%d") -> bool:
         return False
 
 
-def validate_numeric_range(
-    value: Union[int, float], min_val: float, max_val: float
-) -> bool:
+def validate_numeric_range(value: Union[int, float], min_val: float, max_val: float) -> bool:
     """
     Validate that a numeric value is within specified range.
 

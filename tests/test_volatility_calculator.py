@@ -3,13 +3,16 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(
-    0, str(Path(__file__).parent.parent / "UTILS - Finance - Volatility Calculator")
-)
+sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Volatility Calculator"))
 
-from volatility_calculator import (ewma_volatility, garman_klass_volatility,
-                                   historical_volatility, parkinson_volatility,
-                                   realized_volatility, volatility_cone)
+from volatility_calculator import (
+    ewma_volatility,
+    garman_klass_volatility,
+    historical_volatility,
+    parkinson_volatility,
+    realized_volatility,
+    volatility_cone,
+)
 
 
 def test_historical_volatility():

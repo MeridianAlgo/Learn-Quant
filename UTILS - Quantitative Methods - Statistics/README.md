@@ -4,7 +4,7 @@
 
 This utility provides comprehensive statistical analysis tools essential for quantitative finance, risk management, and investment analysis. Statistics forms the foundation for understanding financial data patterns, risk assessment, and predictive modeling.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Descriptive Statistics**
 - **Measures of Central Tendency**: Mean, median, mode

@@ -4,7 +4,7 @@
 
 This utility provides comprehensive Time Value of Money (TVM) calculations essential for financial analysis, investment evaluation, and capital budgeting. TVM is the foundation of quantitative finance and corporate finance.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Time Value of Money Principles**
 - **Present Value (PV)**: Current worth of future cash flows

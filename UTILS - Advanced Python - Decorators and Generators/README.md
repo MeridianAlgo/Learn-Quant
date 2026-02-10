@@ -4,7 +4,7 @@
 
 Decorators and Generators are powerful Python features that separate professional code from beginner scripts. Decorators allow you to modify function behavior cleanly, while Generators enable memory-efficient processing of large financial datasets.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Decorators `@wrapper`**
 - **Function Wrappers**: Modify input/output without changing code
@@ -63,7 +63,7 @@ for trade in processed:
 ## 📂 Files
 - `decorators_generators_tutorial.py`: Interactive tutorial
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python decorators_generators_tutorial.py
 ```
@@ -105,7 +105,7 @@ def strategy():
             yield "BUY"
 ```
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Use `yield from`**: Delegate to sub-generators.
 - **Avoid Side Effects**: Decorators should generally be transparent.

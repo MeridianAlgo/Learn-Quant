@@ -36,9 +36,7 @@ def introduction() -> None:
     print("#" * 70)
     print("Executing file:", SOURCE_FILE.name)
     print("Folder location:", SOURCE_FILE.parent.relative_to(Path.cwd()))
-    print(
-        "We'll simulate prices, compute rolling statistics, check stationarity, and build a simple forecast.\n"
-    )
+    print("We'll simulate prices, compute rolling statistics, check stationarity, and build a simple forecast.\n")
 
 
 def simulate_price_series(periods: int = 500) -> pd.Series:
@@ -84,21 +82,15 @@ def stationarity_test(returns: pd.Series) -> Tuple[float, float]:
     print(f"  ADF Statistic: {adf_stat:.4f}")
     print(f"  p-value: {p_value:.4f}")
     if p_value < 0.05:
-        print(
-            "  Interpretation: Reject the null hypothesis – series appears stationary."
-        )
+        print("  Interpretation: Reject the null hypothesis – series appears stationary.")
     else:
-        print(
-            "  Interpretation: Cannot reject the null – consider differencing or detrending."
-        )
+        print("  Interpretation: Cannot reject the null – consider differencing or detrending.")
     return adf_stat, p_value
 
 
 def ar1_forecast(returns: pd.Series) -> float:
     """Fit a simple AR(1) model using linear regression and forecast next return."""
-    print(
-        "\nBuilding a quick AR(1) forecast using numpy polyfit (no heavy ARIMA model needed)."
-    )
+    print("\nBuilding a quick AR(1) forecast using numpy polyfit (no heavy ARIMA model needed).")
     y = returns[1:].values
     x = returns[:-1].values
     slope, intercept = np.polyfit(x, y, 1)
@@ -122,17 +114,13 @@ def main() -> None:
     rolling = rolling_statistics(returns)
     print("\nLatest rolling metrics:")
     print(f"  Rolling mean (last value): {rolling.mean.iloc[-1]:.6f}")
-    print(
-        f"  Rolling volatility (annualized, last value): {rolling.volatility.iloc[-1]:.4%}"
-    )
+    print(f"  Rolling volatility (annualized, last value): {rolling.volatility.iloc[-1]:.4%}")
 
     autocorrelation_analysis(returns)
     stationarity_test(returns)
     ar1_forecast(returns)
 
-    print(
-        "\n📊 Time series walkthrough complete! Explore the functions above to build more advanced tools."
-    )
+    print("\n📊 Time series walkthrough complete! Explore the functions above to build more advanced tools.")
 
 
 if __name__ == "__main__":

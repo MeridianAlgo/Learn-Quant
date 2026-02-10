@@ -138,18 +138,12 @@ def beta_calculation() -> None:
 
     print("\nCalculating Beta for Multiple Stocks:")
     print("\n" + "-" * 70)
-    print(
-        f"{'Ticker':<10} {'True Beta':<12} {'Est. Beta':<12} {'Alpha':<12} {'R²':<10}"
-    )
+    print(f"{'Ticker':<10} {'True Beta':<12} {'Est. Beta':<12} {'Alpha':<12} {'R²':<10}")
     print("-" * 70)
 
     for ticker, true_beta, true_alpha in zip(tickers, true_betas, true_alphas):
         # Generate stock returns
-        stock_returns = (
-            true_alpha
-            + true_beta * market_returns
-            + np.random.normal(0, 0.01, n_periods)
-        )
+        stock_returns = true_alpha + true_beta * market_returns + np.random.normal(0, 0.01, n_periods)
 
         # Calculate beta using covariance method
         # β = Cov(stock, market) / Var(market)
@@ -164,9 +158,7 @@ def beta_calculation() -> None:
         ss_tot = np.sum((stock_returns - np.mean(stock_returns)) ** 2)
         r_squared = 1 - (ss_res / ss_tot)
 
-        print(
-            f"{ticker:<10} {true_beta:>11.3f} {beta_reg:>11.3f} {alpha_reg:>11.5f} {r_squared:>9.4f}"
-        )
+        print(f"{ticker:<10} {true_beta:>11.3f} {beta_reg:>11.3f} {alpha_reg:>11.5f} {r_squared:>9.4f}")
 
     print("-" * 70)
 
@@ -218,9 +210,7 @@ def regression_diagnostics() -> None:
     print("\nRegression Results:")
     print("-" * 60)
     print(f"Slope (β₁): {slope:.4f} ± {se_slope:.4f} (t = {t_slope:.2f})")
-    print(
-        f"Intercept (β₀): {intercept:.4f} ± {se_intercept:.4f} (t = {t_intercept:.2f})"
-    )
+    print(f"Intercept (β₀): {intercept:.4f} ± {se_intercept:.4f} (t = {t_intercept:.2f})")
     print(f"\nR-squared: {r_squared:.4f}")
     print(f"Adjusted R-squared: {adj_r_squared:.4f}")
     print(f"Standard Error: {se_residuals:.4f}")
@@ -251,11 +241,7 @@ def practical_example_market_model() -> None:
     # Portfolio returns
     portfolio_alpha = 0.002  # 0.2% monthly alpha
     portfolio_beta = 1.15  # 15% more volatile than market
-    portfolio_returns = (
-        portfolio_alpha
-        + portfolio_beta * market_returns
-        + np.random.normal(0, 0.02, n_months)
-    )
+    portfolio_returns = portfolio_alpha + portfolio_beta * market_returns + np.random.normal(0, 0.02, n_months)
 
     # Regression analysis
     coeffs = np.polyfit(market_returns, portfolio_returns, deg=1)
@@ -280,9 +266,7 @@ def practical_example_market_model() -> None:
     print("\nMarket Model: Portfolio Returns = α + β × Market Returns")
     print("\n" + "=" * 60)
     print(f"Beta: {beta_est:.3f}")
-    print(
-        f"  → Portfolio is {abs(beta_est - 1) * 100:.1f}% {'more' if beta_est > 1 else 'less'} volatile than market"
-    )
+    print(f"  → Portfolio is {abs(beta_est - 1) * 100:.1f}% {'more' if beta_est > 1 else 'less'} volatile than market")
 
     print(f"\nAlpha (Monthly): {alpha_est:.4f} ({alpha_est * 100:.2f}%)")
     print(f"Alpha (Annual): {alpha_annual:.4f} ({alpha_annual * 100:.2f}%)")
@@ -323,9 +307,7 @@ def main() -> None:
     regression_diagnostics()
     practical_example_market_model()
     print("\n🎉 Regression Analysis tutorial complete!")
-    print(
-        "Use regression for beta calculation, factor models, and performance attribution."
-    )
+    print("Use regression for beta calculation, factor models, and performance attribution.")
 
 
 if __name__ == "__main__":

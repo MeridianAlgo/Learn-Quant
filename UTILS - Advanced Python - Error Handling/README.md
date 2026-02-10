@@ -4,7 +4,7 @@
 
 Robust error handling is what separates a script that crashes overnight from a professional trading system that runs for years. This module teaches you how to anticipate, catch, and manage errors gracefully.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Try / Except / Else / Finally**
 - **Try**: Run potentially risky code
@@ -51,7 +51,7 @@ def buy(amount):
 ## 📂 Files
 - `error_handling_tutorial.py`: Interactive tutorial with examples
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python error_handling_tutorial.py
 ```
@@ -70,7 +70,7 @@ Handle partial fills or rejected orders gracefully without crashing the entire b
 ### 4. System Monitoring
 Use logging to track every error in a file, so you can debug why a trade failed yesterday at 3 AM.
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Be Specific**: Catch `ValueError` instead of `Exception`.
 - **Don't Swallow Errors**: Avoid `except: pass` unless you really mean it.

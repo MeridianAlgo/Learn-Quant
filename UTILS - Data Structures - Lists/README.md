@@ -4,7 +4,7 @@
 
 This utility provides comprehensive Python list operations essential for financial data processing, algorithmic trading, and data manipulation. Lists are flexible containers that can store heterogeneous data types and are fundamental to Python programming.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Python Lists**
 - **Ordered Collections**: Maintain insertion order

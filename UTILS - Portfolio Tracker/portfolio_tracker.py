@@ -135,9 +135,7 @@ def view_summary(portfolio):
         return
     total_value = 0
     total_cost = 0
-    print(
-        f"\n{'Asset':<10} {'Qty':>8} {'Avg Cost':>10} {'Price':>10} {'Value':>12} {'P&L':>10} {'Alloc%':>8}"
-    )
+    print(f"\n{'Asset':<10} {'Qty':>8} {'Avg Cost':>10} {'Price':>10} {'Value':>12} {'P&L':>10} {'Alloc%':>8}")
     values = []
     for h in portfolio:
         price = h.fetch_current_price()
@@ -149,9 +147,7 @@ def view_summary(portfolio):
         total_value += value
         total_cost += h.cost_basis()
         alloc = 0  # Will be calculated after total_value
-        print(
-            f"{h.name:<10} {h.quantity:>8.2f} {h.avg_cost:>10.2f} {price:>10.2f} {value:>12.2f} {pnl:>10.2f}"
-        )
+        print(f"{h.name:<10} {h.quantity:>8.2f} {h.avg_cost:>10.2f} {price:>10.2f} {value:>12.2f} {pnl:>10.2f}")
     # Print allocation
     print("\nAllocation:")
     for i, h in enumerate(portfolio):
@@ -164,10 +160,7 @@ def view_summary(portfolio):
 
 def save_portfolio(portfolio):
     """Save the portfolio to a JSON file."""
-    fname = (
-        input(f"Enter filename to save (default: {PORTFOLIO_FILE}): ").strip()
-        or PORTFOLIO_FILE
-    )
+    fname = input(f"Enter filename to save (default: {PORTFOLIO_FILE}): ").strip() or PORTFOLIO_FILE
     data = [h.to_dict() for h in portfolio]
     with open(fname, "w") as f:
         json.dump(data, f, indent=2)
@@ -176,10 +169,7 @@ def save_portfolio(portfolio):
 
 def load_portfolio():
     """Load the portfolio from a JSON file."""
-    fname = (
-        input(f"Enter filename to load (default: {PORTFOLIO_FILE}): ").strip()
-        or PORTFOLIO_FILE
-    )
+    fname = input(f"Enter filename to load (default: {PORTFOLIO_FILE}): ").strip() or PORTFOLIO_FILE
     if not os.path.exists(fname):
         print("File not found.")
         return []

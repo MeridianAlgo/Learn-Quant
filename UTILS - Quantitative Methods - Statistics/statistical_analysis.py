@@ -61,9 +61,7 @@ class StatisticalAnalysis:
             "iqr": np.percentile(data, 75) - np.percentile(data, 25),
             "skewness": stats.skew(data),
             "kurtosis": stats.kurtosis(data),
-            "coefficient_of_variation": (
-                np.std(data, ddof=1) / abs(np.mean(data)) if np.mean(data) != 0 else 0
-            ),
+            "coefficient_of_variation": (np.std(data, ddof=1) / abs(np.mean(data)) if np.mean(data) != 0 else 0),
         }
 
     def calculate_financial_returns(self, prices: np.ndarray) -> Dict[str, float]:
@@ -87,11 +85,7 @@ class StatisticalAnalysis:
 
         # Sharpe ratio (assuming 2% risk-free rate)
         risk_free_rate = 0.02
-        sharpe_ratio = (
-            (annualized_return - risk_free_rate) / annualized_volatility
-            if annualized_volatility > 0
-            else 0
-        )
+        sharpe_ratio = (annualized_return - risk_free_rate) / annualized_volatility if annualized_volatility > 0 else 0
 
         # Risk metrics
         var_95 = np.percentile(returns, 5)  # 95% Value at Risk
@@ -142,9 +136,7 @@ class StatisticalAnalysis:
         else:
             raise ValueError("Method must be 'historical' or 'parametric'")
 
-    def calculate_expected_shortfall(
-        self, returns: np.ndarray, confidence_level: float = 0.95
-    ) -> float:
+    def calculate_expected_shortfall(self, returns: np.ndarray, confidence_level: float = 0.95) -> float:
         """
         Calculate Expected Shortfall (Conditional VaR).
 
@@ -155,9 +147,7 @@ class StatisticalAnalysis:
         Returns:
             float: Expected Shortfall
         """
-        var_threshold = self.calculate_value_at_risk(
-            returns, confidence_level, "historical"
-        )
+        var_threshold = self.calculate_value_at_risk(returns, confidence_level, "historical")
         tail_losses = returns[returns <= -var_threshold]
         return -np.mean(tail_losses) if len(tail_losses) > 0 else 0
 
@@ -208,9 +198,7 @@ class StatisticalAnalysis:
             "jarque_bera": stats.jarque_bera(data),
         }
 
-    def correlation_analysis(
-        self, returns_matrix: np.ndarray
-    ) -> Dict[str, Union[float, np.ndarray]]:
+    def correlation_analysis(self, returns_matrix: np.ndarray) -> Dict[str, Union[float, np.ndarray]]:
         """
         Analyze correlations between multiple assets.
 
@@ -227,24 +215,14 @@ class StatisticalAnalysis:
 
         # Calculate average correlation (excluding diagonal)
         n_assets = correlation_matrix.shape[0]
-        avg_correlation = (np.sum(correlation_matrix) - n_assets) / (
-            n_assets * (n_assets - 1)
-        )
+        avg_correlation = (np.sum(correlation_matrix) - n_assets) / (n_assets * (n_assets - 1))
 
         return {
             "correlation_matrix": correlation_matrix,
             "average_correlation": avg_correlation,
-            "max_correlation": np.max(
-                correlation_matrix[np.triu_indices_from(correlation_matrix, k=1)]
-            ),
-            "min_correlation": np.min(
-                correlation_matrix[np.triu_indices_from(correlation_matrix, k=1)]
-            ),
-            "diversification_ratio": (
-                n_assets / (1 + (n_assets - 1) * avg_correlation)
-                if avg_correlation < 1
-                else 1
-            ),
+            "max_correlation": np.max(correlation_matrix[np.triu_indices_from(correlation_matrix, k=1)]),
+            "min_correlation": np.min(correlation_matrix[np.triu_indices_from(correlation_matrix, k=1)]),
+            "diversification_ratio": (n_assets / (1 + (n_assets - 1) * avg_correlation) if avg_correlation < 1 else 1),
         }
 
     def hypothesis_testing(
@@ -311,9 +289,7 @@ class StatisticalAnalysis:
             "r_squared": r_value**2,
             "p_value": p_value,
             "std_error": std_err,
-            "f_statistic": (
-                (r_value**2) / (1 - r_value**2) * (len(x) - 2) if len(x) > 2 else 0
-            ),
+            "f_statistic": ((r_value**2) / (1 - r_value**2) * (len(x) - 2) if len(x) > 2 else 0),
         }
 
     def monte_carlo_simulation(
@@ -392,16 +368,12 @@ class StatisticalAnalysis:
             "lognormal": {
                 "log_mean": log_mu,
                 "log_std": log_sigma,
-                "expected_value": (
-                    np.exp(log_mu + log_sigma**2 / 2) if log_mu is not None else None
-                ),
+                "expected_value": (np.exp(log_mu + log_sigma**2 / 2) if log_mu is not None else None),
             },
             "t_distribution": {"degrees_of_freedom": df, "mean": t_mu, "std": t_sigma},
         }
 
-    def rolling_statistics(
-        self, data: np.ndarray, window: int = 20
-    ) -> Dict[str, np.ndarray]:
+    def rolling_statistics(self, data: np.ndarray, window: int = 20) -> Dict[str, np.ndarray]:
         """
         Calculate rolling statistics for time series.
 
@@ -415,15 +387,8 @@ class StatisticalAnalysis:
         if len(data) < window:
             return {}
 
-        rolling_mean = np.array(
-            [np.mean(data[i : i + window]) for i in range(len(data) - window + 1)]
-        )
-        rolling_std = np.array(
-            [
-                np.std(data[i : i + window], ddof=1)
-                for i in range(len(data) - window + 1)
-            ]
-        )
+        rolling_mean = np.array([np.mean(data[i : i + window]) for i in range(len(data) - window + 1)])
+        rolling_std = np.array([np.std(data[i : i + window], ddof=1) for i in range(len(data) - window + 1)])
         rolling_var = rolling_std**2
 
         return {
@@ -448,9 +413,7 @@ class StatisticalAnalysis:
         Returns:
             Dict[str, float]: Performance metrics
         """
-        metrics = self.calculate_financial_returns(
-            portfolio_returns * 100
-        )  # Convert to percentage
+        metrics = self.calculate_financial_returns(portfolio_returns * 100)  # Convert to percentage
 
         if benchmark_returns is not None:
             # Alpha and beta calculation
@@ -458,14 +421,10 @@ class StatisticalAnalysis:
             benchmark_variance = np.var(benchmark_returns, ddof=1)
 
             beta = covariance / benchmark_variance if benchmark_variance > 0 else 0
-            alpha = metrics["annualized_return"] - (
-                0.02 + beta * (np.mean(benchmark_returns) - 0.02)
-            )
+            alpha = metrics["annualized_return"] - (0.02 + beta * (np.mean(benchmark_returns) - 0.02))
 
             # Tracking error
-            tracking_error = np.std(
-                portfolio_returns - benchmark_returns, ddof=1
-            ) * np.sqrt(252)
+            tracking_error = np.std(portfolio_returns - benchmark_returns, ddof=1) * np.sqrt(252)
 
             # Information ratio
             information_ratio = alpha / tracking_error if tracking_error > 0 else 0
@@ -481,9 +440,7 @@ class StatisticalAnalysis:
 
         return metrics
 
-    def generate_sample_data(
-        self, distribution: str = "normal", n_samples: int = 1000, **params
-    ) -> np.ndarray:
+    def generate_sample_data(self, distribution: str = "normal", n_samples: int = 1000, **params) -> np.ndarray:
         """
         Generate sample data from various distributions.
 
@@ -496,19 +453,13 @@ class StatisticalAnalysis:
             np.ndarray: Generated data
         """
         if distribution == "normal":
-            return self.rng.normal(
-                params.get("mean", 0), params.get("std", 1), n_samples
-            )
+            return self.rng.normal(params.get("mean", 0), params.get("std", 1), n_samples)
         elif distribution == "lognormal":
-            return self.rng.lognormal(
-                params.get("mean", 0), params.get("sigma", 1), n_samples
-            )
+            return self.rng.lognormal(params.get("mean", 0), params.get("sigma", 1), n_samples)
         elif distribution == "t":
             return stats.t.rvs(params.get("df", 5), size=n_samples)
         elif distribution == "uniform":
-            return self.rng.uniform(
-                params.get("low", 0), params.get("high", 1), n_samples
-            )
+            return self.rng.uniform(params.get("low", 0), params.get("high", 1), n_samples)
         else:
             raise ValueError(f"Unsupported distribution: {distribution}")
 
@@ -580,12 +531,8 @@ def main():
     # Demo 6: Distribution Analysis
     print("6. Distribution Analysis:")
     dist_analysis = stats_analysis.distribution_analysis(sample_data)
-    print(
-        f"Normal Distribution Test p-value: {dist_analysis['normal']['test_p_value']:.4f}"
-    )
-    print(
-        f"Log-Normal Expected Value: {dist_analysis['lognormal']['expected_value']:.4f}\n"
-    )
+    print(f"Normal Distribution Test p-value: {dist_analysis['normal']['test_p_value']:.4f}")
+    print(f"Log-Normal Expected Value: {dist_analysis['lognormal']['expected_value']:.4f}\n")
 
     print("=== Demo Complete ===")
 

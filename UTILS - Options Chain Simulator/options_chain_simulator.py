@@ -37,17 +37,11 @@ def black_scholes_greeks(S, K, T, r, sigma, option_type):
     nd1 = math.exp(-(d1**2) / 2) / math.sqrt(2 * math.pi)
     if option_type == "call":
         delta = norm_cdf(d1)
-        theta = (
-            -S * nd1 * sigma / (2 * math.sqrt(T))
-            - r * K * math.exp(-r * T) * norm_cdf(d2)
-        ) / 365
+        theta = (-S * nd1 * sigma / (2 * math.sqrt(T)) - r * K * math.exp(-r * T) * norm_cdf(d2)) / 365
         rho = K * T * math.exp(-r * T) * norm_cdf(d2) / 100
     else:
         delta = -norm_cdf(-d1)
-        theta = (
-            -S * nd1 * sigma / (2 * math.sqrt(T))
-            + r * K * math.exp(-r * T) * norm_cdf(-d2)
-        ) / 365
+        theta = (-S * nd1 * sigma / (2 * math.sqrt(T)) + r * K * math.exp(-r * T) * norm_cdf(-d2)) / 365
         rho = -K * T * math.exp(-r * T) * norm_cdf(-d2) / 100
     gamma = nd1 / (S * sigma * math.sqrt(T))
     vega = S * nd1 * math.sqrt(T) / 100

@@ -4,7 +4,7 @@
 
 Regression analysis is the statistical "Swiss Army Knife" of quantitative finance. It allows you to quantify relationships between variables, such as how a stock moves relative to the market (Beta) or how factors drive returns.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Linear Regression**
 - **Equation**: $y = \alpha + \beta x + \epsilon$
@@ -46,7 +46,7 @@ beta = np.linalg.inv(X.T @ X) @ X.T @ y
 ## 📂 Files
 - `regression_tutorial.py`: Interactive tutorial with examples
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 pip install numpy scipy
 python regression_tutorial.py
@@ -66,7 +66,7 @@ Find the optimal hedge ratio between two correlated assets (e.g., Coke vs. Pepsi
 ### 4. Predictive Modeling
 Forecast future returns based on lagged indicators (e.g., dividend yield, interest rates), though this is notoriously difficult!
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Check Assumptions**: Linear regression assumes linear relationship, constant variance (homoscedasticity), and independent errors.
 - **Look at Residuals**: If residuals show a pattern, your model is missing something.

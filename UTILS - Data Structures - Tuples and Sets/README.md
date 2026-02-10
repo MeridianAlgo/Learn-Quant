@@ -4,7 +4,7 @@
 
 Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries. Understanding when to use them is key to writing efficient, Pythonic code for financial applications.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Tuples `(item1, item2)`**
 - **Immutable**: Cannot be changed after creation
@@ -66,7 +66,7 @@ only_a = portfolio_a - portfolio_b
 ## 📂 Files
 - `tuples_sets_tutorial.py`: Interactive tutorial with examples
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python tuples_sets_tutorial.py
 ```
@@ -104,7 +104,7 @@ correlations = {
 }
 ```
 
-## 💡 Best Practices
+##  Best Practices
 
 - Use **Tuples** for heterogeneous data (different types) that belongs together (like a struct).
 - Use **Lists** for homogeneous data (same type) that may change size.

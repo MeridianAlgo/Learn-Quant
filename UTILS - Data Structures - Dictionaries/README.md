@@ -4,7 +4,7 @@
 
 This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings. Dictionaries are the backbone of feature engineering and data lookup in quantitative finance.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Python Dictionaries**
 - **Key-Value Pairs**: Fast lookups by unique keys

@@ -102,10 +102,7 @@ class LogisticRegression:
             y_predicted = self._sigmoid(linear_model)
 
             # Compute loss (binary cross-entropy)
-            loss = -np.mean(
-                y * np.log(y_predicted + 1e-15)
-                + (1 - y) * np.log(1 - y_predicted + 1e-15)
-            )
+            loss = -np.mean(y * np.log(y_predicted + 1e-15) + (1 - y) * np.log(1 - y_predicted + 1e-15))
             self.loss_history.append(loss)
 
             # Compute gradients
@@ -195,9 +192,7 @@ class KMeans:
             self.labels = np.argmin(distances, axis=0)
 
             # Update centroids
-            new_centroids = np.array(
-                [X[self.labels == j].mean(axis=0) for j in range(self.k)]
-            )
+            new_centroids = np.array([X[self.labels == j].mean(axis=0) for j in range(self.k)])
 
             # Check convergence
             if np.all(np.abs(new_centroids - self.centroids) < self.tolerance):
@@ -236,9 +231,7 @@ class DecisionTree:
         probabilities = counts / len(y)
         return -np.sum(probabilities * np.log2(probabilities + 1e-15))
 
-    def _information_gain(
-        self, X: np.ndarray, y: np.ndarray, feature_idx: int
-    ) -> float:
+    def _information_gain(self, X: np.ndarray, y: np.ndarray, feature_idx: int) -> float:
         """Calculate information gain for a feature."""
         # Parent entropy
         parent_entropy = self._entropy(y)
@@ -271,11 +264,7 @@ class DecisionTree:
     def _build_tree(self, X: np.ndarray, y: np.ndarray, depth: int = 0) -> Dict:
         """Recursively build the decision tree."""
         # Stopping conditions
-        if (
-            depth >= self.max_depth
-            or len(np.unique(y)) == 1
-            or len(X) < self.min_samples_split
-        ):
+        if depth >= self.max_depth or len(np.unique(y)) == 1 or len(X) < self.min_samples_split:
             return {"label": np.bincount(y).argmax()}
 
         # Find best feature to split
@@ -349,9 +338,7 @@ class NaiveBayes:
 
             # Mean and variance for each feature
             self.class_feature_means[idx] = np.mean(X_c, axis=0)
-            self.class_feature_vars[idx] = (
-                np.var(X_c, axis=0) + 1e-9
-            )  # Avoid division by zero
+            self.class_feature_vars[idx] = np.var(X_c, axis=0) + 1e-9  # Avoid division by zero
 
     def predict(self, X: np.ndarray) -> np.ndarray:
         """Make predictions."""
@@ -368,11 +355,7 @@ class NaiveBayes:
 
             # Log likelihood (Gaussian)
             log_likelihood = np.sum(
-                np.log(
-                    self._gaussian_pdf(
-                        x, self.class_feature_means[i], self.class_feature_vars[i]
-                    )
-                )
+                np.log(self._gaussian_pdf(x, self.class_feature_means[i], self.class_feature_vars[i]))
             )
 
             posterior = log_prior + log_likelihood
@@ -380,9 +363,7 @@ class NaiveBayes:
 
         return self.classes[np.argmax(posteriors)]
 
-    def _gaussian_pdf(
-        self, x: np.ndarray, mean: np.ndarray, var: np.ndarray
-    ) -> np.ndarray:
+    def _gaussian_pdf(self, x: np.ndarray, mean: np.ndarray, var: np.ndarray) -> np.ndarray:
         """Gaussian probability density function."""
         return np.exp(-((x - mean) ** 2) / (2 * var)) / np.sqrt(2 * np.pi * var)
 

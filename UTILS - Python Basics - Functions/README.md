@@ -4,7 +4,7 @@
 
 This utility teaches Python functions - the building blocks of modular, reusable code. Learn to write efficient trading algorithms and financial tools using proper function design.
 
-## 🎯 Concepts Covered
+##  Concepts Covered
 
 ### **Function Basics**
 - **Function definition**: `def` keyword and naming conventions
@@ -101,7 +101,7 @@ def backtest_strategy():
 ## 📂 Files
 - `functions_tutorial.py`: Comprehensive function tutorial
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python functions_tutorial.py
 ```
@@ -133,7 +133,7 @@ python functions_tutorial.py
 - Explore `UTILS - Advanced Python - Error Handling/` for robust code
 - Apply in `UTILS - Technical Indicators/` for real implementations
 
-## 💡 Best Practices
+##  Best Practices
 
 ### Function Design
 ```python
@@ -181,7 +181,7 @@ daily_return = (102 - 100) / 100  # Repeated calculation
 monthly_return = (110 - 100) / 100
 ```
 
-## 🔍 Common Pitfalls
+##  Common Pitfalls
 
 ### Mutable Default Arguments
 ```python

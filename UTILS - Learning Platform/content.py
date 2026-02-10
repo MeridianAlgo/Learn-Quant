@@ -163,7 +163,7 @@ LESSONS: List[Lesson] = [
                     price = 132.5
                     threshold = 130
                     if price >= threshold:
-                        print("✅ Price met our entry condition. Submit the simulated order.")
+                        print(" Price met our entry condition. Submit the simulated order.")
                     else:
                         print("⌛ Still waiting. Explain what to monitor next.")
                     """
@@ -218,9 +218,9 @@ LESSONS: List[Lesson] = [
                     def within_risk_budget(position_size: int, max_risk: int) -> bool:
                         print(f"Checking if {position_size} shares exceeds the max risk of {max_risk} shares...")
                         if position_size <= max_risk:
-                            print("Position approved ✅")
+                            print("Position approved ")
                             return True
-                        print("Position rejected ❌")
+                        print("Position rejected ")
                         return False
 
                     for size in [50, 120, 80]:

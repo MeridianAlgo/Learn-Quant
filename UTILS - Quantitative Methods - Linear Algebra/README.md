@@ -4,7 +4,7 @@
 
 Linear algebra is the mathematical foundation for portfolio optimization, risk modeling, factor analysis, and quantitative finance. This utility teaches essential concepts through practical financial applications.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Vectors**
 - **Portfolio weights**: Allocation across assets
@@ -75,7 +75,7 @@ market_factor_weight = eigenvalues[0] / sum(eigenvalues)
 - `linear_algebra_tutorial.py`: Comprehensive tutorial with examples
 - `README.md`: This file
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 pip install numpy
 python linear_algebra_tutorial.py
@@ -169,7 +169,7 @@ Solution: w_mvp = (Σ^-1 1) / (1^T Σ^-1 1)
 - **NumPy Documentation**: https://numpy.org/doc/
 - **Quantitative Portfolio Management**: Attilio Meucci
 
-## 💡 Key Takeaways
+##  Key Takeaways
 
 ✓ **Covariance matrix** is central to portfolio risk  
 ✓ **Matrix multiplication** computes portfolio metrics efficiently  

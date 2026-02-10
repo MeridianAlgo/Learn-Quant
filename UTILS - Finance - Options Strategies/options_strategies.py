@@ -3,9 +3,7 @@ Options Trading Strategies - Common Multi-Leg Options Strategies
 """
 
 
-def bull_call_spread(
-    stock_price, lower_strike, upper_strike, lower_premium, upper_premium
-):
+def bull_call_spread(stock_price, lower_strike, upper_strike, lower_premium, upper_premium):
     """
     Bull Call Spread: Buy call at lower strike, sell call at upper strike
     Limited profit, limited risk
@@ -52,9 +50,7 @@ def iron_condor(
     Iron Condor: Sell put spread + sell call spread
     Profit from low volatility
     """
-    net_credit = (
-        put_upper_premium + call_lower_premium - put_lower_premium - call_upper_premium
-    )
+    net_credit = put_upper_premium + call_lower_premium - put_lower_premium - call_upper_premium
     max_profit = net_credit
     max_loss = (put_upper_strike - put_lower_strike) - net_credit
 
@@ -177,17 +173,13 @@ if __name__ == "__main__":
     print("Iron Condor:")
     print(f"  Max Profit: ${result['max_profit']:.2f}")
     print(f"  Max Loss: ${result['max_loss']:.2f}")
-    print(
-        f"  Breakevens: ${result['lower_breakeven']:.2f} - ${result['upper_breakeven']:.2f}\n"
-    )
+    print(f"  Breakevens: ${result['lower_breakeven']:.2f} - ${result['upper_breakeven']:.2f}\n")
 
     # Straddle
     result = straddle(stock_price=100, strike=100, call_premium=5, put_premium=5)
     print("Long Straddle:")
     print(f"  Total Cost: ${result['total_cost']:.2f}")
-    print(
-        f"  Breakevens: ${result['lower_breakeven']:.2f} - ${result['upper_breakeven']:.2f}\n"
-    )
+    print(f"  Breakevens: ${result['lower_breakeven']:.2f} - ${result['upper_breakeven']:.2f}\n")
 
     # Covered Call
     result = covered_call(stock_price=100, shares=100, strike=105, premium=3)

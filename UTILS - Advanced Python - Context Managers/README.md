@@ -10,7 +10,7 @@ In financial applications, they are essential for:
 - Timing execution of strategy code.
 - Managing thread locks for thread-safe trading bots.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **The `with` Statement**
 - Simplifies exception handling by encapsulating standard uses of `try...finally`.
@@ -62,7 +62,7 @@ with managed_resource() as r:
 ## 📂 Files
 - `context_managers_tutorial.py`: Tutorial script demonstrating timers, custom generators, and transaction rollbacks.
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python context_managers_tutorial.py
 ```
@@ -92,7 +92,7 @@ with DBConnection("market_data.db") as conn:
     data = conn.query("SELECT * FROM prices")
 ```
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Use `contextlib.suppress`**: To explicitly ignore specific errors.
 - **Return `True` in `__exit__`**: Only if you intend to suppress the exception.

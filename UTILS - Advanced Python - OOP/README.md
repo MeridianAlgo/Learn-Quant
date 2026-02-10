@@ -4,7 +4,7 @@
 
 Object-Oriented Programming (OOP) is essential for building scalable, maintainable trading systems and financial applications. Learn to organize code using classes, objects, and OOP principles.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Classes and Objects**
 - **Class**: Blueprint for creating objects
@@ -91,7 +91,7 @@ class Portfolio:
 ## 📂 Files
 - `oop_tutorial.py`: Comprehensive OOP tutorial with trading classes
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python oop_tutorial.py
 ```
@@ -154,7 +154,7 @@ class RiskManager:
     def enforce_stop_loss(self, trade): ...
 ```
 
-## 💡 Best Practices
+##  Best Practices
 
 ### Single Responsibility
 ```python

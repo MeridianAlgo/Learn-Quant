@@ -226,9 +226,7 @@ def args_and_kwargs() -> None:
 
     order1 = create_trade_order("AAPL", 100)
     order2 = create_trade_order("GOOGL", 50, order_type="LIMIT", limit_price=140.50)
-    order3 = create_trade_order(
-        "MSFT", 75, order_type="STOP", stop_price=375.00, time_in_force="GTC"
-    )
+    order3 = create_trade_order("MSFT", 75, order_type="STOP", stop_price=375.00, time_in_force="GTC")
 
     print("\nMarket Order:")
     print(f"  {order1}")
@@ -331,9 +329,7 @@ def decorators_intro() -> None:
         def wrapper(*args, **kwargs):
             result = func(*args, **kwargs)
             if result < 0:
-                print(
-                    f"  ⚠ Warning: {func.__name__}() returned negative value: {result}"
-                )
+                print(f"  ⚠ Warning: {func.__name__}() returned negative value: {result}")
             return result
 
         return wrapper
@@ -392,9 +388,7 @@ def recursive_functions() -> None:
     print("RECURSIVE FUNCTIONS")
     print("=" * 60)
 
-    def compound_interest_recursive(
-        principal: float, rate: float, years: int, current_year: int = 1
-    ) -> float:
+    def compound_interest_recursive(principal: float, rate: float, years: int, current_year: int = 1) -> float:
         """
         Calculate compound interest recursively.
 
@@ -431,9 +425,7 @@ def main() -> None:
     decorators_intro()
     scope_and_global()
     recursive_functions()
-    print(
-        "\n🎉 Functions tutorial complete! Master functions to write modular, reusable code."
-    )
+    print("\n🎉 Functions tutorial complete! Master functions to write modular, reusable code.")
 
 
 if __name__ == "__main__":

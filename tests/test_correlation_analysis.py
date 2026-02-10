@@ -3,13 +3,16 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(
-    0, str(Path(__file__).parent.parent / "UTILS - Finance - Correlation Analysis")
-)
+sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Correlation Analysis"))
 
-from correlation_analysis import (correlation_matrix, correlation_stability,
-                                  ewma_correlation, pearson_correlation,
-                                  rolling_correlation, tail_correlation)
+from correlation_analysis import (
+    correlation_matrix,
+    correlation_stability,
+    ewma_correlation,
+    pearson_correlation,
+    rolling_correlation,
+    tail_correlation,
+)
 
 
 def test_pearson_correlation():
@@ -60,9 +63,7 @@ def test_tail_correlation():
 def test_correlation_stability():
     np.random.seed(42)
     returns1 = np.random.normal(0, 0.02, 100).tolist()
-    returns2 = (
-        0.5 * np.array(returns1) + 0.5 * np.random.normal(0, 0.02, 100)
-    ).tolist()
+    returns2 = (0.5 * np.array(returns1) + 0.5 * np.random.normal(0, 0.02, 100)).tolist()
     stability = correlation_stability(returns1, returns2, n_splits=5)
     assert "mean" in stability
     assert "std" in stability

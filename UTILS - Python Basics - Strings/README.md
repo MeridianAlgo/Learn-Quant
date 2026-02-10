@@ -4,7 +4,7 @@
 
 This beginner-friendly utility introduces Python string fundamentals through hands-on examples. It is perfect for newcomers following the learning path in `Documentation/Programs/level1_fundamentals.py` and looking for extra practice manipulating text data.
 
-## 🎯 What You'll Learn
+##  What You'll Learn
 - Creating and concatenating strings
 - Formatting strings with f-strings and `str.format()`
 - Common string methods (`upper`, `lower`, `split`, `join`, etc.)
@@ -13,7 +13,7 @@ This beginner-friendly utility introduces Python string fundamentals through han
 ## 📂 Files
 - `strings_tutorial.py`: Walkthrough script with guided printouts and function examples
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python strings_tutorial.py
 ```

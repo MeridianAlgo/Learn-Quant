@@ -6,7 +6,7 @@ Momentum trading is a strategy that capitalizes on the continuance of existing t
 
 This utility implements a basic **Trend-Following Momentum Strategy** using Rate of Change (ROC) and Moving Averages.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Momentum**
 - Measures the speed or velocity of price changes.
@@ -31,7 +31,7 @@ We combine two signals:
 ## 📂 Files
 - `momentum_strategy.py`: Logic for generating synthetic data, calculating indicators, generating signals, and running a simple backtest.
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python momentum_strategy.py
 ```
@@ -50,7 +50,7 @@ python momentum_strategy.py
 - Momentum strategies often suffer from "Momentum Crashes" (sudden reversals).
 - Volatility scaling is often used to manage position size.
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Lookback Period**: The choice of '$n$' (e.g., 12 months, 6 months, 20 days) drastically affects performance. Longer periods reduce noise but lag trend turning points.
 - **Transaction Costs**: Frequent trading in momentum strategies can erode profits.

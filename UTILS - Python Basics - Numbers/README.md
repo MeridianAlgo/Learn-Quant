@@ -4,7 +4,7 @@
 
 This utility helps beginners practice Python number handling. It pairs with the foundational lessons in `Documentation/Programs/level1_fundamentals.py` and extends the concepts with finance-flavored examples.
 
-## 🎯 Concepts Covered
+##  Concepts Covered
 - Integer vs. floating-point arithmetic
 - Using the `decimal` module for currency math
 - Common math functions (`abs`, `round`, `pow`)
@@ -13,7 +13,7 @@ This utility helps beginners practice Python number handling. It pairs with the 
 ## 📂 Files
 - `numbers_tutorial.py`: Annotated walkthrough script with interactive printouts
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 python numbers_tutorial.py
 ```

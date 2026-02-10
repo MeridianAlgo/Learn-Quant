@@ -4,7 +4,7 @@
 
 Optimization is the mathematical engine behind modern finance. From finding the best portfolio weights to calibrating complex models, optimization techniques are essential for quantitative analysts.
 
-## 🎯 Key Concepts
+##  Key Concepts
 
 ### **Minimization**
 - **Objective Function**: The quantity to minimize (e.g., risk, error)
@@ -67,7 +67,7 @@ iv = newton(objective, x0=0.2)
 ## 📂 Files
 - `optimization_tutorial.py`: Comprehensive optimization tutorial
 
-## 🚀 How to Run
+##  How to Run
 ```bash
 pip install scipy numpy
 python optimization_tutorial.py
@@ -90,7 +90,7 @@ python optimization_tutorial.py
 - **Execution Algorithms**: Minimizing market impact (VWAP/TWAP)
 - **Arbitrage**: Finding optimal basket for stat arb
 
-## 💡 Best Practices
+##  Best Practices
 
 - **Convexity**: Convex problems (like variance minimization) have unique global solutions. Non-convex problems may get stuck in local minima.
 - **Scaling**: Ensure variables are on similar scales for better convergence.

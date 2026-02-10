@@ -95,9 +95,7 @@ def main() -> None:
     decimal_currency()
     math_helpers()
     finance_examples()
-    print(
-        "\n🎉 Numbers tutorial complete! Continue exploring beginner utilities in the UTILS folders."
-    )
+    print("\n🎉 Numbers tutorial complete! Continue exploring beginner utilities in the UTILS folders.")
 
 
 if __name__ == "__main__":

@@ -31,9 +31,7 @@ def calculate_beta(asset_returns: List[float], market_returns: List[float]) -> f
     return covariance / market_variance
 
 
-def rolling_beta(
-    asset_returns: List[float], market_returns: List[float], window: int = 60
-) -> List[float]:
+def rolling_beta(asset_returns: List[float], market_returns: List[float], window: int = 60) -> List[float]:
     """
     Calculate rolling beta over a specified window.
 
@@ -66,9 +64,7 @@ def rolling_beta(
     return betas
 
 
-def levered_beta(
-    unlevered_beta: float, debt_to_equity: float, tax_rate: float = 0.21
-) -> float:
+def levered_beta(unlevered_beta: float, debt_to_equity: float, tax_rate: float = 0.21) -> float:
     """
     Calculate levered beta from unlevered beta.
 
@@ -83,9 +79,7 @@ def levered_beta(
     return unlevered_beta * (1 + (1 - tax_rate) * debt_to_equity)
 
 
-def unlevered_beta(
-    levered_beta: float, debt_to_equity: float, tax_rate: float = 0.21
-) -> float:
+def unlevered_beta(levered_beta: float, debt_to_equity: float, tax_rate: float = 0.21) -> float:
     """
     Calculate unlevered beta from levered beta.
 
@@ -100,9 +94,7 @@ def unlevered_beta(
     return levered_beta / (1 + (1 - tax_rate) * debt_to_equity)
 
 
-def downside_beta(
-    asset_returns: List[float], market_returns: List[float], threshold: float = 0.0
-) -> float:
+def downside_beta(asset_returns: List[float], market_returns: List[float], threshold: float = 0.0) -> float:
     """
     Calculate downside beta, measuring systematic risk during market downturns.
 
@@ -131,9 +123,7 @@ def downside_beta(
     return covariance / market_variance
 
 
-def upside_beta(
-    asset_returns: List[float], market_returns: List[float], threshold: float = 0.0
-) -> float:
+def upside_beta(asset_returns: List[float], market_returns: List[float], threshold: float = 0.0) -> float:
     """
     Calculate upside beta, measuring systematic risk during market upturns.
 
@@ -162,9 +152,7 @@ def upside_beta(
     return covariance / market_variance
 
 
-def beta_decomposition(
-    asset_returns: List[float], market_returns: List[float]
-) -> Dict[str, float]:
+def beta_decomposition(asset_returns: List[float], market_returns: List[float]) -> Dict[str, float]:
     """
     Decompose beta into upside and downside components.
 
@@ -183,11 +171,7 @@ def beta_decomposition(
         "total_beta": total_beta,
         "downside_beta": down_beta,
         "upside_beta": up_beta,
-        "beta_asymmetry": (
-            down_beta - up_beta
-            if not np.isnan(down_beta) and not np.isnan(up_beta)
-            else np.nan
-        ),
+        "beta_asymmetry": (down_beta - up_beta if not np.isnan(down_beta) and not np.isnan(up_beta) else np.nan),
     }
 
 
