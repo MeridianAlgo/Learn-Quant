@@ -26,6 +26,7 @@ def intro() -> None:
 # 1. CLASS-BASED CONTEXT MANAGER
 # -----------------------------------------------------------------------------
 
+
 class Timer:
     """
     Measures the execution time of a code block.
@@ -40,7 +41,7 @@ class Timer:
         self.end_time: Optional[float] = None
         self.duration: Optional[float] = None
 
-    def __enter__(self) -> 'Timer':
+    def __enter__(self) -> "Timer":
         """
         Start the timer when entering the context.
 
@@ -97,8 +98,11 @@ def demonstrate_timer_class():
 # 2. FUNCTION-BASED CONTEXT MANAGER (contextlib)
 # -----------------------------------------------------------------------------
 
+
 @contextlib.contextmanager
-def market_session(mock_open_time: str, mock_close_time: str) -> Generator[str, None, None]:
+def market_session(
+    mock_open_time: str, mock_close_time: str
+) -> Generator[str, None, None]:
     """
     Simulate a market session.
 
@@ -150,6 +154,7 @@ def demonstrate_contextlib():
 # 3. REAL-WORLD FINANCIAL EXAMPLE: ATOMIC TRANSACTION
 # -----------------------------------------------------------------------------
 
+
 class PortfolioTransaction:
     """
     Manages a portfolio update atomically.
@@ -173,7 +178,7 @@ class PortfolioTransaction:
             self.portfolio.clear()
             self.portfolio.update(self.backup)
             print("↺ Rollback complete. State restored.")
-            return True # Suppress error for demo purposes
+            return True  # Suppress error for demo purposes
 
         print("✅ Transaction committed successfully.")
         return False
@@ -199,7 +204,7 @@ def demonstrate_atomic_transaction():
     # Case 2: Failed Transaction (Rollback)
     print("\n--- Attempting Invalid Trade (Crash) ---")
     with PortfolioTransaction(my_portfolio) as p:
-        p["Cash"] -= 5000 # deducted
+        p["Cash"] -= 5000  # deducted
         print("  Cash deducted. Buying stock...")
         if p["Cash"] < 0:
             raise ValueError("Insufficient funds")

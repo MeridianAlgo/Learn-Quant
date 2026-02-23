@@ -17,6 +17,7 @@ import pandas as pd
 @dataclass
 class Quote:
     """Represents a market quote."""
+
     bid_price: float
     ask_price: float
     bid_size: int
@@ -49,9 +50,14 @@ class SpreadAnalyzer:
         self.spread_history: List[float] = []
         self.mid_price_history: List[float] = []
 
-    def add_quote(self, bid_price: float, ask_price: float,
-                  bid_size: int, ask_size: int,
-                  timestamp: Optional[datetime] = None) -> None:
+    def add_quote(
+        self,
+        bid_price: float,
+        ask_price: float,
+        bid_size: int,
+        ask_size: int,
+        timestamp: Optional[datetime] = None,
+    ) -> None:
         """Add a new quote to the analyzer."""
         if timestamp is None:
             timestamp = datetime.now()
@@ -78,15 +84,16 @@ class SpreadAnalyzer:
             return {}
 
         return {
-            'p25': np.percentile(spreads, 25),
-            'p50': np.percentile(spreads, 50),
-            'p75': np.percentile(spreads, 75),
-            'p90': np.percentile(spreads, 90),
-            'p95': np.percentile(spreads, 95)
+            "p25": np.percentile(spreads, 25),
+            "p50": np.percentile(spreads, 50),
+            "p75": np.percentile(spreads, 75),
+            "p90": np.percentile(spreads, 90),
+            "p95": np.percentile(spreads, 95),
         }
 
-    def get_effective_spread(self, trade_price: float, side: str,
-                           mid_price: Optional[float] = None) -> float:
+    def get_effective_spread(
+        self, trade_price: float, side: str, mid_price: Optional[float] = None
+    ) -> float:
         """
         Calculate effective spread for a trade.
 
@@ -103,13 +110,18 @@ class SpreadAnalyzer:
         elif mid_price is None:
             return 0.0
 
-        if side.lower() == 'buy':
+        if side.lower() == "buy":
             return 2 * (trade_price - mid_price)
         else:
             return 2 * (mid_price - trade_price)
 
-    def get_realized_spread(self, trade_price: float, side: str,
-                           future_price: float, time_horizon: int = 300) -> float:
+    def get_realized_spread(
+        self,
+        trade_price: float,
+        side: str,
+        future_price: float,
+        time_horizon: int = 300,
+    ) -> float:
         """
         Calculate realized spread over a time horizon.
 
@@ -122,13 +134,14 @@ class SpreadAnalyzer:
         Returns:
             Realized spread
         """
-        if side.lower() == 'buy':
+        if side.lower() == "buy":
             return 2 * (future_price - trade_price)
         else:
             return 2 * (trade_price - future_price)
 
-    def get_price_improvement(self, trade_price: float, side: str,
-                            quote: Optional[Quote] = None) -> float:
+    def get_price_improvement(
+        self, trade_price: float, side: str, quote: Optional[Quote] = None
+    ) -> float:
         """
         Calculate price improvement relative to quoted spread.
 
@@ -145,16 +158,20 @@ class SpreadAnalyzer:
         elif quote is None:
             return 0.0
 
-        if side.lower() == 'buy':
+        if side.lower() == "buy":
             # For buys, improvement is when price is below ask
             return quote.ask_price - trade_price
         else:
             # For sells, improvement is when price is above bid
             return trade_price - quote.bid_price
 
-    def get_adverse_selection(self, trade_price: float, side: str,
-                            future_mid_price: float,
-                            current_mid_price: Optional[float] = None) -> float:
+    def get_adverse_selection(
+        self,
+        trade_price: float,
+        side: str,
+        future_mid_price: float,
+        current_mid_price: Optional[float] = None,
+    ) -> float:
         """
         Calculate adverse selection component.
 
@@ -173,7 +190,7 @@ class SpreadAnalyzer:
             return 0.0
 
         # Adverse selection is the price movement against the trader
-        if side.lower() == 'buy':
+        if side.lower() == "buy":
             return future_mid_price - current_mid_price
         else:
             return current_mid_price - future_mid_price
@@ -186,7 +203,7 @@ class SpreadAnalyzer:
             Dictionary with spread components
         """
         if len(self.quotes) < 2:
-            return {'order_processing': 0, 'inventory': 0, 'adverse_selection': 0}
+            return {"order_processing": 0, "inventory": 0, "adverse_selection": 0}
 
         # Simplified spread decomposition
         avg_spread = self.get_average_spread()
@@ -201,10 +218,10 @@ class SpreadAnalyzer:
         adverse_selection = avg_spread - order_processing - inventory
 
         return {
-            'order_processing': order_processing,
-            'inventory': inventory,
-            'adverse_selection': adverse_selection,
-            'total': avg_spread
+            "order_processing": order_processing,
+            "inventory": inventory,
+            "adverse_selection": adverse_selection,
+            "total": avg_spread,
         }
 
     def get_spread_trend(self, window: int = 100) -> str:
@@ -218,10 +235,10 @@ class SpreadAnalyzer:
             'widening', 'narrowing', or 'stable'
         """
         if len(self.spread_history) < window * 2:
-            return 'stable'
+            return "stable"
 
         recent = self.spread_history[-window:]
-        previous = self.spread_history[-window*2:-window]
+        previous = self.spread_history[-window * 2 : -window]
 
         recent_avg = statistics.mean(recent)
         previous_avg = statistics.mean(previous)
@@ -229,11 +246,11 @@ class SpreadAnalyzer:
         change_pct = (recent_avg - previous_avg) / previous_avg
 
         if change_pct > 0.05:  # 5% increase
-            return 'widening'
+            return "widening"
         elif change_pct < -0.05:  # 5% decrease
-            return 'narrowing'
+            return "narrowing"
         else:
-            return 'stable'
+            return "stable"
 
     def get_liquidity_metrics(self) -> Dict[str, float]:
         """Calculate liquidity-related metrics."""
@@ -250,11 +267,11 @@ class SpreadAnalyzer:
         spread_ratio = latest_quote.spread / latest_quote.mid_price
 
         return {
-            'spread': latest_quote.spread,
-            'spread_bps': spread_bps,
-            'spread_ratio': spread_ratio,
-            'depth_at_best': depth_at_best,
-            'mid_price': latest_quote.mid_price
+            "spread": latest_quote.spread,
+            "spread_bps": spread_bps,
+            "spread_ratio": spread_ratio,
+            "depth_at_best": depth_at_best,
+            "mid_price": latest_quote.mid_price,
         }
 
     def analyze_intraday_pattern(self) -> Dict[str, List[float]]:
@@ -289,16 +306,18 @@ class SpreadAnalyzer:
 
         data = []
         for quote in self.quotes:
-            data.append({
-                'timestamp': quote.timestamp,
-                'bid_price': quote.bid_price,
-                'ask_price': quote.ask_price,
-                'bid_size': quote.bid_size,
-                'ask_size': quote.ask_size,
-                'spread': quote.spread,
-                'mid_price': quote.mid_price,
-                'spread_bps': quote.spread_bps
-            })
+            data.append(
+                {
+                    "timestamp": quote.timestamp,
+                    "bid_price": quote.bid_price,
+                    "ask_price": quote.ask_price,
+                    "bid_size": quote.bid_size,
+                    "ask_size": quote.ask_size,
+                    "spread": quote.spread,
+                    "mid_price": quote.mid_price,
+                    "spread_bps": quote.spread_bps,
+                }
+            )
 
         return pd.DataFrame(data)
 
@@ -350,7 +369,7 @@ def main():
 
     # Example trade analysis
     trade_price = 100.02
-    trade_side = 'buy'
+    trade_side = "buy"
     effective_spread = analyzer.get_effective_spread(trade_price, trade_side)
     print("\nTrade Analysis:")
     print(f"  Trade Price: ${trade_price}")

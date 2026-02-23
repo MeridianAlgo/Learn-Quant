@@ -10,4 +10,9 @@ from .hft_strategies import HFTStrategies
 from .latency_optimizer import LatencyOptimizer
 from .market_data_processor import MarketDataProcessor
 
-__all__ = ["LatencyOptimizer", "MarketDataProcessor", "ExecutionAlgorithms", "HFTStrategies"]
+__all__ = [
+    "LatencyOptimizer",
+    "MarketDataProcessor",
+    "ExecutionAlgorithms",
+    "HFTStrategies",
+]

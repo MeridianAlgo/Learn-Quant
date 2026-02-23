@@ -15,6 +15,7 @@ import numpy as np
 @dataclass
 class Trade:
     """Represents a single trade."""
+
     quantity: float
     price: float
     side: str  # 'buy' or 'sell'
@@ -38,8 +39,9 @@ class AlmgrenChrissModel(MarketImpactModel):
     and market volatility.
     """
 
-    def __init__(self, eta: float = 0.001, gamma: float = 0.01,
-                 lambda_temp: float = 0.0001):
+    def __init__(
+        self, eta: float = 0.001, gamma: float = 0.01, lambda_temp: float = 0.0001
+    ):
         """
         Initialize Almgren-Chriss model.
 
@@ -63,9 +65,9 @@ class AlmgrenChrissModel(MarketImpactModel):
         Returns:
             Total market impact cost
         """
-        volume = market_data.get('daily_volume', 1e6)
-        volatility = market_data.get('volatility', 0.02)
-        mid_price = market_data.get('mid_price', trade.price)
+        volume = market_data.get("daily_volume", 1e6)
+        volatility = market_data.get("volatility", 0.02)
+        mid_price = market_data.get("mid_price", trade.price)
 
         # Trade size as fraction of daily volume
         trade_fraction = abs(trade.quantity) / volume
@@ -78,7 +80,7 @@ class AlmgrenChrissModel(MarketImpactModel):
 
         # Adjust for volatility
         volatility_adjustment = volatility * np.sqrt(self.lambda_temp)
-        temporary_impact *= (1 + volatility_adjustment)
+        temporary_impact *= 1 + volatility_adjustment
 
         return permanent_impact + temporary_impact
 
@@ -103,14 +105,14 @@ class SquareRootModel(MarketImpactModel):
 
     def calculate_impact(self, trade: Trade, market_data: Dict[str, Any]) -> float:
         """Calculate market impact using square-root model."""
-        volume = market_data.get('daily_volume', 1e6)
-        mid_price = market_data.get('mid_price', trade.price)
+        volume = market_data.get("daily_volume", 1e6)
+        mid_price = market_data.get("mid_price", trade.price)
 
         # Relative trade size
         relative_size = abs(trade.quantity) / volume
 
         # Square-root impact
-        impact = self.alpha * (relative_size ** self.beta) * mid_price
+        impact = self.alpha * (relative_size**self.beta) * mid_price
 
         return impact
 
@@ -133,8 +135,8 @@ class LinearModel(MarketImpactModel):
 
     def calculate_impact(self, trade: Trade, market_data: Dict[str, Any]) -> float:
         """Calculate market impact using linear model."""
-        volume = market_data.get('daily_volume', 1e6)
-        mid_price = market_data.get('mid_price', trade.price)
+        volume = market_data.get("daily_volume", 1e6)
+        mid_price = market_data.get("mid_price", trade.price)
 
         # Linear impact based on trade fraction
         trade_fraction = abs(trade.quantity) / volume
@@ -150,17 +152,21 @@ class MarketImpactCalculator:
 
     def __init__(self):
         self.models = {
-            'almgren_chriss': AlmgrenChrissModel(),
-            'square_root': SquareRootModel(),
-            'linear': LinearModel()
+            "almgren_chriss": AlmgrenChrissModel(),
+            "square_root": SquareRootModel(),
+            "linear": LinearModel(),
         }
 
     def add_custom_model(self, name: str, model: MarketImpactModel) -> None:
         """Add a custom market impact model."""
         self.models[name] = model
 
-    def calculate_impact(self, trade: Trade, market_data: Dict[str, Any],
-                        model_name: str = 'almgren_chriss') -> float:
+    def calculate_impact(
+        self,
+        trade: Trade,
+        market_data: Dict[str, Any],
+        model_name: str = "almgren_chriss",
+    ) -> float:
         """
         Calculate market impact using specified model.
 
@@ -173,11 +179,15 @@ class MarketImpactCalculator:
             Market impact cost
         """
         if model_name not in self.models:
-            raise ValueError(f"Model '{model_name}' not found. Available models: {list(self.models.keys())}")
+            raise ValueError(
+                f"Model '{model_name}' not found. Available models: {list(self.models.keys())}"
+            )
 
         return self.models[model_name].calculate_impact(trade, market_data)
 
-    def compare_models(self, trade: Trade, market_data: Dict[str, Any]) -> Dict[str, float]:
+    def compare_models(
+        self, trade: Trade, market_data: Dict[str, Any]
+    ) -> Dict[str, float]:
         """
         Compare impact across all available models.
 
@@ -194,9 +204,13 @@ class MarketImpactCalculator:
 
         return results
 
-    def optimize_execution_size(self, target_quantity: float, market_data: Dict[str, Any],
-                              model_name: str = 'almgren_chriss',
-                              max_slices: int = 10) -> Tuple[float, float]:
+    def optimize_execution_size(
+        self,
+        target_quantity: float,
+        market_data: Dict[str, Any],
+        model_name: str = "almgren_chriss",
+        max_slices: int = 10,
+    ) -> Tuple[float, float]:
         """
         Optimize execution size to minimize market impact.
 
@@ -209,7 +223,7 @@ class MarketImpactCalculator:
         Returns:
             Tuple of (optimal_slice_size, minimum_impact)
         """
-        best_impact = float('inf')
+        best_impact = float("inf")
         best_slice_size = target_quantity
 
         # Try different slice sizes
@@ -219,7 +233,9 @@ class MarketImpactCalculator:
             # Calculate total impact for this slicing strategy
             total_impact = 0
             for _ in range(num_slices):
-                slice_trade = Trade(slice_size, market_data.get('mid_price', 100), 'buy')
+                slice_trade = Trade(
+                    slice_size, market_data.get("mid_price", 100), "buy"
+                )
                 impact = self.calculate_impact(slice_trade, market_data, model_name)
                 total_impact += impact
 
@@ -229,8 +245,9 @@ class MarketImpactCalculator:
 
         return best_slice_size, best_impact
 
-    def calculate_implementation_shortfall(self, trades: list,
-                                         market_data: Dict[str, Any]) -> Dict[str, float]:
+    def calculate_implementation_shortfall(
+        self, trades: list, market_data: Dict[str, Any]
+    ) -> Dict[str, float]:
         """
         Calculate implementation shortfall for a series of trades.
 
@@ -242,21 +259,25 @@ class MarketImpactCalculator:
             Dictionary with shortfall components
         """
         if not trades:
-            return {'total_shortfall': 0, 'market_impact': 0, 'timing_cost': 0}
+            return {"total_shortfall": 0, "market_impact": 0, "timing_cost": 0}
 
         # Initial decision price
-        decision_price = market_data.get('decision_price', trades[0].price)
+        decision_price = market_data.get("decision_price", trades[0].price)
 
         # Calculate execution prices
         execution_prices = [trade.price for trade in trades]
         total_quantity = sum(trade.quantity for trade in trades)
 
         # Weighted average execution price
-        avg_execution_price = sum(p * q for p, q in zip(execution_prices,
-                                                       [t.quantity for t in trades])) / total_quantity
+        avg_execution_price = (
+            sum(p * q for p, q in zip(execution_prices, [t.quantity for t in trades]))
+            / total_quantity
+        )
 
         # Market impact cost
-        market_impact = sum(self.calculate_impact(trade, market_data) for trade in trades)
+        market_impact = sum(
+            self.calculate_impact(trade, market_data) for trade in trades
+        )
 
         # Timing cost (price movement from decision to execution)
         timing_cost = (avg_execution_price - decision_price) * total_quantity
@@ -265,11 +286,11 @@ class MarketImpactCalculator:
         total_shortfall = market_impact + timing_cost
 
         return {
-            'total_shortfall': total_shortfall,
-            'market_impact': market_impact,
-            'timing_cost': timing_cost,
-            'avg_execution_price': avg_execution_price,
-            'decision_price': decision_price
+            "total_shortfall": total_shortfall,
+            "market_impact": market_impact,
+            "timing_cost": timing_cost,
+            "avg_execution_price": avg_execution_price,
+            "decision_price": decision_price,
         }
 
 
@@ -279,14 +300,14 @@ def main():
     calculator = MarketImpactCalculator()
 
     # Example trade
-    trade = Trade(quantity=10000, price=100.0, side='buy')
+    trade = Trade(quantity=10000, price=100.0, side="buy")
 
     # Example market data
     market_data = {
-        'daily_volume': 1000000,
-        'volatility': 0.02,
-        'mid_price': 100.0,
-        'decision_price': 99.5
+        "daily_volume": 1000000,
+        "volatility": 0.02,
+        "mid_price": 100.0,
+        "decision_price": 99.5,
     }
 
     print("Market Impact Analysis")
@@ -302,17 +323,14 @@ def main():
 
     # Optimize execution
     optimal_slice, min_impact = calculator.optimize_execution_size(
-        trade.quantity, market_data, 'almgren_chriss'
+        trade.quantity, market_data, "almgren_chriss"
     )
     print("\nOptimal Execution:")
     print(f"  Slice size: {optimal_slice:.0f} shares")
     print(f"  Minimum impact: ${min_impact:.4f}")
 
     # Implementation shortfall for multiple trades
-    trades = [
-        Trade(5000, 100.1, 'buy'),
-        Trade(5000, 100.2, 'buy')
-    ]
+    trades = [Trade(5000, 100.1, "buy"), Trade(5000, 100.2, "buy")]
     shortfall = calculator.calculate_implementation_shortfall(trades, market_data)
     print("\nImplementation Shortfall:")
     print(f"  Total: ${shortfall['total_shortfall']:.4f}")

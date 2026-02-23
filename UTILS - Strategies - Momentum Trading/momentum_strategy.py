@@ -26,9 +26,9 @@ def generate_synthetic_data(n_points: int = 200, seed: int = 42) -> pd.Series:
     # Add some "momentum" clusters (autocorrelation)
     for i in range(2, n_points):
         # If previous return was high, slight bias for next return to be high
-        if returns[i-1] > 0.01:
+        if returns[i - 1] > 0.01:
             returns[i] += 0.005
-        elif returns[i-1] < -0.01:
+        elif returns[i - 1] < -0.01:
             returns[i] -= 0.005
 
     prices = pd.Series(np.exp(np.cumsum(returns)) * 100, name="Close")
@@ -84,12 +84,14 @@ def backtest_strategy(prices: pd.Series, signals: pd.Series) -> pd.DataFrame:
     # (We enter at Close of 't', so we get return of 't+1')
     strategy_returns = signals.shift(1) * returns
 
-    data = pd.DataFrame({
-        "Price": prices,
-        "Signal": signals,
-        "Asset_Return": returns,
-        "Strategy_Return": strategy_returns
-    })
+    data = pd.DataFrame(
+        {
+            "Price": prices,
+            "Signal": signals,
+            "Asset_Return": returns,
+            "Strategy_Return": strategy_returns,
+        }
+    )
 
     # Calculate Cumulative Returns
     data["Cumulative_Asset"] = (1 + data["Asset_Return"]).cumprod()

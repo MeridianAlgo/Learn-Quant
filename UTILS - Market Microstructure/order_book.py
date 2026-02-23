@@ -14,6 +14,7 @@ from typing import Dict, List, Optional, Tuple
 @dataclass
 class Order:
     """Represents a single order in the order book."""
+
     order_id: str
     price: float
     quantity: int
@@ -22,7 +23,7 @@ class Order:
 
     def __lt__(self, other):
         # For heap ordering: bids (max-heap), asks (min-heap)
-        if self.side == 'bid':
+        if self.side == "bid":
             return self.price > other.price  # Reverse for max-heap
         else:
             return self.price < other.price
@@ -40,13 +41,16 @@ class OrderBook:
         self.bids: List[Order] = []  # Max-heap for bids
         self.asks: List[Order] = []  # Min-heap for asks
         self.order_map: Dict[str, Order] = {}  # Order lookup
-        self.price_levels: Dict[str, Dict[float, int]] = {
-            'bid': {},
-            'ask': {}
-        }
+        self.price_levels: Dict[str, Dict[float, int]] = {"bid": {}, "ask": {}}
 
-    def add_order(self, order_id: str, price: float, quantity: int,
-                  side: str, timestamp: Optional[datetime] = None) -> None:
+    def add_order(
+        self,
+        order_id: str,
+        price: float,
+        quantity: int,
+        side: str,
+        timestamp: Optional[datetime] = None,
+    ) -> None:
         """Add a new order to the book."""
         if timestamp is None:
             timestamp = datetime.now()
@@ -55,7 +59,7 @@ class OrderBook:
         self.order_map[order_id] = order
 
         # Add to appropriate heap
-        if side == 'bid':
+        if side == "bid":
             heapq.heappush(self.bids, order)
         else:
             heapq.heappush(self.asks, order)
@@ -83,17 +87,17 @@ class OrderBook:
 
     def get_best_bid(self) -> Optional[Tuple[float, int]]:
         """Get the best bid price and quantity."""
-        if not self.price_levels['bid']:
+        if not self.price_levels["bid"]:
             return None
-        best_price = max(self.price_levels['bid'].keys())
-        return best_price, self.price_levels['bid'][best_price]
+        best_price = max(self.price_levels["bid"].keys())
+        return best_price, self.price_levels["bid"][best_price]
 
     def get_best_ask(self) -> Optional[Tuple[float, int]]:
         """Get the best ask price and quantity."""
-        if not self.price_levels['ask']:
+        if not self.price_levels["ask"]:
             return None
-        best_price = min(self.price_levels['ask'].keys())
-        return best_price, self.price_levels['ask'][best_price]
+        best_price = min(self.price_levels["ask"].keys())
+        return best_price, self.price_levels["ask"][best_price]
 
     def get_spread(self) -> Optional[float]:
         """Calculate the bid-ask spread."""
@@ -107,17 +111,17 @@ class OrderBook:
 
     def get_market_depth(self, levels: int = 5) -> Dict[str, List[Tuple[float, int]]]:
         """Get market depth up to specified number of levels."""
-        depth = {'bid': [], 'ask': []}
+        depth = {"bid": [], "ask": []}
 
         # Get top bid levels
-        bid_prices = sorted(self.price_levels['bid'].keys(), reverse=True)[:levels]
+        bid_prices = sorted(self.price_levels["bid"].keys(), reverse=True)[:levels]
         for price in bid_prices:
-            depth['bid'].append((price, self.price_levels['bid'][price]))
+            depth["bid"].append((price, self.price_levels["bid"][price]))
 
         # Get top ask levels
-        ask_prices = sorted(self.price_levels['ask'].keys())[:levels]
+        ask_prices = sorted(self.price_levels["ask"].keys())[:levels]
         for price in ask_prices:
-            depth['ask'].append((price, self.price_levels['ask'][price]))
+            depth["ask"].append((price, self.price_levels["ask"][price]))
 
         return depth
 
@@ -129,8 +133,9 @@ class OrderBook:
         total_value = 0.0
         total_volume = 0
 
-        prices = sorted(self.price_levels[side].keys(),
-                       reverse=True if side == 'bid' else True)
+        prices = sorted(
+            self.price_levels[side].keys(), reverse=True if side == "bid" else True
+        )
 
         for price in prices[:depth_levels]:
             volume = self.price_levels[side][price]
@@ -157,8 +162,9 @@ class OrderBook:
                 trade_price = best_ask.price  # Price taker pays
                 trade_quantity = min(best_bid.quantity, best_ask.quantity)
 
-                trades.append((best_bid.order_id, best_ask.order_id,
-                              trade_price, trade_quantity))
+                trades.append(
+                    (best_bid.order_id, best_ask.order_id, trade_price, trade_quantity)
+                )
 
                 # Update order quantities
                 best_bid.quantity -= trade_quantity
@@ -182,8 +188,8 @@ class OrderBook:
         Calculate order flow imbalance.
         Positive values indicate more buying pressure.
         """
-        bid_volume = sum(self.price_levels['bid'].values())
-        ask_volume = sum(self.price_levels['ask'].values())
+        bid_volume = sum(self.price_levels["bid"].values())
+        ask_volume = sum(self.price_levels["ask"].values())
 
         if bid_volume + ask_volume == 0:
             return None

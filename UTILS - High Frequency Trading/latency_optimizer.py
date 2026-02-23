@@ -18,6 +18,7 @@ import pandas as pd
 @dataclass
 class LatencyMeasurement:
     """Represents a latency measurement."""
+
     timestamp: datetime
     operation: str
     latency_ms: float
@@ -34,8 +35,9 @@ class LatencyOptimizer:
         self.operation_stats: Dict[str, List[float]] = {}
         self.baseline_measurements: Dict[str, float] = {}
 
-    def measure_latency(self, operation: str, func: Callable,
-                       *args, **kwargs) -> Tuple[any, float]:
+    def measure_latency(
+        self, operation: str, func: Callable, *args, **kwargs
+    ) -> Tuple[any, float]:
         """
         Measure latency of a function execution.
 
@@ -58,7 +60,7 @@ class LatencyOptimizer:
             timestamp=datetime.now(),
             operation=operation,
             latency_ms=latency_ms,
-            metadata={}
+            metadata={},
         )
         self.measurements.append(measurement)
 
@@ -69,8 +71,9 @@ class LatencyOptimizer:
 
         return result, latency_ms
 
-    def measure_network_latency(self, host: str, port: int,
-                               timeout: float = 1.0) -> float:
+    def measure_network_latency(
+        self, host: str, port: int, timeout: float = 1.0
+    ) -> float:
         """
         Measure network latency to a remote host.
 
@@ -93,10 +96,11 @@ class LatencyOptimizer:
             end_time = time.perf_counter()
             return (end_time - start_time) * 1000
         except Exception:
-            return float('inf')
+            return float("inf")
 
-    def benchmark_operation(self, operation: str, func: Callable,
-                           iterations: int = 100, *args, **kwargs) -> Dict[str, float]:
+    def benchmark_operation(
+        self, operation: str, func: Callable, iterations: int = 100, *args, **kwargs
+    ) -> Dict[str, float]:
         """
         Benchmark an operation over multiple iterations.
 
@@ -116,13 +120,13 @@ class LatencyOptimizer:
             latencies.append(latency)
 
         stats = {
-            'mean_ms': statistics.mean(latencies),
-            'median_ms': statistics.median(latencies),
-            'std_ms': statistics.stdev(latencies) if len(latencies) > 1 else 0,
-            'min_ms': min(latencies),
-            'max_ms': max(latencies),
-            'p95_ms': np.percentile(latencies, 95),
-            'p99_ms': np.percentile(latencies, 99)
+            "mean_ms": statistics.mean(latencies),
+            "median_ms": statistics.median(latencies),
+            "std_ms": statistics.stdev(latencies) if len(latencies) > 1 else 0,
+            "min_ms": min(latencies),
+            "max_ms": max(latencies),
+            "p95_ms": np.percentile(latencies, 95),
+            "p99_ms": np.percentile(latencies, 99),
         }
 
         return stats
@@ -170,8 +174,9 @@ class LatencyOptimizer:
 
         return slow_ops
 
-    def optimize_code_path(self, operation: str,
-                          optimization_func: Callable) -> Dict[str, float]:
+    def optimize_code_path(
+        self, operation: str, optimization_func: Callable
+    ) -> Dict[str, float]:
         """
         Test and measure optimization improvements.
 
@@ -193,13 +198,13 @@ class LatencyOptimizer:
             f"{operation}_optimized", optimization_func, iterations=50
         )
 
-        improvement = ((original_avg - optimized_stats['mean_ms']) / original_avg) * 100
+        improvement = ((original_avg - optimized_stats["mean_ms"]) / original_avg) * 100
 
         return {
-            'original_avg_ms': original_avg,
-            'optimized_avg_ms': optimized_stats['mean_ms'],
-            'improvement_percent': improvement,
-            'speedup_factor': original_avg / optimized_stats['mean_ms']
+            "original_avg_ms": original_avg,
+            "optimized_avg_ms": optimized_stats["mean_ms"],
+            "improvement_percent": improvement,
+            "speedup_factor": original_avg / optimized_stats["mean_ms"],
         }
 
     def analyze_latency_patterns(self, window_minutes: int = 60) -> Dict[str, any]:
@@ -217,8 +222,7 @@ class LatencyOptimizer:
 
         cutoff_time = datetime.now() - timedelta(minutes=window_minutes)
         recent_measurements = [
-            m for m in self.measurements
-            if m.timestamp >= cutoff_time
+            m for m in self.measurements if m.timestamp >= cutoff_time
         ]
 
         if not recent_measurements:
@@ -227,14 +231,16 @@ class LatencyOptimizer:
         # Group by operation
         operation_patterns = {}
         for operation in {m.operation for m in recent_measurements}:
-            op_measurements = [m for m in recent_measurements if m.operation == operation]
+            op_measurements = [
+                m for m in recent_measurements if m.operation == operation
+            ]
             latencies = [m.latency_ms for m in op_measurements]
 
             operation_patterns[operation] = {
-                'count': len(latencies),
-                'avg_ms': statistics.mean(latencies),
-                'trend': self._calculate_trend(latencies),
-                'volatility': statistics.stdev(latencies) if len(latencies) > 1 else 0
+                "count": len(latencies),
+                "avg_ms": statistics.mean(latencies),
+                "trend": self._calculate_trend(latencies),
+                "volatility": statistics.stdev(latencies) if len(latencies) > 1 else 0,
             }
 
         return operation_patterns
@@ -242,7 +248,7 @@ class LatencyOptimizer:
     def _calculate_trend(self, values: List[float]) -> str:
         """Calculate trend direction for a series of values."""
         if len(values) < 2:
-            return 'stable'
+            return "stable"
 
         # Simple linear regression to determine trend
         x = np.arange(len(values))
@@ -252,11 +258,11 @@ class LatencyOptimizer:
         slope = np.polyfit(x, y, 1)[0]
 
         if slope > 0.1:
-            return 'increasing'
+            return "increasing"
         elif slope < -0.1:
-            return 'decreasing'
+            return "decreasing"
         else:
-            return 'stable'
+            return "stable"
 
     def generate_latency_report(self) -> str:
         """Generate comprehensive latency report."""
@@ -309,11 +315,13 @@ class LatencyOptimizer:
 
         data = []
         for measurement in self.measurements:
-            data.append({
-                'timestamp': measurement.timestamp,
-                'operation': measurement.operation,
-                'latency_ms': measurement.latency_ms
-            })
+            data.append(
+                {
+                    "timestamp": measurement.timestamp,
+                    "operation": measurement.operation,
+                    "latency_ms": measurement.latency_ms,
+                }
+            )
 
         df = pd.DataFrame(data)
         df.to_csv(filename, index=False)
@@ -321,7 +329,9 @@ class LatencyOptimizer:
     def clear_measurements(self, operation: Optional[str] = None) -> None:
         """Clear measurements for specific operation or all operations."""
         if operation:
-            self.measurements = [m for m in self.measurements if m.operation != operation]
+            self.measurements = [
+                m for m in self.measurements if m.operation != operation
+            ]
             if operation in self.operation_stats:
                 del self.operation_stats[operation]
         else:
@@ -356,18 +366,22 @@ def main():
 
     # Benchmark operations
     print("\nBenchmarking fast operation...")
-    fast_stats = optimizer.benchmark_operation("fast_operation", fast_function, iterations=100)
+    fast_stats = optimizer.benchmark_operation(
+        "fast_operation", fast_function, iterations=100
+    )
     for stat, value in fast_stats.items():
         print(f"  {stat}: {value:.4f}")
 
     print("\nBenchmarking slow operation...")
-    slow_stats = optimizer.benchmark_operation("slow_operation", slow_function, iterations=50)
+    slow_stats = optimizer.benchmark_operation(
+        "slow_operation", slow_function, iterations=50
+    )
     for stat, value in slow_stats.items():
         print(f"  {stat}: {value:.4f}")
 
     # Set baselines
-    optimizer.set_baseline("fast_operation", fast_stats['mean_ms'])
-    optimizer.set_baseline("slow_operation", slow_stats['mean_ms'])
+    optimizer.set_baseline("fast_operation", fast_stats["mean_ms"])
+    optimizer.set_baseline("slow_operation", slow_stats["mean_ms"])
 
     # Measure some more to check for regression
     for _ in range(10):
