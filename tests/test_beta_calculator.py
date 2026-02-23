@@ -5,9 +5,16 @@ sys.path.insert(
     0, str(Path(__file__).parent.parent / "UTILS - Finance - Beta Calculator")
 )
 
-from beta_calculator import (adjusted_beta, beta_decomposition, calculate_beta,
-                             downside_beta, levered_beta, rolling_beta,
-                             unlevered_beta, upside_beta)
+from beta_calculator import (
+    adjusted_beta,
+    beta_decomposition,
+    calculate_beta,
+    downside_beta,
+    levered_beta,
+    rolling_beta,
+    unlevered_beta,
+    upside_beta,
+)
 
 
 def test_calculate_beta():

@@ -12,8 +12,7 @@ if str(PACKAGE_ROOT) not in sys.path:  # Ensure local imports work via runpy
 
 # Module-level imports must be at top, but we need to modify sys.path first
 # This is a valid exception to E402 for dynamic path modification
-from content import (LESSONS, Lesson, LessonSection,  # noqa: E402
-                     QuizQuestion, get_lesson_by_slug, list_lessons)
+from content import LESSONS, Lesson, LessonSection, QuizQuestion, get_lesson_by_slug, list_lessons  # noqa: E402
 
 BORDER = "=" * 80
 SOURCE_FILE = Path(__file__).resolve()

@@ -7,9 +7,14 @@ sys.path.insert(
     0, str(Path(__file__).parent.parent / "UTILS - Finance - Correlation Analysis")
 )
 
-from correlation_analysis import (correlation_matrix, correlation_stability,
-                                  ewma_correlation, pearson_correlation,
-                                  rolling_correlation, tail_correlation)
+from correlation_analysis import (
+    correlation_matrix,
+    correlation_stability,
+    ewma_correlation,
+    pearson_correlation,
+    rolling_correlation,
+    tail_correlation,
+)
 
 
 def test_pearson_correlation():
