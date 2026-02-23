@@ -8,9 +8,7 @@ from typing import List
 import numpy as np
 
 
-def historical_volatility(
-    prices: List[float], window: int = 30, annualize: bool = True
-) -> float:
+def historical_volatility(prices: List[float], window: int = 30, annualize: bool = True) -> float:
     """
     Calculate historical volatility using log returns.
 
@@ -35,9 +33,7 @@ def historical_volatility(
     return volatility
 
 
-def parkinson_volatility(
-    high: List[float], low: List[float], annualize: bool = True
-) -> float:
+def parkinson_volatility(high: List[float], low: List[float], annualize: bool = True) -> float:
     """
     Calculate Parkinson's volatility using high-low range.
     More efficient than close-to-close volatility.
@@ -104,9 +100,7 @@ def garman_klass_volatility(
     return volatility
 
 
-def ewma_volatility(
-    returns: List[float], lambda_param: float = 0.94, annualize: bool = True
-) -> List[float]:
+def ewma_volatility(returns: List[float], lambda_param: float = 0.94, annualize: bool = True) -> List[float]:
     """
     Calculate Exponentially Weighted Moving Average (EWMA) volatility.
     Used in RiskMetrics methodology.
@@ -126,9 +120,7 @@ def ewma_volatility(
     ewma_var[0] = returns_array[0] ** 2
 
     for i in range(1, n):
-        ewma_var[i] = (
-            lambda_param * ewma_var[i - 1] + (1 - lambda_param) * returns_array[i] ** 2
-        )
+        ewma_var[i] = lambda_param * ewma_var[i - 1] + (1 - lambda_param) * returns_array[i] ** 2
 
     volatility = np.sqrt(ewma_var)
 
@@ -180,9 +172,7 @@ def volatility_cone(prices: List[float], windows: List[int] = None) -> dict:
 
         vols = []
         for i in range(window, len(prices)):
-            vol = historical_volatility(
-                prices[i - window : i + 1], window=window, annualize=True
-            )
+            vol = historical_volatility(prices[i - window : i + 1], window=window, annualize=True)
             vols.append(vol)
 
         if vols:
@@ -219,6 +209,4 @@ if __name__ == "__main__":
     cone = volatility_cone(prices.tolist())
     print("\nVolatility Cone:")
     for window, stats in cone.items():
-        print(
-            f"  {window}-day: Current={stats['current']:.2%}, Min={stats['min']:.2%}, Max={stats['max']:.2%}"
-        )
+        print(f"  {window}-day: Current={stats['current']:.2%}, Min={stats['min']:.2%}, Max={stats['max']:.2%}")

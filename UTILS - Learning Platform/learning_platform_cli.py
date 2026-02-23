@@ -29,9 +29,7 @@ def print_banner() -> None:
 def main_menu() -> None:
     print("Available lessons:\n")
     for index, lesson in enumerate(list_lessons(), start=1):
-        print(
-            f"  {index}. {lesson['title']} ({lesson['difficulty']}, {lesson['estimated_minutes']} min)"
-        )
+        print(f"  {index}. {lesson['title']} ({lesson['difficulty']}, {lesson['estimated_minutes']} min)")
         print(f"     ↳ {lesson['summary']}")
     print("\nCommands:")
     print("  [number] → open lesson")

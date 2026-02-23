@@ -348,9 +348,7 @@ def kruskal_mst(graph: Graph) -> Dict[str, Union[List[Tuple[str, str, int]], int
     return {"edges": mst_edges, "total_weight": total_weight}
 
 
-def prim_mst(
-    graph: Graph, start: str
-) -> Dict[str, Union[List[Tuple[str, str, int]], int]]:
+def prim_mst(graph: Graph, start: str) -> Dict[str, Union[List[Tuple[str, str, int]], int]]:
     """
     Prim's Algorithm: Minimum Spanning Tree using min-heap.
     Grows MST from a starting vertex.
@@ -455,11 +453,7 @@ def demonstrate_graph_algorithms():
     print("Distance matrix:")
     for u in fw_result["vertices"]:
         row = [
-            (
-                f"{fw_result['distances'][u][v]:3}"
-                if fw_result["distances"][u][v] != math.inf
-                else " ∞"
-            )
+            (f"{fw_result['distances'][u][v]:3}" if fw_result["distances"][u][v] != math.inf else " ∞")
             for v in fw_result["vertices"]
         ]
         print(f"{u}: {row}")

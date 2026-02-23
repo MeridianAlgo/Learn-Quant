@@ -1,9 +1,7 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(
-    0, str(Path(__file__).parent.parent / "UTILS - Finance - Beta Calculator")
-)
+sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Beta Calculator"))
 
 from beta_calculator import (
     adjusted_beta,

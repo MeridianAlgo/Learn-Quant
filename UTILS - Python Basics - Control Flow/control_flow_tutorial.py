@@ -177,9 +177,7 @@ def list_comprehensions() -> None:
         pct_changes_traditional.append(change)
 
     # List comprehension approach (more concise!)
-    pct_changes = [
-        (prices[i] - prices[i - 1]) / prices[i - 1] for i in range(1, len(prices))
-    ]
+    pct_changes = [(prices[i] - prices[i - 1]) / prices[i - 1] for i in range(1, len(prices))]
 
     print("Price changes using list comprehension:")
     for i, change in enumerate(pct_changes, 1):
@@ -215,9 +213,7 @@ def list_comprehensions() -> None:
     holdings = {"AAPL": 50, "GOOGL": 20, "MSFT": 30}
     current_prices = {"AAPL": 175.50, "GOOGL": 140.25, "MSFT": 380.75}
 
-    portfolio_values = {
-        ticker: holdings[ticker] * current_prices[ticker] for ticker in holdings
-    }
+    portfolio_values = {ticker: holdings[ticker] * current_prices[ticker] for ticker in holdings}
 
     print("\nPortfolio Values:")
     for ticker, value in portfolio_values.items():
@@ -302,9 +298,7 @@ def main() -> None:
     list_comprehensions()
     break_continue_statements()
     nested_loops()
-    print(
-        "\n🎉 Control Flow tutorial complete! Practice with loops and conditionals to build powerful trading logic."
-    )
+    print("\n🎉 Control Flow tutorial complete! Practice with loops and conditionals to build powerful trading logic.")
 
 
 if __name__ == "__main__":

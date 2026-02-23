@@ -31,9 +31,7 @@ def test_vector_operations():
     portfolio_return = np.dot(weights, expected_returns)
     expected_value = 0.3 * 0.10 + 0.3 * 0.12 + 0.4 * 0.08
 
-    assert np.isclose(
-        portfolio_return, expected_value
-    ), "Portfolio return calculation incorrect"
+    assert np.isclose(portfolio_return, expected_value), "Portfolio return calculation incorrect"
 
     print("✓ Vector operations tests passed")
 
@@ -58,9 +56,7 @@ def test_matrix_multiplication():
 
     # Check first period manually
     expected_first = 0.4 * 0.02 + 0.3 * 0.01 + 0.3 * 0.03
-    assert np.isclose(
-        portfolio_returns[0], expected_first
-    ), "First period return incorrect"
+    assert np.isclose(portfolio_returns[0], expected_first), "First period return incorrect"
 
     print("✓ Matrix multiplication tests passed")
 
@@ -99,9 +95,7 @@ def test_portfolio_variance():
         + 2 * 0.5 * 0.5 * 0.01  # 2 w1 w2 σ12
     )
 
-    assert np.isclose(
-        portfolio_variance, expected_variance
-    ), "Portfolio variance incorrect"
+    assert np.isclose(portfolio_variance, expected_variance), "Portfolio variance incorrect"
 
     # Variance should be positive
     assert portfolio_variance > 0, "Variance must be positive"
@@ -113,25 +107,19 @@ def test_correlation_matrix():
     """Test correlation matrix calculations."""
     # Generate correlated returns
     np.random.seed(42)
-    returns = np.random.multivariate_normal(
-        mean=[0.001, 0.0008], cov=[[0.0004, 0.0002], [0.0002, 0.0003]], size=100
-    )
+    returns = np.random.multivariate_normal(mean=[0.001, 0.0008], cov=[[0.0004, 0.0002], [0.0002, 0.0003]], size=100)
 
     # Calculate correlation matrix
     corr_matrix = np.corrcoef(returns.T)
 
     # Diagonal should be 1
-    assert np.allclose(
-        np.diag(corr_matrix), 1.0
-    ), "Diagonal of correlation matrix must be 1"
+    assert np.allclose(np.diag(corr_matrix), 1.0), "Diagonal of correlation matrix must be 1"
 
     # Symmetric
     assert np.allclose(corr_matrix, corr_matrix.T), "Correlation matrix not symmetric"
 
     # Values between -1 and 1
-    assert np.all(corr_matrix >= -1) and np.all(
-        corr_matrix <= 1
-    ), "Correlation values out of range"
+    assert np.all(corr_matrix >= -1) and np.all(corr_matrix <= 1), "Correlation values out of range"
 
     print("✓ Correlation matrix tests passed")
 
@@ -150,9 +138,7 @@ def test_eigenvalues_eigenvectors():
         assert np.allclose(lhs, rhs), f"Eigenvalue equation failed for eigenvalue {i}"
 
     # For symmetric matrix, eigenvalues should be real
-    assert np.all(
-        np.isreal(eigenvalues)
-    ), "Eigenvalues of symmetric matrix must be real"
+    assert np.all(np.isreal(eigenvalues)), "Eigenvalues of symmetric matrix must be real"
 
     print("✓ Eigenvalue/eigenvector tests passed")
 
@@ -198,9 +184,7 @@ def test_determinant():
 def test_minimum_variance_portfolio():
     """Test minimum variance portfolio calculation."""
     # Covariance matrix
-    cov_matrix = np.array(
-        [[0.04, 0.01, 0.008], [0.01, 0.05, 0.012], [0.008, 0.012, 0.03]]
-    )
+    cov_matrix = np.array([[0.04, 0.01, 0.008], [0.01, 0.05, 0.012], [0.008, 0.012, 0.03]])
 
     # Minimum variance portfolio: w = (Σ^-1 1) / (1^T Σ^-1 1)
     cov_inv = np.linalg.inv(cov_matrix)
@@ -224,9 +208,7 @@ def test_minimum_variance_portfolio():
     random_weights /= np.sum(random_weights)
     random_var = random_weights @ cov_matrix @ random_weights
 
-    assert (
-        portfolio_var <= random_var + 1e-10
-    ), "Minimum variance portfolio should have lower variance"
+    assert portfolio_var <= random_var + 1e-10, "Minimum variance portfolio should have lower variance"
 
     print("✓ Minimum variance portfolio tests passed")
 

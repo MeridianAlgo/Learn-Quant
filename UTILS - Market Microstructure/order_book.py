@@ -133,9 +133,7 @@ class OrderBook:
         total_value = 0.0
         total_volume = 0
 
-        prices = sorted(
-            self.price_levels[side].keys(), reverse=True if side == "bid" else True
-        )
+        prices = sorted(self.price_levels[side].keys(), reverse=True if side == "bid" else True)
 
         for price in prices[:depth_levels]:
             volume = self.price_levels[side][price]
@@ -162,9 +160,7 @@ class OrderBook:
                 trade_price = best_ask.price  # Price taker pays
                 trade_quantity = min(best_bid.quantity, best_ask.quantity)
 
-                trades.append(
-                    (best_bid.order_id, best_ask.order_id, trade_price, trade_quantity)
-                )
+                trades.append((best_bid.order_id, best_ask.order_id, trade_price, trade_quantity))
 
                 # Update order quantities
                 best_bid.quantity -= trade_quantity

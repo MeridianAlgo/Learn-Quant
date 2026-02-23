@@ -35,9 +35,7 @@ class LatencyOptimizer:
         self.operation_stats: Dict[str, List[float]] = {}
         self.baseline_measurements: Dict[str, float] = {}
 
-    def measure_latency(
-        self, operation: str, func: Callable, *args, **kwargs
-    ) -> Tuple[any, float]:
+    def measure_latency(self, operation: str, func: Callable, *args, **kwargs) -> Tuple[any, float]:
         """
         Measure latency of a function execution.
 
@@ -71,9 +69,7 @@ class LatencyOptimizer:
 
         return result, latency_ms
 
-    def measure_network_latency(
-        self, host: str, port: int, timeout: float = 1.0
-    ) -> float:
+    def measure_network_latency(self, host: str, port: int, timeout: float = 1.0) -> float:
         """
         Measure network latency to a remote host.
 
@@ -174,9 +170,7 @@ class LatencyOptimizer:
 
         return slow_ops
 
-    def optimize_code_path(
-        self, operation: str, optimization_func: Callable
-    ) -> Dict[str, float]:
+    def optimize_code_path(self, operation: str, optimization_func: Callable) -> Dict[str, float]:
         """
         Test and measure optimization improvements.
 
@@ -194,9 +188,7 @@ class LatencyOptimizer:
         original_avg = statistics.mean(original_latencies)
 
         # Benchmark optimized version
-        optimized_stats = self.benchmark_operation(
-            f"{operation}_optimized", optimization_func, iterations=50
-        )
+        optimized_stats = self.benchmark_operation(f"{operation}_optimized", optimization_func, iterations=50)
 
         improvement = ((original_avg - optimized_stats["mean_ms"]) / original_avg) * 100
 
@@ -221,9 +213,7 @@ class LatencyOptimizer:
             return {}
 
         cutoff_time = datetime.now() - timedelta(minutes=window_minutes)
-        recent_measurements = [
-            m for m in self.measurements if m.timestamp >= cutoff_time
-        ]
+        recent_measurements = [m for m in self.measurements if m.timestamp >= cutoff_time]
 
         if not recent_measurements:
             return {}
@@ -231,9 +221,7 @@ class LatencyOptimizer:
         # Group by operation
         operation_patterns = {}
         for operation in {m.operation for m in recent_measurements}:
-            op_measurements = [
-                m for m in recent_measurements if m.operation == operation
-            ]
+            op_measurements = [m for m in recent_measurements if m.operation == operation]
             latencies = [m.latency_ms for m in op_measurements]
 
             operation_patterns[operation] = {
@@ -329,9 +317,7 @@ class LatencyOptimizer:
     def clear_measurements(self, operation: Optional[str] = None) -> None:
         """Clear measurements for specific operation or all operations."""
         if operation:
-            self.measurements = [
-                m for m in self.measurements if m.operation != operation
-            ]
+            self.measurements = [m for m in self.measurements if m.operation != operation]
             if operation in self.operation_stats:
                 del self.operation_stats[operation]
         else:
@@ -366,16 +352,12 @@ def main():
 
     # Benchmark operations
     print("\nBenchmarking fast operation...")
-    fast_stats = optimizer.benchmark_operation(
-        "fast_operation", fast_function, iterations=100
-    )
+    fast_stats = optimizer.benchmark_operation("fast_operation", fast_function, iterations=100)
     for stat, value in fast_stats.items():
         print(f"  {stat}: {value:.4f}")
 
     print("\nBenchmarking slow operation...")
-    slow_stats = optimizer.benchmark_operation(
-        "slow_operation", slow_function, iterations=50
-    )
+    slow_stats = optimizer.benchmark_operation("slow_operation", slow_function, iterations=50)
     for stat, value in slow_stats.items():
         print(f"  {stat}: {value:.4f}")
 

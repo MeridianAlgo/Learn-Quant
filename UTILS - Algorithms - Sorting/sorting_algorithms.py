@@ -270,9 +270,7 @@ def compare_sorting_algorithms(arr: List[T], algorithms: List[Callable] = None) 
         end_time = time.time()
 
         # Verify sorting is correct
-        assert sorted_arr == sorted(
-            arr
-        ), f"{algorithm.__name__} failed to sort correctly"
+        assert sorted_arr == sorted(arr), f"{algorithm.__name__} failed to sort correctly"
 
         results[algorithm.__name__] = {
             "time": end_time - start_time,

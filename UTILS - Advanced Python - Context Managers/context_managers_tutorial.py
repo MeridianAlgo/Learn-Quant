@@ -100,9 +100,7 @@ def demonstrate_timer_class():
 
 
 @contextlib.contextmanager
-def market_session(
-    mock_open_time: str, mock_close_time: str
-) -> Generator[str, None, None]:
+def market_session(mock_open_time: str, mock_close_time: str) -> Generator[str, None, None]:
     """
     Simulate a market session.
 

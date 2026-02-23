@@ -49,9 +49,7 @@ def calculate_sma(prices: pd.Series, window: int = 50) -> pd.Series:
     return prices.rolling(window=window).mean()
 
 
-def generate_signals(
-    prices: pd.Series, momentum: pd.Series, sma: pd.Series, mom_threshold: float = 0.0
-) -> pd.Series:
+def generate_signals(prices: pd.Series, momentum: pd.Series, sma: pd.Series, mom_threshold: float = 0.0) -> pd.Series:
     """
     Generates trading signals.
     - BUY when Momentum > 0 AND Price > SMA (Trend Following)

@@ -91,9 +91,7 @@ class SpreadAnalyzer:
             "p95": np.percentile(spreads, 95),
         }
 
-    def get_effective_spread(
-        self, trade_price: float, side: str, mid_price: Optional[float] = None
-    ) -> float:
+    def get_effective_spread(self, trade_price: float, side: str, mid_price: Optional[float] = None) -> float:
         """
         Calculate effective spread for a trade.
 
@@ -139,9 +137,7 @@ class SpreadAnalyzer:
         else:
             return 2 * (trade_price - future_price)
 
-    def get_price_improvement(
-        self, trade_price: float, side: str, quote: Optional[Quote] = None
-    ) -> float:
+    def get_price_improvement(self, trade_price: float, side: str, quote: Optional[Quote] = None) -> float:
         """
         Calculate price improvement relative to quoted spread.
 
