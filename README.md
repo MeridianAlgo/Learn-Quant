@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance and Python (v1.8.0)
+# Learn-Quant: Master Quantitative Finance and Python (v1.9.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
@@ -49,6 +49,7 @@ Writing professional, production-ready code.
 
 ### Level 4: Quantitative Methods
 The mathematics of the markets.
+- `UTILS - Quantitative Methods - Principal Component Analysis (PCA)`: Dimensionality reduction and eigenportfolios.
 - `UTILS - Quantitative Methods - Kalman Filter`: Dynamic hedge ratios and noise filtering.
 - `UTILS - Quantitative Methods - Stochastic Processes`: Geometric Brownian Motion and Monte Carlo.
 - `UTILS - Quantitative Methods - Statistics`: Hypothesis testing, stationarity, and cointegration.
@@ -63,6 +64,7 @@ Applied quantitative finance.
 - `UTILS - Strategies - Pairs Trading`: Statistical arbitrage and mean reversion.
 - `UTILS - Strategies - Momentum Trading`: Trend following and signal generation.
 - `UTILS - Black-Scholes Option Pricing`: Greeks, implied volatility, and derivatives pricing.
+- `UTILS - Options - Binomial Tree Pricing`: Discrete-time options pricing models.
 - `UTILS - Finance - Volatility Calculator`: Parkinson, Garman-Klass, and EWMA estimators.
 - `UTILS - Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, and Markowitz optimization.
 - `UTILS - Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, and Sortino Ratio.
@@ -86,6 +88,14 @@ pip install -r requirements.txt
 ```
 
 ### 2. Running a Module
+
+**Option A: Interactive Menu (New in v1.9.0)**
+Run the new interactive platform command to browse and run modules dynamically:
+```bash
+python learn_quant.py
+```
+
+**Option B: Manual Execution**
 Navigate to any directory and run the tutorial script.
 
 **Example: Running the Kelly Criterion**
@@ -115,7 +125,7 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v1.8.0**
+**Learn-Quant v1.9.0**
 Quantitative Finance | Algorithmic Trading | Python Mastery
 Maintained by MeridianAlgo
 
