@@ -1,6 +1,6 @@
 # Advanced Python – Multiprocessing
 
-## 📋 Overview
+## Overview
 
 Python's **Global Interpreter Lock (GIL)** prevents multiple threads from executing Python bytecode at the same time, making threads useless for CPU-bound work. The `multiprocessing` module bypasses the GIL entirely by spawning *separate OS processes*, each with its own Python interpreter and memory space — enabling true parallelism across all CPU cores.
 
@@ -9,7 +9,7 @@ In quantitative finance, multiprocessing dramatically reduces computation time f
 - Strategy backtests across many tickers or time periods
 - Parameter grid searches and optimisation
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **GIL and Why It Matters**
 | Task Type | Use This | Why |
@@ -23,7 +23,7 @@ High-level API from `concurrent.futures`:
 from concurrent.futures import ProcessPoolExecutor
 
 with ProcessPoolExecutor(max_workers=4) as executor:
-    results = list(executor.map(my_function, args_list))
+ results = list(executor.map(my_function, args_list))
 ```
 
 ### **Embarrassingly Parallel Problems**
@@ -38,7 +38,7 @@ Everything passed to a worker process must be *picklable*:
 - Arguments should be simple types (tuples, arrays, dicts)
 - Use unique seeds per worker for statistical independence
 
-## 💻 Logic Implemented
+## Logic Implemented
 
 1. **`simulate_gbm_path(args)`** — Single GBM path returning terminal price
 2. **`run_sequential()`** — Baseline: all simulations on one core
@@ -46,17 +46,17 @@ Everything passed to a worker process must be *picklable*:
 4. **`price_call_option_mc()`** — Vectorised Monte Carlo option pricer per volatility
 5. **`parallel_parameter_sweep()`** — Grid search across vol levels using `as_completed()`
 
-## 📂 Files
+## Files
 - `multiprocessing_tutorial.py`: GBM simulation, sequential vs. parallel comparison, and option pricing parameter sweep.
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python multiprocessing_tutorial.py
 ```
 
 > **Windows Note:** Always guard module-level code with `if __name__ == "__main__":`. Windows uses *spawn* (not *fork*) to create processes, so the module is re-imported in each worker — any top-level side-effects would run in every process.
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Monte Carlo Risk Simulation
 - VaR and CVaR via thousands of portfolio simulations
@@ -76,7 +76,7 @@ python multiprocessing_tutorial.py
 - Computing technical indicators for thousands of tickers
 - Generating lagged feature matrices in parallel
 
-## 💡 Best Practices
+## Best Practices
 
 - **Task granularity**: Each task should take ≥100ms; process spawn overhead (~50–200ms) dominates for tiny tasks.
 - **Data passing**: Prefer passing small arguments (scalars, seeds) rather than large DataFrames to minimise serialisation overhead.

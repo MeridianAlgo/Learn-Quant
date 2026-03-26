@@ -1,18 +1,18 @@
 # Quantitative Methods – Stochastic Processes
 
-## 📋 Overview
+## Overview
 
 Stochastic processes are mathematical models for random systems evolving over time. In finance, they are used to model asset prices, interest rates, and volatility for pricing derivatives and managing risk.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Brownian Motion (Wiener Process)**
 - **Random Walk**: Continuous-time version of a random walk
 - **Properties**:
-  - Starts at 0
-  - Independent increments
-  - Gaussian increments: $W_{t+u} - W_t \sim N(0, u)$
-  - Continuous paths but nowhere differentiable (fractal)
+ - Starts at 0
+ - Independent increments
+ - Gaussian increments: $W_{t+u} - W_t \sim N(0, u)$
+ - Continuous paths but nowhere differentiable (fractal)
 
 ### **Geometric Brownian Motion (GBM)**
 - **Stock Prices**: Standard model for equities (Black-Scholes)
@@ -31,7 +31,7 @@ Stochastic processes are mathematical models for random systems evolving over ti
 - **Components**: GBM (continuous) + Poisson Jumps (discontinuous)
 - **Merton Model**: Jumps are log-normally distributed
 
-## 💻 Key Examples
+## Key Examples
 
 ### Simulating GBM
 ```python
@@ -45,20 +45,20 @@ price_path = S0 * np.exp(np.cumsum(drift + diffusion))
 ```python
 # Euler-Maruyama discretization
 for t in range(1, N):
-    dx = theta * (mu - x[t-1]) * dt + sigma * np.sqrt(dt) * np.random.normal()
-    x[t] = x[t-1] + dx
+ dx = theta * (mu - x[t-1]) * dt + sigma * np.sqrt(dt) * np.random.normal()
+ x[t] = x[t-1] + dx
 ```
 
-## 📂 Files
+## Files
 - `stochastic_tutorial.py`: Interactive tutorial with simulations
 
-## 🚀 How to Run
+## How to Run
 ```bash
 pip install numpy matplotlib
 python stochastic_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Option Pricing (Monte Carlo)
 Simulate thousands of price paths using GBM to price complex derivatives (e.g., Asian options, Barrier options) where analytical formulas don't exist.
@@ -72,14 +72,14 @@ Model the spread between two correlated assets as an Ornstein-Uhlenbeck process.
 ### 4. Volatility Modeling
 Stochastic volatility models (like Heston) assume volatility itself follows a stochastic process (often mean-reverting).
 
-## 💡 Best Practices
+## Best Practices
 
 - **Seed Random Numbers**: Always use `np.random.seed()` for reproducible results.
 - **Time Steps**: Use sufficiently small `dt` for accuracy, especially for mean-reverting processes.
 - **Vectorization**: Use NumPy vectorization instead of loops for GBM simulations to speed up calculation by 100x+.
 - **Antithetic Variates**: Use variance reduction techniques (simulate path and its negative) for Monte Carlo convergence.
 
-## 📚 References
+## References
 
 - **Stochastic Calculus for Finance**: Shreve
 - **Options, Futures, and Other Derivatives**: Hull

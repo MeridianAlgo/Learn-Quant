@@ -1,10 +1,10 @@
 # Advanced Python – Error Handling
 
-## 📋 Overview
+## Overview
 
 Robust error handling is what separates a script that crashes overnight from a professional trading system that runs for years. This module teaches you how to anticipate, catch, and manage errors gracefully.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Try / Except / Else / Finally**
 - **Try**: Run potentially risky code
@@ -21,42 +21,42 @@ Robust error handling is what separates a script that crashes overnight from a p
 ### **Logging**
 - Stop using `print()` for errors! Use the `logging` module to record timestamps, error levels (INFO, WARNING, ERROR), and stack traces.
 
-## 💻 Key Examples
+## Key Examples
 
 ### Basic Error Handling
 ```python
 try:
-    price = get_price("AAPL")
-    shares = 1000 / price
+ price = get_price("AAPL")
+ shares = 1000 / price
 except ZeroDivisionError:
-    print("Price cannot be zero!")
+ print("Price cannot be zero!")
 except ValueError:
-    print("Invalid ticker symbol")
+ print("Invalid ticker symbol")
 else:
-    print(f"Bought {shares} shares")
+ print(f"Bought {shares} shares")
 finally:
-    print("Trade attempt complete")
+ print("Trade attempt complete")
 ```
 
 ### Custom Exception
 ```python
 class InsufficientFundsError(Exception):
-    pass
+ pass
 
 def buy(amount):
-    if amount > balance:
-        raise InsufficientFundsError("Not enough cash!")
+ if amount > balance:
+ raise InsufficientFundsError("Not enough cash!")
 ```
 
-## 📂 Files
+## Files
 - `error_handling_tutorial.py`: Interactive tutorial with examples
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python error_handling_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. API Connection Failures
 Handle network timeouts or rate limits when fetching market data. Use exponential backoff to retry.
@@ -70,7 +70,7 @@ Handle partial fills or rejected orders gracefully without crashing the entire b
 ### 4. System Monitoring
 Use logging to track every error in a file, so you can debug why a trade failed yesterday at 3 AM.
 
-## 💡 Best Practices
+## Best Practices
 
 - **Be Specific**: Catch `ValueError` instead of `Exception`.
 - **Don't Swallow Errors**: Avoid `except: pass` unless you really mean it.

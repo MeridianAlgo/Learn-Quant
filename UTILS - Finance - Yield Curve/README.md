@@ -1,12 +1,12 @@
 # Finance – Yield Curve
 
-## 📋 Overview
+## Overview
 
 The yield curve is the most closely watched chart in global finance. It plots interest rates (yields) across different maturities for bonds of equal credit quality — most commonly US Treasury bonds. Its shape and movements drive pricing for virtually every financial asset, from mortgages to corporate bonds to equity discount rates.
 
 This utility demonstrates how to construct, smooth, and interpret a yield curve using the **Nelson-Siegel parametric model** and implied **forward rate extraction**.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Types of Rates**
 | Rate Type | Description |
@@ -19,7 +19,7 @@ This utility demonstrates how to construct, smooth, and interpret a yield curve 
 | Shape | Description | Economic Signal |
 |-------|-------------|-----------------|
 | Normal | Long rates > Short rates | Growth expected |
-| Inverted | Short rates > Long rates | Recession warning ⚠️ |
+| Inverted | Short rates > Long rates | Recession warning |
 | Flat | Short ≈ Long rates | Transition / uncertainty |
 | Humped | Mid > both ends | Complex rate expectations |
 
@@ -30,8 +30,8 @@ A 4-parameter model that fits a smooth curve through noisy market yields:
 
 ```
 y(T) = beta0
-     + beta1 × [(1 – e^(–T/τ)) / (T/τ)]          ← slope loading
-     + beta2 × [(1 – e^(–T/τ)) / (T/τ) – e^(–T/τ)] ← curvature loading
+ + beta1 × [(1 – e^(–T/τ)) / (T/τ)] ← slope loading
+ + beta2 × [(1 – e^(–T/τ)) / (T/τ) – e^(–T/τ)] ← curvature loading
 ```
 
 - **beta0** (Level): Long-run asymptotic yield
@@ -39,22 +39,22 @@ y(T) = beta0
 - **beta2** (Curvature): Hump or trough at intermediate maturities
 - **tau** (Decay): Controls where the slope/curvature effects peak
 
-## 💻 Logic Implemented
+## Logic Implemented
 
 1. **Raw yield data** — Hardcoded Treasury par yields representing a high-rate environment
 2. **Curve classification** — Categorises the shape (normal/inverted/flat/humped)
 3. **Nelson-Siegel fitting** — Minimises squared errors via `scipy.optimize.minimize`
 4. **Forward rate extraction** — Derives the implied path of future short rates
 
-## 📂 Files
+## Files
 - `yield_curve_tutorial.py`: Sample data, Nelson-Siegel model, fitting engine, forward rate computation, and shape analysis.
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python yield_curve_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Bond Pricing
 - Zero-coupon (spot) rates are used to discount each cash flow from a coupon bond.
@@ -75,7 +75,7 @@ python yield_curve_tutorial.py
 ### 5. Mortgage-Backed Securities
 - Mortgage rates are typically benchmarked off the 10-year Treasury yield.
 
-## 💡 Best Practices
+## Best Practices
 
 - **Use zero rates (not par rates) for discounting**: Par rates mix maturity effects; spot rates are "pure" rates for each specific maturity.
 - **Forward rates are volatile**: Small changes in the spot curve create large swings in forward rates at long maturities.
