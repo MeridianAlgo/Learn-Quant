@@ -29,6 +29,7 @@ import pandas as pd
 
 # ─── 1. SINGLE GBM PATH ──────────────────────────────────────────────────────
 
+
 def simulate_gbm_path(args: tuple) -> float:
     """
     Simulate one Geometric Brownian Motion (GBM) price path and return its terminal price.
@@ -70,8 +71,8 @@ def simulate_gbm_path(args: tuple) -> float:
 
 # ─── 2. SEQUENTIAL (SINGLE-CORE) SIMULATION ──────────────────────────────────
 
-def run_sequential(n_simulations: int, S0: float, mu: float, sigma: float,
-                   T: float, n_steps: int) -> list:
+
+def run_sequential(n_simulations: int, S0: float, mu: float, sigma: float, T: float, n_steps: int) -> list:
     """
     Run Monte Carlo GBM simulations one at a time on a single CPU core.
 
@@ -92,8 +93,10 @@ def run_sequential(n_simulations: int, S0: float, mu: float, sigma: float,
 
 # ─── 3. PARALLEL (MULTI-CORE) SIMULATION ────────────────────────────────────
 
-def run_parallel(n_simulations: int, S0: float, mu: float, sigma: float,
-                 T: float, n_steps: int, max_workers: int = 4) -> list:
+
+def run_parallel(
+    n_simulations: int, S0: float, mu: float, sigma: float, T: float, n_steps: int, max_workers: int = 4
+) -> list:
     """
     Run Monte Carlo GBM simulations in parallel across multiple CPU cores.
 
@@ -125,6 +128,7 @@ def run_parallel(n_simulations: int, S0: float, mu: float, sigma: float,
 
 # ─── 4. OPTION PRICING WORKER ────────────────────────────────────────────────
 
+
 def price_call_option_mc(args: tuple) -> dict:
     """
     Price a European call option via Monte Carlo for a single volatility value.
@@ -144,7 +148,7 @@ def price_call_option_mc(args: tuple) -> dict:
     sigma, S0, K, r, T, n_sims, seed_offset = args
 
     rng = np.random.default_rng(seed_offset)
-    n_steps = 252   # daily steps over the option life
+    n_steps = 252  # daily steps over the option life
     dt = T / n_steps
 
     # Vectorised GBM: simulate all paths at once using a (n_sims × n_steps) array
@@ -166,9 +170,10 @@ def price_call_option_mc(args: tuple) -> dict:
 
 # ─── 5. PARALLEL PARAMETER SWEEP ────────────────────────────────────────────
 
-def parallel_parameter_sweep(sigmas: list, S0: float, K: float, r: float,
-                              T: float, n_sims: int = 5000,
-                              max_workers: int = 4) -> pd.DataFrame:
+
+def parallel_parameter_sweep(
+    sigmas: list, S0: float, K: float, r: float, T: float, n_sims: int = 5000, max_workers: int = 4
+) -> pd.DataFrame:
     """
     Price a European call option across a range of volatilities in parallel.
 
@@ -212,6 +217,7 @@ def parallel_parameter_sweep(sigmas: list, S0: float, K: float, r: float,
 
 # ─── 6. TIMING UTILITY ───────────────────────────────────────────────────────
 
+
 def timed(label: str, func, *args, **kwargs):
     """Run func(*args, **kwargs), print elapsed time, and return the result."""
     t0 = time.perf_counter()
@@ -223,28 +229,27 @@ def timed(label: str, func, *args, **kwargs):
 
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 
+
 def main() -> None:
     print("=" * 60)
     print("MULTIPROCESSING FOR QUANTITATIVE FINANCE")
     print("=" * 60)
 
     # GBM parameters used throughout this tutorial
-    S0 = 100.0      # starting stock price
-    mu = 0.08       # 8% annual expected return (drift)
-    sigma = 0.20    # 20% annual volatility
-    T = 1.0         # 1-year simulation horizon
-    n_steps = 252   # one step per trading day
-    n_sims = 2000   # number of Monte Carlo paths (kept small for tutorial speed)
+    S0 = 100.0  # starting stock price
+    mu = 0.08  # 8% annual expected return (drift)
+    sigma = 0.20  # 20% annual volatility
+    T = 1.0  # 1-year simulation horizon
+    n_steps = 252  # one step per trading day
+    n_sims = 2000  # number of Monte Carlo paths (kept small for tutorial speed)
 
     # ── Demo 1: Sequential vs. parallel speed comparison ──
     print(f"\n[1] Speed Comparison: {n_sims} GBM simulations, {n_steps} steps each")
     print("  Timing (wall clock):")
 
-    seq_prices = timed("Sequential (1 core):", run_sequential,
-                       n_sims, S0, mu, sigma, T, n_steps)
+    seq_prices = timed("Sequential (1 core):", run_sequential, n_sims, S0, mu, sigma, T, n_steps)
 
-    par_prices = timed("Parallel  (4 cores):", run_parallel,
-                       n_sims, S0, mu, sigma, T, n_steps, max_workers=4)
+    par_prices = timed("Parallel  (4 cores):", run_parallel, n_sims, S0, mu, sigma, T, n_steps, max_workers=4)
 
     # Both approaches should give statistically similar means (same seeds)
     print(f"\n  Sequential mean terminal price:  ${np.mean(seq_prices):.2f}")
@@ -256,9 +261,7 @@ def main() -> None:
     print("  Pricing a call option (S0=100, K=100, r=5%, T=1yr) at 7 vol levels:")
 
     sigmas = [0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40]
-    sweep_df = parallel_parameter_sweep(
-        sigmas, S0=100.0, K=100.0, r=0.05, T=1.0, n_sims=4000, max_workers=4
-    )
+    sweep_df = parallel_parameter_sweep(sigmas, S0=100.0, K=100.0, r=0.05, T=1.0, n_sims=4000, max_workers=4)
     print(sweep_df.to_string(index=False, float_format="{:.4f}".format))
     print("  Observation: Higher volatility → higher call price (classic Black-Scholes result).")
 

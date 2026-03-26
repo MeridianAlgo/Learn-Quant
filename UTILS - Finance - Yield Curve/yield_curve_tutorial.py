@@ -26,6 +26,7 @@ from scipy.optimize import minimize
 
 # ─── 1. RAW YIELD DATA ──────────────────────────────────────────────────────
 
+
 def get_sample_treasury_yields() -> pd.DataFrame:
     """
     Return a representative set of US Treasury par yields.
@@ -52,8 +53,8 @@ def get_sample_treasury_yields() -> pd.DataFrame:
 
 # ─── 2. NELSON-SIEGEL MODEL ──────────────────────────────────────────────────
 
-def nelson_siegel(maturity: np.ndarray, beta0: float, beta1: float,
-                  beta2: float, tau: float) -> np.ndarray:
+
+def nelson_siegel(maturity: np.ndarray, beta0: float, beta1: float, beta2: float, tau: float) -> np.ndarray:
     """
     Compute Nelson-Siegel fitted yields for the given maturities.
 
@@ -113,6 +114,7 @@ def fit_nelson_siegel(maturities: np.ndarray, yields_pct: np.ndarray) -> dict:
         Dict with keys: beta0, beta1, beta2, tau (fitted parameters), and
         rmse (root-mean-square fitting error in basis points equivalent).
     """
+
     def objective(params: np.ndarray) -> float:
         """Sum of squared deviations between model and market yields."""
         b0, b1, b2, t = params
@@ -126,7 +128,9 @@ def fit_nelson_siegel(maturities: np.ndarray, yields_pct: np.ndarray) -> dict:
     x0 = [4.5, -1.0, 1.5, 2.0]  # [beta0, beta1, beta2, tau]
 
     result = minimize(
-        objective, x0, method="Nelder-Mead",
+        objective,
+        x0,
+        method="Nelder-Mead",
         options={"maxiter": 20000, "xatol": 1e-10, "fatol": 1e-10},
     )
 
@@ -138,6 +142,7 @@ def fit_nelson_siegel(maturities: np.ndarray, yields_pct: np.ndarray) -> dict:
 
 
 # ─── 3. FORWARD RATE EXTRACTION ──────────────────────────────────────────────
+
 
 def compute_forward_rates(maturities: np.ndarray, spot_rates_pct: np.ndarray) -> pd.DataFrame:
     """
@@ -189,6 +194,7 @@ def compute_forward_rates(maturities: np.ndarray, spot_rates_pct: np.ndarray) ->
 
 # ─── 4. CURVE SHAPE CLASSIFICATION ──────────────────────────────────────────
 
+
 def classify_curve_shape(short_rate: float, long_rate: float, mid_rate: float) -> str:
     """
     Classify the shape of the yield curve and its macro-economic implication.
@@ -225,6 +231,7 @@ def classify_curve_shape(short_rate: float, long_rate: float, mid_rate: float) -
 
 
 # ─── MAIN ────────────────────────────────────────────────────────────────────
+
 
 def main() -> None:
     print("=" * 60)
@@ -271,9 +278,7 @@ def main() -> None:
     # ── Step 4: Extract forward rates from the smoothed Nelson-Siegel curve ──
     print("\n[4] Implied Forward Rates (from Nelson-Siegel fitted curve):")
     smooth_mats = np.array([0.25, 0.5, 1.0, 2.0, 3.0, 5.0, 7.0, 10.0, 20.0, 30.0])
-    smooth_yields = nelson_siegel(
-        smooth_mats, params["beta0"], params["beta1"], params["beta2"], params["tau"]
-    )
+    smooth_yields = nelson_siegel(smooth_mats, params["beta0"], params["beta1"], params["beta2"], params["tau"])
     fwd_df = compute_forward_rates(smooth_mats, smooth_yields)
     print(fwd_df.to_string(index=False, float_format="{:.3f}".format))
 
@@ -283,8 +288,7 @@ def main() -> None:
     print("  " + "-" * 46)
     for _, row in df.iterrows():
         model_y = nelson_siegel(
-            np.array([row["maturity"]]),
-            params["beta0"], params["beta1"], params["beta2"], params["tau"]
+            np.array([row["maturity"]]), params["beta0"], params["beta1"], params["beta2"], params["tau"]
         )[0]
         error_bps = (model_y - row["yield_pct"]) * 100
         mat_str = f"{row['maturity']:.2f}yr"

@@ -28,6 +28,7 @@ import pandas as pd
 
 # ─── 1. SYNTHETIC FACTOR DATA ────────────────────────────────────────────────
 
+
 def generate_synthetic_factor_data(n_periods: int = 120, seed: int = 42) -> pd.DataFrame:
     """
     Generate synthetic monthly factor return data resembling Fama-French factors.
@@ -56,11 +57,13 @@ def generate_synthetic_factor_data(n_periods: int = 120, seed: int = 42) -> pd.D
     # Correlation structure between the three factors
     # Market and HML are mildly negatively correlated (growth stocks drive market cap-weighted index)
     # SMB and HML have low correlation
-    corr_matrix = np.array([
-        [1.00,  0.20, -0.30],   # MKT_RF row: correlations with SMB, HML
-        [0.20,  1.00,  0.05],   # SMB row
-        [-0.30, 0.05,  1.00],   # HML row
-    ])
+    corr_matrix = np.array(
+        [
+            [1.00, 0.20, -0.30],  # MKT_RF row: correlations with SMB, HML
+            [0.20, 1.00, 0.05],  # SMB row
+            [-0.30, 0.05, 1.00],  # HML row
+        ]
+    )
 
     # Monthly standard deviations in percent
     stds = np.array([4.5, 2.5, 2.5])
@@ -79,18 +82,25 @@ def generate_synthetic_factor_data(n_periods: int = 120, seed: int = 42) -> pd.D
     return pd.DataFrame(
         {
             "MKT_RF": factors[:, 0],  # Market excess return: Rm - Rf
-            "SMB": factors[:, 1],     # Small Minus Big: R_small - R_big
-            "HML": factors[:, 2],     # High Minus Low: R_value - R_growth
-            "RF": rf,                 # Risk-free rate (e.g., 3-month T-bill)
+            "SMB": factors[:, 1],  # Small Minus Big: R_small - R_big
+            "HML": factors[:, 2],  # High Minus Low: R_value - R_growth
+            "RF": rf,  # Risk-free rate (e.g., 3-month T-bill)
         }
     )
 
 
 # ─── 2. SYNTHETIC STOCK RETURNS ──────────────────────────────────────────────
 
-def generate_stock_returns(factor_data: pd.DataFrame, alpha: float,
-                            beta_mkt: float, beta_smb: float, beta_hml: float,
-                            idio_vol: float, seed: int = 0) -> pd.Series:
+
+def generate_stock_returns(
+    factor_data: pd.DataFrame,
+    alpha: float,
+    beta_mkt: float,
+    beta_smb: float,
+    beta_hml: float,
+    idio_vol: float,
+    seed: int = 0,
+) -> pd.Series:
     """
     Generate stock excess returns implied by the Fama-French 3-Factor model.
 
@@ -124,11 +134,7 @@ def generate_stock_returns(factor_data: pd.DataFrame, alpha: float,
     rng = np.random.default_rng(seed)
 
     # Systematic return: the part of the stock's return explained by the three factors
-    factor_return = (
-        beta_mkt * factor_data["MKT_RF"]
-        + beta_smb * factor_data["SMB"]
-        + beta_hml * factor_data["HML"]
-    )
+    factor_return = beta_mkt * factor_data["MKT_RF"] + beta_smb * factor_data["SMB"] + beta_hml * factor_data["HML"]
 
     # Idiosyncratic return: noise specific to this company (earnings surprises, news, etc.)
     # This component is uncorrelated with any factor and can be diversified away
@@ -139,6 +145,7 @@ def generate_stock_returns(factor_data: pd.DataFrame, alpha: float,
 
 
 # ─── 3. OLS REGRESSION ───────────────────────────────────────────────────────
+
 
 def run_ols_regression(y: pd.Series, X: pd.DataFrame) -> dict:
     """
@@ -181,8 +188,8 @@ def run_ols_regression(y: pd.Series, X: pd.DataFrame) -> dict:
     y_hat = X_arr @ beta
     residuals = y_arr.flatten() - y_hat
 
-    n = len(y_arr)               # number of observations
-    k = X_arr.shape[1]           # number of parameters (including intercept)
+    n = len(y_arr)  # number of observations
+    k = X_arr.shape[1]  # number of parameters (including intercept)
 
     # Residual sum of squares / degrees of freedom = unbiased variance estimate
     rss = float(np.sum(residuals**2))
@@ -211,6 +218,7 @@ def run_ols_regression(y: pd.Series, X: pd.DataFrame) -> dict:
 
 # ─── 4. RESULTS DISPLAY ──────────────────────────────────────────────────────
 
+
 def print_regression_table(reg_result: dict, label: str) -> None:
     """
     Print a formatted regression results table.
@@ -227,9 +235,9 @@ def print_regression_table(reg_result: dict, label: str) -> None:
     coefs = reg_result["coefficients"]
     tstats = reg_result["t_stats"]
 
-    print(f"\n  {'─'*52}")
+    print(f"\n  {'─' * 52}")
     print(f"  Regression: {label}")
-    print(f"  {'─'*52}")
+    print(f"  {'─' * 52}")
     print(f"  R-Squared:    {reg_result['r_squared']:.4f}  (fraction of variance explained)")
     print(f"  Residual Std: {reg_result['residual_std']:.4f}%/month (idiosyncratic risk)")
     print(f"  Observations: {reg_result['n_obs']}")
@@ -256,6 +264,7 @@ def print_regression_table(reg_result: dict, label: str) -> None:
 
 # ─── 5. FACTOR CONTRIBUTION ANALYSIS ────────────────────────────────────────
 
+
 def factor_contribution(reg_result: dict, factor_data: pd.DataFrame) -> pd.DataFrame:
     """
     Decompose the average monthly excess return into factor contributions.
@@ -278,7 +287,7 @@ def factor_contribution(reg_result: dict, factor_data: pd.DataFrame) -> pd.DataF
     coefs = reg_result["coefficients"]
 
     factor_means = {
-        "const": 1.0,             # constant's "mean" is 1 by definition
+        "const": 1.0,  # constant's "mean" is 1 by definition
         "MKT_RF": factor_data["MKT_RF"].mean(),
         "SMB": factor_data["SMB"].mean(),
         "HML": factor_data["HML"].mean(),
@@ -294,17 +303,20 @@ def factor_contribution(reg_result: dict, factor_data: pd.DataFrame) -> pd.DataF
             "SMB": "Size (SMB)",
             "HML": "Value (HML)",
         }
-        rows.append({
-            "Factor": factor_names.get(col, col),
-            "Beta": beta,
-            "Factor_Mean_%": mean_val if col != "const" else float("nan"),
-            "Contribution_%": contribution,
-        })
+        rows.append(
+            {
+                "Factor": factor_names.get(col, col),
+                "Beta": beta,
+                "Factor_Mean_%": mean_val if col != "const" else float("nan"),
+                "Contribution_%": contribution,
+            }
+        )
 
     return pd.DataFrame(rows)
 
 
 # ─── MAIN ────────────────────────────────────────────────────────────────────
+
 
 def main() -> None:
     print("=" * 60)
@@ -315,14 +327,18 @@ def main() -> None:
     print("\n[1] Generating 10 years (120 months) of synthetic factor data...")
     factors = generate_synthetic_factor_data(n_periods=120)
 
-    print(f"  Factor means (per month):  "
-          f"MKT={factors['MKT_RF'].mean():.2f}%  "
-          f"SMB={factors['SMB'].mean():.2f}%  "
-          f"HML={factors['HML'].mean():.2f}%")
-    print(f"  Factor std   (per month):  "
-          f"MKT={factors['MKT_RF'].std():.2f}%  "
-          f"SMB={factors['SMB'].std():.2f}%  "
-          f"HML={factors['HML'].std():.2f}%")
+    print(
+        f"  Factor means (per month):  "
+        f"MKT={factors['MKT_RF'].mean():.2f}%  "
+        f"SMB={factors['SMB'].mean():.2f}%  "
+        f"HML={factors['HML'].mean():.2f}%"
+    )
+    print(
+        f"  Factor std   (per month):  "
+        f"MKT={factors['MKT_RF'].std():.2f}%  "
+        f"SMB={factors['SMB'].std():.2f}%  "
+        f"HML={factors['HML'].std():.2f}%"
+    )
 
     # ── Step 2: Simulate two stocks with different factor profiles ──
     print("\n[2] Simulating two stocks with distinct factor exposures:")
@@ -331,17 +347,13 @@ def main() -> None:
     print("  Stock A: High-beta growth stock (large-cap tech-like)")
     print("    → alpha=0.05%, beta_mkt=1.2, beta_smb=–0.3 (large-cap), beta_hml=–0.5 (growth)")
     ret_a = generate_stock_returns(
-        factors, alpha=0.05, beta_mkt=1.2, beta_smb=-0.3, beta_hml=-0.5,
-        idio_vol=3.0, seed=1
+        factors, alpha=0.05, beta_mkt=1.2, beta_smb=-0.3, beta_hml=-0.5, idio_vol=3.0, seed=1
     )
 
     # Stock B: "Value small-cap" — positive SMB (small) and HML (cheap book value), lower market beta
     print("  Stock B: Small-cap value stock (cheap, under-followed)")
     print("    → alpha=0.10%, beta_mkt=0.8, beta_smb=+0.6 (small-cap), beta_hml=+0.7 (value)")
-    ret_b = generate_stock_returns(
-        factors, alpha=0.10, beta_mkt=0.8, beta_smb=0.6, beta_hml=0.7,
-        idio_vol=3.5, seed=2
-    )
+    ret_b = generate_stock_returns(factors, alpha=0.10, beta_mkt=0.8, beta_smb=0.6, beta_hml=0.7, idio_vol=3.5, seed=2)
 
     # ── Step 3: Prepare the design matrix ──
     # The design matrix X has 4 columns: constant (for alpha), MKT_RF, SMB, HML

@@ -16,9 +16,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-mp_path = os.path.join(
-    os.getcwd(), "UTILS - Advanced Python - Multiprocessing", "multiprocessing_tutorial.py"
-)
+mp_path = os.path.join(os.getcwd(), "UTILS - Advanced Python - Multiprocessing", "multiprocessing_tutorial.py")
 mp = load_module_from_path("multiprocessing_tutorial", mp_path)
 
 

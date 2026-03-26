@@ -11,9 +11,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-ps_path = os.path.join(
-    os.getcwd(), "UTILS - Finance - Position Sizing", "position_sizing_tutorial.py"
-)
+ps_path = os.path.join(os.getcwd(), "UTILS - Finance - Position Sizing", "position_sizing_tutorial.py")
 ps = load_module_from_path("position_sizing_tutorial", ps_path)
 
 
@@ -36,7 +34,7 @@ class TestFixedFractional(unittest.TestCase):
 
     def test_tighter_stop_smaller_position(self):
         """A tighter stop-loss should allow a smaller position for the same dollar risk."""
-        wide_stop = ps.fixed_fractional_sizing(100_000, 0.01, 0.05)   # 5% stop
+        wide_stop = ps.fixed_fractional_sizing(100_000, 0.01, 0.05)  # 5% stop
         tight_stop = ps.fixed_fractional_sizing(100_000, 0.01, 0.10)  # 10% stop
         self.assertGreater(wide_stop["position_value"], tight_stop["position_value"])
 

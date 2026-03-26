@@ -21,6 +21,7 @@ import pandas as pd
 
 # ─── 1. SYNTHETIC DATA ───────────────────────────────────────────────────────
 
+
 def generate_mean_reverting_prices(n_points: int = 300, seed: int = 42) -> pd.Series:
     """
     Generate a synthetic price series that exhibits mean-reverting behaviour.
@@ -47,10 +48,10 @@ def generate_mean_reverting_prices(n_points: int = 300, seed: int = 42) -> pd.Se
     np.random.seed(seed)
 
     # OU process parameters — tuned to look like a realistic equity price
-    theta = 100.0   # long-run mean: think of this as "fair value"
-    kappa = 0.05    # mean-reversion speed (5% per day pulls it toward theta)
-    sigma = 1.2     # noise level: controls daily price jitter
-    dt = 1.0        # time step = 1 trading day
+    theta = 100.0  # long-run mean: think of this as "fair value"
+    kappa = 0.05  # mean-reversion speed (5% per day pulls it toward theta)
+    sigma = 1.2  # noise level: controls daily price jitter
+    dt = 1.0  # time step = 1 trading day
 
     prices = np.zeros(n_points)
     prices[0] = theta  # start at fair value
@@ -67,8 +68,8 @@ def generate_mean_reverting_prices(n_points: int = 300, seed: int = 42) -> pd.Se
 
 # ─── 2. BOLLINGER BANDS ──────────────────────────────────────────────────────
 
-def calculate_bollinger_bands(prices: pd.Series, window: int = 20,
-                               num_std: float = 2.0) -> pd.DataFrame:
+
+def calculate_bollinger_bands(prices: pd.Series, window: int = 20, num_std: float = 2.0) -> pd.DataFrame:
     """
     Calculate Bollinger Bands around a rolling mean.
 
@@ -114,6 +115,7 @@ def calculate_bollinger_bands(prices: pd.Series, window: int = 20,
 
 # ─── 3. RSI ──────────────────────────────────────────────────────────────────
 
+
 def calculate_rsi(prices: pd.Series, period: int = 14) -> pd.Series:
     """
     Calculate the Relative Strength Index (RSI) as a momentum confirmation filter.
@@ -141,8 +143,8 @@ def calculate_rsi(prices: pd.Series, period: int = 14) -> pd.Series:
     delta = prices.diff()
 
     # Separate daily price changes into gains and losses
-    gains = delta.clip(lower=0)     # positive changes only; losses are zeroed
-    losses = -delta.clip(upper=0)   # negative changes flipped positive; gains zeroed
+    gains = delta.clip(lower=0)  # positive changes only; losses are zeroed
+    losses = -delta.clip(upper=0)  # negative changes flipped positive; gains zeroed
 
     # Exponential smoothing of gains and losses (Wilder's method)
     avg_gain = gains.ewm(span=period, adjust=False).mean()
@@ -157,8 +159,10 @@ def calculate_rsi(prices: pd.Series, period: int = 14) -> pd.Series:
 
 # ─── 4. SIGNAL GENERATION ────────────────────────────────────────────────────
 
-def generate_signals(prices: pd.Series, bands: pd.DataFrame, rsi: pd.Series,
-                     rsi_oversold: float = 35.0, rsi_overbought: float = 65.0) -> pd.Series:
+
+def generate_signals(
+    prices: pd.Series, bands: pd.DataFrame, rsi: pd.Series, rsi_oversold: float = 35.0, rsi_overbought: float = 65.0
+) -> pd.Series:
     """
     Generate mean-reversion trading signals using dual confirmation.
 
@@ -223,6 +227,7 @@ def generate_signals(prices: pd.Series, bands: pd.DataFrame, rsi: pd.Series,
 
 # ─── 5. BACKTESTING ──────────────────────────────────────────────────────────
 
+
 def backtest(prices: pd.Series, signals: pd.Series) -> pd.DataFrame:
     """
     Run a simple backtest applying yesterday's signal to today's return.
@@ -260,6 +265,7 @@ def backtest(prices: pd.Series, signals: pd.Series) -> pd.DataFrame:
 
 
 # ─── 6. PERFORMANCE METRICS ──────────────────────────────────────────────────
+
 
 def performance_summary(results: pd.DataFrame) -> None:
     """
@@ -304,6 +310,7 @@ def performance_summary(results: pd.DataFrame) -> None:
 
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 
+
 def main() -> None:
     print("=" * 60)
     print("MEAN REVERSION STRATEGY – BOLLINGER BANDS + RSI")
@@ -327,7 +334,9 @@ def main() -> None:
     signals = generate_signals(prices, bands, rsi)
     long_days = (signals == 1).sum()
     short_days = (signals == -1).sum()
-    print(f"  Days long: {long_days}  |  Days short: {short_days}  |  Days flat: {len(signals) - long_days - short_days}")
+    print(
+        f"  Days long: {long_days}  |  Days short: {short_days}  |  Days flat: {len(signals) - long_days - short_days}"
+    )
 
     # Step 5 — Backtest
     print("[5] Running backtest (signal shifted 1 day to simulate realistic execution)...")

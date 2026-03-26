@@ -25,8 +25,8 @@ import pandas as pd
 
 # ─── 1. FIXED FRACTIONAL POSITION SIZING ────────────────────────────────────
 
-def fixed_fractional_sizing(portfolio_value: float, risk_per_trade_pct: float,
-                             stop_loss_pct: float) -> dict:
+
+def fixed_fractional_sizing(portfolio_value: float, risk_per_trade_pct: float, stop_loss_pct: float) -> dict:
     """
     Calculate position size using the Fixed Fractional method.
 
@@ -73,6 +73,7 @@ def fixed_fractional_sizing(portfolio_value: float, risk_per_trade_pct: float,
 
 # ─── 2. KELLY CRITERION ──────────────────────────────────────────────────────
 
+
 def kelly_criterion(win_prob: float, win_loss_ratio: float) -> float:
     """
     Calculate the Kelly optimal fraction of capital to bet per trade.
@@ -117,8 +118,9 @@ def kelly_criterion(win_prob: float, win_loss_ratio: float) -> float:
     return max(0.0, kelly_f)
 
 
-def kelly_growth_simulation(kelly_f: float, win_prob: float, win_loss_ratio: float,
-                             n_trades: int = 500, seed: int = 42) -> pd.DataFrame:
+def kelly_growth_simulation(
+    kelly_f: float, win_prob: float, win_loss_ratio: float, n_trades: int = 500, seed: int = 42
+) -> pd.DataFrame:
     """
     Simulate portfolio growth under Full Kelly, Half Kelly, Quarter Kelly, and Fixed 1%.
 
@@ -171,9 +173,14 @@ def kelly_growth_simulation(kelly_f: float, win_prob: float, win_loss_ratio: flo
 
 # ─── 3. VOLATILITY TARGETING ─────────────────────────────────────────────────
 
-def volatility_targeting(target_annual_vol: float, asset_annual_vol: float,
-                          portfolio_value: float, asset_price: float,
-                          shares_per_lot: int = 1) -> dict:
+
+def volatility_targeting(
+    target_annual_vol: float,
+    asset_annual_vol: float,
+    portfolio_value: float,
+    asset_price: float,
+    shares_per_lot: int = 1,
+) -> dict:
     """
     Calculate the position size needed to achieve a target portfolio volatility.
 
@@ -220,9 +227,16 @@ def volatility_targeting(target_annual_vol: float, asset_annual_vol: float,
 
 # ─── 4. RISK OF RUIN ────────────────────────────────────────────────────────
 
-def risk_of_ruin(win_prob: float, win_loss_ratio: float, risk_per_trade_pct: float,
-                 n_simulations: int = 10000, ruin_threshold: float = 0.50,
-                 n_trades: int = 1000, seed: int = 42) -> float:
+
+def risk_of_ruin(
+    win_prob: float,
+    win_loss_ratio: float,
+    risk_per_trade_pct: float,
+    n_simulations: int = 10000,
+    ruin_threshold: float = 0.50,
+    n_trades: int = 1000,
+    seed: int = 42,
+) -> float:
     """
     Estimate the Risk of Ruin via Monte Carlo simulation.
 
@@ -277,6 +291,7 @@ def risk_of_ruin(win_prob: float, win_loss_ratio: float, risk_per_trade_pct: flo
 
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 
+
 def main() -> None:
     print("=" * 60)
     print("POSITION SIZING STRATEGIES")
@@ -285,18 +300,19 @@ def main() -> None:
     # ── 1. Fixed Fractional ──
     print("\n[1] Fixed Fractional Position Sizing")
     print("  Rule: risk exactly 1% of portfolio per trade with a 5% stop-loss.")
-    ff = fixed_fractional_sizing(portfolio_value=100_000, risk_per_trade_pct=0.01,
-                                  stop_loss_pct=0.05)
+    ff = fixed_fractional_sizing(portfolio_value=100_000, risk_per_trade_pct=0.01, stop_loss_pct=0.05)
     print(f"  Portfolio value:         ${ff['portfolio_value']:>10,.0f}")
     print(f"  Dollar risk (1%):        ${ff['dollar_risk']:>10,.0f}")
-    print(f"  Position size:           ${ff['position_value']:>10,.0f}  "
-          f"({ff['position_pct_of_portfolio']:.0%} of portfolio)")
+    print(
+        f"  Position size:           ${ff['position_value']:>10,.0f}  "
+        f"({ff['position_pct_of_portfolio']:.0%} of portfolio)"
+    )
     print("  Interpretation: buy $20,000 of stock with a $1,000 max loss.")
 
     # ── 2. Kelly Criterion ──
     print("\n[2] Kelly Criterion")
-    win_p = 0.55        # 55% of trades are winners
-    wl_ratio = 1.5      # average winner is 1.5× the average loser
+    win_p = 0.55  # 55% of trades are winners
+    wl_ratio = 1.5  # average winner is 1.5× the average loser
     kelly_f = kelly_criterion(win_p, wl_ratio)
     half_kelly = kelly_f / 2
 
@@ -316,15 +332,14 @@ def main() -> None:
     # ── 3. Volatility Targeting ──
     print("\n[3] Volatility Targeting")
     print("  Goal: position the portfolio so annual volatility = 10%, regardless of asset vol.")
-    vt = volatility_targeting(
-        target_annual_vol=0.10, asset_annual_vol=0.25,
-        portfolio_value=500_000, asset_price=150.0
-    )
+    vt = volatility_targeting(target_annual_vol=0.10, asset_annual_vol=0.25, portfolio_value=500_000, asset_price=150.0)
     print(f"  Portfolio:                ${vt['portfolio_value']:>10,.0f}")
     print(f"  Asset annual volatility:   {vt['asset_vol']:.0%}")
     print(f"  Target portfolio vol:      {vt['target_vol']:.0%}")
-    print(f"  Required notional:        ${vt['notional_exposure']:>10,.0f}  "
-          f"({vt['notional_exposure'] / vt['portfolio_value']:.0%} of portfolio)")
+    print(
+        f"  Required notional:        ${vt['notional_exposure']:>10,.0f}  "
+        f"({vt['notional_exposure'] / vt['portfolio_value']:.0%} of portfolio)"
+    )
     print(f"  Shares to buy:             {vt['n_shares']:,}")
     print(f"  Actual portfolio vol:      {vt['actual_portfolio_vol']:.2%}  (after rounding)")
     print("  Key insight: asset vol is 25% but we target 10%, so we only invest 40% of portfolio.")

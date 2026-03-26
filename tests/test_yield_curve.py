@@ -13,9 +13,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-yc_path = os.path.join(
-    os.getcwd(), "UTILS - Finance - Yield Curve", "yield_curve_tutorial.py"
-)
+yc_path = os.path.join(os.getcwd(), "UTILS - Finance - Yield Curve", "yield_curve_tutorial.py")
 yc = load_module_from_path("yield_curve_tutorial", yc_path)
 
 
@@ -84,8 +82,7 @@ class TestYieldCurve(unittest.TestCase):
         spots = np.array([4.0, 4.5, 5.0])
         fwd = yc.compute_forward_rates(mats, spots)
         # First forward rate = first spot rate (no prior period to compute a forward from)
-        self.assertAlmostEqual(fwd["Forward_Rate_Pct"].iloc[0],
-                               spots[0], places=3)
+        self.assertAlmostEqual(fwd["Forward_Rate_Pct"].iloc[0], spots[0], places=3)
 
     def test_classify_normal_curve(self):
         """A curve with long > short by more than 0.3% should be classified as normal."""

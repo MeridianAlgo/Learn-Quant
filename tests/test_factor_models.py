@@ -14,9 +14,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-fm_path = os.path.join(
-    os.getcwd(), "UTILS - Quantitative Methods - Factor Models", "factor_models_tutorial.py"
-)
+fm_path = os.path.join(os.getcwd(), "UTILS - Quantitative Methods - Factor Models", "factor_models_tutorial.py")
 fm = load_module_from_path("factor_models_tutorial", fm_path)
 
 
@@ -39,20 +37,20 @@ class TestFactorModels(unittest.TestCase):
     def test_stock_returns_length(self):
         """Generated stock returns should have the same length as factor data."""
         factors = fm.generate_synthetic_factor_data(n_periods=120)
-        returns = fm.generate_stock_returns(factors, alpha=0.05, beta_mkt=1.0,
-                                            beta_smb=0.0, beta_hml=0.0,
-                                            idio_vol=2.0, seed=42)
+        returns = fm.generate_stock_returns(
+            factors, alpha=0.05, beta_mkt=1.0, beta_smb=0.0, beta_hml=0.0, idio_vol=2.0, seed=42
+        )
         self.assertEqual(len(returns), 120)
 
     def test_zero_idio_returns_deterministic(self):
         """With idio_vol=0, returns should be fully determined by factors."""
         factors = fm.generate_synthetic_factor_data(n_periods=50, seed=3)
-        returns_a = fm.generate_stock_returns(factors, alpha=0.1, beta_mkt=1.0,
-                                               beta_smb=0.5, beta_hml=0.3,
-                                               idio_vol=0.0, seed=99)
-        returns_b = fm.generate_stock_returns(factors, alpha=0.1, beta_mkt=1.0,
-                                               beta_smb=0.5, beta_hml=0.3,
-                                               idio_vol=0.0, seed=0)
+        returns_a = fm.generate_stock_returns(
+            factors, alpha=0.1, beta_mkt=1.0, beta_smb=0.5, beta_hml=0.3, idio_vol=0.0, seed=99
+        )
+        returns_b = fm.generate_stock_returns(
+            factors, alpha=0.1, beta_mkt=1.0, beta_smb=0.5, beta_hml=0.3, idio_vol=0.0, seed=0
+        )
         # With no idiosyncratic noise, returns are deterministic regardless of seed
         pd.testing.assert_series_equal(returns_a, returns_b)
 
@@ -103,9 +101,9 @@ class TestFactorModels(unittest.TestCase):
     def test_factor_contribution_sums(self):
         """Factor contributions should sum to approximately the average excess return."""
         factors = fm.generate_synthetic_factor_data(n_periods=200, seed=5)
-        returns = fm.generate_stock_returns(factors, alpha=0.05, beta_mkt=1.0,
-                                             beta_smb=0.3, beta_hml=0.2,
-                                             idio_vol=1.0, seed=10)
+        returns = fm.generate_stock_returns(
+            factors, alpha=0.05, beta_mkt=1.0, beta_smb=0.3, beta_hml=0.2, idio_vol=1.0, seed=10
+        )
         X = factors[["MKT_RF", "SMB", "HML"]].copy()
         X.insert(0, "const", 1.0)
         result = fm.run_ols_regression(returns, X)

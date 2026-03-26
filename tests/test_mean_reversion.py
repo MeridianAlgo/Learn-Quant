@@ -14,9 +14,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-mr_path = os.path.join(
-    os.getcwd(), "UTILS - Strategies - Mean Reversion", "mean_reversion_strategy.py"
-)
+mr_path = os.path.join(os.getcwd(), "UTILS - Strategies - Mean Reversion", "mean_reversion_strategy.py")
 mr = load_module_from_path("mean_reversion_strategy", mr_path)
 
 
