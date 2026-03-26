@@ -1,10 +1,10 @@
 # Quantitative Methods – Regression Analysis
 
-## 📋 Overview
+## Overview
 
 Regression analysis is the statistical "Swiss Army Knife" of quantitative finance. It allows you to quantify relationships between variables, such as how a stock moves relative to the market (Beta) or how factors drive returns.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Linear Regression**
 - **Equation**: $y = \alpha + \beta x + \epsilon$
@@ -21,7 +21,7 @@ Regression analysis is the statistical "Swiss Army Knife" of quantitative financ
 - **t-statistic**: Is the coefficient significantly different from zero?
 - **Standard Error**: The uncertainty in the estimate.
 
-## 💻 Key Examples
+## Key Examples
 
 ### Calculating Beta
 ```python
@@ -43,16 +43,16 @@ X = np.column_stack([np.ones(N), market, smb, hml])
 beta = np.linalg.inv(X.T @ X) @ X.T @ y
 ```
 
-## 📂 Files
+## Files
 - `regression_tutorial.py`: Interactive tutorial with examples
 
-## 🚀 How to Run
+## How to Run
 ```bash
 pip install numpy scipy
 python regression_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Beta Calculation (CAPM)
 Determine how risky a stock is compared to the S&P 500. High beta (>1) means more volatile; low beta (<1) means more stable.
@@ -66,7 +66,7 @@ Find the optimal hedge ratio between two correlated assets (e.g., Coke vs. Pepsi
 ### 4. Predictive Modeling
 Forecast future returns based on lagged indicators (e.g., dividend yield, interest rates), though this is notoriously difficult!
 
-## 💡 Best Practices
+## Best Practices
 
 - **Check Assumptions**: Linear regression assumes linear relationship, constant variance (homoscedasticity), and independent errors.
 - **Look at Residuals**: If residuals show a pattern, your model is missing something.

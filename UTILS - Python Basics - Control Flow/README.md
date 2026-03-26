@@ -1,10 +1,10 @@
 # Python Basics – Control Flow Utility
 
-## 📋 Overview
+## Overview
 
 This utility teaches Python control flow structures essential for building trading algorithms and financial applications. Master conditionals, loops, and comprehensions to write efficient, readable code.
 
-## 🎯 Concepts Covered
+## Concepts Covered
 
 ### **Conditional Statements**
 - **if/elif/else**: Make decisions based on conditions
@@ -34,18 +34,18 @@ This utility teaches Python control flow structures essential for building tradi
 - **continue**: Skip current iteration
 - **Use cases**: Early termination, filtering
 
-## 💻 Key Examples
+## Key Examples
 
 ### Risk Assessment with Conditionals
 ```python
 volatility = 0.25
 
 if volatility < 0.15:
-    risk_level = "Low"
+ risk_level = "Low"
 elif volatility < 0.30:
-    risk_level = "Medium"
+ risk_level = "Medium"
 else:
-    risk_level = "High"
+ risk_level = "High"
 ```
 
 ### Portfolio Iteration
@@ -53,79 +53,79 @@ else:
 portfolio = {"AAPL": 50, "GOOGL": 20, "MSFT": 30}
 
 for ticker, shares in portfolio.items():
-    print(f"{ticker}: {shares} shares")
+ print(f"{ticker}: {shares} shares")
 ```
 
 ### List Comprehensions for Returns
 ```python
 prices = [100, 102, 98, 101, 105]
-pct_changes = [(prices[i] - prices[i-1]) / prices[i-1] 
-               for i in range(1, len(prices))]
+pct_changes = [(prices[i] - prices[i-1]) / prices[i-1]
+ for i in range(1, len(prices))]
 ```
 
-## 📂 Files
+## Files
 - `control_flow_tutorial.py`: Interactive tutorial with finance examples
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python control_flow_tutorial.py
 ```
 
-## 🧠 Practice Ideas
+## Practice Ideas
 
 1. **Risk Management System**
-   - Use conditionals to create a multi-level risk assessment
-   - Include position size limits based on account balance
+ - Use conditionals to create a multi-level risk assessment
+ - Include position size limits based on account balance
 
 2. **Backtesting Loop**
-   - Iterate through historical prices
-   - Track entry/exit signals and P&L
+ - Iterate through historical prices
+ - Track entry/exit signals and P&L
 
 3. **Portfolio Rebalancing**
-   - Check if any allocation exceeds tolerance
-   - Calculate required trades to rebalance
+ - Check if any allocation exceeds tolerance
+ - Calculate required trades to rebalance
 
 4. **Watchlist Filter**
-   - Use list comprehension to filter stocks by criteria
-   - (e.g., price > 50, volume > 1M, PE ratio < 20)
+ - Use list comprehension to filter stocks by criteria
+ - (e.g., price > 50, volume > 1M, PE ratio < 20)
 
 5. **Compound Interest Calculator**
-   - Calculate balance year-by-year with a loop
-   - Find how many years to reach a target amount
+ - Calculate balance year-by-year with a loop
+ - Find how many years to reach a target amount
 
-## 📚 Next Steps
+## Next Steps
 - Move to `UTILS - Python Basics - Functions/` to learn function definitions
 - Explore `UTILS - Data Structures - Lists/` for advanced list operations
 - Apply control flow in `UTILS - Technical Indicators/` for real algorithms
 
-## 💡 Financial Applications
+## Financial Applications
 
 ### Trading Signals
 ```python
 # Multi-condition signal generation
 if price > moving_average_50 and volume > avg_volume:
-    if rsi < 70:
-        signal = "BUY"
-    else:
-        signal = "OVERBOUGHT"
+ if rsi < 70:
+ signal = "BUY"
+ else:
+ signal = "OVERBOUGHT"
 else:
-    signal = "HOLD"
+ signal = "HOLD"
 ```
 
 ### Stop Loss Monitoring
 ```python
 # Check prices until stop loss triggered
 while current_price > stop_loss_price and not position_closed:
-    current_price = get_latest_price()
-    if current_price <= stop_loss_price:
-        close_position()
+ current_price = get_latest_price()
+ if current_price <= stop_loss_price:
+ close_position()
 ```
 
 ### Portfolio Analysis
 ```python
 # Find all holdings above target allocation
-overweight = [ticker for ticker, allocation in allocations.items() 
-              if allocation > target_allocation[ticker]]
+overweight = [ticker for ticker, allocation in allocations.items()
+ if allocation > target_allocation[ticker]]
 ```
 
 ---

@@ -1,9 +1,9 @@
 # Sorting Algorithms
 
-## 📋 Overview
+## Overview
 A comprehensive implementation of fundamental sorting algorithms with detailed explanations, complexity analysis, and performance comparisons.
 
-## 🚀 Algorithms Included
+## Algorithms Included
 
 ### Basic Sorting (O(n²))
 - **Bubble Sort**: Simple comparison-based algorithm, good for educational purposes
@@ -15,7 +15,7 @@ A comprehensive implementation of fundamental sorting algorithms with detailed e
 - **Quick Sort**: Efficient in-place sorting with good average performance
 - **Heap Sort**: Uses binary heap structure, guaranteed O(n log n) performance
 
-## 🧮 Complexity Analysis
+## Complexity Analysis
 
 | Algorithm | Best | Average | Worst | Space | Stable |
 |-----------|------|---------|-------|-------|--------|
@@ -26,7 +26,7 @@ A comprehensive implementation of fundamental sorting algorithms with detailed e
 | Quick Sort | O(n log n) | O(n log n) | O(n²) | O(log n) | No |
 | Heap Sort | O(n log n) | O(n log n) | O(n log n) | O(1) | No |
 
-## 🎯 Usage Examples
+## Usage Examples
 
 ```python
 from sorting_algorithms import bubble_sort, quick_sort, merge_sort
@@ -43,14 +43,14 @@ from sorting_algorithms import compare_sorting_algorithms
 results = compare_sorting_algorithms(data)
 ```
 
-## 🧪 Testing
+## Testing
 Run the demonstration script to see all algorithms in action:
 
 ```bash
 python sorting_algorithms.py
 ```
 
-## 📚 Learning Points
+## Learning Points
 - **Divide and Conquer**: Merge Sort and Quick Sort
 - **In-place Sorting**: Quick Sort, Heap Sort, Selection Sort
 - **Stability**: Why it matters for equal elements

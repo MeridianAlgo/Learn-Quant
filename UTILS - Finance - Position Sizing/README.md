@@ -1,10 +1,10 @@
 # Finance – Position Sizing
 
-## 📋 Overview
+## Overview
 
 **Position sizing is the most underrated skill in quantitative trading.** A strategy with a mediocre edge and excellent position sizing will outperform a brilliant strategy with reckless sizing. This module covers four fundamental frameworks every trader and quant must understand before risking real capital.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Why Position Sizing Matters**
 - Two traders with the *same strategy* and the *same edge* can have dramatically different outcomes based solely on how much they bet per trade.
@@ -28,7 +28,7 @@ Example: Risk 1% of $100,000 with a 5% stop → buy $20,000 of stock.
 The mathematically optimal bet fraction for maximum long-run compound growth:
 
 ```
-f* = p – q/b  =  p – (1 – p) / (avg_win / avg_loss)
+f* = p – q/b = p – (1 – p) / (avg_win / avg_loss)
 ```
 
 | Term | Meaning |
@@ -57,15 +57,15 @@ Risk of Ruin ≈ ((1 – edge) / (1 + edge))^(capital / risk_per_trade)
 
 In practice, estimated via Monte Carlo over thousands of simulated trading careers.
 
-## 📂 Files
+## Files
 - `position_sizing_tutorial.py`: Fixed fractional calculator, Kelly criterion with growth simulation, volatility targeting, and Monte Carlo Risk of Ruin.
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python position_sizing_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Discretionary Trading
 - Fixed fractional (1–2% risk per trade) is the standard rule taught in all professional trading courses.
@@ -83,7 +83,7 @@ python position_sizing_tutorial.py
 - Risk Parity: every asset contributes equally to portfolio volatility via inverse-vol weighting.
 - Maximum Sharpe portfolios from mean-variance optimisation often implicitly implement Kelly logic.
 
-## 💡 Best Practices
+## Best Practices
 
 - **Never use Full Kelly in practice**: estimation error in win_prob and win_loss_ratio is significant, and Kelly's variance is unbounded near the optimum.
 - **Risk of Ruin > 5%? Don't trade**: any strategy with meaningful ruin probability should be either improved or sized down.

@@ -1,10 +1,10 @@
 # Quantitative Methods – Factor Models
 
-## 📋 Overview
+## Overview
 
 Factor models explain asset returns as a linear combination of systematic **factors** plus a stock-specific residual. The **Fama-French 3-Factor Model (1992)** extended CAPM by adding two well-documented risk premia: the **Size premium** (SMB) and the **Value premium** (HML), dramatically improving the explanation of cross-sectional stock returns.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Evolution: CAPM → 3-Factor**
 
@@ -37,7 +37,7 @@ R_i – RF = α + β_MKT(MKT–RF) + β_SMB·SMB + β_HML·HML + ε
 | β_HML | Value beta | Positive = value tilt; Negative = growth tilt |
 | ε | Residual | Idiosyncratic, diversifiable risk |
 
-## 💻 Logic Implemented
+## Logic Implemented
 
 1. **Correlated factor simulation** — Multivariate normal with realistic covariance
 2. **Stock return generation** — True model + idiosyncratic noise
@@ -45,15 +45,15 @@ R_i – RF = α + β_MKT(MKT–RF) + β_SMB·SMB + β_HML·HML + ε
 4. **t-statistics** — Statistical significance of each factor loading
 5. **Performance attribution** — Decompose average return into factor contributions
 
-## 📂 Files
+## Files
 - `factor_models_tutorial.py`: Factor data generation, OLS regression, significance testing, and performance attribution.
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python factor_models_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Portfolio Risk Decomposition
 - "How much of my hedge fund's return is beta to the market vs. true alpha?"
@@ -75,7 +75,7 @@ python factor_models_tutorial.py
 - Academic literature has identified 300+ potential factors.
 - Most don't survive out-of-sample. The three Fama-French factors are among the most robust.
 
-## 💡 Best Practices
+## Best Practices
 
 - **Use monthly data**: Daily factor returns are noisier; monthly gives better signal-to-noise for factor regressions.
 - **Check R-squared**: < 0.40 suggests the factors don't explain this stock well (could be a niche sector or anomaly).

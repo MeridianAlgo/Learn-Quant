@@ -1,12 +1,12 @@
 # Strategies – Mean Reversion
 
-## 📋 Overview
+## Overview
 
 Mean reversion is the statistical tendency for an asset's price to return to its historical average after deviating from it. While Momentum strategies bet on *continuation*, Mean Reversion strategies bet on *reversal* — buying when something is "too cheap" and selling when it is "too expensive" relative to recent history.
 
 This utility implements a **Bollinger Band + RSI Mean Reversion Strategy** using a synthetic Ornstein-Uhlenbeck price process.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Mean Reversion**
 - Rooted in the statistical concept of *regression to the mean*.
@@ -29,7 +29,7 @@ This utility implements a **Bollinger Band + RSI Mean Reversion Strategy** using
 - Used in interest rate models (Vasicek), commodity pricing, and pairs trading.
 - Governed by: `dx = kappa * (theta - x) * dt + sigma * dW`
 
-## 💻 Logic Implemented
+## Logic Implemented
 
 **Entry signals (both conditions required):**
 - **Long (+1)**: Price < Lower Bollinger Band **AND** RSI < 35
@@ -39,15 +39,15 @@ This utility implements a **Bollinger Band + RSI Mean Reversion Strategy** using
 - Exit Long when price reverts above the SMA (fair value reached).
 - Exit Short when price reverts below the SMA.
 
-## 📂 Files
+## Files
 - `mean_reversion_strategy.py`: OU data generation, Bollinger Bands, RSI, signal logic, backtest engine, and performance metrics.
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python mean_reversion_strategy.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Statistical Arbitrage
 - Trade the spread between two cointegrated assets (e.g., pairs trading).
@@ -65,7 +65,7 @@ python mean_reversion_strategy.py
 - Market makers implicitly bet on short-term mean reversion.
 - They buy at the bid and sell at the ask, profiting when prices revert within the spread.
 
-## 💡 Best Practices
+## Best Practices
 
 - **Market Regime Detection**: Mean reversion strategies fail badly in strong trends. Use a regime filter (e.g., ADX indicator) to disable the strategy when the market is trending.
 - **Transaction Costs**: Mean reversion often requires many trades; commissions and slippage must be accounted for.

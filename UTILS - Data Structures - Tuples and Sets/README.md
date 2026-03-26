@@ -1,10 +1,10 @@
 # Data Structures – Tuples and Sets
 
-## 📋 Overview
+## Overview
 
 Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries. Understanding when to use them is key to writing efficient, Pythonic code for financial applications.
 
-## 🎯 Key Concepts
+## Key Concepts
 
 ### **Tuples `(item1, item2)`**
 - **Immutable**: Cannot be changed after creation
@@ -20,7 +20,7 @@ Tuples and Sets are fundamental Python data structures that complement Lists and
 - **Math Operations**: Union, intersection, difference
 - **Use cases**: Removing duplicates, membership testing, filtering
 
-## 💻 Key Examples
+## Key Examples
 
 ### Tuples
 ```python
@@ -32,7 +32,7 @@ ticker, price, shares = trade
 
 # Returning multiple values
 def get_range():
-    return 10.0, 20.0  # Returns a tuple
+ return 10.0, 20.0 # Returns a tuple
 
 low, high = get_range()
 ```
@@ -41,11 +41,11 @@ low, high = get_range()
 ```python
 # Unique collection
 tickers = {"AAPL", "GOOGL", "AAPL", "MSFT"}
-print(tickers)  # {'AAPL', 'MSFT', 'GOOGL'}
+print(tickers) # {'AAPL', 'MSFT', 'GOOGL'}
 
 # Fast lookup
 if "AAPL" in tickers:
-    print("Found!")
+ print("Found!")
 ```
 
 ### Set Operations
@@ -54,7 +54,7 @@ portfolio_a = {"AAPL", "GOOGL", "MSFT"}
 portfolio_b = {"MSFT", "AMZN", "TSLA"}
 
 # Intersection (In both)
-both = portfolio_a & portfolio_b  # {'MSFT'}
+both = portfolio_a & portfolio_b # {'MSFT'}
 
 # Union (In either)
 all_stocks = portfolio_a | portfolio_b
@@ -63,15 +63,15 @@ all_stocks = portfolio_a | portfolio_b
 only_a = portfolio_a - portfolio_b
 ```
 
-## 📂 Files
+## Files
 - `tuples_sets_tutorial.py`: Interactive tutorial with examples
 
-## 🚀 How to Run
+## How to Run
 ```bash
 python tuples_sets_tutorial.py
 ```
 
-## 🧠 Financial Applications
+## Financial Applications
 
 ### 1. Trade Records (Tuples)
 Store immutable trade execution details that shouldn't change:
@@ -82,7 +82,7 @@ execution = (order_id, timestamp, symbol, price, quantity)
 ### 2. Watchlist Management (Sets)
 Maintain a list of unique symbols to monitor:
 ```python
-watchlist.add("AAPL")  # Won't add duplicate if already exists
+watchlist.add("AAPL") # Won't add duplicate if already exists
 ```
 
 ### 3. Portfolio Reconciliation (Set Ops)
@@ -91,20 +91,20 @@ Compare expected vs actual holdings:
 expected_holdings = {"AAPL", "GOOGL"}
 actual_holdings = {"AAPL", "MSFT"}
 
-missing = expected_holdings - actual_holdings  # {'GOOGL'}
-unexpected = actual_holdings - expected_holdings  # {'MSFT'}
+missing = expected_holdings - actual_holdings # {'GOOGL'}
+unexpected = actual_holdings - expected_holdings # {'MSFT'}
 ```
 
 ### 4. Correlation Keys (Tuples)
 Use tuples as dictionary keys for pair data:
 ```python
 correlations = {
-    ("AAPL", "MSFT"): 0.75,
-    ("GOOGL", "AMZN"): 0.82
+ ("AAPL", "MSFT"): 0.75,
+ ("GOOGL", "AMZN"): 0.82
 }
 ```
 
-## 💡 Best Practices
+## Best Practices
 
 - Use **Tuples** for heterogeneous data (different types) that belongs together (like a struct).
 - Use **Lists** for homogeneous data (same type) that may change size.
