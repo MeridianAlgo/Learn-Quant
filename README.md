@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance & Python (v1.8.0)
+# Learn-Quant: Master Quantitative Finance & Python (v1.9.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
@@ -8,12 +8,12 @@
 
 ## Overview
 
-Learn-Quant is a massive, curated collection of over 50+ self-contained modules designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository provides the building blocks you need.
+Learn-Quant is a massive, curated collection of over 55+ self-contained modules designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository provides the building blocks you need.
 
 ### Key Learning Outcomes
-- **Master Quant Strategies**: Implement Pairs Trading, Momentum, Mean Reversion, and more.
+- **Master Quant Strategies**: Implement Pairs Trading, Momentum, Mean Reversion, Position Sizing, and more.
 - **Engineer Robust Systems**: Learn AsyncIO, Context Managers, Decorators, and advanced OOP.
-- **Deep Dive into Math**: Kalman Filters, Stochastic Processes, Linear Algebra for Portfolio Theory.
+- **Deep Dive into Math**: Kalman Filters, Stochastic Processes, Factor Models, Linear Algebra for Portfolio Theory.
 - **Build Core Tools**: Create your own Option Pricers, Risk Engines (VaR), and Backtesting Simulators.
 - **CS Algorithms**: Understand how Sorting, Graph Theory, and Dynamic Programming apply to market data.
 
@@ -45,6 +45,7 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 - `UTILS - Advanced Python - Context Managers`: Handling database locks and atomic transactions.
 - `UTILS - Advanced Python - Decorators`: Custom logging, timing, and error handling wrappers.
 - `UTILS - Advanced Python - Error Handling`: Robust systems that never crash mid-trade.
+- `UTILS - Advanced Python - Multiprocessing`: Parallel Monte Carlo, backtests, and parameter sweeps across all CPU cores.
 
 ### Level 4: Quantitative Methods
 *The mathematics of the markets.*
@@ -53,13 +54,17 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 - `UTILS - Quantitative Methods - Statistics`: Hypothesis testing, stationarity, and cointegration.
 - `UTILS - Quantitative Methods - Regression`: Factor models & Alpha generation.
 - `UTILS - Quantitative Methods - Linear Algebra`: Portfolio optimization & risk modelling.
+- `UTILS - Quantitative Methods - Factor Models`: Fama-French 3-Factor model, factor regression, alpha decomposition, and performance attribution.
 
 ### Level 5: Strategies & Finance
 *Applied quantitative finance.*
 - `UTILS - Strategies - Pairs Trading`: Statistical arbitrage & mean reversion.
 - `UTILS - Strategies - Momentum Trading`: Trend following & signal generation.
+- `UTILS - Strategies - Mean Reversion`: Bollinger Band + RSI signals, Ornstein-Uhlenbeck process, and reversion-to-mean backtesting.
 - `UTILS - Black-Scholes Option Pricing`: Greeks, implied volatility, & derivatives pricing.
 - `UTILS - Finance - Volatility Calculator`: Parkinson, Garman-Klass, & EWMA estimators.
+- `UTILS - Finance - Yield Curve`: Nelson-Siegel model fitting, forward rate extraction, and curve shape classification.
+- `UTILS - Finance - Position Sizing`: Kelly Criterion, Fixed Fractional, Volatility Targeting, and Risk of Ruin.
 - `UTILS - Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, & Markowitz optimization.
 - `UTILS - Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, & Sortino Ratio.
 - `UTILS - Technical Indicators`: Custom implementations of RSI, MACD, Bollinger Bands.
@@ -116,6 +121,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v1.8.0**
+**Learn-Quant v1.9.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**
