@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.0.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.0.1)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
@@ -122,6 +122,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.0.0**
+**Learn-Quant v2.0.1**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

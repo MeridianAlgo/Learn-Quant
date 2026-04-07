@@ -1,19 +1,20 @@
-import unittest
-import numpy as np
+import importlib.util
 import os
 import sys
 import unittest
-import importlib.util
+
 import numpy as np
 
 # Add project root to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 def load_module_from_path(module_name, path):
     spec = importlib.util.spec_from_file_location(module_name, path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
 
 # Define base folder path
 perf_folder = os.path.join(os.getcwd(), "UTILS - Quantitative Methods - Performance Analysis")
@@ -24,6 +25,7 @@ omega_module = load_module_from_path("omega_ratio", os.path.join(perf_folder, "o
 tail_module = load_module_from_path("tail_ratio", os.path.join(perf_folder, "tail_ratio.py"))
 gp_module = load_module_from_path("gain_to_pain_ratio", os.path.join(perf_folder, "gain_to_pain_ratio.py"))
 active_module = load_module_from_path("active_performance", os.path.join(perf_folder, "active_performance.py"))
+
 
 class TestPerformanceAnalysis(unittest.TestCase):
     def setUp(self):
@@ -46,7 +48,7 @@ class TestPerformanceAnalysis(unittest.TestCase):
         o_ratio = omega_module.omega_ratio(self.returns, target=0)
         self.assertIsInstance(o_ratio, float)
         self.assertGreater(o_ratio, 0)
-        
+
         # Test if infinite with no losses
         no_losses = np.array([0.01, 0.02, 0.03])
         self.assertEqual(omega_module.omega_ratio(no_losses), np.inf)
@@ -67,14 +69,14 @@ class TestPerformanceAnalysis(unittest.TestCase):
     def test_active_metrics(self):
         # Test if returns dictionary with correct keys
         results = active_module.active_metrics(self.alpha_returns, self.benchmark)
-        self.assertIn('tracking_error', results)
-        self.assertIn('information_ratio', results)
-        self.assertGreater(results['tracking_error'], 0)
-        
+        self.assertIn("tracking_error", results)
+        self.assertIn("information_ratio", results)
+        self.assertGreater(results["tracking_error"], 0)
+
         # Test error for mismatched lengths
         with self.assertRaises(ValueError):
             active_module.active_metrics([0.01], [0.01, 0.02])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
