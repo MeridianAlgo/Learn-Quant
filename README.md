@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance & Python (v1.9.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.0.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-Learn-Quant is a massive, curated collection of over 55+ self-contained modules designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository provides the building blocks you need.
+Learn-Quant is a massive, curated collection of over 60+ self-contained modules designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository provides the building blocks you need.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Implement Pairs Trading, Momentum, Mean Reversion, Position Sizing, and more.
@@ -55,6 +55,7 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 - `UTILS - Quantitative Methods - Regression`: Factor models & Alpha generation.
 - `UTILS - Quantitative Methods - Linear Algebra`: Portfolio optimization & risk modelling.
 - `UTILS - Quantitative Methods - Factor Models`: Fama-French 3-Factor model, factor regression, alpha decomposition, and performance attribution.
+- `UTILS - Quantitative Methods - Performance Analysis`: Hurst Exponent, Omega Ratio, Tail Ratio, and Active Metrics.
 
 ### Level 5: Strategies & Finance
 *Applied quantitative finance.*
@@ -100,10 +101,10 @@ cd "UTILS - Strategies - Momentum Trading"
 python momentum_strategy.py
 ```
 
-**Example: Learning Context Managers**
+**Example: Learning Performance Metrics**
 ```bash
-cd "UTILS - Advanced Python - Context Managers"
-python context_managers_tutorial.py
+cd "UTILS - Quantitative Methods - Performance Analysis"
+python hurst_exponent.py
 ```
 
 ---
@@ -121,6 +122,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v1.9.0**
+**Learn-Quant v2.0.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**
