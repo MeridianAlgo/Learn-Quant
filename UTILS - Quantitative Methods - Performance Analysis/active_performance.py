@@ -36,10 +36,7 @@ def active_metrics(returns, benchmark_returns):
 
     information_ratio = np.mean(active_returns) / tracking_error
 
-    return {
-        "tracking_error": tracking_error,
-        "information_ratio": information_ratio
-    }
+    return {"tracking_error": tracking_error, "information_ratio": information_ratio}
 
 
 if __name__ == "__main__":
