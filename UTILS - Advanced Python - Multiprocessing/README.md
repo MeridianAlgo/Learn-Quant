@@ -1,85 +1,114 @@
-# Advanced Python – Multiprocessing
+# Advanced Python Multiprocessing
 
 ## Overview
 
-Python's **Global Interpreter Lock (GIL)** prevents multiple threads from executing Python bytecode at the same time, making threads useless for CPU-bound work. The `multiprocessing` module bypasses the GIL entirely by spawning *separate OS processes*, each with its own Python interpreter and memory space — enabling true parallelism across all CPU cores.
+Python Global Interpreter Lock prevents multiple threads from executing Python bytecode at the same time. This makes threads useless for intense algorithmic work. The multiprocessing module bypasses the lock entirely by spawning separate operating system processes. Each process has its own Python interpreter and memory space, enabling true parallelism across all processing cores.
 
 In quantitative finance, multiprocessing dramatically reduces computation time for:
-- Monte Carlo simulations (thousands of independent paths)
-- Strategy backtests across many tickers or time periods
-- Parameter grid searches and optimisation
+*   Monte Carlo simulations
+*   Strategy backtests across many tickers or time periods
+*   Parameter grid searches and optimisation
+
+## System Architecture Diagram
+
+This drawing indicates how tasks are distributed across individual processing units to resolve computational bottlenecks.
+
+```text
+                   [ Main Python Engine ]
+                      (Coordinates Work)
+                             |
+          +------------------+------------------+
+          |                  |                  |
+   [ Worker Core 1 ]  [ Worker Core 2 ]  [ Worker Core 3 ]
+   (Isolated Memory)  (Isolated Memory)  (Isolated Memory)
+          |                  |                  |
+    Path Sim 1          Path Sim 2         Path Sim 3
+    Path Sim 4          Path Sim 5         Path Sim 6
+          |                  |                  |
+          +------------------+------------------+
+                             |
+                   [ Aggregated Results ]
+```
 
 ## Key Concepts
 
-### **GIL and Why It Matters**
-| Task Type | Use This | Why |
-|-----------|----------|-----|
-| CPU-bound (simulations, math) | `multiprocessing` | Bypasses the GIL |
-| I/O-bound (API calls, file reads) | `threading` or `asyncio` | GIL released during I/O waits |
+### Global Interpreter Lock Importance
 
-### **ProcessPoolExecutor**
-High-level API from `concurrent.futures`:
+*   Intense math computations require multiprocessing to bypass the lock
+*   File reading or networking require threading because the lock is released during waits
+
+### ProcessPoolExecutor
+
+High level interface:
 ```python
 from concurrent.futures import ProcessPoolExecutor
 
 with ProcessPoolExecutor(max_workers=4) as executor:
- results = list(executor.map(my_function, args_list))
+    results = list(executor.map(my_function, args_list))
 ```
 
-### **Embarrassingly Parallel Problems**
-Tasks with **zero inter-dependencies** — perfect candidates for parallelism:
-- Each Monte Carlo path is independent → ideal for process pools
-- Each ticker backtest is independent → ideal for process pools
-- Each parameter combination is independent → ideal for parameter sweeps
+### Completely Parallel Problems
 
-### **Pickling Requirement**
-Everything passed to a worker process must be *picklable*:
-- Functions must be defined at module level (no lambdas)
-- Arguments should be simple types (tuples, arrays, dicts)
-- Use unique seeds per worker for statistical independence
+Tasks with zero shared dependencies are perfect candidates for parallelism:
+*   Each Monte Carlo path is independent
+*   Each ticker backtest is independent
+*   Each parameter combination is independent
+
+### Pickling Requirement
+
+Everything passed to a worker process must be picklable:
+*   Functions must be defined at module level
+*   Arguments should be simple types
+*   Use unique seeds per worker for statistical independence
 
 ## Logic Implemented
 
-1. **`simulate_gbm_path(args)`** — Single GBM path returning terminal price
-2. **`run_sequential()`** — Baseline: all simulations on one core
-3. **`run_parallel()`** — ProcessPoolExecutor distributing work across cores
-4. **`price_call_option_mc()`** — Vectorised Monte Carlo option pricer per volatility
-5. **`parallel_parameter_sweep()`** — Grid search across vol levels using `as_completed()`
+1. Single path returning terminal price
+2. Baseline run passing all simulations on one core
+3. Processing pool distributing work across cores
+4. Array based Monte Carlo option pricer
+5. Grid search across volatility levels
 
 ## Files
-- `multiprocessing_tutorial.py`: GBM simulation, sequential vs. parallel comparison, and option pricing parameter sweep.
+
+`multiprocessing_tutorial.py` simulates price paths and compares sequential execution versus parallel execution.
 
 ## How to Run
+
 ```bash
 python multiprocessing_tutorial.py
 ```
 
-> **Windows Note:** Always guard module-level code with `if __name__ == "__main__":`. Windows uses *spawn* (not *fork*) to create processes, so the module is re-imported in each worker — any top-level side-effects would run in every process.
+Important Note: Always guard module level code against accidental triggering upon import.
 
 ## Financial Applications
 
-### 1. Monte Carlo Risk Simulation
-- VaR and CVaR via thousands of portfolio simulations
-- Credit risk models simulating correlated default scenarios
-- American option pricing via Longstaff-Schwartz (path-dependent, computationally heavy)
+### Monte Carlo Risk Simulation
 
-### 2. Strategy Backtesting at Scale
-- Backtest a strategy on 500 US stocks simultaneously
-- Walk-forward optimisation across overlapping time windows
-- Regime-conditional backtests for multiple market environments
+*   Value at Risk via thousands of portfolio simulations
+*   Credit risk models simulating correlated default scenarios
+*   American option pricing via complex path dependent algorithms
 
-### 3. Model Calibration
-- Calibrate Heston, SABR, or other stochastic vol models to implied vol surfaces
-- Each candidate parameter set is evaluated independently → natural process pool
+### Strategy Backtesting at Scale
 
-### 4. Machine Learning Feature Generation
-- Computing technical indicators for thousands of tickers
-- Generating lagged feature matrices in parallel
+*   Backtest a strategy on five hundred stocks simultaneously
+*   Walk forward optimisation across overlapping time windows
+*   Regime conditional backtests for multiple market environments
+
+### Model Calibration
+
+*   Calibrate stochastic volatility models to implied volatility surfaces
+*   Each candidate parameter set is evaluated independently
+
+### Machine Learning Feature Generation
+
+*   Computing technical indicators for thousands of tickers
+*   Generating historical feature matrices in parallel
 
 ## Best Practices
 
-- **Task granularity**: Each task should take ≥100ms; process spawn overhead (~50–200ms) dominates for tiny tasks.
-- **Data passing**: Prefer passing small arguments (scalars, seeds) rather than large DataFrames to minimise serialisation overhead.
-- **Error handling**: Use `future.result()` to re-raise exceptions from worker processes.
-- **CPU count**: Set `max_workers=os.cpu_count()` for maximum parallelism on the local machine.
-- **Memory**: Each process gets a *copy* of all data — watch for memory bloat with large shared arrays (use `multiprocessing.shared_memory` for advanced cases).
+*   Task granularity: Each task should take meaningful time to outweigh process initialization overhead.
+*   Data passing: Prefer passing small arguments rather than large data frames to minimize transmission overhead.
+*   Error handling: Capture futures carefully to reraise exceptions from worker processes.
+*   Processing count: Set workers to the maximum parallelism on the local machine.
+*   Memory: Each process gets a copy of all data, so watch for memory explosion.
