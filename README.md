@@ -1,10 +1,25 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.0.1)
+# Learn-Quant: Master Quantitative Finance & Python (v2.1.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
 **Welcome to Learn-Quant!** Your all-in-one, comprehensive toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python software engineering.
 
 ---
+
+---
+
+## What is New in v2.1.0
+
+Four new **interactive, quiz-based tutorials** have been added. Run them directly from the CLI to learn with worked examples and immediate feedback:
+
+| Tutorial | Directory | Topics Covered |
+|---|---|---|
+| statistics_tutorial.py | UTILS - Quantitative Methods - Statistics | Normal distribution, Z-scores, correlation, hypothesis testing, skewness/kurtosis |
+| options_tutorial.py | UTILS - Black-Scholes Option Pricing | Black-Scholes formula, all five Greeks, put-call parity, implied volatility |
+| risk_tutorial.py | UTILS - Risk Metrics | VaR (historical and parametric), CVaR/Expected Shortfall, drawdown, Sharpe/Sortino |
+| portfolio_tutorial.py | UTILS - Portfolio Optimizer | Portfolio variance, efficient frontier, Sharpe maximisation, diversification limits |
+
+Each tutorial includes step-by-step explanations, live calculations using real financial inputs, and multiple-choice quiz questions with explanations after every section.
 
 ## Overview
 
@@ -51,7 +66,7 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 *The mathematics of the markets.*
 - `UTILS - Quantitative Methods - Kalman Filter`: Dynamic hedge ratios & noise filtering.
 - `UTILS - Quantitative Methods - Stochastic Processes`: Geometric Brownian Motion & Monte Carlo.
-- `UTILS - Quantitative Methods - Statistics`: Hypothesis testing, stationarity, and cointegration.
+- `UTILS - Quantitative Methods - Statistics`: Hypothesis testing, stationarity, and cointegration. Includes **interactive tutorial** (`statistics_tutorial.py`) with quizzes covering Z-scores, correlation, and fat tails.
 - `UTILS - Quantitative Methods - Regression`: Factor models & Alpha generation.
 - `UTILS - Quantitative Methods - Linear Algebra`: Portfolio optimization & risk modelling.
 - `UTILS - Quantitative Methods - Factor Models`: Fama-French 3-Factor model, factor regression, alpha decomposition, and performance attribution.
@@ -62,12 +77,12 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 - `UTILS - Strategies - Pairs Trading`: Statistical arbitrage & mean reversion.
 - `UTILS - Strategies - Momentum Trading`: Trend following & signal generation.
 - `UTILS - Strategies - Mean Reversion`: Bollinger Band + RSI signals, Ornstein-Uhlenbeck process, and reversion-to-mean backtesting.
-- `UTILS - Black-Scholes Option Pricing`: Greeks, implied volatility, & derivatives pricing.
+- `UTILS - Black-Scholes Option Pricing`: Greeks, implied volatility, & derivatives pricing. Includes **interactive tutorial** (`options_tutorial.py`) covering Black-Scholes, all five Greeks, and put-call parity.
 - `UTILS - Finance - Volatility Calculator`: Parkinson, Garman-Klass, & EWMA estimators.
 - `UTILS - Finance - Yield Curve`: Nelson-Siegel model fitting, forward rate extraction, and curve shape classification.
 - `UTILS - Finance - Position Sizing`: Kelly Criterion, Fixed Fractional, Volatility Targeting, and Risk of Ruin.
-- `UTILS - Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, & Markowitz optimization.
-- `UTILS - Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, & Sortino Ratio.
+- `UTILS - Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, & Markowitz optimization. Includes **interactive tutorial** (`portfolio_tutorial.py`) walking through MPT and portfolio construction.
+- `UTILS - Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, & Sortino Ratio. Includes **interactive tutorial** (`risk_tutorial.py`) with worked examples and quizzes.
 - `UTILS - Technical Indicators`: Custom implementations of RSI, MACD, Bollinger Bands.
 
 ### Level 6: AI & Alternative Data
@@ -122,6 +137,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.0.1**
+**Learn-Quant v2.1.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**
