@@ -3,20 +3,20 @@ import shutil
 
 
 def build_docs():
-    docs_dir = 'docs'
+    docs_dir = "docs"
     if not os.path.exists(docs_dir):
         os.makedirs(docs_dir)
 
-    if os.path.exists('README.md'):
-        shutil.copy('README.md', os.path.join(docs_dir, 'index.md'))
+    if os.path.exists("README.md"):
+        shutil.copy("README.md", os.path.join(docs_dir, "index.md"))
 
     nav_items = ["  - Home: index.md"]
 
-    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.startswith('UTILS')]
+    dirs = [d for d in os.listdir(".") if os.path.isdir(d) and d.startswith("UTILS")]
     dirs.sort()
 
     for d in dirs:
-        readme_path = os.path.join(d, 'README.md')
+        readme_path = os.path.join(d, "README.md")
         if os.path.exists(readme_path):
             target_file = f"{d}.md"
             target_path = os.path.join(docs_dir, target_file)
@@ -71,10 +71,11 @@ plugins:
 nav:
 {chr(10).join(nav_items)}
 """
-    with open('mkdocs.yml', 'w', encoding='utf-8') as f:
+    with open("mkdocs.yml", "w", encoding="utf-8") as f:
         f.write(mkdocs_yaml)
 
     print("Documentation structure built. State-of-the-art Material MkDocs ready.")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     build_docs()

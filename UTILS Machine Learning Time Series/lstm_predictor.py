@@ -5,9 +5,11 @@ try:
     import torch.nn as nn
     import torch.optim as optim
     from torch.utils.data import DataLoader, TensorDataset
+
     HAS_TORCH = True
 except ImportError:
     HAS_TORCH = False
+
 
 def create_advanced_market_data(sequence_length=30, total_points=2500):
     """
@@ -25,7 +27,7 @@ def create_advanced_market_data(sequence_length=30, total_points=2500):
     momentum = np.sin(t) * 5 + np.random.normal(0, 1, total_points)
 
     # Feature 3: Moving Average distance
-    ma_50 = np.convolve(price, np.ones(50)/50, mode='same')
+    ma_50 = np.convolve(price, np.ones(50) / 50, mode="same")
     distance = price - ma_50
 
     # Combine features
@@ -40,27 +42,31 @@ def create_advanced_market_data(sequence_length=30, total_points=2500):
     y = []
 
     for i in range(len(dataset) - sequence_length - 1):
-        x.append(dataset[i:(i + sequence_length), :])
+        x.append(dataset[i : (i + sequence_length), :])
         # We try to predict the price (feature 0) at the next time step
         y.append(dataset[i + sequence_length, 0])
 
     return np.array(x), np.array(y), means[0], stds[0]
+
 
 class DeepLSTMPredictor(nn.Module if HAS_TORCH else object):
     """
     Advanced Deep LSTM architecture featuring multiple layers and dropout
     for regularization against overfitting on financial noise.
     """
+
     def __init__(self, input_features=3, hidden_size=64, num_layers=2, output_size=1, dropout=0.2):
         super().__init__()
         if not HAS_TORCH:
             return
 
-        self.lstm = nn.LSTM(input_size=input_features,
-                            hidden_size=hidden_size,
-                            num_layers=num_layers,
-                            batch_first=True,
-                            dropout=dropout if num_layers > 1 else 0)
+        self.lstm = nn.LSTM(
+            input_size=input_features,
+            hidden_size=hidden_size,
+            num_layers=num_layers,
+            batch_first=True,
+            dropout=dropout if num_layers > 1 else 0,
+        )
 
         self.fc_1 = nn.Linear(hidden_size, 32)
         self.relu = nn.ReLU()
@@ -74,6 +80,7 @@ class DeepLSTMPredictor(nn.Module if HAS_TORCH else object):
         prediction = self.fc_2(intermediate)
 
         return prediction
+
 
 def run_advanced_lstm_training():
     if not HAS_TORCH:
@@ -143,8 +150,9 @@ def run_advanced_lstm_training():
         final_preds = model(X_test[:200]).numpy()
         actuals = Y_test[:200].numpy()
 
-    mse = np.mean((final_preds - actuals)**2)
+    mse = np.mean((final_preds - actuals) ** 2)
     print(f"Final Validation Slice Mean Squared Error: {mse:.6f}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_advanced_lstm_training()

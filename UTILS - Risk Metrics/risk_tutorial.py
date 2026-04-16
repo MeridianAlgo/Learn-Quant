@@ -112,9 +112,31 @@ THREE COMMON METHODS
 
     # Historical VaR
     returns = [
-        0.012, -0.005, 0.023, -0.018, 0.007, 0.031, -0.009, 0.015, -0.003,
-        0.019, -0.024, 0.008, -0.031, 0.016, -0.011, 0.022, -0.007, 0.013,
-        -0.028, 0.009, 0.017, -0.006, 0.011, -0.034, 0.020,
+        0.012,
+        -0.005,
+        0.023,
+        -0.018,
+        0.007,
+        0.031,
+        -0.009,
+        0.015,
+        -0.003,
+        0.019,
+        -0.024,
+        0.008,
+        -0.031,
+        0.016,
+        -0.011,
+        0.022,
+        -0.007,
+        0.013,
+        -0.028,
+        0.009,
+        0.017,
+        -0.006,
+        0.011,
+        -0.034,
+        0.020,
     ]
     portfolio_value = 1_000_000.0
     conf = 0.95
@@ -191,16 +213,38 @@ VaR is NOT always coherent.
     )
 
     returns = [
-        0.012, -0.005, 0.023, -0.018, 0.007, 0.031, -0.009, 0.015, -0.003,
-        0.019, -0.024, 0.008, -0.031, 0.016, -0.011, 0.022, -0.007, 0.013,
-        -0.028, 0.009, 0.017, -0.006, 0.011, -0.034, 0.020,
+        0.012,
+        -0.005,
+        0.023,
+        -0.018,
+        0.007,
+        0.031,
+        -0.009,
+        0.015,
+        -0.003,
+        0.019,
+        -0.024,
+        0.008,
+        -0.031,
+        0.016,
+        -0.011,
+        0.022,
+        -0.007,
+        0.013,
+        -0.028,
+        0.009,
+        0.017,
+        -0.006,
+        0.011,
+        -0.034,
+        0.020,
     ]
     portfolio_value = 1_000_000.0
     conf = 0.95
 
     sorted_r = sorted(returns)
     cutoff_idx = int((1 - conf) * len(sorted_r))
-    tail_returns = sorted_r[:max(cutoff_idx, 1)]
+    tail_returns = sorted_r[: max(cutoff_idx, 1)]
     cvar = -statistics.mean(tail_returns)
     var = _historical_var(returns, conf)
 
@@ -290,10 +334,24 @@ CALMAR RATIO
     )
 
     equity = [
-        100.0, 103.0, 107.0, 105.0, 110.0, 115.0, 112.0, 108.0,
-        104.0, 100.0, 97.0, 102.0, 106.0, 111.0, 116.0, 120.0,
+        100.0,
+        103.0,
+        107.0,
+        105.0,
+        110.0,
+        115.0,
+        112.0,
+        108.0,
+        104.0,
+        100.0,
+        97.0,
+        102.0,
+        106.0,
+        111.0,
+        116.0,
+        120.0,
     ]
-    dates = [f"Day {i+1:>2}" for i in range(len(equity))]
+    dates = [f"Day {i + 1:>2}" for i in range(len(equity))]
 
     max_dd, peak_i, trough_i = _drawdown_series(equity)
     total_return = (equity[-1] - equity[0]) / equity[0]
@@ -314,8 +372,7 @@ CALMAR RATIO
     print(f"  Calmar Ratio: {calmar:.2f}")
 
     _ask(
-        "A strategy peaks at $200k, falls to $160k before recovering. "
-        "What is the maximum drawdown?",
+        "A strategy peaks at $200k, falls to $160k before recovering. What is the maximum drawdown?",
         [
             "20% — (200k - 160k) / 200k",
             "40k — the dollar loss from peak to trough",
@@ -368,8 +425,24 @@ WHEN TO USE EACH
     target = 0.0  # minimum acceptable return
 
     returns = [
-        0.012, -0.005, 0.023, -0.018, 0.007, 0.031, -0.009, 0.015, -0.003,
-        0.019, -0.024, 0.008, -0.031, 0.016, -0.011, 0.022, -0.007, 0.013,
+        0.012,
+        -0.005,
+        0.023,
+        -0.018,
+        0.007,
+        0.031,
+        -0.009,
+        0.015,
+        -0.003,
+        0.019,
+        -0.024,
+        0.008,
+        -0.031,
+        0.016,
+        -0.011,
+        0.022,
+        -0.007,
+        0.013,
     ]
 
     mean_r = statistics.mean(returns)

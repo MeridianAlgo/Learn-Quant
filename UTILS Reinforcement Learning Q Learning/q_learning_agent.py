@@ -1,4 +1,3 @@
-
 import numpy as np
 
 
@@ -10,11 +9,12 @@ class FinancialMarketEnvironment:
     2. Current Volatility Level (Low or High)
     3. Current Position (Flat, Long, or Short)
     """
+
     def __init__(self, steps=1000):
         self.steps = steps
         self.current_step = 0
         self.prices = self._generate_price_path(steps)
-        self.position = 0 # 0=Flat, 1=Long, 2=Short
+        self.position = 0  # 0=Flat, 1=Long, 2=Short
         self.transaction_cost = 0.001
 
     def _generate_price_path(self, length):
@@ -22,18 +22,21 @@ class FinancialMarketEnvironment:
         return np.exp(np.cumsum(returns)) * 100
 
     def reset(self):
-        self.current_step = 50 # Start after enough data for moving averages
+        self.current_step = 50  # Start after enough data for moving averages
         self.position = 0
         return self.get_state()
 
     def get_state(self):
         self.prices[self.current_step]
-        ma_short = np.mean(self.prices[self.current_step-10:self.current_step])
-        ma_long = np.mean(self.prices[self.current_step-50:self.current_step])
+        ma_short = np.mean(self.prices[self.current_step - 10 : self.current_step])
+        ma_long = np.mean(self.prices[self.current_step - 50 : self.current_step])
 
         trend = "Bullish" if ma_short > ma_long else "Bearish"
 
-        recent_returns = np.diff(self.prices[self.current_step-10:self.current_step]) / self.prices[self.current_step-10:self.current_step-1]
+        recent_returns = (
+            np.diff(self.prices[self.current_step - 10 : self.current_step])
+            / self.prices[self.current_step - 10 : self.current_step - 1]
+        )
         volatility = "High" if np.std(recent_returns) > 0.01 else "Low"
 
         position_map = {0: "Flat", 1: "Long", 2: "Short"}
@@ -51,15 +54,15 @@ class FinancialMarketEnvironment:
         cost = 0
 
         # Action Logic
-        if action == 2: # Buy
+        if action == 2:  # Buy
             if self.position != 1:
-               cost = self.transaction_cost
+                cost = self.transaction_cost
             self.position = 1
-        elif action == 0: # Sell
+        elif action == 0:  # Sell
             if self.position != 2:
-               cost = self.transaction_cost
+                cost = self.transaction_cost
             self.position = 2
-        elif action == 1: # Hold
+        elif action == 1:  # Hold
             pass
 
         # Reward Calculation
@@ -79,6 +82,7 @@ class AdvancedQLearningAgent:
     Advanced Tabular Q Learning Implementation with decaying parameters
     and sophisticated tracking mechanisms.
     """
+
     def __init__(self, action_size=3, learning_rate=0.1, discount_factor=0.99, epsilon=1.0):
         self.action_size = action_size
         self.lr = learning_rate
@@ -113,6 +117,7 @@ class AdvancedQLearningAgent:
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
 
+
 def train_and_evaluate_agent():
     print("Initializing Quantitative Reinforcement Learning Simulation...")
     agent = AdvancedQLearningAgent()
@@ -142,5 +147,6 @@ def train_and_evaluate_agent():
     for st, q_vals in sorted(agent.q_table.items()):
         print(f"State [{st:<25}] Q Values [Sell, Hold, Buy]: {q_vals.round(4)}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     train_and_evaluate_agent()

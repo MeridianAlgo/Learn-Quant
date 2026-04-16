@@ -61,9 +61,7 @@ def greeks(S: float, K: float, T: float, r: float, sigma: float) -> dict:
     delta_call = _norm_cdf(d1)
     delta_put = delta_call - 1.0
     gamma = _norm_pdf(d1) / (S * sigma * math.sqrt(T))
-    theta_call = (
-        -(S * _norm_pdf(d1) * sigma) / (2 * math.sqrt(T)) - r * K * math.exp(-r * T) * _norm_cdf(d2)
-    ) / 365.0
+    theta_call = (-(S * _norm_pdf(d1) * sigma) / (2 * math.sqrt(T)) - r * K * math.exp(-r * T) * _norm_cdf(d2)) / 365.0
     vega = S * _norm_pdf(d1) * math.sqrt(T) / 100.0  # per 1% change in vol
     rho_call = K * T * math.exp(-r * T) * _norm_cdf(d2) / 100.0  # per 1% change in rate
     return {
@@ -146,8 +144,7 @@ MONEYNESS
     print(f"  This call is IN-THE-MONEY because S(${S:.2f}) > K(${K:.2f})")
 
     _ask(
-        "A put option has strike K = $50. The stock finishes at $45 at expiry. "
-        "What is the put's payoff?",
+        "A put option has strike K = $50. The stock finishes at $45 at expiry. What is the put's payoff?",
         [
             "$0 — stock is above strike so put expires worthless",
             "$5 — you can sell at $50 when the market price is $45",
@@ -227,8 +224,7 @@ EFFECT OF INPUTS ON CALL PRICE (all else equal)
     print(f"  Stock rises from ${S:.2f} to ${S_high:.2f}: Call price ${call_price:.4f} → ${call_high:.4f}")
 
     _ask(
-        "All else equal, what happens to a call option's price when implied "
-        "volatility INCREASES?",
+        "All else equal, what happens to a call option's price when implied volatility INCREASES?",
         [
             "It decreases — higher volatility means more risk so the option is less valuable",
             "It stays the same — volatility does not appear in the payoff formula",
@@ -319,8 +315,7 @@ DELTA HEDGING
     )
 
     _ask(
-        "An option buyer holds a long call position overnight. All else equal, "
-        "the option price will:",
+        "An option buyer holds a long call position overnight. All else equal, the option price will:",
         [
             "Increase due to overnight interest accrual",
             "Decrease due to time decay (negative theta)",

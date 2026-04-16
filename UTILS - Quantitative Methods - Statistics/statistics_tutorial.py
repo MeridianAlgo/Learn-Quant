@@ -69,9 +69,7 @@ A trading strategy recorded the following 10 daily returns (as decimals):
   {}
 
 Descriptive statistics summarise the *central tendency* and *spread*.
-""".format(
-            ", ".join(f"{r:+.3f}" for r in daily_returns)
-        )
+""".format(", ".join(f"{r:+.3f}" for r in daily_returns))
     )
 
     print(f"  Mean return    : {mean_r:+.4f}  ({mean_r * 100:+.2f}%)")
@@ -168,8 +166,7 @@ fat tails mean extreme events happen more often than the normal model predicts.
     )
 
     _ask(
-        "A stock's daily returns have mean = 0% and std dev = 1%. "
-        "What is the Z-score of a +2.5% return?",
+        "A stock's daily returns have mean = 0% and std dev = 1%. What is the Z-score of a +2.5% return?",
         [
             "0.025",
             "2.5",
@@ -182,8 +179,7 @@ fat tails mean extreme events happen more often than the normal model predicts.
     )
 
     _ask(
-        "Approximately what percentage of normally-distributed returns fall "
-        "within ±2 standard deviations of the mean?",
+        "Approximately what percentage of normally-distributed returns fall within ±2 standard deviations of the mean?",
         [
             "68%",
             "95%",

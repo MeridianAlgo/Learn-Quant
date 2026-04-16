@@ -128,8 +128,7 @@ This reduction is DIVERSIFICATION at work — combining assets with correlation
     )
 
     _ask(
-        "You combine two assets with correlation = -1.0 in the right proportions. "
-        "The portfolio volatility will be:",
+        "You combine two assets with correlation = -1.0 in the right proportions. The portfolio volatility will be:",
         [
             "The average of the two individual volatilities",
             "Greater than either individual volatility",
