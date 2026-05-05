@@ -15,7 +15,7 @@ from interest_rate_models import (
     vasicek_yield,
 )
 
-PARAMS = dict(r0=0.03, kappa=0.3, theta=0.05, sigma=0.01)
+PARAMS = {"r0": 0.03, "kappa": 0.3, "theta": 0.05, "sigma": 0.01}
 
 
 def test_vasicek_bond_price_between_zero_one():

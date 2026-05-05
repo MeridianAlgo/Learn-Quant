@@ -9,8 +9,9 @@ Key concepts:
 - Optimal spread: Bid-ask spread balancing order flow vs inventory risk
 """
 
-import numpy as np
 from typing import Optional
+
+import numpy as np
 
 
 def reservation_price(
@@ -169,5 +170,5 @@ if __name__ == "__main__":
     print(f"Max |Inventory|:    {np.max(np.abs(result['inventory'])):.0f}")
 
     quotes = bid_ask_quotes(100, 0, 1.0, 0.25, 2.0, 0.1, 1.5)
-    print(f"\nSample quotes (q=0, t=0.25):")
+    print("\nSample quotes (q=0, t=0.25):")
     print(f"  Bid: {quotes['bid']:.3f}  Ask: {quotes['ask']:.3f}  Spread: {quotes['spread']:.3f}")

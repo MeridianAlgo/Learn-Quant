@@ -11,8 +11,9 @@ Methods:
 - Multi-Asset Kelly: Portfolio-level optimal allocation
 """
 
-import numpy as np
 from typing import Union
+
+import numpy as np
 
 
 def kelly_fraction(win_prob: float, win_loss_ratio: float) -> float:
@@ -126,9 +127,9 @@ if __name__ == "__main__":
     # Discrete: 60% win rate, 2:1 payoff
     f_full = kelly_fraction(0.60, 2.0)
     f_half = fractional_kelly(0.60, 2.0, 0.5)
-    print(f"\nDiscrete Kelly (60% win, 2:1 payoff):")
-    print(f"  Full Kelly:  {f_full:.3f} ({f_full*100:.1f}% of capital)")
-    print(f"  Half Kelly:  {f_half:.3f} ({f_half*100:.1f}% of capital)")
+    print("\nDiscrete Kelly (60% win, 2:1 payoff):")
+    print(f"  Full Kelly:  {f_full:.3f} ({f_full * 100:.1f}% of capital)")
+    print(f"  Half Kelly:  {f_half:.3f} ({f_half * 100:.1f}% of capital)")
 
     print("\nGrowth rate vs Kelly fraction:")
     for frac in [0.25, 0.5, 0.75, 1.0, 1.25]:
@@ -142,10 +143,8 @@ if __name__ == "__main__":
 
     np.random.seed(42)
     mu_vec = np.array([0.10, 0.15, 0.08])
-    cov = np.array([[0.04, 0.01, 0.005],
-                    [0.01, 0.09, 0.008],
-                    [0.005, 0.008, 0.02]])
+    cov = np.array([[0.04, 0.01, 0.005], [0.01, 0.09, 0.008], [0.005, 0.008, 0.02]])
     kelly_weights = multi_asset_kelly(mu_vec, cov)
     print("\nMulti-Asset Kelly Weights:")
     for i, w in enumerate(kelly_weights):
-        print(f"  Asset {i+1}: {w:.3f}")
+        print(f"  Asset {i + 1}: {w:.3f}")

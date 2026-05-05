@@ -79,8 +79,13 @@ def test_is_zero_volume_raises():
 
 def test_almgren_chriss_keys():
     result = almgren_chriss_impact(100_000, 1_000_000, 0.015, T=5)
-    for key in ["participation_rate", "temporary_impact_bps", "permanent_impact_bps",
-                "expected_shortfall_bps", "timing_risk_variance"]:
+    for key in [
+        "participation_rate",
+        "temporary_impact_bps",
+        "permanent_impact_bps",
+        "expected_shortfall_bps",
+        "timing_risk_variance",
+    ]:
         assert key in result
 
 

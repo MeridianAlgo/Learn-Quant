@@ -10,7 +10,6 @@ Key fixed income analytics for measuring interest rate sensitivity.
 """
 
 import numpy as np
-from typing import Union
 
 
 def bond_price(cashflows: list, times: list, ytm: float) -> float:

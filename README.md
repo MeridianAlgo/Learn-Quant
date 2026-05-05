@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.1.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.3.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
@@ -8,18 +8,22 @@
 
 ---
 
-## What is New in v2.1.0
+## What is New in v2.3.0
 
-Four new **interactive, quiz-based tutorials** have been added. Run them directly from the CLI to learn with worked examples and immediate feedback:
+Five new advanced quant modules added, plus the GitHub Pages deploy now uses the official Pages artifact pipeline (no more `gh-pages` branch force-push errors).
 
-| Tutorial | Directory | Topics Covered |
+| Module | Directory | Highlights |
 |---|---|---|
-| statistics_tutorial.py | UTILS - Quantitative Methods - Statistics | Normal distribution, Z-scores, correlation, hypothesis testing, skewness/kurtosis |
-| options_tutorial.py | UTILS - Black-Scholes Option Pricing | Black-Scholes formula, all five Greeks, put-call parity, implied volatility |
-| risk_tutorial.py | UTILS - Risk Metrics | VaR (historical and parametric), CVaR/Expected Shortfall, drawdown, Sharpe/Sortino |
-| portfolio_tutorial.py | UTILS - Portfolio Optimizer | Portfolio variance, efficient frontier, Sharpe maximisation, diversification limits |
+| garch.py | UTILS - Quantitative Methods - GARCH | EWMA + GARCH(1,1) MLE fit, multi-step variance forecast |
+| cointegration.py | UTILS - Quantitative Methods - Cointegration | ADF test, Engle-Granger, half-life, rolling z-score for pairs |
+| performance_attribution.py | UTILS - Finance - Performance Attribution | Brinson-Hood-Beebower 3-factor + 2-factor, IR, tracking error |
+| stress_testing.py | UTILS - Risk Metrics - Stress Testing | Hypothetical + historical (2008, 2020, 1987, dotcom, 2022) shock engine, reverse stress |
+| trend_following.py | UTILS - Strategies - Trend Following | Donchian breakout (Turtles), MA crossover, TSMOM, ATR sizing |
 
-Each tutorial includes step-by-step explanations, live calculations using real financial inputs, and multiple-choice quiz questions with explanations after every section.
+### Previous Releases
+- **v2.2.0**: 13 quant finance modules (Kelly, FX, exotic options, Black-Litterman, regime detection, etc.)
+- **v2.1.0**: Four interactive quiz-based tutorials (statistics, options, risk, portfolio)
+- **v2.0.0**: Performance Analysis utils (Hurst, Omega, Tail, Gain-Pain)
 
 ## Overview
 
@@ -71,6 +75,8 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 - `UTILS - Quantitative Methods - Linear Algebra`: Portfolio optimization & risk modelling.
 - `UTILS - Quantitative Methods - Factor Models`: Fama-French 3-Factor model, factor regression, alpha decomposition, and performance attribution.
 - `UTILS - Quantitative Methods - Performance Analysis`: Hurst Exponent, Omega Ratio, Tail Ratio, and Active Metrics.
+- `UTILS - Quantitative Methods - GARCH`: EWMA and GARCH(1,1) volatility estimation, MLE fitting, multi-step forecasting.
+- `UTILS - Quantitative Methods - Cointegration`: ADF unit-root test, Engle-Granger two-step, OU half-life, rolling z-score for pairs trading.
 
 ### Level 5: Strategies & Finance
 *Applied quantitative finance.*
@@ -84,6 +90,9 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 - `UTILS - Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, & Markowitz optimization. Includes **interactive tutorial** (`portfolio_tutorial.py`) walking through MPT and portfolio construction.
 - `UTILS - Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, & Sortino Ratio. Includes **interactive tutorial** (`risk_tutorial.py`) with worked examples and quizzes.
 - `UTILS - Technical Indicators`: Custom implementations of RSI, MACD, Bollinger Bands.
+- `UTILS - Strategies - Trend Following`: Donchian channel breakout, MA crossover, time-series momentum, ATR-based volatility position sizing.
+- `UTILS - Finance - Performance Attribution`: Brinson-Hood-Beebower allocation/selection/interaction decomposition, information ratio, tracking error.
+- `UTILS - Risk Metrics - Stress Testing`: Hypothetical and historical scenario engine (2008 GFC, 2020 COVID, 1987, dotcom, 2022), univariate sensitivity, reverse stress tests.
 
 ### Level 6: AI & Alternative Data
 *Modern approaches to trading.*
@@ -137,6 +146,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.1.0**
+**Learn-Quant v2.3.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

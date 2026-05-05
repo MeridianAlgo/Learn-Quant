@@ -11,9 +11,10 @@ Methods:
 - Cornish-Fisher: Adjusts for skewness and excess kurtosis
 """
 
+from typing import Union
+
 import numpy as np
 import scipy.stats as stats
-from typing import Union
 
 
 def historical_es(returns: Union[list, np.ndarray], confidence_level: float = 0.95) -> float:
@@ -76,12 +77,7 @@ def cornish_fisher_es(returns: Union[list, np.ndarray], confidence_level: float 
     alpha = 1 - confidence_level
     z = stats.norm.ppf(alpha)
 
-    z_cf = (
-        z
-        + (z**2 - 1) * skew / 6
-        + (z**3 - 3 * z) * kurt / 24
-        - (2 * z**3 - 5 * z) * skew**2 / 36
-    )
+    z_cf = z + (z**2 - 1) * skew / 6 + (z**3 - 3 * z) * kurt / 24 - (2 * z**3 - 5 * z) * skew**2 / 36
     var_cf = -(mu + sigma * z_cf)
     normal_var = -(mu + sigma * z)
 

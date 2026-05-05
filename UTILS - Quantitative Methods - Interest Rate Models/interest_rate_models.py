@@ -12,8 +12,9 @@ Models for simulating the short rate and pricing zero-coupon bonds.
 Both provide closed-form zero-coupon bond pricing formulas.
 """
 
-import numpy as np
 from typing import Optional
+
+import numpy as np
 
 
 def vasicek_simulate(
@@ -70,10 +71,7 @@ def vasicek_bond_price(
         float: Bond price (discount factor from 0 to T).
     """
     B = (1 - np.exp(-kappa * T)) / kappa
-    A_exp = np.exp(
-        (theta - sigma**2 / (2 * kappa**2)) * (B - T)
-        - sigma**2 * B**2 / (4 * kappa)
-    )
+    A_exp = np.exp((theta - sigma**2 / (2 * kappa**2)) * (B - T) - sigma**2 * B**2 / (4 * kappa))
     return float(A_exp * np.exp(-B * r0))
 
 
@@ -153,9 +151,7 @@ def cir_bond_price(
 
     denom = (gamma + kappa) * (exp_gT - 1) + 2 * gamma
     B = 2 * (exp_gT - 1) / denom
-    A = (
-        2 * gamma * np.exp((kappa + gamma) * T / 2) / denom
-    ) ** (2 * kappa * theta / sigma**2)
+    A = (2 * gamma * np.exp((kappa + gamma) * T / 2) / denom) ** (2 * kappa * theta / sigma**2)
 
     return float(A * np.exp(-B * r0))
 

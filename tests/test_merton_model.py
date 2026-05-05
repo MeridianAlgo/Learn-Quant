@@ -7,7 +7,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Credit Risk"))
 from merton_model import implied_asset_value, merton_equity, merton_model
 
-BASE = dict(V=100e6, F=80e6, r=0.05, sigma_V=0.20, T=1.0)
+BASE = {"V": 100e6, "F": 80e6, "r": 0.05, "sigma_V": 0.20, "T": 1.0}
 
 
 def test_equity_positive():
@@ -28,8 +28,14 @@ def test_equity_increases_with_asset_value():
 
 def test_model_output_keys():
     result = merton_model(**BASE)
-    for key in ["equity_value", "debt_value", "distance_to_default",
-                "probability_of_default", "credit_spread_bps", "leverage"]:
+    for key in [
+        "equity_value",
+        "debt_value",
+        "distance_to_default",
+        "probability_of_default",
+        "credit_spread_bps",
+        "leverage",
+    ]:
         assert key in result
 
 

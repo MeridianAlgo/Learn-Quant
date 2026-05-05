@@ -78,8 +78,11 @@ def test_max_drawdown_duration_positive(mixed_returns):
 def test_drawdown_summary_keys(mixed_returns):
     summary = drawdown_summary(mixed_returns)
     expected_keys = [
-        "max_drawdown", "calmar_ratio", "ulcer_index",
-        "ulcer_performance_index", "average_drawdown",
+        "max_drawdown",
+        "calmar_ratio",
+        "ulcer_index",
+        "ulcer_performance_index",
+        "average_drawdown",
         "max_drawdown_duration_periods",
     ]
     for key in expected_keys:

@@ -142,6 +142,10 @@ if __name__ == "__main__":
     ew = ewma_covariance(returns)
 
     print(f"Sample covariance condition number:     {condition_number(S):.2f}")
-    print(f"Ledoit-Wolf condition number:           {condition_number(lw['shrunk_cov']):.2f}  (alpha={lw['alpha']:.3f})")
-    print(f"Constant correlation condition number:  {condition_number(cc['shrunk_cov']):.2f}  (alpha={cc['alpha']:.3f})")
+    print(
+        f"Ledoit-Wolf condition number:           {condition_number(lw['shrunk_cov']):.2f}  (alpha={lw['alpha']:.3f})"
+    )
+    print(
+        f"Constant correlation condition number:  {condition_number(cc['shrunk_cov']):.2f}  (alpha={cc['alpha']:.3f})"
+    )
     print(f"EWMA condition number:                  {condition_number(ew):.2f}")

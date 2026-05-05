@@ -9,8 +9,9 @@ Tools for measuring and analyzing execution quality and market impact.
 - Square-root impact: Empirical market impact rule
 """
 
-import numpy as np
 from typing import Union
+
+import numpy as np
 
 
 def vwap(
@@ -192,12 +193,12 @@ if __name__ == "__main__":
         execution_quantities=[1000, 1000, 1000],
         final_price=100.20,
     )
-    print(f"\nImplementation Shortfall:")
+    print("\nImplementation Shortfall:")
     for k, v in is_result.items():
         print(f"  {k:35s}: {v:.4f}")
 
     impact = almgren_chriss_impact(100_000, 1_000_000, 0.015, T=5)
-    print(f"\nAlmgren-Chriss Impact (100k shares, 1M ADV, 5 days):")
+    print("\nAlmgren-Chriss Impact (100k shares, 1M ADV, 5 days):")
     print(f"  Participation rate:  {impact['participation_rate']:.1%}")
     print(f"  Temporary impact:    {impact['temporary_impact_bps']:.2f} bps")
     print(f"  Expected shortfall:  {impact['expected_shortfall_bps']:.2f} bps")

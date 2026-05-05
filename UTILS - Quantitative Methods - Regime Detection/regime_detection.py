@@ -7,8 +7,9 @@ using Gaussian Mixture Models and moving average crossover heuristics.
 Regimes help adapt trading strategies to current market conditions.
 """
 
-import numpy as np
 from typing import Union
+
+import numpy as np
 
 
 def moving_average_regime(
@@ -34,8 +35,8 @@ def moving_average_regime(
     regimes = np.full(n, np.nan)
 
     for i in range(long_window - 1, n):
-        short_ma = np.mean(prices[i - short_window + 1: i + 1])
-        long_ma = np.mean(prices[i - long_window + 1: i + 1])
+        short_ma = np.mean(prices[i - short_window + 1 : i + 1])
+        long_ma = np.mean(prices[i - long_window + 1 : i + 1])
         regimes[i] = 1.0 if short_ma > long_ma else 0.0
 
     return regimes
@@ -63,7 +64,7 @@ def volatility_regime(
     rolling_vol = np.full(n, np.nan)
 
     for i in range(window - 1, n):
-        rolling_vol[i] = np.std(returns[i - window + 1: i + 1]) * np.sqrt(252)
+        rolling_vol[i] = np.std(returns[i - window + 1 : i + 1]) * np.sqrt(252)
 
     valid = rolling_vol[~np.isnan(rolling_vol)]
     thresholds = np.percentile(valid, np.linspace(0, 100, n_regimes + 1)[1:-1])
@@ -99,8 +100,8 @@ def gaussian_mixture_regime(
     """
     try:
         from sklearn.mixture import GaussianMixture
-    except ImportError:
-        raise ImportError("scikit-learn required: pip install scikit-learn")
+    except ImportError as err:
+        raise ImportError("scikit-learn required: pip install scikit-learn") from err
 
     returns_arr = np.array(returns).reshape(-1, 1)
     gmm = GaussianMixture(n_components=n_regimes, covariance_type="full", random_state=42)
@@ -116,7 +117,7 @@ def gaussian_mixture_regime(
     stds = stds[order]
     weights = weights[order]
     remap = {int(old): int(new) for new, old in enumerate(order)}
-    labels = np.array([remap[int(l)] for l in labels])
+    labels = np.array([remap[int(lbl)] for lbl in labels])
 
     return {
         "labels": labels,
@@ -139,7 +140,7 @@ def regime_stats(returns: Union[list, np.ndarray], labels: np.ndarray) -> dict:
         dict: Per-regime mean, std, count, annualized metrics.
     """
     returns = np.array(returns)
-    unique = sorted(set(int(l) for l in labels if not np.isnan(l)))
+    unique = sorted({int(lbl) for lbl in labels if not np.isnan(lbl)})
     result = {}
     for r in unique:
         mask = labels == r
@@ -173,10 +174,12 @@ if __name__ == "__main__":
         print("\nGMM Regimes:")
         for regime, s in stats.items():
             label = "Bullish" if s["mean"] > 0 else "Bearish"
-            print(f"  Regime {regime} ({label}): "
-                  f"ann_return={s['annualized_return']:.2%}, "
-                  f"ann_vol={s['annualized_vol']:.2%}, "
-                  f"n={s['count']}")
+            print(
+                f"  Regime {regime} ({label}): "
+                f"ann_return={s['annualized_return']:.2%}, "
+                f"ann_vol={s['annualized_vol']:.2%}, "
+                f"n={s['count']}"
+            )
     except ImportError:
         print("scikit-learn not available; using volatility regime fallback")
         vol_labels = volatility_regime(returns, n_regimes=2)

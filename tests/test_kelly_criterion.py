@@ -71,9 +71,7 @@ def test_kelly_growth_rate_max_at_full():
 
 def test_multi_asset_kelly_shape():
     mu = np.array([0.10, 0.15, 0.08])
-    cov = np.array([[0.04, 0.01, 0.005],
-                    [0.01, 0.09, 0.008],
-                    [0.005, 0.008, 0.02]])
+    cov = np.array([[0.04, 0.01, 0.005], [0.01, 0.09, 0.008], [0.005, 0.008, 0.02]])
     weights = multi_asset_kelly(mu, cov)
     assert weights.shape == (3,)
     assert np.all(weights > 0)  # All positive expected returns should give long positions

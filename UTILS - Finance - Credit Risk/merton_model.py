@@ -108,6 +108,7 @@ def implied_asset_value(
     Returns:
         dict: asset_value, asset_volatility.
     """
+
     def equations(params):
         V, sigma_V = params
         if V <= 0 or sigma_V <= 0:
@@ -131,11 +132,11 @@ if __name__ == "__main__":
     V, F, r, sigma_V, T = 100e6, 80e6, 0.05, 0.20, 1.0
 
     result = merton_model(V, F, r, sigma_V, T)
-    print(f"\nFirm Assets:         ${V/1e6:.0f}M")
-    print(f"Debt (Face):         ${F/1e6:.0f}M")
+    print(f"\nFirm Assets:         ${V / 1e6:.0f}M")
+    print(f"Debt (Face):         ${F / 1e6:.0f}M")
     print(f"Asset Volatility:    {sigma_V:.0%}")
-    print(f"\nEquity Value:        ${result['equity_value']/1e6:.2f}M")
-    print(f"Debt Value:          ${result['debt_value']/1e6:.2f}M")
+    print(f"\nEquity Value:        ${result['equity_value'] / 1e6:.2f}M")
+    print(f"Debt Value:          ${result['debt_value'] / 1e6:.2f}M")
     print(f"Distance-to-Default: {result['distance_to_default']:.3f}σ")
     print(f"Prob of Default:     {result['probability_of_default']:.2%}")
     print(f"Credit Spread:       {result['credit_spread_bps']:.1f} bps")

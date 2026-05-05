@@ -158,17 +158,23 @@ def garman_kohlhagen(
     vega = float(S * disc_f * stats.norm.pdf(d1) * np.sqrt(T) / 100)
 
     if option_type == "call":
-        theta = float((
-            -S * disc_f * stats.norm.pdf(d1) * sigma / (2 * np.sqrt(T))
-            - r_d * K * disc_d * stats.norm.cdf(d2)
-            + r_f * S * disc_f * stats.norm.cdf(d1)
-        ) / 365)
+        theta = float(
+            (
+                -S * disc_f * stats.norm.pdf(d1) * sigma / (2 * np.sqrt(T))
+                - r_d * K * disc_d * stats.norm.cdf(d2)
+                + r_f * S * disc_f * stats.norm.cdf(d1)
+            )
+            / 365
+        )
     else:
-        theta = float((
-            -S * disc_f * stats.norm.pdf(d1) * sigma / (2 * np.sqrt(T))
-            + r_d * K * disc_d * stats.norm.cdf(-d2)
-            - r_f * S * disc_f * stats.norm.cdf(-d1)
-        ) / 365)
+        theta = float(
+            (
+                -S * disc_f * stats.norm.pdf(d1) * sigma / (2 * np.sqrt(T))
+                + r_d * K * disc_d * stats.norm.cdf(-d2)
+                - r_f * S * disc_f * stats.norm.cdf(-d1)
+            )
+            / 365
+        )
 
     return {
         "price": float(price),
@@ -195,7 +201,7 @@ if __name__ == "__main__":
     print(f"CIP deviation:       {dev:.2f} bps")
 
     call = garman_kohlhagen(spot, 1.10, r_d, r_f, 0.10, 0.25)
-    print(f"\nGarman-Kohlhagen 3M ATM Call (vol=10%):")
+    print("\nGarman-Kohlhagen 3M ATM Call (vol=10%):")
     print(f"  Price: {call['price']:.4f}  Delta: {call['delta']:.4f}  Vega: {call['vega']:.4f}")
 
     profit = triangular_arbitrage_profit(1.30, 0.86, 0.89)

@@ -5,17 +5,19 @@ import numpy as np
 import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Portfolio Management - Black Litterman"))
-from black_litterman import black_litterman, bl_optimal_weights, market_implied_returns
+from black_litterman import bl_optimal_weights, black_litterman, market_implied_returns
 
 
 @pytest.fixture
 def market_setup():
-    corr = np.array([
-        [1.00, 0.75, -0.20, 0.30],
-        [0.75, 1.00, -0.15, 0.35],
-        [-0.20, -0.15, 1.00, -0.05],
-        [0.30, 0.35, -0.05, 1.00],
-    ])
+    corr = np.array(
+        [
+            [1.00, 0.75, -0.20, 0.30],
+            [0.75, 1.00, -0.15, 0.35],
+            [-0.20, -0.15, 1.00, -0.05],
+            [0.30, 0.35, -0.05, 1.00],
+        ]
+    )
     vols = np.array([0.16, 0.18, 0.05, 0.20])
     cov = np.outer(vols, vols) * corr
     weights = np.array([0.40, 0.30, 0.20, 0.10])

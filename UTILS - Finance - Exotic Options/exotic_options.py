@@ -10,8 +10,9 @@ Prices path-dependent options using Geometric Brownian Motion simulation.
 All use antithetic variates for variance reduction where applicable.
 """
 
-import numpy as np
 from typing import Literal, Optional
+
+import numpy as np
 
 
 def _simulate_gbm_paths(
@@ -186,19 +187,19 @@ if __name__ == "__main__":
 
     do = barrier_option(S0, K, H=90, r=r, sigma=sigma, T=T, barrier_type="down-out")
     di = barrier_option(S0, K, H=90, r=r, sigma=sigma, T=T, barrier_type="down-in")
-    print(f"\nBarrier Options (H=90, call):")
+    print("\nBarrier Options (H=90, call):")
     print(f"  Down-and-Out: {do:.4f}")
     print(f"  Down-and-In:  {di:.4f}")
     print(f"  Sum (≈ vanilla): {do + di:.4f}")
 
     arith = asian_option(S0, K, r, sigma, T, averaging="arithmetic")
     geom = asian_option(S0, K, r, sigma, T, averaging="geometric")
-    print(f"\nAsian Call Options:")
+    print("\nAsian Call Options:")
     print(f"  Arithmetic:  {arith:.4f}")
     print(f"  Geometric:   {geom:.4f}")
 
     lb_float = lookback_option(S0, r, sigma, T, option_type="call")
     lb_fixed = lookback_option(S0, r, sigma, T, option_type="call", fixed_strike=K)
-    print(f"\nLookback Call Options:")
+    print("\nLookback Call Options:")
     print(f"  Floating strike: {lb_float:.4f}")
     print(f"  Fixed strike:    {lb_fixed:.4f}")

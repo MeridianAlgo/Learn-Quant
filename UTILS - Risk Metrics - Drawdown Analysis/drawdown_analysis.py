@@ -10,8 +10,9 @@ Comprehensive drawdown metrics for evaluating portfolio risk and performance.
 - Max Drawdown Duration: Longest time spent in drawdown
 """
 
-import numpy as np
 from typing import Union
+
+import numpy as np
 
 
 def drawdown_series(returns: Union[list, np.ndarray]) -> np.ndarray:

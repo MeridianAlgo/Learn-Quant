@@ -63,6 +63,7 @@ def test_gmm_regime_optional():
     """GMM is optional (requires sklearn); verify graceful fallback on ImportError."""
     try:
         from regime_detection import gaussian_mixture_regime
+
         np.random.seed(42)
         returns = np.random.normal(0, 0.01, 200)
         result = gaussian_mixture_regime(returns, n_regimes=2)

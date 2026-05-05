@@ -11,8 +11,9 @@ Steps:
 4. Optimize on blended returns
 """
 
-import numpy as np
 from typing import Optional
+
+import numpy as np
 
 
 def market_implied_returns(
@@ -104,12 +105,14 @@ if __name__ == "__main__":
     np.random.seed(42)
     asset_names = ["US Equity", "Int'l Equity", "Bonds", "Commodities"]
 
-    corr = np.array([
-        [1.00, 0.75, -0.20, 0.30],
-        [0.75, 1.00, -0.15, 0.35],
-        [-0.20, -0.15, 1.00, -0.05],
-        [0.30, 0.35, -0.05, 1.00],
-    ])
+    corr = np.array(
+        [
+            [1.00, 0.75, -0.20, 0.30],
+            [0.75, 1.00, -0.15, 0.35],
+            [-0.20, -0.15, 1.00, -0.05],
+            [0.30, 0.35, -0.05, 1.00],
+        ]
+    )
     vols = np.array([0.16, 0.18, 0.05, 0.20])
     cov = np.outer(vols, vols) * corr
     mkt_weights = np.array([0.40, 0.30, 0.20, 0.10])
