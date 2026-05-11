@@ -1,12 +1,13 @@
 import numpy as np
 import pandas as pd
 from statsmodels.tsa.stattools import coint
-import matplotlib.pyplot as plt
+
 
 class StatisticalArbitrage:
     """
     A basic Statistical Arbitrage strategy focusing on pairs trading based on cointegration.
     """
+
     def __init__(self, entry_zscore=2.0, exit_zscore=0.0):
         self.entry_zscore = entry_zscore
         self.exit_zscore = exit_zscore
@@ -22,7 +23,7 @@ class StatisticalArbitrage:
     def calculate_spread(self, series1: pd.Series, series2: pd.Series):
         """
         Calculate the spread between two cointegrated series.
-        Using a simple price ratio for demonstration. 
+        Using a simple price ratio for demonstration.
         In practice, use hedge ratio from regression.
         """
         # Simple log spread: log(P1) - log(P2)
@@ -38,12 +39,13 @@ class StatisticalArbitrage:
         zscore = (spread - mean) / std
 
         signals = pd.DataFrame(index=spread.index)
-        signals['zscore'] = zscore
-        signals['long_entry'] = zscore < -self.entry_zscore
-        signals['short_entry'] = zscore > self.entry_zscore
-        signals['exit'] = abs(zscore) <= self.exit_zscore
+        signals["zscore"] = zscore
+        signals["long_entry"] = zscore < -self.entry_zscore
+        signals["short_entry"] = zscore > self.entry_zscore
+        signals["exit"] = abs(zscore) <= self.exit_zscore
 
         return signals
+
 
 if __name__ == "__main__":
     np.random.seed(42)
@@ -51,13 +53,13 @@ if __name__ == "__main__":
     prices1 = np.random.randn(200).cumsum() + 100
     # Generate cointegrated series
     prices2 = prices1 + np.random.randn(200) * 0.5
-    
+
     df1 = pd.Series(prices1)
     df2 = pd.Series(prices2)
-    
+
     arb = StatisticalArbitrage()
     is_coint = arb.test_cointegration(df1, df2)
-    
+
     if is_coint:
         spread = arb.calculate_spread(df1, df2)
         signals = arb.generate_signals(spread)
