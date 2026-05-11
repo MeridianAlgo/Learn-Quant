@@ -64,3 +64,6 @@ secrets.json
 # Generated files
 *.pyc
 *.pyo
+
+.claude-memory/
+__pycache__/
