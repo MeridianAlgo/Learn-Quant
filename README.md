@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.3.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.4.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 
@@ -8,19 +8,28 @@
 
 ---
 
-## What is New in v2.3.0
+## What is New in v2.4.0
 
-Five new advanced quant modules added, plus the GitHub Pages deploy now uses the official Pages artifact pipeline (no more `gh-pages` branch force-push errors).
+Six new lessons added — three Python fundamentals and three JavaScript implementations of core quant tools.
+
+**Python — essential data science foundations:**
 
 | Module | Directory | Highlights |
 |---|---|---|
-| garch.py | UTILS - Quantitative Methods - GARCH | EWMA + GARCH(1,1) MLE fit, multi-step variance forecast |
-| cointegration.py | UTILS - Quantitative Methods - Cointegration | ADF test, Engle-Granger, half-life, rolling z-score for pairs |
-| performance_attribution.py | UTILS - Finance - Performance Attribution | Brinson-Hood-Beebower 3-factor + 2-factor, IR, tracking error |
-| stress_testing.py | UTILS - Risk Metrics - Stress Testing | Hypothetical + historical (2008, 2020, 1987, dotcom, 2022) shock engine, reverse stress |
-| trend_following.py | UTILS - Strategies - Trend Following | Donchian breakout (Turtles), MA crossover, TSMOM, ATR sizing |
+| numpy_tutorial.py | Python Basics - NumPy | Arrays, vectorised returns, broadcasting, covariance, boolean indexing |
+| pandas_tutorial.py | Python Basics - Pandas | DataFrames, resampling, rolling windows, groupby, SMA crossover backtest |
+| comprehensions_tutorial.py | Python Basics - Comprehensions | List/dict/set comprehensions, generators, map/filter/reduce, accumulate |
+
+**JavaScript — quant tools in pure JS (no external dependencies):**
+
+| Module | Directory | Highlights |
+|---|---|---|
+| technicalIndicators.js | Technical Indicators | SMA, EMA, RSI (Wilder), MACD, Bollinger Bands, ATR |
+| blackScholes.js | Options Pricing - JavaScript | European call/put price, all five Greeks, implied vol via bisection |
+| monteCarlo.js | Monte Carlo Simulation - JavaScript | GBM path simulation, correlated multi-asset portfolio, option pricing, VaR/CVaR |
 
 ### Previous Releases
+- **v2.3.0**: Five advanced quant modules (GARCH, Cointegration, Performance Attribution, Stress Testing, Trend Following)
 - **v2.2.0**: 13 quant finance modules (Kelly, FX, exotic options, Black-Litterman, regime detection, etc.)
 - **v2.1.0**: Four interactive quiz-based tutorials (statistics, options, risk, portfolio)
 - **v2.0.0**: Performance Analysis utils (Hurst, Omega, Tail, Gain-Pain)
@@ -44,10 +53,13 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 
 ### Level 1: Python Fundamentals
 *Essential coding skills for financial analysis.*
-- `UTILS - Python Basics - Numbers`: Floating point precision & financial math.
-- `UTILS - Python Basics - Strings`: Ticker manipulation & news parsing.
-- `UTILS - Python Basics - Control Flow`: Implementing trading logic & rules.
-- `UTILS - Python Basics - Functions`: Building reusable quant libraries.
+- `Python Basics - Numbers`: Floating point precision & financial math.
+- `Python Basics - Strings`: Ticker manipulation & news parsing.
+- `Python Basics - Control Flow`: Implementing trading logic & rules.
+- `Python Basics - Functions`: Building reusable quant libraries.
+- `Python Basics - NumPy`: Arrays, vectorised returns, broadcasting, covariance & portfolio variance. *(new in v2.4.0)*
+- `Python Basics - Pandas`: DataFrames, resampling, rolling windows, groupby analysis, signal generation. *(new in v2.4.0)*
+- `Python Basics - Comprehensions`: List/dict/set comprehensions, generators, map/filter/reduce. *(new in v2.4.0)*
 
 ### Level 2: Data Structures & Algorithms
 *Optimizing performance for high-frequency environments.*
@@ -80,19 +92,21 @@ Every folder is a fully functional lesson. Pick a topic and run the code.
 
 ### Level 5: Strategies & Finance
 *Applied quantitative finance.*
-- `UTILS - Strategies - Pairs Trading`: Statistical arbitrage & mean reversion.
-- `UTILS - Strategies - Momentum Trading`: Trend following & signal generation.
-- `UTILS - Strategies - Mean Reversion`: Bollinger Band + RSI signals, Ornstein-Uhlenbeck process, and reversion-to-mean backtesting.
-- `UTILS - Black-Scholes Option Pricing`: Greeks, implied volatility, & derivatives pricing. Includes **interactive tutorial** (`options_tutorial.py`) covering Black-Scholes, all five Greeks, and put-call parity.
-- `UTILS - Finance - Volatility Calculator`: Parkinson, Garman-Klass, & EWMA estimators.
-- `UTILS - Finance - Yield Curve`: Nelson-Siegel model fitting, forward rate extraction, and curve shape classification.
-- `UTILS - Finance - Position Sizing`: Kelly Criterion, Fixed Fractional, Volatility Targeting, and Risk of Ruin.
-- `UTILS - Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, & Markowitz optimization. Includes **interactive tutorial** (`portfolio_tutorial.py`) walking through MPT and portfolio construction.
-- `UTILS - Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, & Sortino Ratio. Includes **interactive tutorial** (`risk_tutorial.py`) with worked examples and quizzes.
-- `UTILS - Technical Indicators`: Custom implementations of RSI, MACD, Bollinger Bands.
-- `UTILS - Strategies - Trend Following`: Donchian channel breakout, MA crossover, time-series momentum, ATR-based volatility position sizing.
-- `UTILS - Finance - Performance Attribution`: Brinson-Hood-Beebower allocation/selection/interaction decomposition, information ratio, tracking error.
-- `UTILS - Risk Metrics - Stress Testing`: Hypothetical and historical scenario engine (2008 GFC, 2020 COVID, 1987, dotcom, 2022), univariate sensitivity, reverse stress tests.
+- `Strategies - Pairs Trading`: Statistical arbitrage & mean reversion.
+- `Strategies - Momentum Trading`: Trend following & signal generation.
+- `Strategies - Mean Reversion`: Bollinger Band + RSI signals, Ornstein-Uhlenbeck process, and reversion-to-mean backtesting.
+- `Black-Scholes Option Pricing`: Greeks, implied volatility, & derivatives pricing. Includes **interactive tutorial** (`options_tutorial.py`) covering Black-Scholes, all five Greeks, and put-call parity.
+- `Options Pricing - JavaScript`: Black-Scholes call/put price, all five Greeks, and implied volatility — pure JavaScript. *(new in v2.4.0)*
+- `Finance - Volatility Calculator`: Parkinson, Garman-Klass, & EWMA estimators.
+- `Finance - Yield Curve`: Nelson-Siegel model fitting, forward rate extraction, and curve shape classification.
+- `Finance - Position Sizing`: Kelly Criterion, Fixed Fractional, Volatility Targeting, and Risk of Ruin.
+- `Portfolio Optimizer`: Efficient Frontier, Sharpe Ratio, & Markowitz optimization. Includes **interactive tutorial** (`portfolio_tutorial.py`) walking through MPT and portfolio construction.
+- `Risk Metrics`: Value at Risk (VaR), CVaR, Drawdown, & Sortino Ratio. Includes **interactive tutorial** (`risk_tutorial.py`) with worked examples and quizzes.
+- `Technical Indicators`: SMA, EMA, RSI, MACD, Bollinger Bands — in Python and JavaScript. *(JS added in v2.4.0)*
+- `Monte Carlo Simulation - JavaScript`: GBM path simulation, correlated multi-asset portfolio Monte Carlo, option pricing, VaR/CVaR — pure JavaScript. *(new in v2.4.0)*
+- `Strategies - Trend Following`: Donchian channel breakout, MA crossover, time-series momentum, ATR-based volatility position sizing.
+- `Finance - Performance Attribution`: Brinson-Hood-Beebower allocation/selection/interaction decomposition, information ratio, tracking error.
+- `Risk Metrics - Stress Testing`: Hypothetical and historical scenario engine (2008 GFC, 2020 COVID, 1987, dotcom, 2022), univariate sensitivity, reverse stress tests.
 
 ### Level 6: AI & Alternative Data
 *Modern approaches to trading.*
@@ -146,6 +160,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.3.0**
+**Learn-Quant v2.4.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**
