@@ -34,8 +34,7 @@ def build_docs():
     dirs = [
         d
         for d in os.listdir(".")
-        if os.path.isdir(d)
-        and d not in {".git", ".github", ".vscode", ".claude", "docs", ".pytest_cache", "tests"}
+        if os.path.isdir(d) and d not in {".git", ".github", ".vscode", ".claude", "docs", ".pytest_cache", "tests"}
     ]
 
     for d in sorted(dirs):
