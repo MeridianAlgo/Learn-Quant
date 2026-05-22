@@ -1,0 +1,37 @@
+name: Auto Format
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.LEARN_QUANT_GH_PAT }}
+        ref: ${{ github.head_ref || github.ref_name }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install ruff
+      run: pip install ruff==0.14.10
+
+    - name: Run ruff format
+      run: ruff format .
+
+    - name: Commit and push if changed
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git diff --quiet && echo "No changes to commit" && exit 0
+        git add -A
+        git commit -m "style: auto-format with ruff"
+        git push

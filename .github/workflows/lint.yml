@@ -28,3 +28,4 @@ jobs:
     
     - name: Run Ruff formatter check
       run: ruff format --check .
+      continue-on-error: true
