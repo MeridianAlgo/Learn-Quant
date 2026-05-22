@@ -12,7 +12,10 @@ def build_docs():
 
     nav_items = ["  - Home: index.md"]
 
-    dirs = [d for d in os.listdir(".") if os.path.isdir(d) and d.startswith("UTILS")]
+    dirs = [
+        d for d in os.listdir(".")
+        if os.path.isdir(d) and d not in {".git", ".github", ".vscode", ".claude", "docs", ".pytest_cache"}
+    ]
     dirs.sort()
 
     for d in dirs:

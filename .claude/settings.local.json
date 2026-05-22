@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\ishaa\\\\Desktop\\\\Learn-Quant\" -Force | Select-Object Name, @{Name=\"Type\";Expression={if\\($_.PSIsContainer\\){\"Dir\"}else{\"File\"}}}| Format-Table -AutoSize)",
+      "PowerShell(& \"C:\\\\Users\\\\ishaa\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\python3.exe\" --version 2>&1)"
+    ]
+  }
+}

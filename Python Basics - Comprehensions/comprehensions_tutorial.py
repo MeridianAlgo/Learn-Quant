@@ -56,7 +56,7 @@ def dict_and_set_comprehensions() -> None:
     print(f"Normalised dict:       {normalised}")
 
     trade_log = ["AAPL", "MSFT", "AAPL", "GOOG", "TSLA", "MSFT", "AAPL"]
-    unique_traded = {sym for sym in trade_log}
+    unique_traded = set(trade_log)
     print(f"Unique symbols traded: {unique_traded}")
 
     sectors = {"AAPL": "Tech", "MSFT": "Tech", "JPM": "Finance", "GS": "Finance"}
@@ -92,7 +92,7 @@ def map_and_filter() -> None:
 
     prices = [100.0, 102.5, 101.0, 104.0, 106.5]
     base = prices[0]
-    cumulative = list(map(lambda p: p / base - 1, prices[1:]))
+    cumulative = [p / base - 1 for p in prices[1:]]
     print(f"Cumulative returns from $100: {[round(r, 4) for r in cumulative]}")
 
     raw_signals = [0.8, -0.2, 1.5, 0.05, -1.1, 0.9, -0.05]
@@ -101,7 +101,7 @@ def map_and_filter() -> None:
     print(f"Strong signals: {strong_signals}")
 
     tickers = ["AAPL", "MSFT", "GOOG", "TSLA"]
-    formatted = list(map(lambda t: f"${t}", tickers))
+    formatted = [f"${t}" for t in tickers]
     print(f"Formatted:      {formatted}")
 
 
@@ -120,7 +120,7 @@ def reduce_and_accumulate() -> None:
     equity_curve = list(
         accumulate(daily_returns, lambda acc, r: acc * (1 + r), initial=10_000)
     )
-    print(f"\nEquity curve (starting $10,000):")
+    print("\nEquity curve (starting $10,000):")
     for day, value in enumerate(equity_curve):
         print(f"  Day {day}: ${value:,.2f}")
 
