@@ -206,10 +206,10 @@ repo_name: MeridianAlgo/Learn-Quant
 theme:
   name: material
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.indexes
     - search.suggest
     - search.highlight
     - search.share
