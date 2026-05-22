@@ -175,13 +175,33 @@ def build_docs():
     for mod in modules:
         categories[mod["category"]].append(mod)
 
-    nav_items = ["  - Home: index.md", "  - All Modules: modules.md"]
-    for cat in CATEGORY_ORDER:
-        mods = categories[cat]
-        if mods:
-            nav_items.append(f"  - {cat}:")
+    # Group the 13 fine-grained categories into 5 top-level tabs
+    TAB_GROUPS = {
+        "Home": [],
+        "Foundations": ["Python Fundamentals", "Data Structures", "Algorithms", "Advanced Python"],
+        "Quant Methods": ["Quantitative Methods"],
+        "Finance & Options": [
+            "Options, Derivatives & Finance",
+            "Risk & Performance",
+            "Portfolio Management",
+            "Strategies",
+        ],
+        "AI & Tools": ["AI & Machine Learning", "Market Microstructure", "Utilities & Tools", "Other"],
+    }
+
+    nav_items = ["  - Home:", "      - Overview: index.md", "      - All Modules: modules.md"]
+
+    for tab, cats in TAB_GROUPS.items():
+        if tab == "Home":
+            continue
+        nav_items.append(f"  - {tab}:")
+        for cat in cats:
+            mods = categories.get(cat, [])
+            if not mods:
+                continue
+            nav_items.append(f"      - {cat}:")
             for mod in mods:
-                nav_items.append(f'      - "{mod["dir"]}": {mod["file"]}')
+                nav_items.append(f'          - "{mod["dir"]}": {mod["file"]}')
 
     modules_content = "# All Modules\n\nComplete index of all Learn-Quant lessons and utilities.\n\n"
     for cat in CATEGORY_ORDER:
@@ -206,6 +226,7 @@ repo_name: MeridianAlgo/Learn-Quant
 theme:
   name: material
   features:
+    - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
