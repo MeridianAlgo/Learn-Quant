@@ -175,33 +175,45 @@ def build_docs():
     for mod in modules:
         categories[mod["category"]].append(mod)
 
-    # Group the 13 fine-grained categories into 5 top-level tabs
-    TAB_GROUPS = {
-        "Home": [],
-        "Foundations": ["Python Fundamentals", "Data Structures", "Algorithms", "Advanced Python"],
-        "Quant Methods": ["Quantitative Methods"],
-        "Finance & Options": [
-            "Options, Derivatives & Finance",
-            "Risk & Performance",
-            "Portfolio Management",
-            "Strategies",
-        ],
-        "AI & Tools": ["AI & Machine Learning", "Market Microstructure", "Utilities & Tools", "Other"],
-    }
+    def entries(cat, indent):
+        pad = "  " * indent
+        return [f'{pad}- "{m["dir"]}": {m["file"]}' for m in categories.get(cat, [])]
 
-    nav_items = ["  - Home:", "      - Overview: index.md", "      - All Modules: modules.md"]
-
-    for tab, cats in TAB_GROUPS.items():
-        if tab == "Home":
-            continue
-        nav_items.append(f"  - {tab}:")
-        for cat in cats:
-            mods = categories.get(cat, [])
-            if not mods:
-                continue
-            nav_items.append(f"      - {cat}:")
-            for mod in mods:
-                nav_items.append(f'          - "{mod["dir"]}": {mod["file"]}')
+    nav_items = [
+        "  - Home: index.md",
+        "  - All Modules: modules.md",
+        # ── Python Fundamentals ──────────────────────────────────────
+        "  - Python Fundamentals:",
+        *[f"      {e}" for e in entries("Python Fundamentals", 0)],
+        # ── Python Advanced ──────────────────────────────────────────
+        "  - Python Advanced:",
+        "      - Advanced Python:",
+        *[f"          {e}" for e in entries("Advanced Python", 0)],
+        "      - Data Structures:",
+        *[f"          {e}" for e in entries("Data Structures", 0)],
+        "      - Algorithms:",
+        *[f"          {e}" for e in entries("Algorithms", 0)],
+        # ── Quant ────────────────────────────────────────────────────
+        "  - Quant:",
+        "      - Quantitative Methods:",
+        *[f"          {e}" for e in entries("Quantitative Methods", 0)],
+        "      - Finance & Options:",
+        *[f"          {e}" for e in entries("Options, Derivatives & Finance", 0)],
+        "      - Risk & Performance:",
+        *[f"          {e}" for e in entries("Risk & Performance", 0)],
+        "      - Portfolio Management:",
+        *[f"          {e}" for e in entries("Portfolio Management", 0)],
+        "      - Strategies:",
+        *[f"          {e}" for e in entries("Strategies", 0)],
+        # ── AI & Machine Learning ────────────────────────────────────
+        "  - AI & Machine Learning:",
+        *[f"      {e}" for e in entries("AI & Machine Learning", 0)],
+        # ── Utilities & Tools ────────────────────────────────────────
+        "  - Utilities & Tools:",
+        *[f"      {e}" for e in entries("Market Microstructure", 0)],
+        *[f"      {e}" for e in entries("Utilities & Tools", 0)],
+        *[f"      {e}" for e in entries("Other", 0)],
+    ]
 
     modules_content = "# All Modules\n\nComplete index of all Learn-Quant lessons and utilities.\n\n"
     for cat in CATEGORY_ORDER:
