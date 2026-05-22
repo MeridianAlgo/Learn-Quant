@@ -5,7 +5,7 @@ import shutil
 def extract_description(readme_path):
     """Extract title and description from README.md"""
     try:
-        with open(readme_path, "r", encoding="utf-8") as f:
+        with open(readme_path, encoding="utf-8") as f:
             lines = f.readlines()
         title = ""
         description = ""
