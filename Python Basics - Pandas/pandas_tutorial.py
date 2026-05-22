@@ -64,9 +64,7 @@ def returns_and_rolling(df: pd.DataFrame) -> pd.DataFrame:
     df["sma_20"] = df["close"].rolling(20).mean()
     df["upper_bb"] = df["sma_20"] + 2 * df["close"].rolling(20).std()
     df["lower_bb"] = df["sma_20"] - 2 * df["close"].rolling(20).std()
-    df["rolling_sharpe"] = (
-        df["ret"].rolling(20).mean() / df["ret"].rolling(20).std()
-    ) * np.sqrt(252)
+    df["rolling_sharpe"] = (df["ret"].rolling(20).mean() / df["ret"].rolling(20).std()) * np.sqrt(252)
 
     cols = ["close", "ret", "sma_20", "upper_bb", "lower_bb", "rolling_sharpe"]
     print(df[cols].tail(10).round(4).to_string())
@@ -98,10 +96,7 @@ def groupby_by_weekday(df: pd.DataFrame) -> None:
     df2["weekday"] = df2.index.day_name()
     df2["ret"] = df2["close"].pct_change()
 
-    stats = (
-        df2.groupby("weekday")["ret"]
-        .agg(avg_ret="mean", volatility="std", days="count")
-    )
+    stats = df2.groupby("weekday")["ret"].agg(avg_ret="mean", volatility="std", days="count")
     order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     stats = stats.reindex([d for d in order if d in stats.index])
     print(stats.round(4).to_string())
@@ -139,8 +134,7 @@ def main() -> None:
     groupby_by_weekday(df)
     signal_generation(df)
     print(
-        "\n\U0001f389 Pandas tutorial complete! "
-        "Try applying these patterns to real data from the Market Data module."
+        "\n\U0001f389 Pandas tutorial complete! Try applying these patterns to real data from the Market Data module."
     )
 
 

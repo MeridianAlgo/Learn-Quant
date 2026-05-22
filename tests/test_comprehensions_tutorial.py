@@ -2,11 +2,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-SCRIPT_PATH = (
-    Path(__file__).resolve().parents[1]
-    / "Python Basics - Comprehensions"
-    / "comprehensions_tutorial.py"
-)
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "Python Basics - Comprehensions" / "comprehensions_tutorial.py"
 
 
 def test_script_runs():

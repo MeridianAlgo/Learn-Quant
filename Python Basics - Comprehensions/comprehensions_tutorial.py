@@ -39,10 +39,7 @@ def list_comprehensions() -> None:
     print(f"Stocks over $200: {over_200}")
 
     closing = [100.0, 102.0, 99.5, 105.0, 103.2]
-    pct_returns = [
-        (closing[i] - closing[i - 1]) / closing[i - 1]
-        for i in range(1, len(closing))
-    ]
+    pct_returns = [(closing[i] - closing[i - 1]) / closing[i - 1] for i in range(1, len(closing))]
     print(f"Daily returns:    {[round(r, 4) for r in pct_returns]}")
 
 
@@ -60,10 +57,7 @@ def dict_and_set_comprehensions() -> None:
     print(f"Unique symbols traded: {unique_traded}")
 
     sectors = {"AAPL": "Tech", "MSFT": "Tech", "JPM": "Finance", "GS": "Finance"}
-    sector_to_stocks = {
-        sector: [sym for sym, s in sectors.items() if s == sector]
-        for sector in set(sectors.values())
-    }
+    sector_to_stocks = {sector: [sym for sym, s in sectors.items() if s == sector] for sector in set(sectors.values())}
     print(f"Sector map: {sector_to_stocks}")
 
 
@@ -117,9 +111,7 @@ def reduce_and_accumulate() -> None:
     print(f"Daily returns:          {[round(r, 4) for r in daily_returns]}")
     print(f"Compounded total return:{total_return:.4%}")
 
-    equity_curve = list(
-        accumulate(daily_returns, lambda acc, r: acc * (1 + r), initial=10_000)
-    )
+    equity_curve = list(accumulate(daily_returns, lambda acc, r: acc * (1 + r), initial=10_000))
     print("\nEquity curve (starting $10,000):")
     for day, value in enumerate(equity_curve):
         print(f"  Day {day}: ${value:,.2f}")
@@ -142,15 +134,10 @@ def nested_comprehensions_correlation() -> None:
         mx = sum(x) / n
         my = sum(y) / n
         num = sum((xi - mx) * (yi - my) for xi, yi in zip(x, y))
-        denom = math.sqrt(
-            sum((xi - mx) ** 2 for xi in x) * sum((yi - my) ** 2 for yi in y)
-        )
+        denom = math.sqrt(sum((xi - mx) ** 2 for xi in x) * sum((yi - my) ** 2 for yi in y))
         return num / denom if denom else 0.0
 
-    corr_matrix = [
-        [round(pearson_r(returns_data[a], returns_data[b]), 3) for b in assets]
-        for a in assets
-    ]
+    corr_matrix = [[round(pearson_r(returns_data[a], returns_data[b]), 3) for b in assets] for a in assets]
 
     print(f"{'':8}" + "  ".join(f"{a:>6}" for a in assets))
     for label, row in zip(assets, corr_matrix):
@@ -165,10 +152,7 @@ def main() -> None:
     map_and_filter()
     reduce_and_accumulate()
     nested_comprehensions_correlation()
-    print(
-        "\n\U0001f389 Comprehensions tutorial complete! "
-        "These patterns appear everywhere in professional quant code."
-    )
+    print("\n\U0001f389 Comprehensions tutorial complete! These patterns appear everywhere in professional quant code.")
 
 
 if __name__ == "__main__":

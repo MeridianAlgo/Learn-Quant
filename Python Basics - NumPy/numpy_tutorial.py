@@ -34,11 +34,13 @@ def arrays_and_dtypes() -> None:
     print(f"dtype: {prices.dtype}, shape: {prices.shape}, ndim: {prices.ndim}")
 
     # 2-D: rows = days, cols = [open, high, low, close]
-    ohlc = np.array([
-        [150.0, 155.0, 149.0, 152.3],
-        [152.3, 156.0, 151.0, 148.7],
-        [148.7, 154.0, 147.5, 155.1],
-    ])
+    ohlc = np.array(
+        [
+            [150.0, 155.0, 149.0, 152.3],
+            [152.3, 156.0, 151.0, 148.7],
+            [148.7, 154.0, 147.5, 155.1],
+        ]
+    )
     print(f"\nOHLC matrix shape: {ohlc.shape}  (days x fields)")
     print(f"Closing prices (col 3): {ohlc[:, 3]}")
 
@@ -74,7 +76,7 @@ def descriptive_statistics() -> None:
     print(f"Daily volatility:    {sigma:.4%}")
     print(f"Annualised Sharpe:   {sharpe:.3f}")
     print(f"Min / Max:           {returns.min():.4%} / {returns.max():.4%}")
-    skewness = ((returns - mu) ** 3).mean() / sigma ** 3
+    skewness = ((returns - mu) ** 3).mean() / sigma**3
     print(f"Skewness:            {skewness:.3f}")
 
 
@@ -84,11 +86,13 @@ def broadcasting_demo() -> None:
     print("=" * 60)
 
     weights = np.array([0.4, 0.3, 0.3])
-    asset_returns = np.array([
-        [0.010,  0.005, -0.003],
-        [-0.005, 0.012,  0.008],
-        [0.008, -0.002,  0.015],
-    ])
+    asset_returns = np.array(
+        [
+            [0.010, 0.005, -0.003],
+            [-0.005, 0.012, 0.008],
+            [0.008, -0.002, 0.015],
+        ]
+    )
     # Multiply each row by weights without a loop, then sum
     portfolio_returns = (asset_returns * weights).sum(axis=1)
     print(f"Weights:            {weights}")
@@ -102,12 +106,12 @@ def covariance_and_portfolio_variance() -> None:
     print("=" * 60)
 
     np.random.seed(7)
-    ret_matrix = np.random.normal(0, 0.015, (252, 3))   # 252 days x 3 assets
-    cov = np.cov(ret_matrix.T)                           # 3x3 covariance matrix
+    ret_matrix = np.random.normal(0, 0.015, (252, 3))  # 252 days x 3 assets
+    cov = np.cov(ret_matrix.T)  # 3x3 covariance matrix
     weights = np.array([0.5, 0.3, 0.2])
 
-    portfolio_var = weights @ cov @ weights               # quadratic form
-    portfolio_vol = np.sqrt(portfolio_var * 252)         # annualised
+    portfolio_var = weights @ cov @ weights  # quadratic form
+    portfolio_vol = np.sqrt(portfolio_var * 252)  # annualised
 
     print(f"Annualised covariance matrix:\n{np.round(cov * 252, 6)}")
     print(f"\nWeights:             {weights}")
@@ -143,10 +147,7 @@ def main() -> None:
     broadcasting_demo()
     covariance_and_portfolio_variance()
     boolean_indexing_and_pnl()
-    print(
-        "\n\U0001f389 NumPy tutorial complete! "
-        "Next: explore the Pandas tutorial for time-series data manipulation."
-    )
+    print("\n\U0001f389 NumPy tutorial complete! Next: explore the Pandas tutorial for time-series data manipulation.")
 
 
 if __name__ == "__main__":
