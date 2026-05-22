@@ -3,7 +3,7 @@ import shutil
 
 
 def extract_description(readme_path):
-    """Extract title and description from README.md"""
+    """Extract title and first prose description from README.md"""
     try:
         with open(readme_path, encoding="utf-8") as f:
             lines = f.readlines()
@@ -20,82 +20,174 @@ def extract_description(readme_path):
         return "", ""
 
 
+def categorize(name):
+    if "Python Basics" in name:
+        return "Python Fundamentals"
+    if "Data Structures" in name:
+        return "Data Structures"
+    if "Algorithms" in name:
+        return "Algorithms"
+    if "Advanced Python" in name:
+        return "Advanced Python"
+    if "Quantitative Methods" in name:
+        return "Quantitative Methods"
+    if any(
+        x in name
+        for x in [
+            "Black-Scholes",
+            "Advanced Options",
+            "Options Pricing",
+            "Options Chain",
+            "Greeks Calculator",
+            "Exotic Options",
+            "Options Strategies",
+            "Technical Indicators",
+            "Monte Carlo Simulation",
+            "Bond Price",
+            "Duration Convexity",
+            "Yield Curve",
+            "Discounted Cash Flow",
+            "CAPM",
+            "Beta Calculator",
+            "Correlation Analysis",
+            "Covariance Estimation",
+            "Credit Risk",
+            "Volatility Calculator",
+            "Kelly Criterion",
+            "Position Sizing",
+            "Transaction Cost",
+            "FX Tools",
+            "Expected Shortfall",
+            "Dividend Tracker",
+        ]
+    ):
+        return "Options, Derivatives & Finance"
+    if any(
+        x in name
+        for x in [
+            "Risk Metrics",
+            "Value at Risk",
+            "Sharpe",
+            "Performance Attribution",
+        ]
+    ):
+        return "Risk & Performance"
+    if any(
+        x in name
+        for x in [
+            "Portfolio",
+            "Monte Carlo Portfolio",
+        ]
+    ):
+        return "Portfolio Management"
+    if any(
+        x in name
+        for x in [
+            "Strategies",
+            "Order Execution",
+        ]
+    ):
+        return "Strategies"
+    if any(
+        x in name
+        for x in [
+            "Machine Learning",
+            "Reinforcement Learning",
+            "AI Development",
+            "Sentiment Analysis",
+            "Learning Platform",
+        ]
+    ):
+        return "AI & Machine Learning"
+    if any(
+        x in name
+        for x in [
+            "Market Microstructure",
+            "High Frequency",
+        ]
+    ):
+        return "Market Microstructure"
+    if any(
+        x in name
+        for x in [
+            "Market Data",
+            "Historical Data",
+            "News Fetching",
+            "Websocket",
+            "Core Utilities",
+            "Data Processing",
+            "Logging",
+            "System Utilities",
+            "Currency Converter",
+            "Economic Calendar",
+        ]
+    ):
+        return "Utilities & Tools"
+    return "Other"
+
+
+CATEGORY_ORDER = [
+    "Python Fundamentals",
+    "Data Structures",
+    "Algorithms",
+    "Advanced Python",
+    "Quantitative Methods",
+    "Options, Derivatives & Finance",
+    "Risk & Performance",
+    "Portfolio Management",
+    "Strategies",
+    "AI & Machine Learning",
+    "Market Microstructure",
+    "Utilities & Tools",
+    "Other",
+]
+
+
 def build_docs():
     docs_dir = "docs"
     if not os.path.exists(docs_dir):
         os.makedirs(docs_dir)
 
-    # Copy root README as index
     if os.path.exists("README.md"):
         shutil.copy("README.md", os.path.join(docs_dir, "index.md"))
 
-    # Collect all modules with their descriptions
     modules = []
-    dirs = [
-        d
-        for d in os.listdir(".")
-        if os.path.isdir(d)
-        and d not in {".git", ".github", ".vscode", ".claude", "docs", ".pytest_cache", "tests"}
-    ]
+    skip = {".git", ".github", ".vscode", ".claude", "docs", ".pytest_cache", "tests", ".ruff_cache"}
+    dirs = [d for d in os.listdir(".") if os.path.isdir(d) and d not in skip]
 
     for d in sorted(dirs):
         readme_path = os.path.join(d, "README.md")
         if os.path.exists(readme_path):
             title, description = extract_description(readme_path)
             target_file = f"{d}.md"
-            target_path = os.path.join(docs_dir, target_file)
-            shutil.copy(readme_path, target_path)
-            modules.append({"dir": d, "title": title, "desc": description, "file": target_file})
+            shutil.copy(readme_path, os.path.join(docs_dir, target_file))
+            modules.append(
+                {
+                    "dir": d,
+                    "title": title,
+                    "desc": description,
+                    "file": target_file,
+                    "category": categorize(d),
+                }
+            )
 
-    # Categorize modules
-    categories = {
-        "Python Fundamentals": [],
-        "Advanced Python": [],
-        "Algorithms": [],
-        "Quantitative Finance": [],
-        "Data Structures": [],
-        "AI & Machine Learning": [],
-        "Utilities": [],
-        "Other": [],
-    }
-
+    categories = {cat: [] for cat in CATEGORY_ORDER}
     for mod in modules:
-        name = mod["dir"]
-        if "Python Basics" in name:
-            categories["Python Fundamentals"].append(mod)
-        elif "Advanced Python" in name:
-            categories["Advanced Python"].append(mod)
-        elif "Algorithms" in name:
-            categories["Algorithms"].append(mod)
-        elif any(x in name for x in ["CAPM", "Black-Scholes", "Bond", "DCF", "Options", "Portfolio"]):
-            categories["Quantitative Finance"].append(mod)
-        elif "Data Structures" in name:
-            categories["Data Structures"].append(mod)
-        elif any(x in name for x in ["AI", "Machine Learning", "Neural", "Reinforcement"]):
-            categories["AI & Machine Learning"].append(mod)
-        elif any(x in name for x in ["Core Utilities", "UTILS", "Converter", "Tracker", "Calendar"]):
-            categories["Utilities"].append(mod)
-        else:
-            categories["Other"].append(mod)
+        categories[mod["category"]].append(mod)
 
-    # Build nav items for mkdocs
-    nav_items = ["  - Home: index.md"]
-    all_modules_page = "  - Modules: modules.md"
-    nav_items.append(all_modules_page)
-
-    for category, mods in categories.items():
+    nav_items = ["  - Home: index.md", "  - All Modules: modules.md"]
+    for cat in CATEGORY_ORDER:
+        mods = categories[cat]
         if mods:
-            nav_items.append(f"  - {category}:")
+            nav_items.append(f"  - {cat}:")
             for mod in mods:
-                nav_items.append(f"      - {mod['dir']}: {mod['file']}")
+                nav_items.append(f'      - "{mod["dir"]}": {mod["file"]}')
 
-    # Create comprehensive modules page
-    modules_content = "# All Modules\n\n"
-    modules_content += "Complete index of all Learn-Quant lessons and utilities.\n\n"
-
-    for category, mods in categories.items():
+    modules_content = "# All Modules\n\nComplete index of all Learn-Quant lessons and utilities.\n\n"
+    for cat in CATEGORY_ORDER:
+        mods = categories[cat]
         if mods:
-            modules_content += f"## {category}\n\n"
+            modules_content += f"## {cat}\n\n"
             for mod in mods:
                 modules_content += f"### [{mod['dir']}]({mod['file']})\n"
                 if mod["title"]:
@@ -106,7 +198,6 @@ def build_docs():
     with open(os.path.join(docs_dir, "modules.md"), "w", encoding="utf-8") as f:
         f.write(modules_content)
 
-    # Generate mkdocs.yml
     mkdocs_yaml = f"""site_name: Learn-Quant
 site_description: Master quantitative finance, algorithmic trading, and professional Python engineering.
 repo_url: https://github.com/MeridianAlgo/Learn-Quant
@@ -172,7 +263,11 @@ nav:
     with open("mkdocs.yml", "w", encoding="utf-8") as f:
         f.write(mkdocs_yaml)
 
-    print("✓ Documentation structure built with all modules indexed and categorized")
+    total = sum(len(v) for v in categories.values())
+    print(f"Docs built: {total} modules indexed across {sum(1 for v in categories.values() if v)} categories")
+    for cat in CATEGORY_ORDER:
+        if categories[cat]:
+            print(f"  {cat}: {len(categories[cat])} modules")
 
 
 if __name__ == "__main__":
