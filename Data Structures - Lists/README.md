@@ -1,333 +1,430 @@
-# Lists - Python List Operations for Financial Data
+# Data Structures – Lists
 
 ## Overview
 
-This utility provides comprehensive Python list operations essential for financial data processing, algorithmic trading, and data manipulation. Lists are flexible containers that can store heterogeneous data types and are fundamental to Python programming.
+Lists are Python's **most fundamental data structure**—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values. Master list operations and you unlock efficient data processing essential for trading systems and quantitative analysis.
 
-## Key Concepts
+**Why lists matter in finance**:
+- Store price histories (time series)
+- Track portfolio positions and transactions
+- Build datasets for backtesting
+- Store signals and indicators
+- Process market data feeds
 
-### **Python Lists**
-- **Ordered Collections**: Maintain insertion order
-- **Mutable**: Can be modified after creation
-- **Dynamic Size**: Grow and shrink as needed
-- **Heterogeneous**: Store different data types
+## Learning Objectives
 
-### **Financial Applications**
-- **Price Tickers**: Lists of stock symbols, asset identifiers
-- **Transaction Logs**: Order history, trade records
-- **Time Series**: Historical price data, returns series
-- **Portfolio Holdings**: Asset lists, position tracking
+After this module, you'll:
 
-### **List Operations**
-- **CRUD Operations**: Create, Read, Update, Delete elements
-- **Sorting & Searching**: Efficient data organization
-- **Filtering & Mapping**: Data transformation
-- **Stack/Queue Operations**: LIFO/FIFO behaviors
+- **Create, access, and modify lists** efficiently
+- **Use methods** like `append`, `extend`, `insert`, `remove`, `pop`
+- **Slice lists** to extract subsets of data
+- **Sort and search** lists for analysis
+- **Choose between lists, tuples, dicts** for different data problems
 
-## Implementation
+## Core Concepts
 
-### **Basic List Operations**
+### 1. List Basics
+
+Lists are **ordered, mutable collections** that can hold any data type.
+
 ```python
-# Create and manipulate lists
-tickers = ['AAPL', 'GOOGL', 'MSFT', 'AMZN'] # Stock symbols
-prices = [150.25, 2800.50, 350.75, 3200.00] # Corresponding prices
-
-# Add elements
-tickers.append('TSLA') # Add to end
-tickers.insert(0, 'NVDA') # Insert at index
-
-# Remove elements
-tickers.remove('GOOGL') # Remove specific value
-del tickers[2] # Remove by index
-last_ticker = tickers.pop() # Remove and return last element
-```
-
-### **Advanced List Operations**
-```python
-# List comprehensions for financial calculations
-prices = [100, 102, 98, 105, 107]
-returns = [(prices[i] - prices[i-1]) / prices[i-1] for i in range(1, len(prices))]
-
-# Filter operations
-high_prices = [price for price in prices if price > 100]
-volatile_assets = [ticker for ticker, price in zip(tickers, prices) if price > 1000]
-
-# Sorting with custom keys
-portfolio = [('AAPL', 150, 0.3), ('GOOGL', 2800, 0.7)]
-sorted_by_price = sorted(portfolio, key=lambda x: x[1])
-sorted_by_weight = sorted(portfolio, key=lambda x: x[2], reverse=True)
-```
-
-### **List Performance Considerations**
-```python
-# Efficient list operations
-import time
-
-# Pre-allocate for known sizes
-large_list = [0] * 1000000
-
-# Use list comprehensions instead of loops
-squares = [x**2 for x in range(1000)] # Faster than append in loop
-
-# Avoid repeated list concatenation (creates new lists)
-# Bad:
-# result = []
-# for i in range(1000):
-# result = result + [i]
-
-# Good:
-result = [i for i in range(1000)]
-```
-
-## Examples
-
-### **Example 1: Portfolio Management with Lists**
-```python
-class PortfolioManager:
- def __init__(self):
- self.holdings = [] # List of (ticker, shares, price) tuples
- self.transactions = [] # List of transaction records
-
- def add_position(self, ticker: str, shares: int, price: float):
- """Add a new position to the portfolio."""
- self.holdings.append((ticker, shares, price))
- self.transactions.append({
- 'type': 'BUY',
- 'ticker': ticker,
- 'shares': shares,
- 'price': price,
- 'timestamp': time.time()
- })
-
- def remove_position(self, ticker: str, shares: int):
- """Remove shares from a position."""
- for i, (t, s, p) in enumerate(self.holdings):
- if t == ticker:
- if s <= shares:
- # Remove entire position
- del self.holdings[i]
- else:
- # Reduce position size
- self.holdings[i] = (t, s - shares, p)
-
- self.transactions.append({
- 'type': 'SELL',
- 'ticker': ticker,
- 'shares': shares,
- 'timestamp': time.time()
- })
- break
-
- def get_portfolio_value(self) -> float:
- """Calculate total portfolio value."""
- return sum(shares * price for _, shares, price in self.holdings)
-
- def get_positions_by_value(self) -> list:
- """Get positions sorted by current value."""
- positions_with_value = []
- for ticker, shares, price in self.holdings:
- current_value = shares * price
- positions_with_value.append((ticker, shares, price, current_value))
-
- return sorted(positions_with_value, key=lambda x: x[3], reverse=True)
-
-# Usage
-portfolio = PortfolioManager()
-portfolio.add_position('AAPL', 100, 150.25)
-portfolio.add_position('GOOGL', 10, 2800.50)
-portfolio.add_position('MSFT', 50, 350.75)
-
-print(f"Portfolio value: ${portfolio.get_portfolio_value():.2f}")
-print("Positions by value:", portfolio.get_positions_by_value())
-```
-
-### **Example 2: Transaction Processing**
-```python
-def process_transactions(transactions: list) -> dict:
- """
- Process a list of financial transactions.
-
- Args:
- transactions: List of transaction dictionaries
-
- Returns:
- dict: Summary statistics
- """
- summary = {
- 'total_transactions': len(transactions),
- 'buy_transactions': 0,
- 'sell_transactions': 0,
- 'total_volume': 0,
- 'total_value': 0,
- 'unique_tickers': set(),
- 'transactions_by_type': {}
- }
-
- for tx in transactions:
- tx_type = tx['type']
- volume = tx.get('shares', 0)
- value = tx.get('price', 0) * volume
-
- summary['total_volume'] += volume
- summary['total_value'] += value
- summary['unique_tickers'].add(tx.get('ticker', 'UNKNOWN'))
-
- # Count by type
- if tx_type in summary['transactions_by_type']:
- summary['transactions_by_type'][tx_type] += 1
- else:
- summary['transactions_by_type'][tx_type] = 1
-
- # Specific counters
- if tx_type == 'BUY':
- summary['buy_transactions'] += 1
- elif tx_type == 'SELL':
- summary['sell_transactions'] += 1
-
- summary['unique_tickers'] = list(summary['unique_tickers'])
- return summary
-
-# Sample transactions
-transactions = [
- {'type': 'BUY', 'ticker': 'AAPL', 'shares': 100, 'price': 150.25},
- {'type': 'BUY', 'ticker': 'GOOGL', 'shares': 10, 'price': 2800.50},
- {'type': 'SELL', 'ticker': 'AAPL', 'shares': 50, 'price': 155.00},
- {'type': 'BUY', 'ticker': 'MSFT', 'shares': 75, 'price': 350.75},
+# Create lists
+tickers = ['AAPL', 'MSFT', 'TSLA']       # Strings
+prices = [150.25, 300.50, 250.75]       # Floats
+returns = [0.02, -0.01, 0.03]           # Mixed floats
+portfolio = [
+    ('AAPL', 100, 150.25),              # Tuples (immutable)
+    ('MSFT', 50, 300.50)
 ]
 
-summary = process_transactions(transactions)
-print("Transaction Summary:")
-for key, value in summary.items():
- print(f"{key}: {value}")
+# Empty list
+empty = []
+
+# List with mixed types (valid but not recommended)
+mixed = [1, 'AAPL', 150.25, True]       # Avoid this!
 ```
 
-### **Example 3: Algorithmic Trading with Lists**
+**Key properties**:
+- **Ordered**: Index 0 is always first
+- **Mutable**: Can add/remove/change elements
+- **Dynamic**: Grows and shrinks as needed
+- **Heterogeneous**: Can hold different types (usually don't)
+
+### 2. Accessing Elements
+
 ```python
-class SimpleTradingStrategy:
- def __init__(self, prices: list, window: int = 20):
- """
- Simple moving average crossover strategy.
+prices = [100, 102, 98, 105, 103]
 
- Args:
- prices: List of historical prices
- window: Moving average window size
- """
- self.prices = prices
- self.window = window
- self.signals = [] # List of trading signals
+# Index (0-based)
+first = prices[0]           # 100
+second = prices[1]          # 102
+last = prices[-1]           # 103
+second_last = prices[-2]    # 105
 
- def calculate_moving_average(self, start_idx: int) -> float:
- """Calculate moving average for given window."""
- if start_idx < self.window - 1:
- return None
- return sum(self.prices[start_idx - self.window + 1:start_idx + 1]) / self.window
+# Slice: list[start:end:step]
+# Note: end is exclusive!
+first_three = prices[0:3]   # [100, 102, 98]
+every_other = prices[::2]   # [100, 98, 103]
+reversed_list = prices[::-1]  # [103, 105, 98, 102, 100]
 
- def generate_signals(self) -> list:
- """Generate buy/sell signals based on MA crossover."""
- self.signals = []
-
- for i in range(len(self.prices)):
- ma_current = self.calculate_moving_average(i)
-
- if ma_current is None:
- self.signals.append('HOLD')
- continue
-
- if i > 0:
- ma_previous = self.calculate_moving_average(i - 1)
- if ma_previous is None:
- self.signals.append('HOLD')
- continue
-
- # Generate signals
- if self.prices[i] > ma_current and self.prices[i-1] <= ma_previous:
- self.signals.append('BUY')
- elif self.prices[i] < ma_current and self.prices[i-1] >= ma_previous:
- self.signals.append('SELL')
- else:
- self.signals.append('HOLD')
- else:
- self.signals.append('HOLD')
-
- return self.signals
-
- def backtest(self, initial_capital: float = 10000) -> dict:
- """Backtest the trading strategy."""
- self.generate_signals()
-
- capital = initial_capital
- shares = 0
- portfolio_values = [capital]
-
- for i in range(1, len(self.prices)):
- signal = self.signals[i]
-
- if signal == 'BUY' and capital > 0:
- # Buy as many shares as possible
- shares_to_buy = capital // self.prices[i]
- if shares_to_buy > 0:
- shares += shares_to_buy
- capital -= shares_to_buy * self.prices[i]
-
- elif signal == 'SELL' and shares > 0:
- # Sell all shares
- capital += shares * self.prices[i]
- shares = 0
-
- # Calculate portfolio value
- portfolio_value = capital + shares * self.prices[i]
- portfolio_values.append(portfolio_value)
-
- return {
- 'final_capital': capital,
- 'final_shares': shares,
- 'total_return': (portfolio_values[-1] - initial_capital) / initial_capital,
- 'portfolio_values': portfolio_values
- }
-
-# Usage
-prices = [100, 102, 98, 105, 107, 110, 108, 112, 115, 118,
- 120, 122, 119, 125, 128, 130, 127, 132, 135, 138]
-
-strategy = SimpleTradingStrategy(prices)
-results = strategy.backtest()
-
-print(f"Initial capital: $10,000")
-print(f"Final capital: ${results['final_capital']:.2f}")
-print(f"Total return: {results['total_return']:.2%}")
-print(f"Signals generated: {len(strategy.signals)}")
+# Length
+count = len(prices)          # 5
 ```
 
-## Testing
+**Finance example: Get yesterday's price**
 
-Run the test suite to verify functionality:
+```python
+price_history = [100, 102, 98, 105, 103]
+today = price_history[-1]           # 103 (current)
+yesterday = price_history[-2]       # 105 (previous)
+daily_change = today - yesterday    # -2
+```
+
+### 3. Adding Elements
+
+```python
+tickers = ['AAPL', 'MSFT']
+
+# append: Add single element to end
+tickers.append('TSLA')
+# Result: ['AAPL', 'MSFT', 'TSLA']
+
+# extend: Add multiple elements
+tickers.extend(['GE', 'IBM'])
+# Result: ['AAPL', 'MSFT', 'TSLA', 'GE', 'IBM']
+
+# insert: Add at specific position
+tickers.insert(1, 'GOOGL')
+# Result: ['AAPL', 'GOOGL', 'MSFT', 'TSLA', 'GE', 'IBM']
+
+# NOTE: Use extend for lists, not append!
+# BAD:
+list1 = [1, 2]
+list1.append([3, 4])
+# Result: [1, 2, [3, 4]] - nested!
+
+# GOOD:
+list1 = [1, 2]
+list1.extend([3, 4])
+# Result: [1, 2, 3, 4]
+```
+
+### 4. Removing Elements
+
+```python
+tickers = ['AAPL', 'MSFT', 'TSLA', 'GE']
+
+# remove: Remove first occurrence of value
+tickers.remove('MSFT')
+# Result: ['AAPL', 'TSLA', 'GE']
+
+# pop: Remove and return element
+last = tickers.pop()        # Returns 'GE', list becomes ['AAPL', 'TSLA']
+second = tickers.pop(1)     # Returns 'TSLA', list becomes ['AAPL']
+
+# del: Delete by index
+del tickers[0]              # Remove 'AAPL'
+
+# clear: Remove all
+tickers.clear()             # Result: []
+
+# NOTE: Be careful with remove()!
+prices = [100, 102, 100, 105]
+prices.remove(100)          # Only removes FIRST 100
+# Result: [102, 100, 105]
+```
+
+### 5. Searching and Counting
+
+```python
+prices = [100, 102, 98, 105, 103, 98]
+
+# in: Check membership
+if 100 in prices:
+    print("Price 100 exists")
+
+# index: Find first position
+pos = prices.index(102)     # Returns 1
+pos = prices.index(98)      # Returns 2 (first occurrence)
+
+# count: Count occurrences
+count = prices.count(98)    # Returns 2 (appears twice)
+
+# Get all indices of a value
+value = 98
+indices = [i for i, p in enumerate(prices) if p == value]
+# Result: [2, 5]
+```
+
+### 6. Sorting
+
+```python
+prices = [100, 102, 98, 105, 103]
+tickers = ['AAPL', 'MSFT', 'TSLA', 'GE', 'IBM']
+
+# Sort in place (modifies original)
+prices.sort()
+# Result: [98, 100, 102, 103, 105]
+
+# Reverse sort
+prices.sort(reverse=True)
+# Result: [105, 103, 102, 100, 98]
+
+# Sort strings alphabetically
+tickers.sort()
+# Result: ['AAPL', 'GE', 'IBM', 'MSFT', 'TSLA']
+
+# sorted(): Create new sorted list (doesn't modify original)
+original = [3, 1, 4, 1, 5]
+sorted_list = sorted(original)
+# original: [3, 1, 4, 1, 5], sorted_list: [1, 1, 3, 4, 5]
+
+# Sort with key function (sort by second element)
+portfolio = [('AAPL', 100), ('MSFT', 50), ('TSLA', 200)]
+by_count = sorted(portfolio, key=lambda x: x[1])
+# Result: [('MSFT', 50), ('AAPL', 100), ('TSLA', 200)]
+
+# Sort by value, descending
+by_value = sorted(portfolio, key=lambda x: x[1], reverse=True)
+# Result: [('TSLA', 200), ('AAPL', 100), ('MSFT', 50)]
+```
+
+### 7. Useful Methods
+
+```python
+prices = [100, 102, 98, 105, 103]
+
+# min/max
+lowest = min(prices)        # 98
+highest = max(prices)       # 105
+
+# sum
+total = sum(prices)         # 508
+
+# average
+avg = sum(prices) / len(prices)  # 101.6
+
+# reverse
+prices_reversed = list(reversed(prices))
+# Or in place:
+prices.reverse()
+```
+
+## Common Finance Patterns
+
+### Pattern 1: Time Series Processing
+
+```python
+# Last N prices
+prices = [100, 102, 101, 105, 103, 108, 106]
+lookback = 3
+recent = prices[-lookback:]  # [108, 106, 107] — last 3
+
+# Calculate moving average
+window = 5
+ma = sum(prices[-window:]) / window
+
+# Price changes
+changes = [prices[i+1] - prices[i] for i in range(len(prices)-1)]
+```
+
+### Pattern 2: Portfolio Management
+
+```python
+# Track holdings as list of tuples
+portfolio = [
+    ('AAPL', 100, 150.25),   # (ticker, shares, price)
+    ('MSFT', 50, 300.50),
+    ('TSLA', 200, 250.75)
+]
+
+# Calculate portfolio value
+total_value = sum(shares * price for _, shares, price in portfolio)
+
+# Find largest position by value
+largest = max(portfolio, key=lambda x: x[1] * x[2])
+
+# Filter positions above threshold
+large_positions = [p for p in portfolio if p[1] * p[2] > 10000]
+```
+
+### Pattern 3: Transaction Log
+
+```python
+# Track all trades
+transactions = [
+    {'type': 'BUY', 'ticker': 'AAPL', 'shares': 100, 'price': 150},
+    {'type': 'BUY', 'ticker': 'MSFT', 'shares': 50, 'price': 300},
+    {'type': 'SELL', 'ticker': 'AAPL', 'shares': 50, 'price': 155}
+]
+
+# Count buy vs sell
+buys = len([t for t in transactions if t['type'] == 'BUY'])
+sells = len([t for t in transactions if t['type'] == 'SELL'])
+
+# Total shares bought
+total_bought = sum(t['shares'] for t in transactions if t['type'] == 'BUY')
+```
+
+### Pattern 4: Backtesting
+
+```python
+prices = [100, 102, 98, 105, 103, 108, 106, 110]
+
+# Simple SMA crossover
+sma_period = 3
+equity_curve = []
+position = 0  # 0 = no position, 1 = long
+
+for i in range(sma_period, len(prices)):
+    sma = sum(prices[i-sma_period:i]) / sma_period
+    
+    # Buy signal
+    if prices[i] > sma and position == 0:
+        position = 1
+        entry_price = prices[i]
+    
+    # Sell signal
+    if prices[i] < sma and position == 1:
+        position = 0
+        profit = prices[i] - entry_price
+    
+    equity_curve.append(prices[i])
+```
+
+## Performance Considerations
+
+| Operation | Time | Notes |
+|-----------|------|-------|
+| **Access by index** | O(1) | `list[0]` is instant |
+| **Append** | O(1) | Add to end is fast |
+| **Insert at start** | O(n) | Shifts all elements |
+| **Remove by value** | O(n) | Must search first |
+| **Sort** | O(n log n) | Uses Timsort algorithm |
+| **Search/index** | O(n) | Linear scan |
+
+**Best practice**: For large datasets, avoid removing from start/middle. Use comprehensions instead of repeated appends.
+
+```python
+# SLOW: Many appends
+result = []
+for x in huge_list:
+    if x > threshold:
+        result.append(x)
+
+# FAST: One comprehension
+result = [x for x in huge_list if x > threshold]
+```
+
+## Comparison: Lists vs Other Data Structures
+
+| Structure | Ordered | Mutable | Use Case |
+|-----------|---------|---------|----------|
+| **List** | Yes | Yes | Time series, flexible data |
+| **Tuple** | Yes | No | Immutable records, dict keys |
+| **Set** | No | Yes | Unique values, deduplication |
+| **Dict** | Yes* | Yes | Key-value lookup, portfolios |
+
+*Dicts maintain insertion order since Python 3.7
+
+**Choose list when**: Storing sequences, need to modify, care about order
+**Choose tuple when**: Data shouldn't change, need hashable (for set/dict key)
+**Choose dict when**: Looking up by key/name (like `portfolio['AAPL']`)
+
+## Files
+
+- **`lists_tutorial.py`**: Interactive examples with finance use cases
+
+## How to Run
+
 ```bash
-python -m pytest tests/test_lists.py -v
+python lists_tutorial.py
 ```
 
-## References
+## Practice Problems
 
-- [Python Lists Documentation](https://docs.python.org/3/tutorial/datastructures.html)
-- [List Comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
-- [Sorting Techniques](https://docs.python.org/3/howto/sorting.html)
-- [Algorithmic Trading with Python](https://www.oreilly.com/library/view/python-for-algorithmic/9781492053347/)
+### Problem 1: Calculate Daily Returns
+```python
+prices = [100, 102, 101, 105, 103]
+
+# Calculate list of daily returns (percentage changes)
+# Expected: [0.02, -0.0098, 0.0396, -0.0191]
+```
+
+### Problem 2: Filter High Prices
+```python
+prices = {'AAPL': 150, 'GE': 80, 'MSFT': 300, 'TSLA': 250}
+threshold = 200
+
+# Find all stocks above threshold
+# Expected: ['MSFT', 'TSLA']
+```
+
+### Problem 3: Portfolio Rebalancing
+```python
+portfolio = [('AAPL', 10, 150), ('MSFT', 5, 300), ('TSLA', 2, 250)]
+
+# Calculate total portfolio value
+# Expected: $3900
+```
+
+### Problem 4: Find Extremes
+```python
+prices = [100, 102, 98, 105, 103, 108, 101, 110]
+
+# Find highest and lowest prices
+# Find dates of highest and lowest
+```
+
+### Problem 5: Remove Duplicates
+```python
+tickers = ['AAPL', 'MSFT', 'AAPL', 'TSLA', 'MSFT']
+
+# Remove duplicates while maintaining order
+# Expected: ['AAPL', 'MSFT', 'TSLA']
+```
 
 ## Learning Path
 
-### **Prerequisites**
-- Basic Python programming
-- Understanding of financial markets
+**Prerequisites**:
+- [Python Basics – Control Flow](../Python%20Basics%20-%20Control%20Flow/)
+- [Python Basics – Functions](../Python%20Basics%20-%20Functions/)
 
-### **Next Steps**
-- **Dictionaries**: Key-value data structures for financial data
-- **Sets**: Unique collections for asset tracking
-- **Tuples**: Immutable data for financial records
+**Builds into**:
+- [Data Structures – Dictionaries](../Data%20Structures%20-%20Dictionaries/)
+- [Python Basics – Comprehensions](../Python%20Basics%20-%20Comprehensions/)
+- [Python Basics – Pandas](../Python%20Basics%20-%20Pandas/) (lists become DataFrames)
+- [Data Processing](../Data%20Processing/)
 
-### **Assessment**
-1. Implement a function that calculates portfolio diversification using list operations
-2. Create a transaction logger that maintains ordered transaction history
-3. Build a simple algorithmic trading strategy using list-based indicators
+## FAQ
 
----
+**Q: List or tuple?**
+A: List for modifiable sequences. Tuple for fixed records or when you need hashability (dict key).
 
-*This utility demonstrates the power of Python lists in financial applications. Master list operations to handle complex financial data efficiently.*
+**Q: Why is list.remove() dangerous?**
+A: It only removes the FIRST occurrence. If duplicates exist, you might leave data.
+
+**Q: Append vs extend?**
+A: `append()` adds one item (nests lists). `extend()` adds multiple items (flattens).
+
+**Q: Performance: list or NumPy array?**
+A: Lists for small/mixed data. NumPy arrays for large numerical data (100x faster).
+
+**Q: Can I modify a list while iterating?**
+A: Dangerous! Use comprehension or iterate over a copy instead.
+
+```python
+# WRONG
+for item in list1:
+    if item > 5:
+        list1.remove(item)  # Modifies while iterating!
+
+# RIGHT
+list1 = [x for x in list1 if x <= 5]
+```
+
+## Further Reading
+
+- Python docs: https://docs.python.org/3/tutorial/datastructures.html#more-on-lists
+- Sorting guide: https://docs.python.org/3/howto/sorting.html
+- List comprehensions: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
