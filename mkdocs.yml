@@ -1,0 +1,177 @@
+site_name: Learn-Quant
+site_description: Master quantitative finance, algorithmic trading, and professional Python engineering.
+repo_url: https://github.com/MeridianAlgo/Learn-Quant
+repo_name: MeridianAlgo/Learn-Quant
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tooltips
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+docs_dir: docs
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - All Modules: modules.md
+  - Python Fundamentals:
+      - "Python Basics - Comprehensions": Python Basics - Comprehensions.md
+      - "Python Basics - Control Flow": Python Basics - Control Flow.md
+      - "Python Basics - Functions": Python Basics - Functions.md
+      - "Python Basics - NumPy": Python Basics - NumPy.md
+      - "Python Basics - Numbers": Python Basics - Numbers.md
+      - "Python Basics - Pandas": Python Basics - Pandas.md
+      - "Python Basics - Strings": Python Basics - Strings.md
+  - Python Advanced:
+      - Advanced Python:
+          - "Advanced Python - AsyncIO": Advanced Python - AsyncIO.md
+          - "Advanced Python - Context Managers": Advanced Python - Context Managers.md
+          - "Advanced Python - Decorators and Generators": Advanced Python - Decorators and Generators.md
+          - "Advanced Python - Error Handling": Advanced Python - Error Handling.md
+          - "Advanced Python - Multiprocessing": Advanced Python - Multiprocessing.md
+          - "Advanced Python - OOP": Advanced Python - OOP.md
+      - Data Structures:
+          - "Data Structures - Arrays": Data Structures - Arrays.md
+          - "Data Structures - Dictionaries": Data Structures - Dictionaries.md
+          - "Data Structures - Lists": Data Structures - Lists.md
+          - "Data Structures - Tuples and Sets": Data Structures - Tuples and Sets.md
+      - Algorithms:
+          - "Algorithms - Backtracking": Algorithms - Backtracking.md
+          - "Algorithms - Dynamic Programming": Algorithms - Dynamic Programming.md
+          - "Algorithms - Graph": Algorithms - Graph.md
+          - "Algorithms - Machine Learning": Algorithms - Machine Learning.md
+          - "Algorithms - Searching": Algorithms - Searching.md
+          - "Algorithms - Sorting": Algorithms - Sorting.md
+          - "Algorithms - String": Algorithms - String.md
+          - "Algorithms - Tree": Algorithms - Tree.md
+  - Quant:
+      - Quantitative Methods:
+          - "Quantitative Methods - Cointegration": Quantitative Methods - Cointegration.md
+          - "Quantitative Methods - Copulas": Quantitative Methods - Copulas.md
+          - "Quantitative Methods - Factor Models": Quantitative Methods - Factor Models.md
+          - "Quantitative Methods - GARCH": Quantitative Methods - GARCH.md
+          - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
+          - "Quantitative Methods - Kalman Filter": Quantitative Methods - Kalman Filter.md
+          - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
+          - "Quantitative Methods - Optimization": Quantitative Methods - Optimization.md
+          - "Quantitative Methods - Performance Analysis": Quantitative Methods - Performance Analysis.md
+          - "Quantitative Methods - Regime Detection": Quantitative Methods - Regime Detection.md
+          - "Quantitative Methods - Regression Analysis": Quantitative Methods - Regression Analysis.md
+          - "Quantitative Methods - Statistics": Quantitative Methods - Statistics.md
+          - "Quantitative Methods - Stochastic Processes": Quantitative Methods - Stochastic Processes.md
+          - "Quantitative Methods - TVM": Quantitative Methods - TVM.md
+          - "Quantitative Methods - Time Series": Quantitative Methods - Time Series.md
+      - Finance & Options:
+          - "Advanced Options Pricing": Advanced Options Pricing.md
+          - "Black-Scholes Option Pricing": Black-Scholes Option Pricing.md
+          - "Bond Price and Yield": Bond Price and Yield.md
+          - "CAPM": CAPM.md
+          - "Discounted Cash Flow (DCF)": Discounted Cash Flow (DCF).md
+          - "Dividend Tracker": Dividend Tracker.md
+          - "Finance - Beta Calculator": Finance - Beta Calculator.md
+          - "Finance - Correlation Analysis": Finance - Correlation Analysis.md
+          - "Finance - Covariance Estimation": Finance - Covariance Estimation.md
+          - "Finance - Credit Risk": Finance - Credit Risk.md
+          - "Finance - Duration Convexity": Finance - Duration Convexity.md
+          - "Finance - Exotic Options": Finance - Exotic Options.md
+          - "Finance - Expected Shortfall": Finance - Expected Shortfall.md
+          - "Finance - FX Tools": Finance - FX Tools.md
+          - "Finance - Greeks Calculator": Finance - Greeks Calculator.md
+          - "Finance - Kelly Criterion": Finance - Kelly Criterion.md
+          - "Finance - Options Strategies": Finance - Options Strategies.md
+          - "Finance - Position Sizing": Finance - Position Sizing.md
+          - "Finance - Transaction Cost Analysis": Finance - Transaction Cost Analysis.md
+          - "Finance - Volatility Calculator": Finance - Volatility Calculator.md
+          - "Finance - Yield Curve": Finance - Yield Curve.md
+          - "Monte Carlo Simulation - JavaScript": Monte Carlo Simulation - JavaScript.md
+          - "Options Chain Simulator": Options Chain Simulator.md
+          - "Options Pricing - JavaScript": Options Pricing - JavaScript.md
+          - "Technical Indicators": Technical Indicators.md
+      - Risk & Performance:
+          - "Finance - Performance Attribution": Finance - Performance Attribution.md
+          - "Risk Metrics": Risk Metrics.md
+          - "Risk Metrics - Drawdown Analysis": Risk Metrics - Drawdown Analysis.md
+          - "Risk Metrics - Stress Testing": Risk Metrics - Stress Testing.md
+          - "Sharpe and Sortino Ratio": Sharpe and Sortino Ratio.md
+          - "Value at Risk (VaR)": Value at Risk (VaR).md
+      - Portfolio Management:
+          - "Monte Carlo Portfolio Simulator": Monte Carlo Portfolio Simulator.md
+          - "Portfolio Management": Portfolio Management.md
+          - "Portfolio Management - Black Litterman": Portfolio Management - Black Litterman.md
+          - "Portfolio Optimizer": Portfolio Optimizer.md
+          - "Portfolio Tracker": Portfolio Tracker.md
+      - Strategies:
+          - "Order Execution Simulator": Order Execution Simulator.md
+          - "Strategies - Market Making": Strategies - Market Making.md
+          - "Strategies - Mean Reversion": Strategies - Mean Reversion.md
+          - "Strategies - Momentum Trading": Strategies - Momentum Trading.md
+          - "Strategies - Pairs Trading": Strategies - Pairs Trading.md
+          - "Strategies - Statistical Arbitrage": Strategies - Statistical Arbitrage.md
+          - "Strategies - Trend Following": Strategies - Trend Following.md
+  - AI & Machine Learning:
+      - "AI Development": AI Development.md
+      - "Learning Platform": Learning Platform.md
+      - "Machine Learning - Random Forest": Machine Learning - Random Forest.md
+      - "Machine Learning Time Series": Machine Learning Time Series.md
+      - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md
+      - "Sentiment Analysis on News": Sentiment Analysis on News.md
+  - Utilities & Tools:
+      - "High Frequency Trading": High Frequency Trading.md
+      - "Market Microstructure": Market Microstructure.md
+      - "Core Utilities": Core Utilities.md
+      - "Currency Converter": Currency Converter.md
+      - "Data Processing": Data Processing.md
+      - "Economic Calendar": Economic Calendar.md
+      - "Historical Data": Historical Data.md
+      - "Logging": Logging.md
+      - "Market Data": Market Data.md
+      - "News Fetching": News Fetching.md
+      - "System Utilities": System Utilities.md
+      - "Websocket Connection": Websocket Connection.md
