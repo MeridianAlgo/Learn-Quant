@@ -144,7 +144,7 @@ CATEGORY_ORDER = [
 
 
 def build_docs():
-    docs_dir = "docs"
+    docs_dir = "z_docs"
     if not os.path.exists(docs_dir):
         os.makedirs(docs_dir)
 
@@ -152,7 +152,7 @@ def build_docs():
         shutil.copy("README.md", os.path.join(docs_dir, "index.md"))
 
     modules = []
-    skip = {".git", ".github", ".vscode", ".claude", "docs", ".pytest_cache", "tests", ".ruff_cache"}
+    skip = {".git", ".github", ".vscode", ".claude", "z_docs", ".pytest_cache", "z_tests", ".ruff_cache"}
     dirs = [d for d in os.listdir(".") if os.path.isdir(d) and d not in skip]
 
     for d in sorted(dirs):
@@ -266,7 +266,7 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-docs_dir: docs
+docs_dir: z_docs
 
 markdown_extensions:
   - admonition

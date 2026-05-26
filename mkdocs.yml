@@ -34,7 +34,7 @@ theme:
     text: Roboto
     code: Roboto Mono
 
-docs_dir: docs
+docs_dir: z_docs
 
 markdown_extensions:
   - admonition

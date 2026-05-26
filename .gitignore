@@ -67,3 +67,4 @@ secrets.json
 
 .claude-memory/
 __pycache__/
+.claude/

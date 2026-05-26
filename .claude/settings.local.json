@@ -26,7 +26,9 @@
       "Bash(Sort-Object FullName)",
       "Bash(python \"Python Basics - Numbers/numbers_tutorial.py\")",
       "Bash(git -c user.email=\"meridianalgo@gmail.com\" -c user.name=\"MeridianAlgo\" add -A)",
-      "Bash(git -c user.email=\"meridianalgo@gmail.com\" -c user.name=\"MeridianAlgo\" commit -m \"docs: enhance Python Basics and Finance module READMEs with detailed explanations and examples\")"
+      "Bash(git -c user.email=\"meridianalgo@gmail.com\" -c user.name=\"MeridianAlgo\" commit -m \"docs: enhance Python Basics and Finance module READMEs with detailed explanations and examples\")",
+      "Bash(mv docs *)",
+      "Bash(mv tests *)"
     ]
   }
 }
