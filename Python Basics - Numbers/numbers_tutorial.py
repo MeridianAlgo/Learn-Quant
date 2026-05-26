@@ -53,10 +53,10 @@ def integer_vs_float() -> None:
     total_cost = trades * price
 
     print(f"Number of trades: {trades} (type: {type(trades).__name__})")
-    print(f"  -> An integer (can't do 7.5 trades)")
+    print("  -> An integer (can't do 7.5 trades)")
 
     print(f"\nPrice per share: ${price} (type: {type(price).__name__})")
-    print(f"  -> A float (prices have decimals)")
+    print("  -> A float (prices have decimals)")
 
     print(f"\nTotal cost = {trades} × ${price}")
     print(f"  = {total_cost} (type: {type(total_cost).__name__})")
@@ -142,11 +142,11 @@ def math_helpers() -> None:
 
     # round() rounds to N decimal places
     print(f"\nRounded to 2 decimals: {round(price_change, 2)}")
-    print(f"(This is what you'd show a customer)")
+    print("(This is what you'd show a customer)")
 
     # pow(base, exponent) calculates base^exponent
     print(f"\nPower function pow(2, 5) = 2^5 = {pow(2, 5)}")
-    print(f"(Useful for compound interest, exponential growth)")
+    print("(Useful for compound interest, exponential growth)")
 
 
 def finance_examples() -> None:
@@ -202,9 +202,9 @@ def finance_examples() -> None:
 
     print(f"Annual rate: {annual_rate:.2%}")
     print(f"Naive calculation: {annual_rate / 12:.4%} (WRONG!)")
-    print(f"Correct calculation: (1.08)^(1/12) - 1")
+    print("Correct calculation: (1.08)^(1/12) - 1")
     print(f"                   = {monthly_rate:.4%}")
-    print(f"\nWhy the difference? Because interest compounds!")
+    print("\nWhy the difference? Because interest compounds!")
     print(f"If you earned {monthly_rate:.4%} monthly for 12 months:")
     actual_annual = (1 + monthly_rate) ** 12 - 1
     print(f"  You'd earn {actual_annual:.2%} per year (exactly 8%)")

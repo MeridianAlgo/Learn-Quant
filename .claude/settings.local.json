@@ -28,7 +28,11 @@
       "Bash(git -c user.email=\"meridianalgo@gmail.com\" -c user.name=\"MeridianAlgo\" add -A)",
       "Bash(git -c user.email=\"meridianalgo@gmail.com\" -c user.name=\"MeridianAlgo\" commit -m \"docs: enhance Python Basics and Finance module READMEs with detailed explanations and examples\")",
       "Bash(mv docs *)",
-      "Bash(mv tests *)"
+      "Bash(mv tests *)",
+      "Bash(python -m ruff check . --select E,F,W)",
+      "Bash(python -m py_compile \"Python Basics - Numbers/numbers_tutorial.py\")",
+      "Bash(python -c \"import sys; print\\('Python version:', sys.version\\)\")",
+      "Bash(python -m py_compile \"Python Basics - Numbers/numbers_tutorial.py\" docs_builder.py)"
     ]
   }
 }

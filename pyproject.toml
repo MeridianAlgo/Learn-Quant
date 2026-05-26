@@ -27,6 +27,7 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["F401", "F811", "B007"]
+"z_tests/*" = ["F401", "F811", "B007"]
 "*tutorial*.py" = ["F841"]  # unused variables in tutorials are for demonstration
 
 [tool.pytest.ini_options]
