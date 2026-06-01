@@ -69,6 +69,7 @@ def categorize(name):
             "Value at Risk",
             "Sharpe",
             "Performance Attribution",
+            "Information Ratio",
         ]
     ):
         return "Risk & Performance"

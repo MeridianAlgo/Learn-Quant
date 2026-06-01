@@ -7,12 +7,12 @@ Complete index of all Learn-Quant lessons and utilities.
 ### [Python Basics - Comprehensions](Python Basics - Comprehensions.md)
 **Python Basics – Comprehensions**
 
-Covers Python's concise data-transformation tools — list, dict, and set comprehensions, generator expressions, `map`, `filter`, `functools.reduce`, and `itertools.accumulate` — all applied to quantitative finance workflows. These patterns appear constantly in professional quant code and replace verbose loops with readable, performant one-liners.
+Comprehensions are Python's most elegant way to transform data—replacing loops with readable, performant one-liners. This module teaches **list, dict, set comprehensions**, **generator expressions**, and **functional tools** (`map`, `filter`, `reduce`, `accumulate`) used constantly in quantitative finance for data cleaning, signal generation, and portfolio calculations.
 
 ### [Python Basics - Control Flow](Python Basics - Control Flow.md)
-**Python Basics – Control Flow Utility**
+**Python Basics – Control Flow**
 
-This utility teaches Python control flow structures essential for building trading algorithms and financial applications. Master conditionals, loops, and comprehensions to write efficient, readable code.
+Control flow structures (`if/elif/else`, `for`, `while`, comprehensions, `break`, `continue`) are the foundation of all algorithms. This module teaches how to make decisions, iterate through data, and build the logic patterns used in trading systems, backtests, and risk management tools.
 
 ### [Python Basics - Functions](Python Basics - Functions.md)
 **Python Basics – Functions Utility**
@@ -27,7 +27,7 @@ Covers the NumPy primitives that appear in virtually every quant codebase — fr
 ### [Python Basics - Numbers](Python Basics - Numbers.md)
 **Python Basics – Numbers Utility**
 
-This utility helps beginners practice Python number handling. It pairs with the foundational lessons in `Documentation/Programs/level1_fundamentals.py` and extends the concepts with finance-flavored examples.
+After completing this lesson, you'll understand:
 
 ### [Python Basics - Pandas](Python Basics - Pandas.md)
 **Python Basics – Pandas**
@@ -52,9 +52,9 @@ Welcome to the comprehensive guide to NumPy arrays! This utility is designed to 
 This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings. Dictionaries are the backbone of feature engineering and data lookup in quantitative finance.
 
 ### [Data Structures - Lists](Data Structures - Lists.md)
-**Lists - Python List Operations for Financial Data**
+**Data Structures – Lists**
 
-This utility provides comprehensive Python list operations essential for financial data processing, algorithmic trading, and data manipulation. Lists are flexible containers that can store heterogeneous data types and are fundamental to Python programming.
+Lists are Python's **most fundamental data structure**—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values. Master list operations and you unlock efficient data processing essential for trading systems and quantitative analysis.
 
 ### [Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md)
 **Data Structures – Tuples and Sets**
@@ -137,6 +137,11 @@ Object-Oriented Programming (OOP) is essential for building scalable, maintainab
 
 ## Quantitative Methods
 
+### [Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)
+**Bootstrap Resampling**
+
+The bootstrap estimates the sampling distribution of **any** statistic by resampling the observed data with replacement — no normality assumption required. It is the honest way to put confidence intervals around backtest metrics like Sharpe ratio, mean return, or maximum drawdown.
+
 ### [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)
 **Cointegration & Pairs Trading Foundations**
 
@@ -181,6 +186,11 @@ Optimization is the mathematical engine behind modern finance. From finding the 
 **Performance Analysis Utilities**
 
 This module provides quantitative performance metrics to evaluate risk-adjusted returns and the quality of investment strategies. Beyond simple metrics like the Sharpe Ratio, these tools help quants analyze tail risk, active management skill, and the statistical properties of return series.
+
+### [Quantitative Methods - Principal Component Analysis](Quantitative Methods - Principal Component Analysis.md)
+**Principal Component Analysis (PCA)**
+
+PCA finds the orthogonal directions that explain the most variance in a dataset. In finance it powers **yield-curve decomposition** (level/slope/curvature), **statistical factor extraction**, **dimensionality reduction**, and **covariance de-noising**.
 
 ### [Quantitative Methods - Regime Detection](Quantitative Methods - Regime Detection.md)
 **Market Regime Detection**
@@ -245,9 +255,9 @@ This tool calculates the present value of a series of future cash flows—the ba
 **This utility does NOT use any external APIs.** All data is managed locally for learning and experimentation.
 
 ### [Finance - Beta Calculator](Finance - Beta Calculator.md)
-**Beta Calculator**
+**Beta Calculator – Comprehensive Guide**
 
-Calculate beta and related systematic risk metrics for portfolio analysis.
+**Beta** measures how much a stock or portfolio moves compared to the overall market.
 
 ### [Finance - Correlation Analysis](Finance - Correlation Analysis.md)
 **Correlation Analysis**
@@ -341,6 +351,11 @@ A pure JavaScript implementation of the Black-Scholes European options pricing m
 
 ## Risk & Performance
 
+### [Finance - Information Ratio](Finance - Information Ratio.md)
+**Information Ratio & Active Management Metrics**
+
+When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
+
 ### [Finance - Performance Attribution](Finance - Performance Attribution.md)
 **Performance Attribution**
 
@@ -387,6 +402,11 @@ This folder contains utilities for portfolio management, risk analysis, and inve
 **Black-Litterman Portfolio Optimization**
 
 The Black-Litterman (1990) model addresses the instability of mean-variance optimization by blending **market equilibrium returns** with **investor views** using Bayesian updating.
+
+### [Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md)
+**Risk Parity Portfolio Construction**
+
+Risk parity builds a portfolio where **every asset contributes the same amount of risk** to the total — not the same amount of capital. A naive 60/40 stock/bond portfolio is ~90% *equity risk* despite being only 60% equity *capital*; risk parity fixes that imbalance.
 
 ### [Portfolio Optimizer](Portfolio Optimizer.md)
 **Portfolio Optimizer (Mean-Variance)**

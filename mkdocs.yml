@@ -93,6 +93,7 @@ nav:
           - "Algorithms - Tree": Algorithms - Tree.md
   - Quant:
       - Quantitative Methods:
+          - "Quantitative Methods - Bootstrap": Quantitative Methods - Bootstrap.md
           - "Quantitative Methods - Cointegration": Quantitative Methods - Cointegration.md
           - "Quantitative Methods - Copulas": Quantitative Methods - Copulas.md
           - "Quantitative Methods - Factor Models": Quantitative Methods - Factor Models.md
@@ -102,6 +103,7 @@ nav:
           - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
           - "Quantitative Methods - Optimization": Quantitative Methods - Optimization.md
           - "Quantitative Methods - Performance Analysis": Quantitative Methods - Performance Analysis.md
+          - "Quantitative Methods - Principal Component Analysis": Quantitative Methods - Principal Component Analysis.md
           - "Quantitative Methods - Regime Detection": Quantitative Methods - Regime Detection.md
           - "Quantitative Methods - Regression Analysis": Quantitative Methods - Regression Analysis.md
           - "Quantitative Methods - Statistics": Quantitative Methods - Statistics.md
@@ -135,6 +137,7 @@ nav:
           - "Options Pricing - JavaScript": Options Pricing - JavaScript.md
           - "Technical Indicators": Technical Indicators.md
       - Risk & Performance:
+          - "Finance - Information Ratio": Finance - Information Ratio.md
           - "Finance - Performance Attribution": Finance - Performance Attribution.md
           - "Risk Metrics": Risk Metrics.md
           - "Risk Metrics - Drawdown Analysis": Risk Metrics - Drawdown Analysis.md
@@ -145,6 +148,7 @@ nav:
           - "Monte Carlo Portfolio Simulator": Monte Carlo Portfolio Simulator.md
           - "Portfolio Management": Portfolio Management.md
           - "Portfolio Management - Black Litterman": Portfolio Management - Black Litterman.md
+          - "Portfolio Management - Risk Parity": Portfolio Management - Risk Parity.md
           - "Portfolio Optimizer": Portfolio Optimizer.md
           - "Portfolio Tracker": Portfolio Tracker.md
       - Strategies:

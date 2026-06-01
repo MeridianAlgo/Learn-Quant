@@ -1,29 +1,150 @@
 # Python Basics – Numbers Utility
 
-## Overview
+## 🎯 Learning Objectives
 
-This utility helps beginners practice Python number handling. It pairs with the foundational lessons in `Documentation/Programs/level1_fundamentals.py` and extends the concepts with finance-flavored examples.
+After completing this lesson, you'll understand:
 
-## Concepts Covered
-- Integer vs. floating-point arithmetic
-- Using the `decimal` module for currency math
-- Common math functions (`abs`, `round`, `pow`)
-- Simple financial calculations (percentage change, compound interest)
+- **When to use integers vs. floats** — and why it matters in finance
+- **Why Decimal is required for money** — not optional, required
+- **How to perform basic financial calculations** — percentage change, compound interest, time conversion
+- **Real-world precision problems** — and how to solve them with Python
 
-## Files
-- `numbers_tutorial.py`: Annotated walkthrough script with interactive printouts
+This is foundational knowledge required for ALL quantitative finance work.
 
-## How to Run
+## 📚 What You'll Learn
+
+### 1. **Integers vs. Floats**
+   - **Integers**: Whole numbers (7, -3, 1000) used for counting
+   - **Floats**: Decimal numbers (152.375, 0.08) used for measurements
+   - **When it matters**: Trading 7 shares is different from trading 7.5 shares
+   - **The problem**: Float arithmetic has rounding errors due to binary representation
+
+### 2. **Decimal Module for Currency**
+   - Why floats fail: `0.1 + 0.2 ≠ 0.3` in Python (weird but true!)
+   - How Decimal fixes it: Exact decimal arithmetic for money
+   - **Critical rule**: Always create Decimal from strings: `Decimal("2.49")` not `Decimal(2.49)`
+   - Real cost: Small rounding errors compound into massive losses in large trading systems
+
+### 3. **Math Helpers**
+   - `abs(x)` — absolute value (magnitude of change, ignore direction)
+   - `round(x, decimals)` — round to N decimal places (essential for displaying money)
+   - `pow(base, exponent)` — raise to a power (used in compound calculations)
+
+### 4. **Finance Formulas (Real-World)**
+   - **Percent change/return**: `(end - start) / start`
+   - **Compound interest**: `FV = PV × (1 + rate)^periods`
+   - **Time conversion**: `(1 + annual)^(1/12) - 1` for monthly rate (not annual/12!)
+
+## 📁 Files
+
+- **`numbers_tutorial.py`**: Main tutorial with heavily-commented code
+  - Read the source code comments WHILE running the script
+  - Each section builds on the previous one
+  - Includes comparison demos (float vs. Decimal, naive vs. correct calculations)
+
+## ▶️ How to Run
+
 ```bash
 python numbers_tutorial.py
 ```
-Open the file while it runs to connect each console message with the source code comments.
 
-## Practice Ideas
-- Create a helper that rounds portfolio values to the nearest cent
-- Build a function that converts annual returns to monthly returns
-- Generate a simple amortization schedule using loops and decimal arithmetic
+**Best practice**:
+1. Open `numbers_tutorial.py` in your editor
+2. Run the script in terminal/console
+3. Read each source code section, then watch the console output
+4. Understand WHY each calculation works before moving on
 
-## Next Steps
-- Explore `UTILS - Python Basics - Strings/` for text processing
-- Move into arrays with `UTILS - Data Structures - Arrays/` when ready
+## 💡 Key Insights
+
+### Why Float Rounding Matters
+```
+Executing 100 transactions with 1% fees:
+- Using float: $368.59
+- Using Decimal: $369.73
+- Difference: $1.14 per $1000 = 0.114% error
+```
+In a multi-million dollar trading desk, this becomes thousands of dollars!
+
+### Why `(1 + annual)^(1/12)` Not `annual/12`
+```
+Annual rate: 8%
+Wrong: 8% / 12 = 0.667% monthly
+Correct: (1.08)^(1/12) - 1 = 0.6434% monthly
+
+Over 12 months:
+- Wrong gives you 7.92% (lost 0.08%)
+- Correct gives you exactly 8% ✓
+```
+
+## 📋 Practice Problems (with Solutions)
+
+### Problem 1: Calculate a Trading Return
+```python
+# Stock ABC: bought at $100, sold at $108
+# What's your return?
+
+buy_price = 100.0
+sell_price = 108.0
+return_pct = (sell_price - buy_price) / buy_price
+print(f"Return: {return_pct:.2%}")  # Should print: 8.00%
+```
+
+### Problem 2: Future Value with Compound Interest
+```python
+# You invest $5000 at 6% annual interest for 10 years
+# How much do you have?
+
+principal = Decimal("5000.00")
+rate = Decimal("0.06")
+years = 10
+future_value = principal * (1 + rate) ** years
+print(f"Final amount: ${future_value}")  # Should be ~$8954.24
+```
+
+### Problem 3: Monthly Compounding
+```python
+# Monthly savings of $500, compounded monthly at 5% annual
+# How much after 1 year?
+
+monthly_rate = Decimal("0.05") / 12
+months = 12
+savings = Decimal("500.00")
+total = sum(savings * (1 + monthly_rate) ** (months - i) for i in range(months))
+print(f"After 1 year: ${total}")
+```
+
+## 🔗 Learning Path
+
+**Prerequisites**: None (this is a foundation module)
+
+**Next step**: [Python Basics – Strings](../Python%20Basics%20-%20Strings/) to learn text processing
+
+**Then progress to**: 
+- [Data Structures – Arrays](../Data%20Structures%20-%20Arrays/) for working with collections
+- [Python Basics – Pandas](../Python%20Basics%20-%20Pandas/) for working with tabular financial data
+
+## 🚀 Real-World Application
+
+This knowledge directly applies to:
+- Calculating portfolio returns and performance
+- Building pricing models (Black-Scholes, DCF, etc.)
+- Managing trading positions and P&L calculations
+- Risk management and value-at-risk calculations
+- Any quantitative finance simulation or backtest
+
+## ❓ Common Questions
+
+**Q: Should I always use Decimal?**
+A: For calculations involving money, YES. For statistical analysis or machine learning, floats are fine.
+
+**Q: Why not just use round()?**
+A: `round()` masks the problem temporarily but doesn't fix it. The errors still accumulate internally.
+
+**Q: Is 6-decimal precision enough?**
+A: For most finance work, yes. For ultra-precise work (e.g., pricing derivatives), increase with `getcontext().prec = 28`.
+
+## 📖 Further Reading
+
+- Python `decimal` module docs: https://docs.python.org/3/library/decimal.html
+- "What Every Computer Scientist Should Know About Floating-Point Arithmetic" by David Goldberg
+- Real-world finance precision requirements in your exchange's documentation

@@ -1,4 +1,4 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.5.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.6.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
@@ -7,15 +7,21 @@
 
 ---
 
-## What is New in v2.5.0
+## What is New in v2.6.0
 
-- **Complete documentation coverage**: all 5 previously undocumented v2.4.0 modules now have full READMEs — `Python Basics - NumPy`, `Python Basics - Pandas`, `Python Basics - Comprehensions`, `Options Pricing - JavaScript`, `Monte Carlo Simulation - JavaScript`
-- **Auto-format workflow**: new GitHub Actions workflow (`autoformat.yml`) automatically runs `ruff format` on every push and commits the result back — no more CI failures from formatting
-- **Docs builder overhaul**: `docs_builder.py` now correctly categorizes all 100+ modules into 13 dedicated sections instead of dumping half into "Other"
+- **Four new modules**, each fully documented, commented, and unit-tested:
+  - `Portfolio Management - Risk Parity` — inverse-volatility, Equal Risk Contribution (ERC), and custom risk budgeting
+  - `Quantitative Methods - Principal Component Analysis` — PCA from first principles, yield-curve level/slope/curvature decomposition
+  - `Quantitative Methods - Bootstrap` — i.i.d., block, and stationary (Politis–Romano) resampling for confidence intervals
+  - `Finance - Information Ratio` — active return, tracking error, Information Ratio, and CAPM-based appraisal ratio
+- **More detailed inline comments**: the new modules explain the *why* behind every formula, not just the *what*
+- **21 new unit tests** added to `z_tests/`, all passing under `pytest`
+- **Docs builder updated**: `docs_builder.py` now indexes **105 modules** across 12 categories and routes the new finance metric into Risk & Performance
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
+| v2.5.0 | Full README coverage for all v2.4.0 modules; auto-format workflow; docs builder overhaul |
 | v2.4.0 | NumPy, Pandas, Comprehensions tutorials; Black-Scholes JS, Monte Carlo JS |
 | v2.3.0 | GARCH, Cointegration, Performance Attribution, Stress Testing, Trend Following |
 | v2.2.0 | 13 quant finance modules: Kelly, FX, Exotic Options, Black-Litterman, Regime Detection |
@@ -26,7 +32,7 @@
 
 ## Overview
 
-Learn-Quant is a curated collection of **100+ self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **105 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -116,6 +122,8 @@ Learn-Quant is a curated collection of **100+ self-contained modules** designed 
 | `Quantitative Methods - Interest Rate Models` | Vasicek, CIR, Hull-White short rate models |
 | `Quantitative Methods - Regime Detection` | Hidden Markov Models, changepoint detection, bull/bear regime classification |
 | `Quantitative Methods - TVM` | Time Value of Money: PV, FV, NPV, IRR, bond pricing foundations |
+| `Quantitative Methods - Principal Component Analysis` | PCA from scratch, yield-curve level/slope/curvature, factor extraction, covariance de-noising |
+| `Quantitative Methods - Bootstrap` | i.i.d., block, and stationary bootstrap; confidence intervals for Sharpe and other backtest metrics |
 
 ---
 
@@ -172,6 +180,7 @@ Learn-Quant is a curated collection of **100+ self-contained modules** designed 
 | `Value at Risk (VaR)` | Parametric, historical, and Monte Carlo VaR; backtesting and Kupiec test |
 | `Sharpe and Sortino Ratio` | Risk-adjusted return metrics, annualisation, rolling Sharpe |
 | `Finance - Performance Attribution` | Brinson-Hood-Beebower allocation/selection/interaction decomposition |
+| `Finance - Information Ratio` | Active return, tracking error, Information Ratio, CAPM-based appraisal ratio |
 | `Finance - Expected Shortfall` | ES/CVaR: parametric, historical, and Monte Carlo approaches |
 
 **Portfolio Management**
@@ -182,6 +191,7 @@ Learn-Quant is a curated collection of **100+ self-contained modules** designed 
 | `Portfolio Tracker` | Position tracking, P&L attribution, multi-asset portfolio dashboard |
 | `Portfolio Management` | Portfolio construction, rebalancing rules, turnover constraints |
 | `Portfolio Management - Black Litterman` | Black-Litterman model, investor views, posterior allocation |
+| `Portfolio Management - Risk Parity` | Inverse-volatility, Equal Risk Contribution (ERC), and custom risk-budget portfolios |
 | `Monte Carlo Portfolio Simulator` | Multi-path portfolio simulation, probability-of-ruin, wealth distribution |
 
 **Strategies**
@@ -271,6 +281,14 @@ python black_scholes.py
 cd "Strategies - Pairs Trading"
 python pairs_trading.py
 
+# Portfolio construction
+cd "Portfolio Management - Risk Parity"
+python risk_parity.py
+
+# Bootstrap confidence intervals
+cd "Quantitative Methods - Bootstrap"
+python bootstrap.py
+
 # JavaScript modules (requires Node.js)
 cd "Options Pricing - JavaScript"
 node blackScholes.js
@@ -291,8 +309,8 @@ Each level builds on the last. Complete the interactive tutorials (files ending 
 
 | Category | Count |
 |---|---|
-| Total modules | 100+ |
-| Python lesson files | 175+ |
+| Total modules | 105 |
+| Python lesson files | 179+ |
 | JavaScript modules | 7 |
 | Modules with interactive tutorials | 4 |
 | Test files | 90+ |
@@ -312,6 +330,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.5.0**
+**Learn-Quant v2.6.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**
