@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 *.so
 .Python
+
+# Packaging / build artifacts
 build/
 develop-eggs/
 dist/
@@ -20,9 +22,24 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+# Logs
 *.log
+
+# Test / lint caches
 .pytest_cache/
-build_algorithm_data.py build_comprehensive_platform.py create_full_algorithms.py generate_algorithms.py quick_scan.py rebuild_platform.py run_learning_platform.py scan_all_utils.py
+.ruff_cache/
+
+# Local scaffolding / generator scripts (not part of the published lessons)
+build_algorithm_data.py
+build_comprehensive_platform.py
+create_full_algorithms.py
+generate_algorithms.py
+quick_scan.py
+rebuild_platform.py
+run_learning_platform.py
+scan_all_utils.py
+
 # Virtual environments
 venv/
 env/
@@ -48,23 +65,17 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 
-
 # Temporary files
 *.tmp
 *.bak
-*.swp
 .cache/
 
-# API Keys and Secrets
+# API keys and secrets
 .env
 .env.local
 *.key
 secrets.json
 
-# Generated files
-*.pyc
-*.pyo
-
-.claude-memory/
-__pycache__/
+# Claude Code local state
 .claude/
+.claude-memory/
