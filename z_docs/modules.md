@@ -25,7 +25,7 @@ This utility teaches Python functions - the building blocks of modular, reusable
 Covers the NumPy primitives that appear in virtually every quant codebase — from vectorised return calculations to portfolio variance via the quadratic form. All examples use realistic financial data so the connection between the NumPy API and actual quant work is immediate.
 
 ### [Python Basics - Numbers](Python Basics - Numbers.md)
-**Python Basics – Numbers Utility**
+**Python Basics — Numbers**
 
 After completing this lesson, you'll understand:
 
@@ -255,7 +255,7 @@ This tool calculates the present value of a series of future cash flows—the ba
 **This utility does NOT use any external APIs.** All data is managed locally for learning and experimentation.
 
 ### [Finance - Beta Calculator](Finance - Beta Calculator.md)
-**Beta Calculator – Comprehensive Guide**
+**Beta Calculator**
 
 **Beta** measures how much a stock or portfolio moves compared to the overall market.
 
@@ -460,7 +460,7 @@ Trend-following: ride momentum with discipline. Backbone of CTAs and managed-fut
 ### [AI Development](AI Development.md)
 **Gemini API Chatbot**
 
-This project provides simple command-line chatbots for Google's Gemini API in both Python and Node.js.
+Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js. This module demonstrates how to integrate a hosted large language model into a simple interactive application.
 
 ### [Learning Platform](Learning Platform.md)
 **Interactive Python Learning Platform**
@@ -524,12 +524,12 @@ This folder contains utilities for data processing, validation, and manipulation
 ### [Historical Data](Historical Data.md)
 **Alpaca Historical Data Fetcher**
 
-This Node.js script fetches historical bars (OHLCV data) for stocks or crypto from the Alpaca Market Data API. It prompts you for the symbol type, symbol, timeframe, and date range, then displays the results in JSON format.
+A Node.js script that fetches historical bars (OHLCV data) for stocks or crypto from the Alpaca Market Data API. It prompts interactively for the symbol type, symbol, timeframe, and date range, then prints the results as JSON.
 
 ### [Logging](Logging.md)
 **Logging Utilities**
 
-This project provides simple logging utilities in both Python and JavaScript. You can add, read, edit, and delete log entries using either language. All logs are stored in a file named `log.txt` in the same directory.
+A pair of minimal, dependency-light logging utilities implemented in both Python and JavaScript. Each supports adding, reading, editing, and deleting log entries through an interactive command-line menu. All entries are persisted to a plain-text `log.txt` file in the working directory.
 
 ### [Market Data](Market Data.md)
 **Market Data Utilities**

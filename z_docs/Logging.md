@@ -1,121 +1,52 @@
-<<<<<<< HEAD
 # Logging Utilities
 
-This project provides simple logging utilities in both Python and JavaScript. You can add, read, edit, and delete log entries using either language. All logs are stored in a file named `log.txt` in the same directory.
+A pair of minimal, dependency-light logging utilities implemented in both Python and JavaScript. Each supports adding, reading, editing, and deleting log entries through an interactive command-line menu. All entries are persisted to a plain-text `log.txt` file in the working directory.
 
----
+No external APIs or network access are used — logging is entirely local, making this module suitable for offline study of file I/O and CRUD patterns.
 
-## Python Logger
+## Files
 
-### Requirements
-- Python 3.x (no external libraries required)
-
-### Installation
-No installation is required for Python. Just ensure you have Python 3 installed.
-
-### Usage
-1. Place `logger.py` in your project directory.
-2. Run the logger with:
-   ```sh
-   python logger.py
-   ```
-3. You will see a menu:
-   - Add log entry
-   - Read all log entries
-   - Edit a log entry
-   - Delete a log entry
-   - Exit
-4. Follow the prompts to manage your log entries interactively.
-
----
-
-## JavaScript Logger
-
-### Requirements
-- Node.js
-- `readline-sync` package (for interactive CLI)
-
-### Installation
-1. Place `logger.js` in your project directory.
-2. Install the required package (only needed once):
-   ```sh
-   npm install readline-sync
-   ```
-
-### Usage
-1. Run the logger with:
-   ```sh
-   node logger.js
-   ```
-2. You will see a menu:
-   - Add log entry
-   - Read all log entries
-   - Edit a log entry
-   - Delete a log entry
-   - Exit
-3. Follow the prompts to manage your log entries interactively.
-
----
-
-## Notes
-- Both loggers use the same `log.txt` file by default. If you use both in the same directory, they will operate on the same log file.
-- All functions are commented for clarity.
-
----
-
-## License
-This project is open source and free to use. 
-=======
-# Logging Utilities (NO API)
-
-**This utility does NOT use any external APIs.** All logging is managed locally for learning and experimentation.
-
-This project provides simple logging utilities in both Python and JavaScript. You can add, read, edit, and delete log entries using either language. All logs are stored in a file named `log.txt` in the same directory.
-
-## Features
-- Add, read, edit, and delete log entries
-- Works in both Python and Node.js
-- Interactive CLI menu
-- **Beginner-friendly:** All code is commented for learning
+| File | Description |
+|---|---|
+| `logger.py` | Python implementation (standard library only) |
+| `logger.js` | Node.js implementation (uses `readline-sync` for the CLI) |
+| `log.txt` | Shared log store, created on first write |
 
 ## Requirements
-- Python 3.x (no external libraries required)
-- Node.js (for JavaScript version)
-- `readline-sync` package for Node.js:
+
+- **Python**: 3.x — no third-party packages required.
+- **Node.js**: any LTS release, plus the `readline-sync` package:
   ```sh
   npm install readline-sync
   ```
 
-## Setup
-1. Clone or download this repository.
-2. For Python:
-   - Place `logger.py` in your project directory.
-3. For Node.js:
-   - Place `logger.js` in your project directory.
-   - Install the required package:
-     ```sh
-     npm install readline-sync
-     ```
+## Usage
 
-## Usage Workflow (Step-by-Step)
-1. Run the logger:
-   - For Python:
-     ```sh
-     python logger.py
-     ```
-   - For Node.js:
-     ```sh
-     node logger.js
-     ```
-2. Follow the menu prompts to add, read, edit, or delete log entries.
+**Python**
 
-**No real market data is used. This is for learning only!**
+```sh
+python logger.py
+```
 
-## Educational Notes
-- **No API:** All logging is managed in Python or JavaScript, so you can see and modify the logic yourself.
-- **How does it work?** The code is structured with functions and file I/O, with comments explaining each step.
-- **How can you extend it?** Try adding timestamps, or exporting logs to CSV!
+**Node.js**
+
+```sh
+node logger.js
+```
+
+Either entry point presents the same interactive menu:
+
+- Add a log entry
+- Read all log entries
+- Edit a log entry
+- Delete a log entry
+- Exit
+
+## Notes
+
+- Both implementations default to the same `log.txt` file, so they can be used interchangeably within one directory and will operate on a shared log.
+- Each function is documented inline to illustrate file handling and basic CRUD operations.
 
 ## License
-MIT 
->>>>>>> 8944b09 (Initial commit: Comprehensive Python & JS Finance Utilities for Beginners (API & API-free, with detailed docs))
+
+MIT

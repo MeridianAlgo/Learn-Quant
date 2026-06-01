@@ -1,6 +1,6 @@
-# Beta Calculator – Comprehensive Guide
+# Beta Calculator
 
-## 🎯 What is Beta?
+## What is Beta?
 
 **Beta** measures how much a stock or portfolio moves compared to the overall market.
 
@@ -18,7 +18,7 @@
 | Tesla | ~2.0+ | Twice as volatile as the market |
 | Gold (uncorrelated) | ~0 | Moves independently |
 
-## 📚 Core Concepts
+## Core Concepts
 
 ### 1. **Systematic vs. Idiosyncratic Risk**
 
@@ -59,9 +59,9 @@ Stock beta: 1.2
 Expected return = 4.5% + 1.2 × 6% = 4.5% + 7.2% = 11.7%
 ```
 
-Investors demand 11.7% return because they're accepting 20% more volatility!
+Investors demand an 11.7% return as compensation for accepting 20% more volatility than the market.
 
-## 🔧 Calculation Methods Available
+## Calculation Methods
 
 ### **1. Standard Beta** (Most Common)
 Simple least-squares regression of asset returns vs. market returns.
@@ -123,12 +123,12 @@ levered = levered_beta(unlevered, debt_to_equity=0.5, tax_rate=0.21)
 - M&A analysis (understand true business risk vs. financing risk)
 
 ### **4. Downside Beta & Upside Beta** (Asymmetric Risk)
-Most important for risk management!
+Particularly relevant for risk management.
 
 - **Downside Beta**: How much does it fall when market falls? (matters most for risk)
 - **Upside Beta**: How much does it rise when market rises?
 
-If downside beta >> upside beta: Stock amplifies losses but not gains (bad!)
+If downside beta is materially greater than upside beta, the asset amplifies losses more than gains — an unfavourable profile.
 If downside beta ≈ upside beta: Consistent risk profile
 
 ```python
@@ -184,7 +184,7 @@ adj_beta = adjusted_beta(raw_beta)  # ≈ 1.33
 - Valuation models
 - Risk forecasting
 
-## 📊 Features Summary
+## Method Comparison
 
 | Method | Use Case | Pros | Cons |
 |--------|----------|------|------|
@@ -196,7 +196,7 @@ adj_beta = adjusted_beta(raw_beta)  # ≈ 1.33
 | **Beta Decomposition** | Understanding drivers | Shows correlation vs volatility | Requires full return series |
 | **Adjusted Beta** | Long-term estimates | Better for forecasting | Assumes mean reversion |
 
-## ▶️ How to Run
+## How to Run
 
 ```bash
 python beta_calculator.py
@@ -216,7 +216,7 @@ beta = calculate_beta(stock_returns, market_returns)
 print(f"Beta: {beta:.4f}")
 ```
 
-## 💡 Practical Examples
+## Practical Examples
 
 ### Example 1: Compare Two Stocks
 ```python
@@ -241,7 +241,7 @@ aapl_beta = 1.2
 jnj_beta = 0.7
 portfolio_beta = 0.6 * aapl_beta + 0.4 * jnj_beta
 # = 0.6 × 1.2 + 0.4 × 0.7 = 1.0
-# Your portfolio has market-level risk despite AAPL being risky!
+# The portfolio carries market-level risk even though AAPL alone is higher-beta.
 ```
 
 ### Example 3: Valuation with Leverage
@@ -259,7 +259,7 @@ new_beta = levered_beta(
 # New beta will be higher—equity holders take on more risk
 ```
 
-## 🎓 Learning Path
+## Learning Path
 
 **Prerequisites**: 
 - [Python Basics – Numbers](../Python%20Basics%20-%20Numbers/) (percentages, arithmetic)
@@ -271,7 +271,7 @@ new_beta = levered_beta(
 - [Portfolio Optimizer](../Portfolio%20Optimizer/) for risk-adjusted allocation
 - [Black-Scholes Option Pricing](../Black-Scholes%20Option%20Pricing/) for option risk
 
-## ❓ Common Questions
+## Common Questions
 
 **Q: My calculated beta differs from what Yahoo Finance shows. Why?**
 A: Different time periods (1y vs 3y vs 5y), different market indices (S&P 500 vs Russell 1000), or different return frequencies (daily vs monthly).
@@ -288,7 +288,7 @@ A: For active management: quarterly or monthly. For passive: annually. For tradi
 **Q: Is beta constant?**
 A: No! It changes with market regimes, business changes, leverage changes. Use rolling beta to track.
 
-## 📖 References
+## References
 
 - Sharpe, W. (1964). "Capital Asset Prices: A Theory of Market Equilibrium" (Original CAPM paper)
 - Blume, M. (1971). "On the Assessment of Risk"

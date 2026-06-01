@@ -1,6 +1,6 @@
-# Python Basics – Numbers Utility
+# Python Basics — Numbers
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 After completing this lesson, you'll understand:
 
@@ -9,9 +9,9 @@ After completing this lesson, you'll understand:
 - **How to perform basic financial calculations** — percentage change, compound interest, time conversion
 - **Real-world precision problems** — and how to solve them with Python
 
-This is foundational knowledge required for ALL quantitative finance work.
+This is foundational knowledge required for all quantitative finance work.
 
-## 📚 What You'll Learn
+## What You'll Learn
 
 ### 1. **Integers vs. Floats**
    - **Integers**: Whole numbers (7, -3, 1000) used for counting
@@ -20,7 +20,7 @@ This is foundational knowledge required for ALL quantitative finance work.
    - **The problem**: Float arithmetic has rounding errors due to binary representation
 
 ### 2. **Decimal Module for Currency**
-   - Why floats fail: `0.1 + 0.2 ≠ 0.3` in Python (weird but true!)
+   - Why floats fail: `0.1 + 0.2 != 0.3` in Python, due to binary representation
    - How Decimal fixes it: Exact decimal arithmetic for money
    - **Critical rule**: Always create Decimal from strings: `Decimal("2.49")` not `Decimal(2.49)`
    - Real cost: Small rounding errors compound into massive losses in large trading systems
@@ -35,14 +35,14 @@ This is foundational knowledge required for ALL quantitative finance work.
    - **Compound interest**: `FV = PV × (1 + rate)^periods`
    - **Time conversion**: `(1 + annual)^(1/12) - 1` for monthly rate (not annual/12!)
 
-## 📁 Files
+## Files
 
 - **`numbers_tutorial.py`**: Main tutorial with heavily-commented code
   - Read the source code comments WHILE running the script
   - Each section builds on the previous one
   - Includes comparison demos (float vs. Decimal, naive vs. correct calculations)
 
-## ▶️ How to Run
+## How to Run
 
 ```bash
 python numbers_tutorial.py
@@ -54,7 +54,7 @@ python numbers_tutorial.py
 3. Read each source code section, then watch the console output
 4. Understand WHY each calculation works before moving on
 
-## 💡 Key Insights
+## Key Insights
 
 ### Why Float Rounding Matters
 ```
@@ -63,7 +63,7 @@ Executing 100 transactions with 1% fees:
 - Using Decimal: $369.73
 - Difference: $1.14 per $1000 = 0.114% error
 ```
-In a multi-million dollar trading desk, this becomes thousands of dollars!
+Across a high-volume trading desk, errors of this size accumulate into material amounts.
 
 ### Why `(1 + annual)^(1/12)` Not `annual/12`
 ```
@@ -76,7 +76,7 @@ Over 12 months:
 - Correct gives you exactly 8% ✓
 ```
 
-## 📋 Practice Problems (with Solutions)
+## Practice Problems
 
 ### Problem 1: Calculate a Trading Return
 ```python
@@ -113,7 +113,7 @@ total = sum(savings * (1 + monthly_rate) ** (months - i) for i in range(months))
 print(f"After 1 year: ${total}")
 ```
 
-## 🔗 Learning Path
+## Learning Path
 
 **Prerequisites**: None (this is a foundation module)
 
@@ -123,7 +123,7 @@ print(f"After 1 year: ${total}")
 - [Data Structures – Arrays](../Data%20Structures%20-%20Arrays/) for working with collections
 - [Python Basics – Pandas](../Python%20Basics%20-%20Pandas/) for working with tabular financial data
 
-## 🚀 Real-World Application
+## Real-World Application
 
 This knowledge directly applies to:
 - Calculating portfolio returns and performance
@@ -132,10 +132,10 @@ This knowledge directly applies to:
 - Risk management and value-at-risk calculations
 - Any quantitative finance simulation or backtest
 
-## ❓ Common Questions
+## Common Questions
 
 **Q: Should I always use Decimal?**
-A: For calculations involving money, YES. For statistical analysis or machine learning, floats are fine.
+A: For calculations involving money, yes. For statistical analysis or machine learning, floats are appropriate.
 
 **Q: Why not just use round()?**
 A: `round()` masks the problem temporarily but doesn't fix it. The errors still accumulate internally.
@@ -143,7 +143,7 @@ A: `round()` masks the problem temporarily but doesn't fix it. The errors still 
 **Q: Is 6-decimal precision enough?**
 A: For most finance work, yes. For ultra-precise work (e.g., pricing derivatives), increase with `getcontext().prec = 28`.
 
-## 📖 Further Reading
+## Further Reading
 
 - Python `decimal` module docs: https://docs.python.org/3/library/decimal.html
 - "What Every Computer Scientist Should Know About Floating-Point Arithmetic" by David Goldberg
