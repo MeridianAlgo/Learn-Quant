@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Transaction Cost Analysis"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Transaction Cost Analysis"))
 from tca_utils import (
     almgren_chriss_impact,
     implementation_shortfall,

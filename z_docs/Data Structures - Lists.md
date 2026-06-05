@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Data Structures</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Data Structures - Lists"
+    python "lists.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Lists)
+
+---
 # Data Structures – Lists
 
 ## Overview
@@ -387,14 +398,14 @@ tickers = ['AAPL', 'MSFT', 'AAPL', 'TSLA', 'MSFT']
 ## Learning Path
 
 **Prerequisites**:
-- [Python Basics – Control Flow](../Python%20Basics%20-%20Control%20Flow/)
-- [Python Basics – Functions](../Python%20Basics%20-%20Functions/)
+- [Python Basics – Control Flow](Python Basics - Control Flow.md)
+- [Python Basics – Functions](Python Basics - Functions.md)
 
 **Builds into**:
-- [Data Structures – Dictionaries](../Data%20Structures%20-%20Dictionaries/)
-- [Python Basics – Comprehensions](../Python%20Basics%20-%20Comprehensions/)
-- [Python Basics – Pandas](../Python%20Basics%20-%20Pandas/) (lists become DataFrames)
-- [Data Processing](../Data%20Processing/)
+- [Data Structures – Dictionaries](Data Structures - Dictionaries.md)
+- [Python Basics – Comprehensions](Python Basics - Comprehensions.md)
+- [Python Basics – Pandas](Python Basics - Pandas.md) (lists become DataFrames)
+- [Data Processing](Data Processing.md)
 
 ## FAQ
 
@@ -428,3 +439,26 @@ list1 = [x for x in list1 if x <= 5]
 - Python docs: https://docs.python.org/3/tutorial/datastructures.html#more-on-lists
 - Sorting guide: https://docs.python.org/3/howto/sorting.html
 - List comprehensions: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
+
+
+---
+
+## Continue in Data Structures
+
+<div class="grid cards" markdown>
+
+-   :material-database-outline: __[Data Structures - Arrays](Data Structures - Arrays.md)__
+
+    Welcome to the comprehensive guide to NumPy arrays! This utility is designed to help both beginners and experienced Python programmers master array operations for data analysis, scientific computing, and quantitative finance.
+
+-   :material-database-outline: __[Data Structures - Dictionaries](Data Structures - Dictionaries.md)__
+
+    This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings. Dictionaries are the backbone of feature engineering and data lookup in quantitative finance.
+
+-   :material-database-outline: __[Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md)__
+
+    Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries. Understanding when to use them is key to writing efficient, Pythonic code for financial applications.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

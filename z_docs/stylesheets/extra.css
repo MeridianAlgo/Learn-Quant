@@ -1,0 +1,89 @@
+/* Learn-Quant docs theme extras */
+
+:root {
+  --lq-grad-1: #5e60ce;
+  --lq-grad-2: #6930c3;
+  --lq-grad-3: #7400b8;
+}
+
+/* ---- Hero ---- */
+.lq-hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  margin: -1rem -0.8rem 2rem;
+  border-radius: 0 0 1.25rem 1.25rem;
+  background: linear-gradient(135deg, var(--lq-grad-1), var(--lq-grad-3));
+  color: #fff;
+}
+.lq-hero h1 {
+  color: #fff;
+  font-weight: 800;
+  font-size: 3rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+.lq-hero h3 {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  max-width: 46rem;
+  margin: 0 auto 1rem;
+}
+.lq-hero p { color: rgba(255, 255, 255, 0.85); }
+.lq-hero .md-button {
+  margin: 0.3rem;
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #fff;
+}
+.lq-hero .md-button--primary {
+  background: #fff;
+  color: var(--lq-grad-3);
+  border-color: #fff;
+}
+.lq-hero .md-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  color: #fff;
+}
+.lq-hero .md-button--primary:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--lq-grad-3);
+}
+
+/* ---- Badges ---- */
+.lq-badges { margin: 0 0 0.5rem; }
+.lq-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  margin: 0.1rem 0.25rem 0.1rem 0;
+  border-radius: 1rem;
+  color: #fff;
+  white-space: nowrap;
+}
+.lq-beginner { background: #2a9d8f; }
+.lq-intermediate { background: #e09f3e; }
+.lq-advanced { background: #e63946; }
+.lq-cat { background: #5e60ce; }
+.lq-lang { background: #495057; }
+
+/* ---- Card grid polish ---- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > :is(ul, ol) > li {
+  border-radius: 0.6rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > :is(ul, ol) > li:hover {
+  border-color: var(--lq-grad-1);
+  box-shadow: 0 0.4rem 1.2rem rgba(94, 96, 206, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Slightly tighter hero on small screens */
+@media screen and (max-width: 44.9em) {
+  .lq-hero h1 { font-size: 2.1rem; }
+  .lq-hero { padding: 2.5rem 0.75rem 1.75rem; }
+}

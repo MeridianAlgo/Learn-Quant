@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Risk Metrics - Drawdown Analysis"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Risk Metrics - Drawdown Analysis"))
 from drawdown_analysis import (
     average_drawdown,
     calmar_ratio,

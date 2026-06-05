@@ -1,4 +1,4 @@
-"""Tests for UTILS - Black-Scholes Option Pricing/options_tutorial.py."""
+"""Tests for Black-Scholes Option Pricing/options_tutorial.py."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "UTILS - Black-Scholes Option Pricing"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "Black-Scholes Option Pricing"))
 
 from options_tutorial import _norm_cdf, _norm_pdf, black_scholes, greeks
 

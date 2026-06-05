@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Exotic Options"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Exotic Options"))
 from exotic_options import asian_option, barrier_option, lookback_option
 
 BASE = {"S0": 100, "r": 0.05, "sigma": 0.20, "T": 1.0}

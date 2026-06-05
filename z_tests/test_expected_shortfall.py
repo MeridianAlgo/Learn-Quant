@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Expected Shortfall"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Expected Shortfall"))
 from expected_shortfall import cornish_fisher_es, es_summary, historical_es, parametric_es
 
 

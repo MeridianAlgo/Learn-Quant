@@ -2,7 +2,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-SCRIPT_PATH = Path(__file__).resolve().parents[1] / "UTILS - Logging" / "logger.py"
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "Logging" / "logger.py"
 
 
 def test_script_runs():

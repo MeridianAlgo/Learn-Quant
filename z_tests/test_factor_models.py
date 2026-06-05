@@ -14,7 +14,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-fm_path = os.path.join(os.getcwd(), "UTILS - Quantitative Methods - Factor Models", "factor_models_tutorial.py")
+fm_path = os.path.join(os.getcwd(), "Quantitative Methods - Factor Models", "factor_models_tutorial.py")
 fm = load_module_from_path("factor_models_tutorial", fm_path)
 
 

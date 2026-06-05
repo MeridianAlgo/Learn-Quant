@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Market Microstructure</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Market Microstructure"
+    python "market_impact.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Market%20Microstructure)
+
+---
 # Market Microstructure
 
 ## Overview
@@ -91,3 +102,18 @@ python spread_analyzer.py
 - **Use limit orders when possible**: Market orders consume liquidity and pay the spread; limit orders provide liquidity and can capture the spread.
 - **Time large orders**: Spreads are widest at open/close; mid-session liquidity is deepest for most liquid securities.
 - **Measure with real data**: Impact models are calibrated on historical data; performance varies significantly by asset class, market cap, and volatility regime.
+
+
+---
+
+## Continue in Market Microstructure
+
+<div class="grid cards" markdown>
+
+-   :material-pulse: __[High Frequency Trading](High Frequency Trading.md)__
+
+    High Frequency Trading (HFT) encompasses algorithmic strategies that execute a large number of orders at extremely high speeds — typically microseconds to milliseconds. HFT firms compete primarily on latency: the fastest participant to react to new information captures the profit.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

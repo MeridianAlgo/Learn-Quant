@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Portfolio Management</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Portfolio Tracker"
+    python "portfolio_tracker.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Portfolio%20Tracker)
+
+---
 # Portfolio Tracker Utility (USES yfinance API)
 
 **This utility uses the yfinance API to fetch current prices automatically.** All other calculations and data are managed locally for learning and experimentation.
@@ -77,3 +88,34 @@ MIT
 ## See Also
 - [yfinance documentation](https://github.com/ranaroussi/yfinance)
 - [Yahoo Finance Ticker Symbols](https://finance.yahoo.com/lookup)
+
+
+---
+
+## Continue in Portfolio Management
+
+<div class="grid cards" markdown>
+
+-   :material-briefcase-outline: __[Monte Carlo Portfolio Simulator](Monte Carlo Portfolio Simulator.md)__
+
+    This utility helps you forecast possible futures for a portfolio using random simulations—a key idea in finance, risk management, and statistics!
+
+-   :material-briefcase-outline: __[Portfolio Management](Portfolio Management.md)__
+
+    This folder contains utilities for portfolio management, risk analysis, and investment optimization.
+
+-   :material-briefcase-outline: __[Portfolio Management - Black Litterman](Portfolio Management - Black Litterman.md)__
+
+    The Black-Litterman (1990) model addresses the instability of mean-variance optimization by blending **market equilibrium returns** with **investor views** using Bayesian updating.
+
+-   :material-briefcase-outline: __[Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md)__
+
+    Risk parity builds a portfolio where **every asset contributes the same amount of risk** to the total — not the same amount of capital. A naive 60/40 stock/bond portfolio is ~90% *equity risk* despite being only 60% equity *capital*; risk parity fixes that imbalance.
+
+-   :material-briefcase-outline: __[Portfolio Optimizer](Portfolio Optimizer.md)__
+
+    This utility helps you find the best mix of assets for a portfolio, balancing risk and return using the foundation of Modern Portfolio Theory (MPT).
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

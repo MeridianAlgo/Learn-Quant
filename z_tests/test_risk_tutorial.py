@@ -1,4 +1,4 @@
-"""Tests for UTILS - Risk Metrics/risk_tutorial.py."""
+"""Tests for Risk Metrics/risk_tutorial.py."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "UTILS - Risk Metrics"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "Risk Metrics"))
 
 from risk_tutorial import (
     _drawdown_series,

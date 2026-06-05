@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Advanced Python</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Advanced Python - Multiprocessing"
+    python "multiprocessing_tutorial.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Advanced%20Python%20-%20Multiprocessing)
+
+---
 # Advanced Python Multiprocessing
 
 ## Overview
@@ -112,3 +123,33 @@ Important Note: Always guard module level code against accidental triggering upo
 *   Error handling: Capture futures carefully to reraise exceptions from worker processes.
 *   Processing count: Set workers to the maximum parallelism on the local machine.
 *   Memory: Each process gets a copy of all data, so watch for memory explosion.
+
+---
+
+## Continue in Advanced Python
+
+<div class="grid cards" markdown>
+
+-   :material-cog-outline: __[Advanced Python - AsyncIO](Advanced Python - AsyncIO.md)__
+
+    In quantitative finance, speed is edge. Python's `asyncio` library allows for **concurrency**, letting your program handle multiple tasks (like fetching data from 10 different exchanges) at once, rather than waiting for one to finish before starting the next.
+
+-   :material-cog-outline: __[Advanced Python - Context Managers](Advanced Python - Context Managers.md)__
+
+    Context Managers are a powerful Python feature for resource management. They allow you to allocate and release resources precisely when you want to. The most common usage is the `with` statement.
+
+-   :material-cog-outline: __[Advanced Python - Decorators and Generators](Advanced Python - Decorators and Generators.md)__
+
+    Decorators and Generators are powerful Python features that separate professional code from beginner scripts. Decorators allow you to modify function behavior cleanly, while Generators enable memory-efficient processing of large financial datasets.
+
+-   :material-cog-outline: __[Advanced Python - Error Handling](Advanced Python - Error Handling.md)__
+
+    Robust error handling is what separates a script that crashes overnight from a professional trading system that runs for years. This module teaches you how to anticipate, catch, and manage errors gracefully.
+
+-   :material-cog-outline: __[Advanced Python - OOP](Advanced Python - OOP.md)__
+
+    Object-Oriented Programming (OOP) is essential for building scalable, maintainable trading systems and financial applications. Learn to organize code using classes, objects, and OOP principles.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

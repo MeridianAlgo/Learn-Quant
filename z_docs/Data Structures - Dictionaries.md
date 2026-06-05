@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Data Structures</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Data Structures - Dictionaries"
+    python "dictionaries.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Dictionaries)
+
+---
 # Dictionaries - Key-Value Data Structures for Financial Analysis
 
 ## Overview
@@ -440,3 +451,25 @@ python -m pytest tests/test_dictionaries.py -v
 ---
 
 *This utility demonstrates the power of Python dictionaries in organizing and accessing financial data efficiently. Master dictionary operations for robust financial applications.*
+
+---
+
+## Continue in Data Structures
+
+<div class="grid cards" markdown>
+
+-   :material-database-outline: __[Data Structures - Arrays](Data Structures - Arrays.md)__
+
+    Welcome to the comprehensive guide to NumPy arrays! This utility is designed to help both beginners and experienced Python programmers master array operations for data analysis, scientific computing, and quantitative finance.
+
+-   :material-database-outline: __[Data Structures - Lists](Data Structures - Lists.md)__
+
+    Lists are Python's **most fundamental data structure**—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values. Master list operations and you unlock efficient data processing essential for trading systems and quantitative analysis.
+
+-   :material-database-outline: __[Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md)__
+
+    Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries. Understanding when to use them is key to writing efficient, Pythonic code for financial applications.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

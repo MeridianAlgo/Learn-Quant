@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Algorithms</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Algorithms - Backtracking"
+    python "backtracking_algorithms.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Algorithms%20-%20Backtracking)
+
+---
 # Algorithms – Backtracking
 
 ## Overview
@@ -63,3 +74,38 @@ python backtracking_algorithms.py
 - **Prune aggressively**: Apply constraints as early as possible in the recursion — this is where most of the performance improvement over brute force comes from.
 - **Memoise when possible**: If subproblems repeat across branches, cache results (transitioning from backtracking to dynamic programming).
 - **Prefer combinations over permutations**: For portfolio selection, the order of assets does not matter — use combinations to reduce the search space by n!/(n-k)!.
+
+
+---
+
+## Continue in Algorithms
+
+<div class="grid cards" markdown>
+
+-   :material-sitemap-outline: __[Algorithms - Dynamic Programming](Algorithms - Dynamic Programming.md)__
+
+    Dynamic Programming (DP) is an algorithmic technique for solving problems by breaking them into overlapping subproblems, solving each subproblem once, and storing the result to avoid redundant computation. It converts exponential-time recursive solutions into polynomial-time ones.
+
+-   :material-sitemap-outline: __[Algorithms - Graph](Algorithms - Graph.md)__
+
+    Graph algorithms operate on structures composed of vertices (nodes) and edges (connections). Many financial problems are naturally modelled as graphs: currency markets form weighted directed graphs, asset correlation matrices define undirected weighted graphs, and order routing networks are flow graphs.
+
+-   :material-sitemap-outline: __[Algorithms - Machine Learning](Algorithms - Machine Learning.md)__
+
+    This module implements fundamental machine learning algorithms from scratch using only NumPy — no scikit-learn or frameworks. Building these algorithms by hand is the most effective way to understand what happens inside the black boxes used in production trading systems.
+
+-   :material-sitemap-outline: __[Algorithms - Searching](Algorithms - Searching.md)__
+
+    Searching algorithms find a target value within a data structure. The choice of algorithm determines whether a search takes O(n) time (checking every element) or O(log n) time (dividing the search space in half each step). In latency-sensitive financial systems, this difference is meaningful at scale.
+
+-   :material-sitemap-outline: __[Algorithms - Sorting](Algorithms - Sorting.md)__
+
+    A comprehensive implementation of fundamental sorting algorithms with detailed explanations, complexity analysis, and performance comparisons.
+
+-   :material-sitemap-outline: __[Algorithms - String](Algorithms - String.md)__
+
+    String algorithms handle efficient manipulation, searching, and analysis of text data. In quantitative finance, string processing is essential for parsing market data feeds, extracting information from news and filings, matching ticker symbols, and cleaning raw data from APIs.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

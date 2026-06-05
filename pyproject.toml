@@ -31,7 +31,7 @@ ignore = [
 "*tutorial*.py" = ["F841"]  # unused variables in tutorials are for demonstration
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["z_tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

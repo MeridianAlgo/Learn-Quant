@@ -3,7 +3,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Correlation Analysis"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Correlation Analysis"))
 
 from correlation_analysis import (
     correlation_matrix,

@@ -18,7 +18,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-kf_path = os.path.join(os.getcwd(), "UTILS - Quantitative Methods - Kalman Filter", "kalman_filter.py")
+kf_path = os.path.join(os.getcwd(), "Quantitative Methods - Kalman Filter", "kalman_filter.py")
 kf_module = load_module_from_path("kalman_filter", kf_path)
 
 

@@ -1,16 +1,28 @@
 site_name: Learn-Quant
-site_description: Master quantitative finance, algorithmic trading, and professional Python engineering.
+site_description: Master quantitative finance, algorithmic trading, and professional Python engineering — one runnable lesson at a time.
+site_url: https://meridianalgo.github.io/Learn-Quant/
 repo_url: https://github.com/MeridianAlgo/Learn-Quant
 repo_name: MeridianAlgo/Learn-Quant
+copyright: Copyright &copy; MeridianAlgo — MIT Licensed
+edit_uri: edit/main/
 
 theme:
   name: material
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/chart-line
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
-    - navigation.top
     - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - toc.follow
     - search.suggest
     - search.highlight
     - search.share
@@ -18,26 +30,50 @@ theme:
     - content.code.annotate
     - content.tooltips
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: deep purple
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: indigo
       accent: deep purple
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Switch to system preference
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Inter
+    code: JetBrains Mono
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MeridianAlgo/Learn-Quant
+      name: Learn-Quant on GitHub
+  generator: false
 
 docs_dir: z_docs
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
@@ -52,15 +88,27 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.tabbed:
       alternate_style: true
-  - tables
-  - attr_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
 
 plugins:
   - search
 
 nav:
   - Home: index.md
-  - All Modules: modules.md
+  - Get Started:
+      - Getting Started: getting-started.md
+      - Learning Paths: learning-paths.md
+      - All Modules: modules.md
+      - Glossary: glossary.md
+      - FAQ & Contributing: faq.md
   - Python Fundamentals:
       - "Python Basics - Comprehensions": Python Basics - Comprehensions.md
       - "Python Basics - Control Flow": Python Basics - Control Flow.md
@@ -96,6 +144,7 @@ nav:
           - "Quantitative Methods - Bootstrap": Quantitative Methods - Bootstrap.md
           - "Quantitative Methods - Cointegration": Quantitative Methods - Cointegration.md
           - "Quantitative Methods - Copulas": Quantitative Methods - Copulas.md
+          - "Quantitative Methods - Extreme Value Theory": Quantitative Methods - Extreme Value Theory.md
           - "Quantitative Methods - Factor Models": Quantitative Methods - Factor Models.md
           - "Quantitative Methods - GARCH": Quantitative Methods - GARCH.md
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
@@ -126,6 +175,7 @@ nav:
           - "Finance - Expected Shortfall": Finance - Expected Shortfall.md
           - "Finance - FX Tools": Finance - FX Tools.md
           - "Finance - Greeks Calculator": Finance - Greeks Calculator.md
+          - "Finance - Implied Volatility Surface": Finance - Implied Volatility Surface.md
           - "Finance - Kelly Criterion": Finance - Kelly Criterion.md
           - "Finance - Options Strategies": Finance - Options Strategies.md
           - "Finance - Position Sizing": Finance - Position Sizing.md
@@ -153,6 +203,7 @@ nav:
           - "Portfolio Tracker": Portfolio Tracker.md
       - Strategies:
           - "Order Execution Simulator": Order Execution Simulator.md
+          - "Strategies - Backtesting Engine": Strategies - Backtesting Engine.md
           - "Strategies - Market Making": Strategies - Market Making.md
           - "Strategies - Mean Reversion": Strategies - Mean Reversion.md
           - "Strategies - Momentum Trading": Strategies - Momentum Trading.md
@@ -162,6 +213,7 @@ nav:
   - AI & Machine Learning:
       - "AI Development": AI Development.md
       - "Learning Platform": Learning Platform.md
+      - "Machine Learning - Feature Engineering": Machine Learning - Feature Engineering.md
       - "Machine Learning - Random Forest": Machine Learning - Random Forest.md
       - "Machine Learning Time Series": Machine Learning Time Series.md
       - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md

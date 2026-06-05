@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-const SCRIPT_PATH = path.join('..', 'UTILS - AI Development', 'chatbot.js');
+const SCRIPT_PATH = path.join('..', 'AI Development', 'chatbot.js');
 
 function testScriptRuns() {
     console.log('Testing if chatbot.js runs...');

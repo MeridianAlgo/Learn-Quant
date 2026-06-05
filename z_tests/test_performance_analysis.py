@@ -17,7 +17,7 @@ def load_module_from_path(module_name, path):
 
 
 # Define base folder path
-perf_folder = os.path.join(os.getcwd(), "UTILS - Quantitative Methods - Performance Analysis")
+perf_folder = os.path.join(os.getcwd(), "Quantitative Methods - Performance Analysis")
 
 # Load modules
 hurst_module = load_module_from_path("hurst_exponent", os.path.join(perf_folder, "hurst_exponent.py"))

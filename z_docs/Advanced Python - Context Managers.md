@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Advanced Python</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Advanced Python - Context Managers"
+    python "context_managers_tutorial.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Advanced%20Python%20-%20Context%20Managers)
+
+---
 # Advanced Python – Context Managers
 
 ## Overview
@@ -97,3 +108,33 @@ with DBConnection("market_data.db") as conn:
 - **Use `contextlib.suppress`**: To explicitly ignore specific errors.
 - **Return `True` in `__exit__`**: Only if you intend to suppress the exception.
 - **Keep it simple**: For simple setup/teardown, use `@contextmanager`. For complex state, use a Class.
+
+---
+
+## Continue in Advanced Python
+
+<div class="grid cards" markdown>
+
+-   :material-cog-outline: __[Advanced Python - AsyncIO](Advanced Python - AsyncIO.md)__
+
+    In quantitative finance, speed is edge. Python's `asyncio` library allows for **concurrency**, letting your program handle multiple tasks (like fetching data from 10 different exchanges) at once, rather than waiting for one to finish before starting the next.
+
+-   :material-cog-outline: __[Advanced Python - Decorators and Generators](Advanced Python - Decorators and Generators.md)__
+
+    Decorators and Generators are powerful Python features that separate professional code from beginner scripts. Decorators allow you to modify function behavior cleanly, while Generators enable memory-efficient processing of large financial datasets.
+
+-   :material-cog-outline: __[Advanced Python - Error Handling](Advanced Python - Error Handling.md)__
+
+    Robust error handling is what separates a script that crashes overnight from a professional trading system that runs for years. This module teaches you how to anticipate, catch, and manage errors gracefully.
+
+-   :material-cog-outline: __[Advanced Python - Multiprocessing](Advanced Python - Multiprocessing.md)__
+
+    Python Global Interpreter Lock prevents multiple threads from executing Python bytecode at the same time. This makes threads useless for intense algorithmic work. The multiprocessing module bypasses the lock entirely by spawning separate operating system processes. Each process has its own Python interpreter and memory space, enabling true parallelism across all processing cores.
+
+-   :material-cog-outline: __[Advanced Python - OOP](Advanced Python - OOP.md)__
+
+    Object-Oriented Programming (OOP) is essential for building scalable, maintainable trading systems and financial applications. Learn to organize code using classes, objects, and OOP principles.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Quantitative Methods - Regime Detection"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Quantitative Methods - Regime Detection"))
 from regime_detection import moving_average_regime, regime_stats, volatility_regime
 
 

@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-const SCRIPT_PATH = path.join('..', 'UTILS - Logging', 'logger.js');
+const SCRIPT_PATH = path.join('..', 'Logging', 'logger.js');
 
 function testScriptRuns() {
     console.log('Testing if logger.js runs...');

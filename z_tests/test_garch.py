@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Quantitative Methods - GARCH"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Quantitative Methods - GARCH"))
 from garch import (
     ewma_volatility,
     fit_garch,

@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Algorithms</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Algorithms - Searching"
+    python "searching_algorithms.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Algorithms%20-%20Searching)
+
+---
 # Algorithms – Searching
 
 ## Overview
@@ -74,3 +85,38 @@ python searching_algorithms.py
 - **Use `bisect` in Python**: The standard library `bisect` module provides optimised binary search (implemented in C). Prefer it over manual implementations in production.
 - **Interpolation search for dense price grids**: When tick data is approximately uniform, interpolation search outperforms binary search in practice.
 - **Know your data distribution**: Searching unsorted data? Linear search. Sorted and uniform? Interpolation. Sorted and unknown distribution? Binary.
+
+
+---
+
+## Continue in Algorithms
+
+<div class="grid cards" markdown>
+
+-   :material-sitemap-outline: __[Algorithms - Backtracking](Algorithms - Backtracking.md)__
+
+    Backtracking is a general algorithmic technique for solving problems by building candidates incrementally and abandoning a candidate ("backtracking") as soon as it is determined to violate the problem constraints. It is a systematic form of exhaustive search that prunes the search space to avoid exploring clearly invalid paths.
+
+-   :material-sitemap-outline: __[Algorithms - Dynamic Programming](Algorithms - Dynamic Programming.md)__
+
+    Dynamic Programming (DP) is an algorithmic technique for solving problems by breaking them into overlapping subproblems, solving each subproblem once, and storing the result to avoid redundant computation. It converts exponential-time recursive solutions into polynomial-time ones.
+
+-   :material-sitemap-outline: __[Algorithms - Graph](Algorithms - Graph.md)__
+
+    Graph algorithms operate on structures composed of vertices (nodes) and edges (connections). Many financial problems are naturally modelled as graphs: currency markets form weighted directed graphs, asset correlation matrices define undirected weighted graphs, and order routing networks are flow graphs.
+
+-   :material-sitemap-outline: __[Algorithms - Machine Learning](Algorithms - Machine Learning.md)__
+
+    This module implements fundamental machine learning algorithms from scratch using only NumPy — no scikit-learn or frameworks. Building these algorithms by hand is the most effective way to understand what happens inside the black boxes used in production trading systems.
+
+-   :material-sitemap-outline: __[Algorithms - Sorting](Algorithms - Sorting.md)__
+
+    A comprehensive implementation of fundamental sorting algorithms with detailed explanations, complexity analysis, and performance comparisons.
+
+-   :material-sitemap-outline: __[Algorithms - String](Algorithms - String.md)__
+
+    String algorithms handle efficient manipulation, searching, and analysis of text data. In quantitative finance, string processing is essential for parsing market data feeds, extracting information from news and filings, matching ticker symbols, and cleaning raw data from APIs.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

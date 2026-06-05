@@ -1,4 +1,4 @@
-"""Tests for UTILS - Portfolio Optimizer/portfolio_tutorial.py."""
+"""Tests for Portfolio Optimizer/portfolio_tutorial.py."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "UTILS - Portfolio Optimizer"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "Portfolio Optimizer"))
 
 from portfolio_tutorial import _dot, _portfolio_stats, _sharpe
 

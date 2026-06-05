@@ -3,7 +3,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Strategies - Trend Following"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Strategies - Trend Following"))
 from trend_following import (
     atr,
     atr_position_size,

@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Portfolio Management - Black Litterman"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Portfolio Management - Black Litterman"))
 from black_litterman import bl_optimal_weights, black_litterman, market_implied_returns
 
 

@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 # Test Portfolio Tracker CLI by running as a subprocess
-SCRIPT_PATH = Path(__file__).resolve().parents[1] / "UTILS - Portfolio Tracker" / "portfolio_tracker.py"
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "Portfolio Tracker" / "portfolio_tracker.py"
 
 
 def test_script_runs():

@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Quantitative Methods</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Quantitative Methods - Factor Models"
+    python "factor_models_tutorial.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Quantitative%20Methods%20-%20Factor%20Models)
+
+---
 # Quantitative Methods – Factor Models
 
 ## Overview
@@ -82,3 +93,37 @@ python factor_models_tutorial.py
 - **Multiple testing**: With 300+ factors available, any single significant result could be spurious — use Bonferroni correction or out-of-sample tests.
 - **Factor stability**: Betas change over time as companies grow or shift strategy — use rolling regressions to monitor.
 - **Real data**: Download free Fama-French factor returns from [Ken French's website](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html).
+
+---
+
+## Continue in Quantitative Methods
+
+<div class="grid cards" markdown>
+
+-   :material-function-variant: __[Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)__
+
+    The bootstrap estimates the sampling distribution of **any** statistic by resampling the observed data with replacement — no normality assumption required. It is the honest way to put confidence intervals around backtest metrics like Sharpe ratio, mean return, or maximum drawdown.
+
+-   :material-function-variant: __[Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)__
+
+    Cointegration: two non-stationary series whose **linear combination is stationary**. Backbone of statistical arbitrage and pairs trading.
+
+-   :material-function-variant: __[Quantitative Methods - Copulas](Quantitative Methods - Copulas.md)__
+
+    This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
+
+-   :material-function-variant: __[Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)__
+
+    Most risk models assume returns are normally distributed. They are not —
+
+-   :material-function-variant: __[Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)__
+
+    GARCH (Generalized Autoregressive Conditional Heteroskedasticity) captures **volatility clustering** — high-volatility days tend to follow high-volatility days. Used for risk forecasting, option pricing, and VaR.
+
+-   :material-function-variant: __[Quantitative Methods - Interest Rate Models](Quantitative Methods - Interest Rate Models.md)__
+
+    Continuous-time models for the evolution of the short (instantaneous) interest rate. Used for bond pricing, interest rate derivatives, and yield curve modeling.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

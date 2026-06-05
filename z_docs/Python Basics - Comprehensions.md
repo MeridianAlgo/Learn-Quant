@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Python Fundamentals</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Python Basics - Comprehensions"
+    python "comprehensions_tutorial.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Python%20Basics%20-%20Comprehensions)
+
+---
 # Python Basics – Comprehensions
 
 ## Overview
@@ -286,13 +297,13 @@ result = (item * 2 for item in range(1000000))
 ## Learning Path
 
 **Prerequisites**:
-- [Python Basics – Numbers](../Python%20Basics%20-%20Numbers/)
-- [Python Basics – Functions](../Python%20Basics%20-%20Functions/)
+- [Python Basics – Numbers](Python Basics - Numbers.md)
+- [Python Basics – Functions](Python Basics - Functions.md)
 
 **Builds into**:
-- [Python Basics – Pandas](../Python%20Basics%20-%20Pandas/) (DataFrames use similar patterns)
-- [Data Processing](../Data%20Processing/) (cleaning and transforming real market data)
-- [Strategies – Statistical Arbitrage](../Strategies%20-%20Statistical%20Arbitrage/) (signal generation)
+- [Python Basics – Pandas](Python Basics - Pandas.md) (DataFrames use similar patterns)
+- [Data Processing](Data Processing.md) (cleaning and transforming real market data)
+- [Strategies – Statistical Arbitrage](Strategies - Statistical Arbitrage.md) (signal generation)
 
 ## Common Mistakes
 
@@ -345,3 +356,38 @@ A: Yes, but only 1-2 levels deep before it becomes unreadable. Complex nesting b
 - Python docs: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
 - Functional tools: https://docs.python.org/3/library/functools.html
 - Itertools: https://docs.python.org/3/library/itertools.html
+
+
+---
+
+## Continue in Python Fundamentals
+
+<div class="grid cards" markdown>
+
+-   :material-language-python: __[Python Basics - Control Flow](Python Basics - Control Flow.md)__
+
+    Control flow structures (`if/elif/else`, `for`, `while`, comprehensions, `break`, `continue`) are the foundation of all algorithms. This module teaches how to make decisions, iterate through data, and build the logic patterns used in trading systems, backtests, and risk management tools.
+
+-   :material-language-python: __[Python Basics - Functions](Python Basics - Functions.md)__
+
+    This utility teaches Python functions - the building blocks of modular, reusable code. Learn to write efficient trading algorithms and financial tools using proper function design.
+
+-   :material-language-python: __[Python Basics - NumPy](Python Basics - NumPy.md)__
+
+    Covers the NumPy primitives that appear in virtually every quant codebase — from vectorised return calculations to portfolio variance via the quadratic form. All examples use realistic financial data so the connection between the NumPy API and actual quant work is immediate.
+
+-   :material-language-python: __[Python Basics - Numbers](Python Basics - Numbers.md)__
+
+    After completing this lesson, you'll understand:
+
+-   :material-language-python: __[Python Basics - Pandas](Python Basics - Pandas.md)__
+
+    Covers the Pandas patterns that power real quant research pipelines — from building a synthetic OHLCV DataFrame through rolling indicators, resampling, groupby analysis, and a simple SMA-crossover backtest. Every example is grounded in price data so the link from Pandas API to practical quant work stays concrete.
+
+-   :material-language-python: __[Python Basics - Strings](Python Basics - Strings.md)__
+
+    This beginner-friendly utility introduces Python string fundamentals through hands-on examples. It is perfect for newcomers following the learning path in `Documentation/Programs/level1_fundamentals.py` and looking for extra practice manipulating text data.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

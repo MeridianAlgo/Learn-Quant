@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Kelly Criterion"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Kelly Criterion"))
 from kelly_criterion import (
     fractional_kelly,
     kelly_continuous,

@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">AI & Machine Learning</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Machine Learning Time Series"
+    python "lstm_predictor.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Machine%20Learning%20Time%20Series)
+
+---
 # Machine Learning for Sequential Financial Data
 
 ## Overview
@@ -40,3 +51,38 @@ When heavily utilizing absolute deep learning parameter modeling for elite quant
 ## Detailed Architecture Implementation Coding Outline
 
 The heavily upgraded continuous provided programmatic Python execution samples flawlessly demonstrate technically the heavily absolute necessary algorithmic sequential programmatic steps extensively required to appropriately numerically mathematically aggregate, cleanly statistically transform, fundamentally strictly correctly evaluate, and graphically cleanly visually output dense internal sequential continuous numerical temporal data streams accurately. The included code explicitly mathematically natively features perfectly exceptionally heavily scalable deeply continuous modeling techniques technically mathematically engineered uniquely explicitly successfully to reliably natively be comprehensively overwhelmingly robust across utterly completely vastly widely varied global extreme statistical macro numerical market regimes continuously constantly everywhere always.
+
+
+---
+
+## Continue in AI & Machine Learning
+
+<div class="grid cards" markdown>
+
+-   :material-robot-outline: __[AI Development](AI Development.md)__
+
+    Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js. This module demonstrates how to integrate a hosted large language model into a simple interactive application.
+
+-   :material-robot-outline: __[Learning Platform](Learning Platform.md)__
+
+    An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
+
+-   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
+
+    The dirty secret of quant machine learning: the model is rarely the bottleneck.
+
+-   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
+
+    This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
+
+-   :material-robot-outline: __[Reinforcement Learning Q Learning](Reinforcement Learning Q Learning.md)__
+
+    This module extensively covers the core mathematical algorithms necessary to construct entirely autonomous quantitative execution agents. Rather than relying on rigid statistical parameters or explicit condition based trading logic, reinforcement learning allows an agent to discover the most optimal sequences of action through continuous simulated trial and error. The intelligent agent dynamically interprets complex environmental states and receives explicit scalar rewards or punitive penalties based directly upon its transactional profitability and risk management threshold maintenance. Over thousands of episodes, the model organically maps the market mechanics to develop a mathematically optimal trading policy without human intervention.
+
+-   :material-robot-outline: __[Sentiment Analysis on News](Sentiment Analysis on News.md)__
+
+    **This utility does NOT use any external APIs.** All sentiment analysis is done locally using a simple rule-based approach for learning and experimentation.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

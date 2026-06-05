@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Risk Metrics - Stress Testing"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Risk Metrics - Stress Testing"))
 from stress_testing import (
     HISTORICAL_SCENARIOS,
     apply_scenario,

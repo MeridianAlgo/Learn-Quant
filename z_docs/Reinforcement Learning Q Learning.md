@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">AI & Machine Learning</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Reinforcement Learning Q Learning"
+    python "q_learning_agent.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Reinforcement%20Learning%20Q%20Learning)
+
+---
 # Reinforcement Learning for Quantitative Finance
 
 ## Overview
@@ -47,3 +58,38 @@ The included programmatic Python script meticulously outlines an advanced tabula
 ## Professional Algorithmic Trading Best Practices
 
 When designing execution models for quantitative market routing, statistical practitioners must be universally wary of blindly overfitting to randomized historical noise. A practically robust trading model algorithm must always be stress evaluated across multiple explicitly shifting market regimes to ensure strict theoretical generalizability against unseen environments. Furthermore, absolute transactional friction factors including commission mapping and slippage derivation must be fundamentally integrated directly into the training loop simulation mechanisms, because actively ignoring constant operational taxation always immediately mathematically guarantees totally unrealistic expectations regarding live market capital performance.
+
+
+---
+
+## Continue in AI & Machine Learning
+
+<div class="grid cards" markdown>
+
+-   :material-robot-outline: __[AI Development](AI Development.md)__
+
+    Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js. This module demonstrates how to integrate a hosted large language model into a simple interactive application.
+
+-   :material-robot-outline: __[Learning Platform](Learning Platform.md)__
+
+    An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
+
+-   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
+
+    The dirty secret of quant machine learning: the model is rarely the bottleneck.
+
+-   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
+
+    This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
+
+-   :material-robot-outline: __[Machine Learning Time Series](Machine Learning Time Series.md)__
+
+    Applying incredibly sophisticated statistical and advanced computational matrix calculating algorithms to historical sequential asset prices explicitly enables quantitative researchers to discover heavily latent non linear correlation patterns. Standard basic linear techniques lack the internal theoretical mapping memory required to fully process continuous progression data natively. Therefore, explicit sequential data pattern prediction necessitates deeply specialized memory architectures uniquely capable of successfully retaining vast contextual numerical memory safely across thousands of chronologically independent market observations simultaneously.
+
+-   :material-robot-outline: __[Sentiment Analysis on News](Sentiment Analysis on News.md)__
+
+    **This utility does NOT use any external APIs.** All sentiment analysis is done locally using a simple rule-based approach for learning and experimentation.
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

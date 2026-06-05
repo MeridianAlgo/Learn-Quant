@@ -1,4 +1,4 @@
-"""Tests for UTILS - Quantitative Methods - Statistics/statistics_tutorial.py."""
+"""Tests for Quantitative Methods - Statistics/statistics_tutorial.py."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "UTILS - Quantitative Methods - Statistics"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "Quantitative Methods - Statistics"))
 
 from statistics_tutorial import (
     _cov,

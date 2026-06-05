@@ -13,7 +13,7 @@ def load_module_from_path(module_name, path):
     return module
 
 
-yc_path = os.path.join(os.getcwd(), "UTILS - Finance - Yield Curve", "yield_curve_tutorial.py")
+yc_path = os.path.join(os.getcwd(), "Finance - Yield Curve", "yield_curve_tutorial.py")
 yc = load_module_from_path("yield_curve_tutorial", yc_path)
 
 

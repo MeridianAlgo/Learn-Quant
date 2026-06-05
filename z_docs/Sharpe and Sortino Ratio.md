@@ -1,3 +1,14 @@
+<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Risk & Performance</span><span class="lq-badge lq-lang">Python</span></p>
+
+!!! tip "Run this module"
+    ```bash
+    cd "Sharpe and Sortino Ratio"
+    python "ratio_calculator.py"
+    ```
+
+    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Sharpe%20and%20Sortino%20Ratio)
+
+---
 # Sharpe and Sortino Ratio Calculator
 
 This utility offers easy-to-use Python functions to calculate Sharpe and Sortino ratios for financial returns. These ratios help you understand whether a series of investment returns is attractive on a risk-adjusted basis.
@@ -31,3 +42,38 @@ print("Sortino Ratio:", sortino_ratio(daily_returns))
 - Learn core principles of risk management and portfolio analysis.
 
 *For more finance learning, check /Documentation or see other UTILS modules!*
+
+
+---
+
+## Continue in Risk & Performance
+
+<div class="grid cards" markdown>
+
+-   :material-shield-alert-outline: __[Finance - Information Ratio](Finance - Information Ratio.md)__
+
+    When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
+
+-   :material-shield-alert-outline: __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
+
+    Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
+
+-   :material-shield-alert-outline: __[Risk Metrics](Risk Metrics.md)__
+
+    This module gives you quick, professional stats about risk in any list or array of investment returns. It's used by investors, analysts, and students everywhere!
+
+-   :material-shield-alert-outline: __[Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md)__
+
+    Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
+
+-   :material-shield-alert-outline: __[Risk Metrics - Stress Testing](Risk Metrics - Stress Testing.md)__
+
+    Stress tests answer: *"What happens if 2008 repeats?"* or *"How big a shock kills the portfolio?"* Required by Basel III, CCAR, and most institutional risk frameworks.
+
+-   :material-shield-alert-outline: __[Value at Risk (VaR)](Value at Risk (VaR).md)__
+
+    **Value at Risk** is the single most widely quoted number in financial risk
+
+</div>
+
+[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }

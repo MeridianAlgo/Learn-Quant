@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Performance Attribution"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Performance Attribution"))
 from performance_attribution import (
     brinson_attribution,
     information_ratio,

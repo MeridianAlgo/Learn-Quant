@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Credit Risk"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Credit Risk"))
 from merton_model import implied_asset_value, merton_equity, merton_model
 
 BASE = {"V": 100e6, "F": 80e6, "r": 0.05, "sigma_V": 0.20, "T": 1.0}

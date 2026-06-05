@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-const SCRIPT_PATH = path.join('..', 'UTILS - Historical Data', 'FetchBars.js');
+const SCRIPT_PATH = path.join('..', 'Historical Data', 'FetchBars.js');
 
 function testScriptRuns() {
     console.log('Testing if FetchBars.js runs...');

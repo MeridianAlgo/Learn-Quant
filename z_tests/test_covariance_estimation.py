@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "UTILS - Finance - Covariance Estimation"))
+sys.path.insert(0, str(Path(__file__).parent.parent / "Finance - Covariance Estimation"))
 from covariance_estimation import (
     condition_number,
     constant_correlation_shrinkage,

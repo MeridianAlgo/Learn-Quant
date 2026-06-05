@@ -30,6 +30,12 @@ MANIFEST
 .pytest_cache/
 .ruff_cache/
 
+# MkDocs build output
+site/
+
+# graphify scratch output
+graphify-out/
+
 # Local scaffolding / generator scripts (not part of the published lessons)
 build_algorithm_data.py
 build_comprehensive_platform.py

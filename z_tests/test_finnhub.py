@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-SCRIPT_PATH = Path(__file__).resolve().parents[1] / "UTILS - Websocket Connection" / "finnhub.py"
+SCRIPT_PATH = Path(__file__).resolve().parents[1] / "Websocket Connection" / "finnhub.py"
 
 
 @pytest.mark.skipif(

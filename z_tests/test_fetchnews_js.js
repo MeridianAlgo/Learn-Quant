@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-const SCRIPT_PATH = path.join('..', 'UTILS - News Fetching', 'fetchNews.js');
+const SCRIPT_PATH = path.join('..', 'News Fetching', 'fetchNews.js');
 
 function testScriptRuns() {
     console.log('Testing if fetchNews.js runs...');
