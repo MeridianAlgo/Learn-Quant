@@ -161,9 +161,7 @@ if __name__ == "__main__":
         moneyness = math.log(K / S)
         return 0.20 - 0.35 * moneyness + 0.05 * math.sqrt(T)
 
-    price_grid = np.array(
-        [[bs_price(S, K, T, r, true_iv(K, T), "call") for K in strikes] for T in maturities]
-    )
+    price_grid = np.array([[bs_price(S, K, T, r, true_iv(K, T), "call") for K in strikes] for T in maturities])
 
     surf = VolSurface(S, r).fit(strikes, maturities, price_grid, option="call")
 

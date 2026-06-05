@@ -354,7 +354,7 @@ def build_module_page(mod, siblings, module_dirs):
         footer.append('<div class="grid cards" markdown>')
         footer.append("")
         for s in related:
-            footer.append(f'-   {meta["icon"]} __[{s["dir"]}]({s["file"]})__')
+            footer.append(f"-   {meta['icon']} __[{s['dir']}]({s['file']})__")
             footer.append("")
             if s["desc"]:
                 footer.append(f"    {s['desc']}")
@@ -382,12 +382,12 @@ def build_index(stats, categories):
         meta = CATEGORY_META[cat]
         first = mods[0]["file"]
         cards.append(
-            f'-   {meta["icon"]}{{ .lg .middle }} __{cat}__\n\n'
-            f'    ---\n\n'
-            f'    {meta["blurb"]}\n\n'
-            f'    [:octicons-arrow-right-24: {len(mods)} modules]({first})\n'
+            f"-   {meta['icon']}{{ .lg .middle }} __{cat}__\n\n"
+            f"    ---\n\n"
+            f"    {meta['blurb']}\n\n"
+            f"    [:octicons-arrow-right-24: {len(mods)} modules]({first})\n"
         )
-    cards_block = "<div class=\"grid cards\" markdown>\n\n" + "\n".join(cards) + "\n</div>"
+    cards_block = '<div class="grid cards" markdown>\n\n' + "\n".join(cards) + "\n</div>"
 
     return f"""---
 hide:
@@ -501,7 +501,7 @@ def build_modules(categories):
         out.append("")
         for m in mods:
             diff_class = DIFFICULTY_CLASS.get(m["difficulty"], "intermediate")
-            out.append(f'-   __[{m["dir"]}]({m["file"]})__')
+            out.append(f"-   __[{m['dir']}]({m['file']})__")
             out.append("")
             out.append(
                 f'    <span class="lq-badge lq-{diff_class}">{m["difficulty"]}</span>'
@@ -1070,12 +1070,7 @@ def build_docs():
             f.write(page)
 
     # Stats for the landing page / guides.
-    py_count = sum(
-        1
-        for d in dirs
-        for f in os.listdir(d)
-        if f.endswith(".py") and "__init__" not in f
-    )
+    py_count = sum(1 for d in dirs for f in os.listdir(d) if f.endswith(".py") and "__init__" not in f)
     js_count = sum(1 for d in dirs for f in os.listdir(d) if f.endswith(".js"))
     stats = {"modules": len(modules), "py": py_count, "js": js_count}
 

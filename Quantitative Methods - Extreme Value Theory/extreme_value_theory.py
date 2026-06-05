@@ -156,14 +156,13 @@ if __name__ == "__main__":
         evt = pot_var_es(losses, confidence=c, threshold_quantile=0.90)
         # Compare to the naive Gaussian VaR.
         gauss = losses.mean() + losses.std(ddof=1) * {0.95: 1.645, 0.99: 2.326, 0.995: 2.576}[c]
-        print(
-            f"{int(c*100)}%  EVT VaR = {evt['var']:.4f}  ES = {evt['es']:.4f}"
-            f"   |  Gaussian VaR = {gauss:.4f}"
-        )
+        print(f"{int(c * 100)}%  EVT VaR = {evt['var']:.4f}  ES = {evt['es']:.4f}   |  Gaussian VaR = {gauss:.4f}")
 
     fit = pot_var_es(losses, confidence=0.99)
-    print(f"\nFitted GPD tail: xi = {fit['xi']:.3f}, beta = {fit['beta']:.4f} "
-          f"({fit['n_excess']} excesses over u = {fit['threshold']:.4f})")
+    print(
+        f"\nFitted GPD tail: xi = {fit['xi']:.3f}, beta = {fit['beta']:.4f} "
+        f"({fit['n_excess']} excesses over u = {fit['threshold']:.4f})"
+    )
     print(f"Hill tail index (k=200): {hill_estimator(losses, 200):.3f}")
     print("\nNote how EVT VaR/ES exceed the Gaussian estimate in the deep tail —")
     print("that gap is the risk a normal model hides.")

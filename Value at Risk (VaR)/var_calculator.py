@@ -130,7 +130,7 @@ if __name__ == "__main__":
     print("=" * 48)
     for c in (0.95, 0.99):
         print(
-            f"{int(c*100)}%  "
+            f"{int(c * 100)}%  "
             f"parametric={parametric_var(daily_returns, c):.4f}  "
             f"historical={historical_var(daily_returns, c):.4f}  "
             f"monte_carlo={monte_carlo_var(daily_returns, c, seed=1):.4f}  "
@@ -141,5 +141,7 @@ if __name__ == "__main__":
     test = kupiec_pof_test(daily_returns, var95, 0.95)
     print("\nKupiec backtest of the 95% parametric VaR:")
     print(f"  exceptions {test['exceptions']} vs expected {test['expected']:.1f}")
-    print(f"  LR = {test['lr_statistic']:.3f}, p = {test['p_value']:.3f} "
-          f"=> {'REJECT' if test['reject'] else 'OK (model adequate)'}")
+    print(
+        f"  LR = {test['lr_statistic']:.3f}, p = {test['p_value']:.3f} "
+        f"=> {'REJECT' if test['reject'] else 'OK (model adequate)'}"
+    )
