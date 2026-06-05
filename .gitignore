@@ -52,9 +52,12 @@ env/
 ENV/
 .venv
 
-# IDE
+# IDE / editors
 .vscode/
+.vscode-test/
+*.code-workspace
 .idea/
+.history/
 *.swp
 *.swo
 *~
