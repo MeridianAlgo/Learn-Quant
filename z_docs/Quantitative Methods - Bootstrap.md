@@ -55,6 +55,10 @@ print(confidence_interval(est))   # 95% CI for the annualised Sharpe
 
 <div class="grid cards" markdown>
 
+-   :material-function-variant: __[Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md)__
+
+    A strategy wins 7 of its first 10 trades. Is its true win rate 70%? Almost
+
 -   :material-function-variant: __[Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)__
 
     Cointegration: two non-stationary series whose **linear combination is stationary**. Backbone of statistical arbitrage and pairs trading.
@@ -74,10 +78,6 @@ print(confidence_interval(est))   # 95% CI for the annualised Sharpe
 -   :material-function-variant: __[Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)__
 
     GARCH (Generalized Autoregressive Conditional Heteroskedasticity) captures **volatility clustering** — high-volatility days tend to follow high-volatility days. Used for risk forecasting, option pricing, and VaR.
-
--   :material-function-variant: __[Quantitative Methods - Interest Rate Models](Quantitative Methods - Interest Rate Models.md)__
-
-    Continuous-time models for the evolution of the short (instantaneous) interest rate. Used for bond pricing, interest rate derivatives, and yield curve modeling.
 
 </div>
 

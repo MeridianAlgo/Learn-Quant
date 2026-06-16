@@ -71,6 +71,10 @@ The heavily upgraded continuous provided programmatic Python execution samples f
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
 
+-   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
+
+    Given a few hundred stocks and their return characteristics, which ones behave
+
 -   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
 
     This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
@@ -78,10 +82,6 @@ The heavily upgraded continuous provided programmatic Python execution samples f
 -   :material-robot-outline: __[Reinforcement Learning Q Learning](Reinforcement Learning Q Learning.md)__
 
     This module extensively covers the core mathematical algorithms necessary to construct entirely autonomous quantitative execution agents. Rather than relying on rigid statistical parameters or explicit condition based trading logic, reinforcement learning allows an agent to discover the most optimal sequences of action through continuous simulated trial and error. The intelligent agent dynamically interprets complex environmental states and receives explicit scalar rewards or punitive penalties based directly upon its transactional profitability and risk management threshold maintenance. Over thousands of episodes, the model organically maps the market mechanics to develop a mathematically optimal trading policy without human intervention.
-
--   :material-robot-outline: __[Sentiment Analysis on News](Sentiment Analysis on News.md)__
-
-    **This utility does NOT use any external APIs.** All sentiment analysis is done locally using a simple rule-based approach for learning and experimentation.
 
 </div>
 

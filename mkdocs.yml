@@ -112,6 +112,7 @@ nav:
   - Python Fundamentals:
       - "Python Basics - Comprehensions": Python Basics - Comprehensions.md
       - "Python Basics - Control Flow": Python Basics - Control Flow.md
+      - "Python Basics - Dates and Times": Python Basics - Dates and Times.md
       - "Python Basics - Functions": Python Basics - Functions.md
       - "Python Basics - NumPy": Python Basics - NumPy.md
       - "Python Basics - Numbers": Python Basics - Numbers.md
@@ -141,6 +142,7 @@ nav:
           - "Algorithms - Tree": Algorithms - Tree.md
   - Quant:
       - Quantitative Methods:
+          - "Quantitative Methods - Bayesian Inference": Quantitative Methods - Bayesian Inference.md
           - "Quantitative Methods - Bootstrap": Quantitative Methods - Bootstrap.md
           - "Quantitative Methods - Cointegration": Quantitative Methods - Cointegration.md
           - "Quantitative Methods - Copulas": Quantitative Methods - Copulas.md
@@ -150,6 +152,7 @@ nav:
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
           - "Quantitative Methods - Kalman Filter": Quantitative Methods - Kalman Filter.md
           - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
+          - "Quantitative Methods - Numerical Methods": Quantitative Methods - Numerical Methods.md
           - "Quantitative Methods - Optimization": Quantitative Methods - Optimization.md
           - "Quantitative Methods - Performance Analysis": Quantitative Methods - Performance Analysis.md
           - "Quantitative Methods - Principal Component Analysis": Quantitative Methods - Principal Component Analysis.md
@@ -214,6 +217,7 @@ nav:
       - "AI Development": AI Development.md
       - "Learning Platform": Learning Platform.md
       - "Machine Learning - Feature Engineering": Machine Learning - Feature Engineering.md
+      - "Machine Learning - K-Means Clustering": Machine Learning - K-Means Clustering.md
       - "Machine Learning - Random Forest": Machine Learning - Random Forest.md
       - "Machine Learning Time Series": Machine Learning Time Series.md
       - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md

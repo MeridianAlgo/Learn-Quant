@@ -1,6 +1,6 @@
 # Getting Started
 
-Learn-Quant is a collection of **109 self-contained modules**. There is no
+Learn-Quant is a collection of **113 self-contained modules**. There is no
 package to install and no build step — you clone the repo and run whichever
 lesson you want to learn from.
 

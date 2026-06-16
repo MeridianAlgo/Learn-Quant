@@ -243,6 +243,10 @@ def record_trade(profit, total_profit):
 
     Control flow structures (`if/elif/else`, `for`, `while`, comprehensions, `break`, `continue`) are the foundation of all algorithms. This module teaches how to make decisions, iterate through data, and build the logic patterns used in trading systems, backtests, and risk management tools.
 
+-   :material-language-python: __[Python Basics - Dates and Times](Python Basics - Dates and Times.md)__
+
+    Markets run on a calendar, not a clock. Interest accrues over **days**, options
+
 -   :material-language-python: __[Python Basics - NumPy](Python Basics - NumPy.md)__
 
     Covers the NumPy primitives that appear in virtually every quant codebase — from vectorised return calculations to portfolio variance via the quadratic form. All examples use realistic financial data so the connection between the NumPy API and actual quant work is immediate.
@@ -254,10 +258,6 @@ def record_trade(profit, total_profit):
 -   :material-language-python: __[Python Basics - Pandas](Python Basics - Pandas.md)__
 
     Covers the Pandas patterns that power real quant research pipelines — from building a synthetic OHLCV DataFrame through rolling indicators, resampling, groupby analysis, and a simple SMA-crossover backtest. Every example is grounded in price data so the link from Pandas API to practical quant work stays concrete.
-
--   :material-language-python: __[Python Basics - Strings](Python Basics - Strings.md)__
-
-    This beginner-friendly utility introduces Python string fundamentals through hands-on examples. It is perfect for newcomers following the learning path in `Documentation/Programs/level1_fundamentals.py` and looking for extra practice manipulating text data.
 
 </div>
 

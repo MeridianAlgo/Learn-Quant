@@ -543,6 +543,10 @@ A: Always have an exit condition that WILL eventually be met. Test locally befor
 
     Comprehensions are Python's most elegant way to transform data—replacing loops with readable, performant one-liners. This module teaches **list, dict, set comprehensions**, **generator expressions**, and **functional tools** (`map`, `filter`, `reduce`, `accumulate`) used constantly in quantitative finance for data cleaning, signal generation, and portfolio calculations.
 
+-   :material-language-python: __[Python Basics - Dates and Times](Python Basics - Dates and Times.md)__
+
+    Markets run on a calendar, not a clock. Interest accrues over **days**, options
+
 -   :material-language-python: __[Python Basics - Functions](Python Basics - Functions.md)__
 
     This utility teaches Python functions - the building blocks of modular, reusable code. Learn to write efficient trading algorithms and financial tools using proper function design.
@@ -558,10 +562,6 @@ A: Always have an exit condition that WILL eventually be met. Test locally befor
 -   :material-language-python: __[Python Basics - Pandas](Python Basics - Pandas.md)__
 
     Covers the Pandas patterns that power real quant research pipelines — from building a synthetic OHLCV DataFrame through rolling indicators, resampling, groupby analysis, and a simple SMA-crossover backtest. Every example is grounded in price data so the link from Pandas API to practical quant work stays concrete.
-
--   :material-language-python: __[Python Basics - Strings](Python Basics - Strings.md)__
-
-    This beginner-friendly utility introduces Python string fundamentals through hands-on examples. It is perfect for newcomers following the learning path in `Documentation/Programs/level1_fundamentals.py` and looking for extra practice manipulating text data.
 
 </div>
 

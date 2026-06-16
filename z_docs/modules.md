@@ -20,6 +20,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Control flow structures (`if/elif/else`, `for`, `while`, comprehensions, `break`, `continue`) are the foundation of all algorithms. This module teaches how to make decisions, iterate through data, and build the logic patterns used in trading systems, backtests, and risk management tools.
 
+-   __[Python Basics - Dates and Times](Python Basics - Dates and Times.md)__
+
+    <span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-lang">Python</span>
+
+    Markets run on a calendar, not a clock. Interest accrues over **days**, options
+
 -   __[Python Basics - Functions](Python Basics - Functions.md)__
 
     <span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-lang">Python</span>
@@ -190,6 +196,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
 <div class="grid cards" markdown>
 
+-   __[Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    A strategy wins 7 of its first 10 trades. Is its true win rate 70%? Almost
+
 -   __[Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -243,6 +255,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     Linear algebra is the mathematical foundation for portfolio optimization, risk modeling, factor analysis, and quantitative finance. This utility teaches essential concepts through practical financial applications.
+
+-   __[Quantitative Methods - Numerical Methods](Quantitative Methods - Numerical Methods.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Most of the formulas in finance cannot be solved with algebra. There is no
 
 -   __[Quantitative Methods - Optimization](Quantitative Methods - Optimization.md)__
 
@@ -637,6 +655,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
+
+-   __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Given a few hundred stocks and their return characteristics, which ones behave
 
 -   __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
 

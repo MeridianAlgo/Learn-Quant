@@ -81,6 +81,10 @@ MIT
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
 
+-   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
+
+    Given a few hundred stocks and their return characteristics, which ones behave
+
 -   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
 
     This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
@@ -88,10 +92,6 @@ MIT
 -   :material-robot-outline: __[Machine Learning Time Series](Machine Learning Time Series.md)__
 
     Applying incredibly sophisticated statistical and advanced computational matrix calculating algorithms to historical sequential asset prices explicitly enables quantitative researchers to discover heavily latent non linear correlation patterns. Standard basic linear techniques lack the internal theoretical mapping memory required to fully process continuous progression data natively. Therefore, explicit sequential data pattern prediction necessitates deeply specialized memory architectures uniquely capable of successfully retaining vast contextual numerical memory safely across thousands of chronologically independent market observations simultaneously.
-
--   :material-robot-outline: __[Reinforcement Learning Q Learning](Reinforcement Learning Q Learning.md)__
-
-    This module extensively covers the core mathematical algorithms necessary to construct entirely autonomous quantitative execution agents. Rather than relying on rigid statistical parameters or explicit condition based trading logic, reinforcement learning allows an agent to discover the most optimal sequences of action through continuous simulated trial and error. The intelligent agent dynamically interprets complex environmental states and receives explicit scalar rewards or punitive penalties based directly upon its transactional profitability and risk management threshold maintenance. Over thousands of episodes, the model organically maps the market mechanics to develop a mathematically optimal trading policy without human intervention.
 
 </div>
 

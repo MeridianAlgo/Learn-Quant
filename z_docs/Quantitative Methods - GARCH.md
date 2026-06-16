@@ -60,6 +60,10 @@ vol_5d = garch_forecast(fit, returns[-1], horizon=5)
 
 <div class="grid cards" markdown>
 
+-   :material-function-variant: __[Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md)__
+
+    A strategy wins 7 of its first 10 trades. Is its true win rate 70%? Almost
+
 -   :material-function-variant: __[Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)__
 
     The bootstrap estimates the sampling distribution of **any** statistic by resampling the observed data with replacement — no normality assumption required. It is the honest way to put confidence intervals around backtest metrics like Sharpe ratio, mean return, or maximum drawdown.
@@ -79,10 +83,6 @@ vol_5d = garch_forecast(fit, returns[-1], horizon=5)
 -   :material-function-variant: __[Quantitative Methods - Factor Models](Quantitative Methods - Factor Models.md)__
 
     Factor models explain asset returns as a linear combination of systematic **factors** plus a stock-specific residual. The **Fama-French 3-Factor Model (1992)** extended CAPM by adding two well-documented risk premia: the **Size premium** (SMB) and the **Value premium** (HML), dramatically improving the explanation of cross-sectional stock returns.
-
--   :material-function-variant: __[Quantitative Methods - Interest Rate Models](Quantitative Methods - Interest Rate Models.md)__
-
-    Continuous-time models for the evolution of the short (instantaneous) interest rate. Used for bond pricing, interest rate derivatives, and yield curve modeling.
 
 </div>
 
