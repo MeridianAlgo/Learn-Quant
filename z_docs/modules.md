@@ -256,6 +256,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Linear algebra is the mathematical foundation for portfolio optimization, risk modeling, factor analysis, and quantitative finance. This utility teaches essential concepts through practical financial applications.
 
+-   __[Quantitative Methods - Markov Chains](Quantitative Methods - Markov Chains.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    A **Markov chain** models a system that hops between a finite set of *states*
+
 -   __[Quantitative Methods - Numerical Methods](Quantitative Methods - Numerical Methods.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -468,6 +474,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     **This utility does NOT use any external APIs.** All calculations are done locally for learning and experimentation.
 
+-   __[Options Pricing - Binomial Tree](Options Pricing - Binomial Tree.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
+
+    Black-Scholes hands you a price but hides the mechanics and **cannot value an
+
 -   __[Options Pricing - JavaScript](Options Pricing - JavaScript.md)__
 
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">JavaScript</span>
@@ -661,6 +673,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     Given a few hundred stocks and their return characteristics, which ones behave
+
+-   __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Linear regression predicts a number. **Logistic regression** predicts a
 
 -   __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
 

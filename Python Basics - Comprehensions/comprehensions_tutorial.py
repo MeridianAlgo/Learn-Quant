@@ -152,7 +152,7 @@ def main() -> None:
     map_and_filter()
     reduce_and_accumulate()
     nested_comprehensions_correlation()
-    print("\n\U0001f389 Comprehensions tutorial complete! These patterns appear everywhere in professional quant code.")
+    print("\nComprehensions tutorial complete! These patterns appear everywhere in professional quant code.")
 
 
 if __name__ == "__main__":

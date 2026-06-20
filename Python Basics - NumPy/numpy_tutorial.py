@@ -147,7 +147,7 @@ def main() -> None:
     broadcasting_demo()
     covariance_and_portfolio_variance()
     boolean_indexing_and_pnl()
-    print("\n\U0001f389 NumPy tutorial complete! Next: explore the Pandas tutorial for time-series data manipulation.")
+    print("\nNumPy tutorial complete! Next: explore the Pandas tutorial for time-series data manipulation.")
 
 
 if __name__ == "__main__":

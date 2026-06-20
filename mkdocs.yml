@@ -152,6 +152,7 @@ nav:
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
           - "Quantitative Methods - Kalman Filter": Quantitative Methods - Kalman Filter.md
           - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
+          - "Quantitative Methods - Markov Chains": Quantitative Methods - Markov Chains.md
           - "Quantitative Methods - Numerical Methods": Quantitative Methods - Numerical Methods.md
           - "Quantitative Methods - Optimization": Quantitative Methods - Optimization.md
           - "Quantitative Methods - Performance Analysis": Quantitative Methods - Performance Analysis.md
@@ -187,6 +188,7 @@ nav:
           - "Finance - Yield Curve": Finance - Yield Curve.md
           - "Monte Carlo Simulation - JavaScript": Monte Carlo Simulation - JavaScript.md
           - "Options Chain Simulator": Options Chain Simulator.md
+          - "Options Pricing - Binomial Tree": Options Pricing - Binomial Tree.md
           - "Options Pricing - JavaScript": Options Pricing - JavaScript.md
           - "Technical Indicators": Technical Indicators.md
       - Risk & Performance:
@@ -218,6 +220,7 @@ nav:
       - "Learning Platform": Learning Platform.md
       - "Machine Learning - Feature Engineering": Machine Learning - Feature Engineering.md
       - "Machine Learning - K-Means Clustering": Machine Learning - K-Means Clustering.md
+      - "Machine Learning - Logistic Regression": Machine Learning - Logistic Regression.md
       - "Machine Learning - Random Forest": Machine Learning - Random Forest.md
       - "Machine Learning Time Series": Machine Learning Time Series.md
       - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md

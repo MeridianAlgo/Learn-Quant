@@ -10,7 +10,7 @@ hide:
 
 ### Master quantitative finance, algorithmic trading and professional Python — one runnable lesson at a time.
 
-113 self-contained modules · 127 Python files · 7 JavaScript modules · MIT licensed
+116 self-contained modules · 130 Python files · 7 JavaScript modules · MIT licensed
 
 [:material-rocket-launch-outline: Get started](getting-started.md){ .md-button .md-button--primary }
 [:material-map-outline: Learning paths](learning-paths.md){ .md-button }
@@ -94,7 +94,7 @@ hide:
 
     The mathematics underpinning modern finance, implemented from first principles.
 
-    [:octicons-arrow-right-24: 20 modules](Quantitative Methods - Bayesian Inference.md)
+    [:octicons-arrow-right-24: 21 modules](Quantitative Methods - Bayesian Inference.md)
 
 -   :material-chart-bell-curve:{ .lg .middle } __Options, Derivatives & Finance__
 
@@ -102,7 +102,7 @@ hide:
 
     Pricing, Greeks, fixed income and valuation of financial instruments.
 
-    [:octicons-arrow-right-24: 26 modules](Advanced Options Pricing.md)
+    [:octicons-arrow-right-24: 27 modules](Advanced Options Pricing.md)
 
 -   :material-shield-alert-outline:{ .lg .middle } __Risk & Performance__
 
@@ -134,7 +134,7 @@ hide:
 
     Data-driven models: random forests, deep learning, RL and NLP for markets.
 
-    [:octicons-arrow-right-24: 8 modules](AI Development.md)
+    [:octicons-arrow-right-24: 9 modules](AI Development.md)
 
 -   :material-pulse:{ .lg .middle } __Market Microstructure__
 

@@ -1,12 +1,12 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.8.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.9.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
 [![Docs](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/pages.yml/badge.svg)](https://meridianalgo.github.io/Learn-Quant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Modules](https://img.shields.io/badge/modules-113-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
-[![Tests](https://img.shields.io/badge/tests-505%20passing-2a9d8f.svg)](z_tests/)
+[![Modules](https://img.shields.io/badge/modules-116-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
+[![Tests](https://img.shields.io/badge/tests-533%20passing-2a9d8f.svg)](z_tests/)
 
 **Welcome to Learn-Quant** — your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
 
@@ -19,20 +19,20 @@ difficulty badges and copy-paste run commands.
 
 ---
 
-## What is New in v2.8.0
+## What is New in v2.9.0
 
-- **Four new modules**, each documented, commented and unit-tested:
-  - `Python Basics - Dates and Times` — trading-day counting (weekends + holidays), T+N settlement, and the ACT/365, ACT/360 and 30/360 day-count conventions
-  - `Quantitative Methods - Numerical Methods` — bisection, Newton-Raphson and secant root finders, central-difference derivatives, and trapezoid/Simpson integration, all from first principles
-  - `Quantitative Methods - Bayesian Inference` — Beta-Binomial and Normal-Normal conjugate updating, credible intervals, and shrinkage of noisy return estimates
-  - `Machine Learning - K-Means Clustering` — k-means++ from scratch, inertia/elbow and silhouette scoring to choose `k`, applied to asset clustering
-- **Spans the curriculum**: these lessons reach from a Level 1 Python fundamentals topic (dates) through the numerical and statistical machinery (Level 4) to unsupervised ML (Level 7)
+- **Three new modules**, each documented, commented and unit-tested:
+  - `Options Pricing - Binomial Tree` — the Cox-Ross-Rubinstein lattice from scratch: prices European *and* American calls/puts, converges to Black-Scholes as steps grow, with bisection implied vol
+  - `Quantitative Methods - Markov Chains` — transition matrices, `n`-step powers, stationary distributions and path simulation for market-regime modelling
+  - `Machine Learning - Logistic Regression` — probabilistic classification from scratch: stable sigmoid, log-loss, gradient descent and L2, applied to up/down-day prediction
+- **Spans the curriculum**: from an intermediate derivatives-pricing topic through the probability machinery of Markov chains (Level 4) to a foundational supervised-ML classifier (Level 7)
 - **Docs auto-extend**: the new folders are picked up by the docs builder — badges, run commands and "see also" links included — and pass `mkdocs build --strict`
-- **Test suite grows**: 46 new unit tests bring the suite to **505 passing** (up from 459)
+- **Test suite grows**: 28 new unit tests bring the suite to **533 passing** (up from 505); also fixed a Windows `cp1252` console crash in the NumPy/Pandas/Comprehensions tutorial demos
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
+| v2.8.0 | Dates and Times, Numerical Methods, Bayesian Inference, K-Means Clustering; suite to 505 tests |
 | v2.7.0 | Backtesting Engine, Extreme Value Theory, Implied Vol Surface, Feature Engineering; docs site overhaul; suite repaired to 459 tests |
 | v2.6.0 | Risk Parity, PCA, Bootstrap, Information Ratio modules |
 | v2.5.0 | Full README coverage for all v2.4.0 modules; auto-format workflow; docs builder overhaul |
@@ -46,7 +46,7 @@ difficulty badges and copy-paste run commands.
 
 ## Overview
 
-Learn-Quant is a curated collection of **113 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **116 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -352,12 +352,12 @@ Prefer a goal-driven route? The docs site has curated **[learning paths](https:/
 
 | Category | Count |
 |---|---|
-| Total modules | 113 |
-| Python lesson files | 127 |
+| Total modules | 116 |
+| Python lesson files | 130 |
 | JavaScript modules | 7 |
 | Modules with interactive tutorials | 4 |
-| Test files | 71 |
-| Tests passing | 505 |
+| Test files | 74 |
+| Tests passing | 533 |
 
 ---
 
@@ -374,6 +374,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.8.0**
+**Learn-Quant v2.9.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

@@ -133,9 +133,7 @@ def main() -> None:
     resampling(df)
     groupby_by_weekday(df)
     signal_generation(df)
-    print(
-        "\n\U0001f389 Pandas tutorial complete! Try applying these patterns to real data from the Market Data module."
-    )
+    print("\nPandas tutorial complete! Try applying these patterns to real data from the Market Data module.")
 
 
 if __name__ == "__main__":
