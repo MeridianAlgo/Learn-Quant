@@ -247,17 +247,17 @@ def record_trade(profit, total_profit):
 
     Markets run on a calendar, not a clock. Interest accrues over **days**, options
 
+-   :material-language-python: __[Python Basics - Essential Libraries](Python Basics - Essential Libraries.md)__
+
+    A working quant leans on a small set of libraries for almost everything. A few of
+
+-   :material-language-python: __[Python Basics - Imports and Modules](Python Basics - Imports and Modules.md)__
+
+    Almost every Python program begins with a few import lines. An import is how you
+
 -   :material-language-python: __[Python Basics - NumPy](Python Basics - NumPy.md)__
 
     Covers the NumPy primitives that appear in virtually every quant codebase — from vectorised return calculations to portfolio variance via the quadratic form. All examples use realistic financial data so the connection between the NumPy API and actual quant work is immediate.
-
--   :material-language-python: __[Python Basics - Numbers](Python Basics - Numbers.md)__
-
-    After completing this lesson, you'll understand:
-
--   :material-language-python: __[Python Basics - Pandas](Python Basics - Pandas.md)__
-
-    Covers the Pandas patterns that power real quant research pipelines — from building a synthetic OHLCV DataFrame through rolling indicators, resampling, groupby analysis, and a simple SMA-crossover backtest. Every example is grounded in price data so the link from Pandas API to practical quant work stays concrete.
 
 </div>
 

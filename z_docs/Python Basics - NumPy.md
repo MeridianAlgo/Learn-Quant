@@ -71,17 +71,17 @@ python numpy_tutorial.py
 
     Markets run on a calendar, not a clock. Interest accrues over **days**, options
 
+-   :material-language-python: __[Python Basics - Essential Libraries](Python Basics - Essential Libraries.md)__
+
+    A working quant leans on a small set of libraries for almost everything. A few of
+
 -   :material-language-python: __[Python Basics - Functions](Python Basics - Functions.md)__
 
     This utility teaches Python functions - the building blocks of modular, reusable code. Learn to write efficient trading algorithms and financial tools using proper function design.
 
--   :material-language-python: __[Python Basics - Numbers](Python Basics - Numbers.md)__
+-   :material-language-python: __[Python Basics - Imports and Modules](Python Basics - Imports and Modules.md)__
 
-    After completing this lesson, you'll understand:
-
--   :material-language-python: __[Python Basics - Pandas](Python Basics - Pandas.md)__
-
-    Covers the Pandas patterns that power real quant research pipelines — from building a synthetic OHLCV DataFrame through rolling indicators, resampling, groupby analysis, and a simple SMA-crossover backtest. Every example is grounded in price data so the link from Pandas API to practical quant work stays concrete.
+    Almost every Python program begins with a few import lines. An import is how you
 
 </div>
 

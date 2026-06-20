@@ -10,7 +10,7 @@ hide:
 
 ### Master quantitative finance, algorithmic trading and professional Python — one runnable lesson at a time.
 
-116 self-contained modules · 130 Python files · 7 JavaScript modules · MIT licensed
+118 self-contained modules · 132 Python files · 7 JavaScript modules · MIT licensed
 
 [:material-rocket-launch-outline: Get started](getting-started.md){ .md-button .md-button--primary }
 [:material-map-outline: Learning paths](learning-paths.md){ .md-button }
@@ -62,7 +62,7 @@ hide:
 
     Core Python for financial analysis — start here if you are new to code.
 
-    [:octicons-arrow-right-24: 8 modules](Python Basics - Comprehensions.md)
+    [:octicons-arrow-right-24: 10 modules](Python Basics - Comprehensions.md)
 
 -   :material-database-outline:{ .lg .middle } __Data Structures__
 

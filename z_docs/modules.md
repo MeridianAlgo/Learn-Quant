@@ -26,11 +26,23 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Markets run on a calendar, not a clock. Interest accrues over **days**, options
 
+-   __[Python Basics - Essential Libraries](Python Basics - Essential Libraries.md)__
+
+    <span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-lang">Python</span>
+
+    A working quant leans on a small set of libraries for almost everything. A few of
+
 -   __[Python Basics - Functions](Python Basics - Functions.md)__
 
     <span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-lang">Python</span>
 
     This utility teaches Python functions - the building blocks of modular, reusable code. Learn to write efficient trading algorithms and financial tools using proper function design.
+
+-   __[Python Basics - Imports and Modules](Python Basics - Imports and Modules.md)__
+
+    <span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-lang">Python</span>
+
+    Almost every Python program begins with a few import lines. An import is how you
 
 -   __[Python Basics - NumPy](Python Basics - NumPy.md)__
 

@@ -113,7 +113,9 @@ nav:
       - "Python Basics - Comprehensions": Python Basics - Comprehensions.md
       - "Python Basics - Control Flow": Python Basics - Control Flow.md
       - "Python Basics - Dates and Times": Python Basics - Dates and Times.md
+      - "Python Basics - Essential Libraries": Python Basics - Essential Libraries.md
       - "Python Basics - Functions": Python Basics - Functions.md
+      - "Python Basics - Imports and Modules": Python Basics - Imports and Modules.md
       - "Python Basics - NumPy": Python Basics - NumPy.md
       - "Python Basics - Numbers": Python Basics - Numbers.md
       - "Python Basics - Pandas": Python Basics - Pandas.md

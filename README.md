@@ -1,38 +1,38 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.9.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.10.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
 [![Docs](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/pages.yml/badge.svg)](https://meridianalgo.github.io/Learn-Quant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Modules](https://img.shields.io/badge/modules-116-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
-[![Tests](https://img.shields.io/badge/tests-533%20passing-2a9d8f.svg)](z_tests/)
+[![Modules](https://img.shields.io/badge/modules-118-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
+[![Tests](https://img.shields.io/badge/tests-551%20passing-2a9d8f.svg)](z_tests/)
 
-**Welcome to Learn-Quant** — your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
+**Welcome to Learn-Quant**, your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
 
-### 📖 Read the docs: **[meridianalgo.github.io/Learn-Quant](https://meridianalgo.github.io/Learn-Quant/)**
+### Read the docs at **[meridianalgo.github.io/Learn-Quant](https://meridianalgo.github.io/Learn-Quant/)**
 
-The documentation site is the best way to explore Learn-Quant — searchable, with
+The documentation site is the best way to explore Learn-Quant, searchable, with
 curated [learning paths](https://meridianalgo.github.io/Learn-Quant/learning-paths/),
 a [glossary](https://meridianalgo.github.io/Learn-Quant/glossary/), per-module
 difficulty badges and copy-paste run commands.
 
 ---
 
-## What is New in v2.9.0
+## What is New in v2.10.0
 
-- **Three new modules**, each documented, commented and unit-tested:
-  - `Options Pricing - Binomial Tree` — the Cox-Ross-Rubinstein lattice from scratch: prices European *and* American calls/puts, converges to Black-Scholes as steps grow, with bisection implied vol
-  - `Quantitative Methods - Markov Chains` — transition matrices, `n`-step powers, stationary distributions and path simulation for market-regime modelling
-  - `Machine Learning - Logistic Regression` — probabilistic classification from scratch: stable sigmoid, log-loss, gradient descent and L2, applied to up/down-day prediction
-- **Spans the curriculum**: from an intermediate derivatives-pricing topic through the probability machinery of Markov chains (Level 4) to a foundational supervised-ML classifier (Level 7)
-- **Docs auto-extend**: the new folders are picked up by the docs builder — badges, run commands and "see also" links included — and pass `mkdocs build --strict`
-- **Test suite grows**: 28 new unit tests bring the suite to **533 passing** (up from 505); also fixed a Windows `cp1252` console crash in the NumPy/Pandas/Comprehensions tutorial demos
+Two new beginner friendly lessons on how Python imports actually work. Both are documented, commented, and unit tested.
+
+* **Python Basics, Imports and Modules** explains the three import forms, what a package is, how Python searches sys.path for code, and how to load a module safely at runtime when you are not sure it is installed.
+* **Python Basics, Essential Libraries** walks through the ten imports a quant reaches for most often and what each one does, from numpy and pandas through scipy and scikit learn down to the standard library staples math, datetime, random, and json.
+* **Test suite grows** with 18 new unit tests that bring the suite to **551 passing**, up from 533.
+* **Docs auto extend** because the new folders are picked up by the docs builder with badges, run commands, and related links, and they pass the strict documentation build.
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
-| v2.8.0 | Dates and Times, Numerical Methods, Bayesian Inference, K-Means Clustering; suite to 505 tests |
+| v2.9.0 | Binomial Tree pricing, Markov Chains, Logistic Regression, plus a cp1252 tutorial fix, suite to 533 tests |
+| v2.8.0 | Dates and Times, Numerical Methods, Bayesian Inference, K-Means Clustering, suite to 505 tests |
 | v2.7.0 | Backtesting Engine, Extreme Value Theory, Implied Vol Surface, Feature Engineering; docs site overhaul; suite repaired to 459 tests |
 | v2.6.0 | Risk Parity, PCA, Bootstrap, Information Ratio modules |
 | v2.5.0 | Full README coverage for all v2.4.0 modules; auto-format workflow; docs builder overhaul |
@@ -46,7 +46,7 @@ difficulty badges and copy-paste run commands.
 
 ## Overview
 
-Learn-Quant is a curated collection of **116 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **118 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -60,7 +60,7 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ## Complete Module Directory
 
-### Level 1 — Python Fundamentals
+### Level 1, Python Fundamentals
 *Essential coding skills for financial analysis. Start here if you are new to Python.*
 
 | Module | What you will learn |
@@ -76,7 +76,7 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ---
 
-### Level 2 — Data Structures & Algorithms
+### Level 2, Data Structures & Algorithms
 *Optimising performance and implementing classical CS techniques on market data.*
 
 **Data Structures**
@@ -103,7 +103,7 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ---
 
-### Level 3 — Advanced Python Engineering
+### Level 3, Advanced Python Engineering
 *Writing professional, production-ready financial systems.*
 
 | Module | What you will learn |
@@ -117,12 +117,12 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ---
 
-### Level 4 — Quantitative Methods
+### Level 4, Quantitative Methods
 *The mathematics underpinning modern finance.*
 
 | Module | What you will learn |
 |---|---|
-| `Quantitative Methods - Statistics` | Hypothesis testing, stationarity tests, cointegration, Z-scores, fat tails — includes interactive quiz |
+| `Quantitative Methods - Statistics` | Hypothesis testing, stationarity tests, cointegration, Z-scores, fat tails, includes interactive quiz |
 | `Quantitative Methods - Regression Analysis` | OLS, GLS, factor regressions, residual diagnostics |
 | `Quantitative Methods - Linear Algebra` | Matrix decompositions for portfolio optimisation, PCA, eigenvalues |
 | `Quantitative Methods - Factor Models` | Fama-French 3-factor, factor regression, alpha decomposition, performance attribution |
@@ -145,22 +145,22 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ---
 
-### Level 5 — Options, Derivatives & Finance
+### Level 5, Options, Derivatives & Finance
 *Pricing, Greeks, valuation, and core financial instruments.*
 
 **Options & Derivatives**
 
 | Module | What you will learn |
 |---|---|
-| `Black-Scholes Option Pricing` | European call/put pricing, all five Greeks, implied vol — includes interactive tutorial |
+| `Black-Scholes Option Pricing` | European call/put pricing, all five Greeks, implied vol, includes interactive tutorial |
 | `Advanced Options Pricing` | Binomial trees, finite-difference methods, American options |
 | `Options Pricing - JavaScript` | Full Black-Scholes in pure JS: price, Greeks, IV bisection solver |
 | `Finance - Greeks Calculator` | Delta, Gamma, Theta, Vega, Rho across a full options chain |
-| `Finance - Exotic Options` | Barriers, Asian, Lookback, Digital — analytical and Monte Carlo pricing |
+| `Finance - Exotic Options` | Barriers, Asian, Lookback, Digital, analytical and Monte Carlo pricing |
 | `Finance - Implied Volatility Surface` | Black-Scholes IV inversion (Newton + bisection), bilinear vol surface, skew and term structure |
-| `Finance - Options Strategies` | Spreads, straddles, strangles, condors — payoff diagrams and breakeven analysis |
+| `Finance - Options Strategies` | Spreads, straddles, strangles, condors, payoff diagrams and breakeven analysis |
 | `Options Chain Simulator` | Synthetic options chain generation with vol surface interpolation |
-| `Technical Indicators` | SMA, EMA, RSI (Wilder), MACD, Bollinger Bands, ATR — Python and JavaScript |
+| `Technical Indicators` | SMA, EMA, RSI (Wilder), MACD, Bollinger Bands, ATR, Python and JavaScript |
 | `Monte Carlo Simulation - JavaScript` | GBM paths, correlated multi-asset portfolio MC, antithetic variates, VaR/CVaR |
 
 **Fixed Income & Valuation**
@@ -186,14 +186,14 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ---
 
-### Level 6 — Risk, Portfolio & Strategies
+### Level 6, Risk, Portfolio & Strategies
 *Applied quantitative finance: measure risk, build portfolios, run strategies.*
 
 **Risk & Performance**
 
 | Module | What you will learn |
 |---|---|
-| `Risk Metrics` | VaR, CVaR, Drawdown, Sortino Ratio — includes interactive tutorial with quizzes |
+| `Risk Metrics` | VaR, CVaR, Drawdown, Sortino Ratio, includes interactive tutorial with quizzes |
 | `Risk Metrics - Drawdown Analysis` | Max drawdown, drawdown duration, Calmar ratio, underwater equity curves |
 | `Risk Metrics - Stress Testing` | 2008 GFC, 2020 COVID, 1987 crash, dotcom, 2022 scenarios; sensitivity analysis |
 | `Value at Risk (VaR)` | Parametric, historical, and Monte Carlo VaR; backtesting and Kupiec test |
@@ -206,7 +206,7 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 | Module | What you will learn |
 |---|---|
-| `Portfolio Optimizer` | Efficient Frontier, max-Sharpe, min-variance, Markowitz — includes interactive tutorial |
+| `Portfolio Optimizer` | Efficient Frontier, max-Sharpe, min-variance, Markowitz, includes interactive tutorial |
 | `Portfolio Tracker` | Position tracking, P&L attribution, multi-asset portfolio dashboard |
 | `Portfolio Management` | Portfolio construction, rebalancing rules, turnover constraints |
 | `Portfolio Management - Black Litterman` | Black-Litterman model, investor views, posterior allocation |
@@ -228,7 +228,7 @@ Learn-Quant is a curated collection of **116 self-contained modules** designed t
 
 ---
 
-### Level 7 — AI, ML & Market Microstructure
+### Level 7, AI, ML & Market Microstructure
 *Modern data-driven approaches and low-latency market structure.*
 
 **Machine Learning & AI**
@@ -329,7 +329,7 @@ node monteCarlo.js
 
 ### Recommended Learning Path
 ```
-Level 1 → Level 2 → Level 3 → Level 4 → Level 5 → Level 6 → Level 7
+Level 1 then Level 2 then Level 3 then Level 4 then Level 5 then Level 6 then Level 7
 ```
 
 ```mermaid
@@ -352,12 +352,12 @@ Prefer a goal-driven route? The docs site has curated **[learning paths](https:/
 
 | Category | Count |
 |---|---|
-| Total modules | 116 |
-| Python lesson files | 130 |
+| Total modules | 118 |
+| Python lesson files | 132 |
 | JavaScript modules | 7 |
 | Modules with interactive tutorials | 4 |
-| Test files | 74 |
-| Tests passing | 533 |
+| Test files | 76 |
+| Tests passing | 551 |
 
 ---
 
@@ -374,6 +374,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.9.0**
+**Learn-Quant v2.10.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**
