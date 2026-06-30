@@ -104,6 +104,10 @@ print(accuracy(y, predict(Xs, w, b)))
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
 
+-   :material-robot-outline: __[Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md)__
+
+    Gradient descent is the engine inside almost every model that learns. The idea
+
 -   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 
     Given a few hundred stocks and their return characteristics, which ones behave
@@ -111,10 +115,6 @@ print(accuracy(y, predict(Xs, w, b)))
 -   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
 
     This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
-
--   :material-robot-outline: __[Machine Learning Time Series](Machine Learning Time Series.md)__
-
-    Applying incredibly sophisticated statistical and advanced computational matrix calculating algorithms to historical sequential asset prices explicitly enables quantitative researchers to discover heavily latent non linear correlation patterns. Standard basic linear techniques lack the internal theoretical mapping memory required to fully process continuous progression data natively. Therefore, explicit sequential data pattern prediction necessitates deeply specialized memory architectures uniquely capable of successfully retaining vast contextual numerical memory safely across thousands of chronologically independent market observations simultaneously.
 
 </div>
 

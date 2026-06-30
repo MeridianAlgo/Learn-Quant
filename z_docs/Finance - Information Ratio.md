@@ -56,6 +56,10 @@ print(appraisal_ratio(port, bench))    # alpha, beta, residual vol, appraisal ra
 
 <div class="grid cards" markdown>
 
+-   :material-shield-alert-outline: __[Finance - Calmar Ratio](Finance - Calmar Ratio.md)__
+
+    The Sharpe ratio judges a strategy by how much its returns wobble around their
+
 -   :material-shield-alert-outline: __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
 
     Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
@@ -75,10 +79,6 @@ print(appraisal_ratio(port, bench))    # alpha, beta, residual vol, appraisal ra
 -   :material-shield-alert-outline: __[Sharpe and Sortino Ratio](Sharpe and Sortino Ratio.md)__
 
     This utility offers easy-to-use Python functions to calculate Sharpe and Sortino ratios for financial returns. These ratios help you understand whether a series of investment returns is attractive on a risk-adjusted basis.
-
--   :material-shield-alert-outline: __[Value at Risk (VaR)](Value at Risk (VaR).md)__
-
-    **Value at Risk** is the single most widely quoted number in financial risk
 
 </div>
 

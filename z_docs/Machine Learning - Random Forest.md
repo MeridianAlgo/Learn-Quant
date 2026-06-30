@@ -39,6 +39,10 @@ Run `python rf_predictor.py` to see a quick demonstration of training and evalua
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
 
+-   :material-robot-outline: __[Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md)__
+
+    Gradient descent is the engine inside almost every model that learns. The idea
+
 -   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 
     Given a few hundred stocks and their return characteristics, which ones behave
@@ -46,10 +50,6 @@ Run `python rf_predictor.py` to see a quick demonstration of training and evalua
 -   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
 
     Linear regression predicts a number. **Logistic regression** predicts a
-
--   :material-robot-outline: __[Machine Learning Time Series](Machine Learning Time Series.md)__
-
-    Applying incredibly sophisticated statistical and advanced computational matrix calculating algorithms to historical sequential asset prices explicitly enables quantitative researchers to discover heavily latent non linear correlation patterns. Standard basic linear techniques lack the internal theoretical mapping memory required to fully process continuous progression data natively. Therefore, explicit sequential data pattern prediction necessitates deeply specialized memory architectures uniquely capable of successfully retaining vast contextual numerical memory safely across thousands of chronologically independent market observations simultaneously.
 
 </div>
 

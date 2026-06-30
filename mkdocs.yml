@@ -151,6 +151,7 @@ nav:
           - "Quantitative Methods - Extreme Value Theory": Quantitative Methods - Extreme Value Theory.md
           - "Quantitative Methods - Factor Models": Quantitative Methods - Factor Models.md
           - "Quantitative Methods - GARCH": Quantitative Methods - GARCH.md
+          - "Quantitative Methods - Hypothesis Testing": Quantitative Methods - Hypothesis Testing.md
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
           - "Quantitative Methods - Kalman Filter": Quantitative Methods - Kalman Filter.md
           - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
@@ -194,6 +195,7 @@ nav:
           - "Options Pricing - JavaScript": Options Pricing - JavaScript.md
           - "Technical Indicators": Technical Indicators.md
       - Risk & Performance:
+          - "Finance - Calmar Ratio": Finance - Calmar Ratio.md
           - "Finance - Information Ratio": Finance - Information Ratio.md
           - "Finance - Performance Attribution": Finance - Performance Attribution.md
           - "Risk Metrics": Risk Metrics.md
@@ -221,6 +223,7 @@ nav:
       - "AI Development": AI Development.md
       - "Learning Platform": Learning Platform.md
       - "Machine Learning - Feature Engineering": Machine Learning - Feature Engineering.md
+      - "Machine Learning - Gradient Descent": Machine Learning - Gradient Descent.md
       - "Machine Learning - K-Means Clustering": Machine Learning - K-Means Clustering.md
       - "Machine Learning - Logistic Regression": Machine Learning - Logistic Regression.md
       - "Machine Learning - Random Forest": Machine Learning - Random Forest.md

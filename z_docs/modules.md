@@ -250,6 +250,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     GARCH (Generalized Autoregressive Conditional Heteroskedasticity) captures **volatility clustering** — high-volatility days tend to follow high-volatility days. Used for risk forecasting, option pricing, and VaR.
 
+-   __[Quantitative Methods - Hypothesis Testing](Quantitative Methods - Hypothesis Testing.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    You found an edge. The average daily return of your strategy is positive, one
+
 -   __[Quantitative Methods - Interest Rate Models](Quantitative Methods - Interest Rate Models.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -512,6 +518,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
 <div class="grid cards" markdown>
 
+-   __[Finance - Calmar Ratio](Finance - Calmar Ratio.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
+
+    The Sharpe ratio judges a strategy by how much its returns wobble around their
+
 -   __[Finance - Information Ratio](Finance - Information Ratio.md)__
 
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
@@ -679,6 +691,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
+
+-   __[Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Gradient descent is the engine inside almost every model that learns. The idea
 
 -   __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 

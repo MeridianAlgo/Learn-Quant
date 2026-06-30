@@ -204,6 +204,7 @@ def categorize(name):
             "Risk Metrics",
             "Value at Risk",
             "Sharpe",
+            "Calmar",
             "Performance Attribution",
             "Information Ratio",
         ]

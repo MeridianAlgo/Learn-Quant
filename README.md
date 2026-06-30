@@ -1,12 +1,12 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.10.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.11.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
 [![Docs](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/pages.yml/badge.svg)](https://meridianalgo.github.io/Learn-Quant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Modules](https://img.shields.io/badge/modules-118-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
-[![Tests](https://img.shields.io/badge/tests-551%20passing-2a9d8f.svg)](z_tests/)
+[![Modules](https://img.shields.io/badge/modules-121-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
+[![Tests](https://img.shields.io/badge/tests-578%20passing-2a9d8f.svg)](z_tests/)
 
 **Welcome to Learn-Quant**, your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
 
@@ -19,18 +19,20 @@ difficulty badges and copy-paste run commands.
 
 ---
 
-## What is New in v2.10.0
+## What is New in v2.11.0
 
-Two new beginner friendly lessons on how Python imports actually work. Both are documented, commented, and unit tested.
+Three new modules covering statistical testing, the core machine learning optimiser, and a drawdown based performance ratio. Each one is documented, commented, and unit tested.
 
-* **Python Basics, Imports and Modules** explains the three import forms, what a package is, how Python searches sys.path for code, and how to load a module safely at runtime when you are not sure it is installed.
-* **Python Basics, Essential Libraries** walks through the ten imports a quant reaches for most often and what each one does, from numpy and pandas through scipy and scikit learn down to the standard library staples math, datetime, random, and json.
-* **Test suite grows** with 18 new unit tests that bring the suite to **551 passing**, up from 533.
+* **Quantitative Methods, Hypothesis Testing** builds the everyday significance tests from scratch, one sample and Welch two sample t tests, a z test, and confidence intervals, so you can tell a real edge from noise with a p value.
+* **Machine Learning, Gradient Descent** fits a linear model by both full batch and stochastic descent on plain NumPy, showing how the learning rate and feature scaling decide whether the loss falls or blows up.
+* **Finance, Calmar Ratio** measures a track record by its compound annual growth over its worst peak to trough drawdown, the companion to the Sharpe and Sortino lessons that score risk a different way.
+* **Test suite grows** with 27 new unit tests that bring the suite to **578 passing**, up from 551.
 * **Docs auto extend** because the new folders are picked up by the docs builder with badges, run commands, and related links, and they pass the strict documentation build.
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
+| v2.10.0 | Imports and Modules, Essential Libraries lessons, suite to 551 tests |
 | v2.9.0 | Binomial Tree pricing, Markov Chains, Logistic Regression, plus a cp1252 tutorial fix, suite to 533 tests |
 | v2.8.0 | Dates and Times, Numerical Methods, Bayesian Inference, K-Means Clustering, suite to 505 tests |
 | v2.7.0 | Backtesting Engine, Extreme Value Theory, Implied Vol Surface, Feature Engineering; docs site overhaul; suite repaired to 459 tests |
@@ -46,7 +48,7 @@ Two new beginner friendly lessons on how Python imports actually work. Both are 
 
 ## Overview
 
-Learn-Quant is a curated collection of **118 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **121 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -142,6 +144,7 @@ Learn-Quant is a curated collection of **118 self-contained modules** designed t
 | `Quantitative Methods - Extreme Value Theory` | Peaks-Over-Threshold GPD fitting, EVT VaR/ES for the deep tail, Hill tail-index estimator |
 | `Quantitative Methods - Numerical Methods` | Bisection, Newton-Raphson, secant root finders; central differences; trapezoid and Simpson integration |
 | `Quantitative Methods - Bayesian Inference` | Beta-Binomial and Normal-Normal conjugate updating, credible intervals, shrinkage of noisy estimates |
+| `Quantitative Methods - Hypothesis Testing` | One sample and Welch two sample t tests, z test, confidence intervals, p values for telling a real edge from noise |
 
 ---
 
@@ -198,6 +201,7 @@ Learn-Quant is a curated collection of **118 self-contained modules** designed t
 | `Risk Metrics - Stress Testing` | 2008 GFC, 2020 COVID, 1987 crash, dotcom, 2022 scenarios; sensitivity analysis |
 | `Value at Risk (VaR)` | Parametric, historical, and Monte Carlo VaR; backtesting and Kupiec test |
 | `Sharpe and Sortino Ratio` | Risk-adjusted return metrics, annualisation, rolling Sharpe |
+| `Finance - Calmar Ratio` | Compound annual growth over maximum drawdown, MAR ratio, drawdown adjusted scoring of a track record |
 | `Finance - Performance Attribution` | Brinson-Hood-Beebower allocation/selection/interaction decomposition |
 | `Finance - Information Ratio` | Active return, tracking error, Information Ratio, CAPM-based appraisal ratio |
 | `Finance - Expected Shortfall` | ES/CVaR: parametric, historical, and Monte Carlo approaches |
@@ -237,6 +241,7 @@ Learn-Quant is a curated collection of **118 self-contained modules** designed t
 |---|---|
 | `Machine Learning - Feature Engineering` | Stationary feature matrix, RSI/momentum/volatility, triple-barrier labels, leak-free purged split |
 | `Machine Learning - K-Means Clustering` | k-means++ from scratch, inertia/elbow and silhouette to choose k, asset clustering |
+| `Machine Learning - Gradient Descent` | Batch and stochastic gradient descent fitting a linear model on NumPy, learning rate and feature scaling intuition |
 | `Machine Learning - Random Forest` | Random forests for return prediction, feature importance, walk-forward CV |
 | `Machine Learning Time Series` | LSTM, gradient boosting on financial time-series, train/test discipline |
 | `Reinforcement Learning Q Learning` | Q-learning trading agent, reward engineering, policy evaluation |
@@ -352,12 +357,12 @@ Prefer a goal-driven route? The docs site has curated **[learning paths](https:/
 
 | Category | Count |
 |---|---|
-| Total modules | 118 |
-| Python lesson files | 132 |
+| Total modules | 121 |
+| Python lesson files | 135 |
 | JavaScript modules | 7 |
 | Modules with interactive tutorials | 4 |
-| Test files | 76 |
-| Tests passing | 551 |
+| Test files | 79 |
+| Tests passing | 578 |
 
 ---
 
@@ -374,6 +379,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.10.0**
+**Learn-Quant v2.11.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

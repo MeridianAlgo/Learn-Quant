@@ -46,6 +46,10 @@ for key, value in risk_stats.items():
 
 <div class="grid cards" markdown>
 
+-   :material-shield-alert-outline: __[Finance - Calmar Ratio](Finance - Calmar Ratio.md)__
+
+    The Sharpe ratio judges a strategy by how much its returns wobble around their
+
 -   :material-shield-alert-outline: __[Finance - Information Ratio](Finance - Information Ratio.md)__
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
@@ -65,10 +69,6 @@ for key, value in risk_stats.items():
 -   :material-shield-alert-outline: __[Sharpe and Sortino Ratio](Sharpe and Sortino Ratio.md)__
 
     This utility offers easy-to-use Python functions to calculate Sharpe and Sortino ratios for financial returns. These ratios help you understand whether a series of investment returns is attractive on a risk-adjusted basis.
-
--   :material-shield-alert-outline: __[Value at Risk (VaR)](Value at Risk (VaR).md)__
-
-    **Value at Risk** is the single most widely quoted number in financial risk
 
 </div>
 

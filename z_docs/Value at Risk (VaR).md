@@ -94,6 +94,10 @@ too few means it wastes capital.
 
 <div class="grid cards" markdown>
 
+-   :material-shield-alert-outline: __[Finance - Calmar Ratio](Finance - Calmar Ratio.md)__
+
+    The Sharpe ratio judges a strategy by how much its returns wobble around their
+
 -   :material-shield-alert-outline: __[Finance - Information Ratio](Finance - Information Ratio.md)__
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
@@ -113,10 +117,6 @@ too few means it wastes capital.
 -   :material-shield-alert-outline: __[Risk Metrics - Stress Testing](Risk Metrics - Stress Testing.md)__
 
     Stress tests answer: *"What happens if 2008 repeats?"* or *"How big a shock kills the portfolio?"* Required by Basel III, CCAR, and most institutional risk frameworks.
-
--   :material-shield-alert-outline: __[Sharpe and Sortino Ratio](Sharpe and Sortino Ratio.md)__
-
-    This utility offers easy-to-use Python functions to calculate Sharpe and Sortino ratios for financial returns. These ratios help you understand whether a series of investment returns is attractive on a risk-adjusted basis.
 
 </div>
 

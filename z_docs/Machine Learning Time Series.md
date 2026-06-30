@@ -71,6 +71,10 @@ The heavily upgraded continuous provided programmatic Python execution samples f
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
 
+-   :material-robot-outline: __[Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md)__
+
+    Gradient descent is the engine inside almost every model that learns. The idea
+
 -   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 
     Given a few hundred stocks and their return characteristics, which ones behave
@@ -78,10 +82,6 @@ The heavily upgraded continuous provided programmatic Python execution samples f
 -   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
 
     Linear regression predicts a number. **Logistic regression** predicts a
-
--   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
-
-    This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
 
 </div>
 
