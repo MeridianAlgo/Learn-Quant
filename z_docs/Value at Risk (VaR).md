@@ -102,6 +102,10 @@ too few means it wastes capital.
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
+-   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
+
+    The Sharpe ratio squeezes a whole return distribution into a mean and a
+
 -   :material-shield-alert-outline: __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
 
     Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
@@ -113,10 +117,6 @@ too few means it wastes capital.
 -   :material-shield-alert-outline: __[Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md)__
 
     Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
-
--   :material-shield-alert-outline: __[Risk Metrics - Stress Testing](Risk Metrics - Stress Testing.md)__
-
-    Stress tests answer: *"What happens if 2008 repeats?"* or *"How big a shock kills the portfolio?"* Required by Basel III, CCAR, and most institutional risk frameworks.
 
 </div>
 

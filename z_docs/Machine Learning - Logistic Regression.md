@@ -100,6 +100,10 @@ print(accuracy(y, predict(Xs, w, b)))
 
     An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
 
+-   :material-robot-outline: __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
+
+    A model scored on the data it was trained on is a student grading their own
+
 -   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
@@ -111,10 +115,6 @@ print(accuracy(y, predict(Xs, w, b)))
 -   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 
     Given a few hundred stocks and their return characteristics, which ones behave
-
--   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
-
-    This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
 
 </div>
 

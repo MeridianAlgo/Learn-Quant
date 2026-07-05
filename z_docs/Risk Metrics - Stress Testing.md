@@ -70,6 +70,10 @@ k = reverse_stress_test([1.0], [-1.0], 0.25, 1.0)  # -> 0.25
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
+-   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
+
+    The Sharpe ratio squeezes a whole return distribution into a mean and a
+
 -   :material-shield-alert-outline: __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
 
     Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
@@ -81,10 +85,6 @@ k = reverse_stress_test([1.0], [-1.0], 0.25, 1.0)  # -> 0.25
 -   :material-shield-alert-outline: __[Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md)__
 
     Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
-
--   :material-shield-alert-outline: __[Sharpe and Sortino Ratio](Sharpe and Sortino Ratio.md)__
-
-    This utility offers easy-to-use Python functions to calculate Sharpe and Sortino ratios for financial returns. These ratios help you understand whether a series of investment returns is attractive on a risk-adjusted basis.
 
 </div>
 

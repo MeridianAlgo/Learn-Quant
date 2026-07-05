@@ -101,6 +101,10 @@ step, scales all the way up.
 
     An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
 
+-   :material-robot-outline: __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
+
+    A model scored on the data it was trained on is a student grading their own
+
 -   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
@@ -112,10 +116,6 @@ step, scales all the way up.
 -   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
 
     Linear regression predicts a number. **Logistic regression** predicts a
-
--   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
-
-    This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
 
 </div>
 

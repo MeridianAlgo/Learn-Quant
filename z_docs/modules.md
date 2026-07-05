@@ -280,6 +280,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     A **Markov chain** models a system that hops between a finite set of *states*
 
+-   __[Quantitative Methods - Monte Carlo Integration](Quantitative Methods - Monte Carlo Integration.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Some integrals have no tidy formula, and in high dimensions the grid methods
+
 -   __[Quantitative Methods - Numerical Methods](Quantitative Methods - Numerical Methods.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -530,6 +536,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
+-   __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
+
+    The Sharpe ratio squeezes a whole return distribution into a mean and a
+
 -   __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
 
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
@@ -685,6 +697,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
+
+-   __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    A model scored on the data it was trained on is a student grading their own
 
 -   __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
 

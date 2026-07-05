@@ -59,6 +59,10 @@ Happy teaching and learning!
 
     Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js. This module demonstrates how to integrate a hosted large language model into a simple interactive application.
 
+-   :material-robot-outline: __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
+
+    A model scored on the data it was trained on is a student grading their own
+
 -   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
@@ -74,10 +78,6 @@ Happy teaching and learning!
 -   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
 
     Linear regression predicts a number. **Logistic regression** predicts a
-
--   :material-robot-outline: __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
-
-    This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
 
 </div>
 

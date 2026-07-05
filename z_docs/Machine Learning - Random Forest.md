@@ -35,6 +35,10 @@ Run `python rf_predictor.py` to see a quick demonstration of training and evalua
 
     An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
 
+-   :material-robot-outline: __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
+
+    A model scored on the data it was trained on is a student grading their own
+
 -   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
 
     The dirty secret of quant machine learning: the model is rarely the bottleneck.
@@ -46,10 +50,6 @@ Run `python rf_predictor.py` to see a quick demonstration of training and evalua
 -   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 
     Given a few hundred stocks and their return characteristics, which ones behave
-
--   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
-
-    Linear regression predicts a number. **Logistic regression** predicts a
 
 </div>
 

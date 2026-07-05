@@ -205,6 +205,7 @@ def categorize(name):
             "Value at Risk",
             "Sharpe",
             "Calmar",
+            "Omega",
             "Performance Attribution",
             "Information Ratio",
         ]
