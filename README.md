@@ -1,12 +1,12 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.12.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.13.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
 [![Docs](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/pages.yml/badge.svg)](https://meridianalgo.github.io/Learn-Quant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Modules](https://img.shields.io/badge/modules-124-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
-[![Tests](https://img.shields.io/badge/tests-612%20passing-2a9d8f.svg)](z_tests/)
+[![Modules](https://img.shields.io/badge/modules-127-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
+[![Tests](https://img.shields.io/badge/tests-645%20passing-2a9d8f.svg)](z_tests/)
 
 **Welcome to Learn-Quant**, your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
 
@@ -19,19 +19,20 @@ difficulty badges and copy-paste run commands.
 
 ---
 
-## What is New in v2.12.0
+## What is New in v2.13.0
 
-Three new modules covering a distribution aware performance ratio, the discipline of honest model scoring, and the sampling workhorse behind exotic pricing. Each one is documented, commented, and unit tested.
+Three new modules covering a beta based performance ratio, the craft of filling gaps in market curves, and the classic probabilistic baseline classifier. Each one is documented, commented, and unit tested.
 
-* **Finance, Omega Ratio** compares the probability weighted gains above a threshold of your choosing to the shortfalls below it, using the whole return distribution instead of a mean and a volatility, the natural companion to the Sharpe, Sortino, and Calmar lessons.
-* **Machine Learning, Cross Validation** builds train test splits, k fold scoring, and walk forward validation from scratch on NumPy, and shows why shuffled folds quietly leak the future into a time series backtest.
-* **Quantitative Methods, Monte Carlo Integration** estimates integrals by sampling with honest error bars, cuts the noise with antithetic variates, and prices a European call by simulation checked against the Black Scholes closed form.
-* **Test suite grows** with 34 new unit tests that bring the suite to **612 passing**, up from 578.
+* **Finance, Treynor Ratio** divides excess return by beta instead of by total volatility, asking how much reward a portfolio earns per unit of market risk it actually adds to a diversified book, the natural companion to the Sharpe and beta lessons.
+* **Quantitative Methods, Interpolation** connects the dots of a yield curve or volatility surface two ways, robust straight lines and a natural cubic spline built from the classic tridiagonal system, and explains when each one is the right tool.
+* **Machine Learning, Naive Bayes** trains a Gaussian classifier with nothing but means, variances, and class frequencies, works in log space so probabilities never underflow, and shows why the famously wrong independence assumption still ranks classes well.
+* **Test suite grows** with 33 new unit tests that bring the suite to **645 passing**, up from 612.
 * **Docs auto extend** because the new folders are picked up by the docs builder with badges, run commands, and related links, and they pass the strict documentation build.
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
+| v2.12.0 | Omega Ratio, Cross Validation, Monte Carlo Integration, suite to 612 tests |
 | v2.11.0 | Hypothesis Testing, Gradient Descent, Calmar Ratio, suite to 578 tests |
 | v2.10.0 | Imports and Modules, Essential Libraries lessons, suite to 551 tests |
 | v2.9.0 | Binomial Tree pricing, Markov Chains, Logistic Regression, plus a cp1252 tutorial fix, suite to 533 tests |
@@ -49,7 +50,7 @@ Three new modules covering a distribution aware performance ratio, the disciplin
 
 ## Overview
 
-Learn-Quant is a curated collection of **121 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **127 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -358,12 +359,12 @@ Prefer a goal-driven route? The docs site has curated **[learning paths](https:/
 
 | Category | Count |
 |---|---|
-| Total modules | 124 |
-| Python lesson files | 138 |
+| Total modules | 127 |
+| Python lesson files | 141 |
 | JavaScript modules | 7 |
 | Modules with interactive tutorials | 4 |
-| Test files | 82 |
-| Tests passing | 612 |
+| Test files | 85 |
+| Tests passing | 645 |
 
 ---
 
@@ -380,6 +381,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.12.0**
+**Learn-Quant v2.13.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

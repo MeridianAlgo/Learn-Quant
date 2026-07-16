@@ -262,6 +262,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Continuous-time models for the evolution of the short (instantaneous) interest rate. Used for bond pricing, interest rate derivatives, and yield curve modeling.
 
+-   __[Quantitative Methods - Interpolation](Quantitative Methods - Interpolation.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Markets hand you values at scattered points and questions at the points in
+
 -   __[Quantitative Methods - Kalman Filter](Quantitative Methods - Kalman Filter.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -473,6 +479,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
 
     Tools for measuring execution quality and estimating market impact. TCA is essential for evaluating whether a strategy's theoretical alpha survives real-world trading costs.
+
+-   __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
+
+    The Sharpe ratio divides excess return by total volatility, which mixes two
 
 -   __[Finance - Volatility Calculator](Finance - Volatility Calculator.md)__
 
@@ -727,6 +739,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     Linear regression predicts a number. **Logistic regression** predicts a
+
+-   __[Machine Learning - Naive Bayes](Machine Learning - Naive Bayes.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Bayes' theorem tells you how to update a belief about a class label after
 
 -   __[Machine Learning - Random Forest](Machine Learning - Random Forest.md)__
 

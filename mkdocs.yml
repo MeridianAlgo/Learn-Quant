@@ -153,6 +153,7 @@ nav:
           - "Quantitative Methods - GARCH": Quantitative Methods - GARCH.md
           - "Quantitative Methods - Hypothesis Testing": Quantitative Methods - Hypothesis Testing.md
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
+          - "Quantitative Methods - Interpolation": Quantitative Methods - Interpolation.md
           - "Quantitative Methods - Kalman Filter": Quantitative Methods - Kalman Filter.md
           - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
           - "Quantitative Methods - Markov Chains": Quantitative Methods - Markov Chains.md
@@ -188,6 +189,7 @@ nav:
           - "Finance - Options Strategies": Finance - Options Strategies.md
           - "Finance - Position Sizing": Finance - Position Sizing.md
           - "Finance - Transaction Cost Analysis": Finance - Transaction Cost Analysis.md
+          - "Finance - Treynor Ratio": Finance - Treynor Ratio.md
           - "Finance - Volatility Calculator": Finance - Volatility Calculator.md
           - "Finance - Yield Curve": Finance - Yield Curve.md
           - "Monte Carlo Simulation - JavaScript": Monte Carlo Simulation - JavaScript.md
@@ -229,6 +231,7 @@ nav:
       - "Machine Learning - Gradient Descent": Machine Learning - Gradient Descent.md
       - "Machine Learning - K-Means Clustering": Machine Learning - K-Means Clustering.md
       - "Machine Learning - Logistic Regression": Machine Learning - Logistic Regression.md
+      - "Machine Learning - Naive Bayes": Machine Learning - Naive Bayes.md
       - "Machine Learning - Random Forest": Machine Learning - Random Forest.md
       - "Machine Learning Time Series": Machine Learning Time Series.md
       - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md
