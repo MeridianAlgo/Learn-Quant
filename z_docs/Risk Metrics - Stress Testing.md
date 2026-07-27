@@ -70,6 +70,10 @@ k = reverse_stress_test([1.0], [-1.0], 0.25, 1.0)  # -> 0.25
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
+-   :material-shield-alert-outline: __[Finance - Jensens Alpha](Finance - Jensens Alpha.md)__
+
+    Beta tells you how much of a portfolio's return came from simply riding the
+
 -   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
 
     The Sharpe ratio squeezes a whole return distribution into a mean and a
@@ -78,13 +82,9 @@ k = reverse_stress_test([1.0], [-1.0], 0.25, 1.0)  # -> 0.25
 
     Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
 
--   :material-shield-alert-outline: __[Risk Metrics](Risk Metrics.md)__
+-   :material-shield-alert-outline: __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
 
-    This module gives you quick, professional stats about risk in any list or array of investment returns. It's used by investors, analysts, and students everywhere!
-
--   :material-shield-alert-outline: __[Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md)__
-
-    Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
+    The Sharpe ratio divides excess return by total volatility, which mixes two
 
 </div>
 

@@ -232,6 +232,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
 
+-   __[Quantitative Methods - Entropy](Quantitative Methods - Entropy.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Entropy measures how surprised you should expect to be. A coin that always
+
 -   __[Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -480,12 +486,6 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Tools for measuring execution quality and estimating market impact. TCA is essential for evaluating whether a strategy's theoretical alpha survives real-world trading costs.
 
--   __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
-
-    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
-
-    The Sharpe ratio divides excess return by total volatility, which mixes two
-
 -   __[Finance - Volatility Calculator](Finance - Volatility Calculator.md)__
 
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
@@ -548,6 +548,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
+-   __[Finance - Jensens Alpha](Finance - Jensens Alpha.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
+
+    Beta tells you how much of a portfolio's return came from simply riding the
+
 -   __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
 
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
@@ -559,6 +565,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
 
     Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
+
+-   __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
+
+    The Sharpe ratio divides excess return by total volatility, which mixes two
 
 -   __[Risk Metrics](Risk Metrics.md)__
 
@@ -727,6 +739,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     Gradient descent is the engine inside almost every model that learns. The idea
+
+-   __[Machine Learning - K Nearest Neighbors](Machine Learning - K Nearest Neighbors.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Most models squeeze a training set down into a handful of parameters and then
 
 -   __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 

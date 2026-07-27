@@ -115,9 +115,9 @@ print(silhouette_score(X, labels))     # closer to 1 = tighter, cleaner split
 
     Gradient descent is the engine inside almost every model that learns. The idea
 
--   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
+-   :material-robot-outline: __[Machine Learning - K Nearest Neighbors](Machine Learning - K Nearest Neighbors.md)__
 
-    Linear regression predicts a number. **Logistic regression** predicts a
+    Most models squeeze a training set down into a handful of parameters and then
 
 </div>
 

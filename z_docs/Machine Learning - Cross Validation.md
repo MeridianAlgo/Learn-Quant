@@ -113,13 +113,13 @@ for train_idx, test_idx in walk_forward_splits(100, n_splits=4, min_train=20):
 
     Gradient descent is the engine inside almost every model that learns. The idea
 
+-   :material-robot-outline: __[Machine Learning - K Nearest Neighbors](Machine Learning - K Nearest Neighbors.md)__
+
+    Most models squeeze a training set down into a handful of parameters and then
+
 -   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
 
     Given a few hundred stocks and their return characteristics, which ones behave
-
--   :material-robot-outline: __[Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)__
-
-    Linear regression predicts a number. **Logistic regression** predicts a
 
 </div>
 

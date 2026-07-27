@@ -116,6 +116,10 @@ data).
 
     This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
 
+-   :material-function-variant: __[Quantitative Methods - Entropy](Quantitative Methods - Entropy.md)__
+
+    Entropy measures how surprised you should expect to be. A coin that always
+
 -   :material-function-variant: __[Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)__
 
     Most risk models assume returns are normally distributed. They are not —
@@ -123,10 +127,6 @@ data).
 -   :material-function-variant: __[Quantitative Methods - Factor Models](Quantitative Methods - Factor Models.md)__
 
     Factor models explain asset returns as a linear combination of systematic **factors** plus a stock-specific residual. The **Fama-French 3-Factor Model (1992)** extended CAPM by adding two well-documented risk premia: the **Size premium** (SMB) and the **Value premium** (HML), dramatically improving the explanation of cross-sectional stock returns.
-
--   :material-function-variant: __[Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)__
-
-    GARCH (Generalized Autoregressive Conditional Heteroskedasticity) captures **volatility clustering** — high-volatility days tend to follow high-volatility days. Used for risk forecasting, option pricing, and VaR.
 
 </div>
 

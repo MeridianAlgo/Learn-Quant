@@ -60,6 +60,10 @@ print(appraisal_ratio(port, bench))    # alpha, beta, residual vol, appraisal ra
 
     The Sharpe ratio judges a strategy by how much its returns wobble around their
 
+-   :material-shield-alert-outline: __[Finance - Jensens Alpha](Finance - Jensens Alpha.md)__
+
+    Beta tells you how much of a portfolio's return came from simply riding the
+
 -   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
 
     The Sharpe ratio squeezes a whole return distribution into a mean and a
@@ -68,17 +72,13 @@ print(appraisal_ratio(port, bench))    # alpha, beta, residual vol, appraisal ra
 
     Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
 
+-   :material-shield-alert-outline: __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
+
+    The Sharpe ratio divides excess return by total volatility, which mixes two
+
 -   :material-shield-alert-outline: __[Risk Metrics](Risk Metrics.md)__
 
     This module gives you quick, professional stats about risk in any list or array of investment returns. It's used by investors, analysts, and students everywhere!
-
--   :material-shield-alert-outline: __[Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md)__
-
-    Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
-
--   :material-shield-alert-outline: __[Risk Metrics - Stress Testing](Risk Metrics - Stress Testing.md)__
-
-    Stress tests answer: *"What happens if 2008 repeats?"* or *"How big a shock kills the portfolio?"* Required by Basel III, CCAR, and most institutional risk frameworks.
 
 </div>
 

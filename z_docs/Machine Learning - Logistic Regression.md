@@ -112,9 +112,9 @@ print(accuracy(y, predict(Xs, w, b)))
 
     Gradient descent is the engine inside almost every model that learns. The idea
 
--   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
+-   :material-robot-outline: __[Machine Learning - K Nearest Neighbors](Machine Learning - K Nearest Neighbors.md)__
 
-    Given a few hundred stocks and their return characteristics, which ones behave
+    Most models squeeze a training set down into a handful of parameters and then
 
 </div>
 

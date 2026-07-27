@@ -1,4 +1,4 @@
-<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Options, Derivatives & Finance</span><span class="lq-badge lq-lang">Python</span></p>
+<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Risk & Performance</span><span class="lq-badge lq-lang">Python</span></p>
 
 !!! tip "Run this module"
     ```bash
@@ -79,33 +79,33 @@ print(annualized_treynor_ratio(fund, market, risk_free_rate=0.0001))
 
 ---
 
-## Continue in Options, Derivatives & Finance
+## Continue in Risk & Performance
 
 <div class="grid cards" markdown>
 
--   :material-chart-bell-curve: __[Advanced Options Pricing](Advanced Options Pricing.md)__
+-   :material-shield-alert-outline: __[Finance - Calmar Ratio](Finance - Calmar Ratio.md)__
 
-    This module covers advanced mathematical techniques for pricing financial derivatives. The focus is on models beyond the standard assumptions. Rather than assuming constant volatility, we explore dynamic and local volatility models. These models are crucial for correctly valuing exotic options and managing the risks of complex derivatives portfolios.
+    The Sharpe ratio judges a strategy by how much its returns wobble around their
 
--   :material-chart-bell-curve: __[Black-Scholes Option Pricing](Black-Scholes Option Pricing.md)__
+-   :material-shield-alert-outline: __[Finance - Information Ratio](Finance - Information Ratio.md)__
 
-    This module lets you price basic stock options (calls and puts) using the Black-Scholes formula, a foundation of modern financial analysis.
+    When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
--   :material-chart-bell-curve: __[Bond Price and Yield](Bond Price and Yield.md)__
+-   :material-shield-alert-outline: __[Finance - Jensens Alpha](Finance - Jensens Alpha.md)__
 
-    This utility lets you calculate the fair price of a bond or estimate its yield to maturity (YTM), two of the most basic (and important!) ideas in investing.
+    Beta tells you how much of a portfolio's return came from simply riding the
 
--   :material-chart-bell-curve: __[CAPM](CAPM.md)__
+-   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
 
-    CAPM is the idea that won a Nobel Prize and still anchors how the industry
+    The Sharpe ratio squeezes a whole return distribution into a mean and a
 
--   :material-chart-bell-curve: __[Discounted Cash Flow (DCF)](Discounted Cash Flow (DCF).md)__
+-   :material-shield-alert-outline: __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
 
-    This tool calculates the present value of a series of future cash flows—the basic principle behind valuing businesses, real estate, projects, and stocks!
+    Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
 
--   :material-chart-bell-curve: __[Dividend Tracker](Dividend Tracker.md)__
+-   :material-shield-alert-outline: __[Risk Metrics](Risk Metrics.md)__
 
-    **This utility does NOT use any external APIs.** All data is managed locally for learning and experimentation.
+    This module gives you quick, professional stats about risk in any list or array of investment returns. It's used by investors, analysts, and students everywhere!
 
 </div>
 

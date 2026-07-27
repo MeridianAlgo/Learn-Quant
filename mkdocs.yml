@@ -148,6 +148,7 @@ nav:
           - "Quantitative Methods - Bootstrap": Quantitative Methods - Bootstrap.md
           - "Quantitative Methods - Cointegration": Quantitative Methods - Cointegration.md
           - "Quantitative Methods - Copulas": Quantitative Methods - Copulas.md
+          - "Quantitative Methods - Entropy": Quantitative Methods - Entropy.md
           - "Quantitative Methods - Extreme Value Theory": Quantitative Methods - Extreme Value Theory.md
           - "Quantitative Methods - Factor Models": Quantitative Methods - Factor Models.md
           - "Quantitative Methods - GARCH": Quantitative Methods - GARCH.md
@@ -189,7 +190,6 @@ nav:
           - "Finance - Options Strategies": Finance - Options Strategies.md
           - "Finance - Position Sizing": Finance - Position Sizing.md
           - "Finance - Transaction Cost Analysis": Finance - Transaction Cost Analysis.md
-          - "Finance - Treynor Ratio": Finance - Treynor Ratio.md
           - "Finance - Volatility Calculator": Finance - Volatility Calculator.md
           - "Finance - Yield Curve": Finance - Yield Curve.md
           - "Monte Carlo Simulation - JavaScript": Monte Carlo Simulation - JavaScript.md
@@ -200,8 +200,10 @@ nav:
       - Risk & Performance:
           - "Finance - Calmar Ratio": Finance - Calmar Ratio.md
           - "Finance - Information Ratio": Finance - Information Ratio.md
+          - "Finance - Jensens Alpha": Finance - Jensens Alpha.md
           - "Finance - Omega Ratio": Finance - Omega Ratio.md
           - "Finance - Performance Attribution": Finance - Performance Attribution.md
+          - "Finance - Treynor Ratio": Finance - Treynor Ratio.md
           - "Risk Metrics": Risk Metrics.md
           - "Risk Metrics - Drawdown Analysis": Risk Metrics - Drawdown Analysis.md
           - "Risk Metrics - Stress Testing": Risk Metrics - Stress Testing.md
@@ -229,6 +231,7 @@ nav:
       - "Machine Learning - Cross Validation": Machine Learning - Cross Validation.md
       - "Machine Learning - Feature Engineering": Machine Learning - Feature Engineering.md
       - "Machine Learning - Gradient Descent": Machine Learning - Gradient Descent.md
+      - "Machine Learning - K Nearest Neighbors": Machine Learning - K Nearest Neighbors.md
       - "Machine Learning - K-Means Clustering": Machine Learning - K-Means Clustering.md
       - "Machine Learning - Logistic Regression": Machine Learning - Logistic Regression.md
       - "Machine Learning - Naive Bayes": Machine Learning - Naive Bayes.md

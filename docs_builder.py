@@ -206,6 +206,8 @@ def categorize(name):
             "Sharpe",
             "Calmar",
             "Omega",
+            "Treynor",
+            "Jensens Alpha",
             "Performance Attribution",
             "Information Ratio",
         ]

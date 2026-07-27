@@ -116,13 +116,13 @@ python factor_models_tutorial.py
 
     This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
 
+-   :material-function-variant: __[Quantitative Methods - Entropy](Quantitative Methods - Entropy.md)__
+
+    Entropy measures how surprised you should expect to be. A coin that always
+
 -   :material-function-variant: __[Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)__
 
     Most risk models assume returns are normally distributed. They are not —
-
--   :material-function-variant: __[Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)__
-
-    GARCH (Generalized Autoregressive Conditional Heteroskedasticity) captures **volatility clustering** — high-volatility days tend to follow high-volatility days. Used for risk forecasting, option pricing, and VaR.
 
 </div>
 

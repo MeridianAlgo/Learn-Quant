@@ -65,21 +65,21 @@ ir = information_ratio(daily_port, daily_bench)
 
     When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
 
+-   :material-shield-alert-outline: __[Finance - Jensens Alpha](Finance - Jensens Alpha.md)__
+
+    Beta tells you how much of a portfolio's return came from simply riding the
+
 -   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
 
     The Sharpe ratio squeezes a whole return distribution into a mean and a
 
+-   :material-shield-alert-outline: __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
+
+    The Sharpe ratio divides excess return by total volatility, which mixes two
+
 -   :material-shield-alert-outline: __[Risk Metrics](Risk Metrics.md)__
 
     This module gives you quick, professional stats about risk in any list or array of investment returns. It's used by investors, analysts, and students everywhere!
-
--   :material-shield-alert-outline: __[Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md)__
-
-    Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
-
--   :material-shield-alert-outline: __[Risk Metrics - Stress Testing](Risk Metrics - Stress Testing.md)__
-
-    Stress tests answer: *"What happens if 2008 repeats?"* or *"How big a shock kills the portfolio?"* Required by Basel III, CCAR, and most institutional risk frameworks.
 
 </div>
 
