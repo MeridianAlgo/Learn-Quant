@@ -51,6 +51,10 @@ plot_monte_carlo(init, mu, sigma, periods, simulations=100)
 
 <div class="grid cards" markdown>
 
+-   :material-briefcase-outline: __[Portfolio Analytics - JavaScript](Portfolio Analytics - JavaScript.md)__
+
+    A portfolio is not the sum of its holdings, and the whole of portfolio theory
+
 -   :material-briefcase-outline: __[Portfolio Management](Portfolio Management.md)__
 
     This folder contains utilities for portfolio management, risk analysis, and investment optimization.

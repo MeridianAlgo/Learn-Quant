@@ -310,7 +310,10 @@ def rewrite_relative_links(body, module_dirs):
             return f"]({decoded}.md)"
         return match.group(0)
 
-    return re.sub(r"\]\(\.\./([^)]+)\)", repl, body)
+    # One folder, "Value at Risk (VaR)", has brackets in its name, so the link
+    # target is allowed to contain a balanced pair rather than stopping at the
+    # first closing bracket it meets.
+    return re.sub(r"\]\(\.\./((?:[^()]|\([^()]*\))+)\)", repl, body)
 
 
 # ---------------------------------------------------------------------------

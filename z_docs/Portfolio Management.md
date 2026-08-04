@@ -87,6 +87,10 @@ python risk_utils.py
 
     This utility helps you forecast possible futures for a portfolio using random simulations—a key idea in finance, risk management, and statistics!
 
+-   :material-briefcase-outline: __[Portfolio Analytics - JavaScript](Portfolio Analytics - JavaScript.md)__
+
+    A portfolio is not the sum of its holdings, and the whole of portfolio theory
+
 -   :material-briefcase-outline: __[Portfolio Management - Black Litterman](Portfolio Management - Black Litterman.md)__
 
     The Black-Litterman (1990) model addresses the instability of mean-variance optimization by blending **market equilibrium returns** with **investor views** using Bayesian updating.

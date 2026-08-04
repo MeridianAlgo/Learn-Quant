@@ -1,12 +1,12 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.14.0)
+# Learn-Quant: Master Quantitative Finance & Python (v2.15.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
 [![Docs](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/pages.yml/badge.svg)](https://meridianalgo.github.io/Learn-Quant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Modules](https://img.shields.io/badge/modules-130-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
-[![Tests](https://img.shields.io/badge/tests-702%20passing-2a9d8f.svg)](z_tests/)
+[![Modules](https://img.shields.io/badge/modules-134-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
+[![Tests](https://img.shields.io/badge/tests-763%20passing-2a9d8f.svg)](z_tests/)
 
 **Welcome to Learn-Quant**, your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
 
@@ -19,19 +19,21 @@ difficulty badges and copy-paste run commands.
 
 ---
 
-## What is New in v2.14.0
+## What is New in v2.15.0
 
-Three new modules covering the return a manager actually earned, the laziest useful predictor in machine learning, and the measure of uncertainty that sits underneath both. Each one is documented, commented, and unit tested.
+Four new modules, two in Python and two in JavaScript, covering the frequency view of a price series, the classifier that maximises its own margin, and the risk and portfolio maths that most people reach for a library to do.
 
-* **Finance, Jensen's Alpha** subtracts the return the CAPM says a portfolio should have earned from what it really earned, then reports a t statistic so you can tell a genuine edge apart from a lucky streak, and shows why leverage lifts returns without lifting alpha.
-* **Machine Learning, K Nearest Neighbors** classifies and regresses by keeping the whole training set and letting the closest examples vote, with optional distance weighting, and explains why feature scaling decides whether the model works at all.
-* **Quantitative Methods, Entropy and Information** measures uncertainty in bits, prices the cost of believing the wrong distribution with Kullback Leibler divergence, and uses mutual information to catch relationships that correlation is blind to.
-* **Test suite grows** with 57 new unit tests that bring the suite to **702 passing**, up from 645.
+* **Quantitative Methods, Fourier Analysis** finds the cycle length hiding in a series, filters out the fast wiggles with no lag at all, and computes autocorrelation at every lag at once, while being blunt about why a trend has to come out first and why the no lag filter cannot be traded live.
+* **Machine Learning, Support Vector Machine** fits the widest possible corridor between two classes with a soft margin and hinge loss, identifies the handful of support vectors the boundary actually rests on, and refuses hyperparameters that would silently diverge into arithmetic garbage.
+* **Risk Metrics, JavaScript** brings drawdown with a proper running peak, Sharpe, Sortino, Calmar, historical VaR, conditional VaR and the ulcer index to pure Node.js with no dependencies at all.
+* **Portfolio Analytics, JavaScript** builds covariance from returns, solves for minimum variance and tangency weights with its own Gauss Jordan routine, and shows how far equal weights are from equal risk.
+* **Test suite grows** with 61 new Python unit tests that bring the suite to **763 passing**, up from 702, plus 91 new JavaScript assertions across two Node test files.
 * **Docs auto extend** because the new folders are picked up by the docs builder with badges, run commands, and related links, and they pass the strict documentation build.
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
+| v2.14.0 | Jensen's Alpha, K Nearest Neighbors, Entropy, suite to 702 tests |
 | v2.13.0 | Treynor Ratio, Interpolation, Naive Bayes, suite to 645 tests |
 | v2.12.0 | Omega Ratio, Cross Validation, Monte Carlo Integration, suite to 612 tests |
 | v2.11.0 | Hypothesis Testing, Gradient Descent, Calmar Ratio, suite to 578 tests |
@@ -51,7 +53,7 @@ Three new modules covering the return a manager actually earned, the laziest use
 
 ## Overview
 
-Learn-Quant is a curated collection of **130 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **134 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -333,6 +335,13 @@ node blackScholes.js
 
 cd "Monte Carlo Simulation - JavaScript"
 node monteCarlo.js
+
+# New in v2.15.0
+cd "Risk Metrics - JavaScript"
+node riskMetrics.js
+
+cd "Portfolio Analytics - JavaScript"
+node portfolioAnalytics.js
 ```
 
 ### Recommended Learning Path
@@ -360,12 +369,12 @@ Prefer a goal-driven route? The docs site has curated **[learning paths](https:/
 
 | Category | Count |
 |---|---|
-| Total modules | 130 |
-| Python lesson files | 144 |
-| JavaScript modules | 7 |
+| Total modules | 134 |
+| Python lesson files | 146 |
+| JavaScript modules | 9 |
 | Modules with interactive tutorials | 4 |
-| Test files | 88 |
-| Tests passing | 702 |
+| Test files | 92 |
+| Tests passing | 763 |
 
 ---
 
@@ -382,6 +391,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.14.0**
+**Learn-Quant v2.15.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

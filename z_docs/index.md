@@ -10,7 +10,7 @@ hide:
 
 ### Master quantitative finance, algorithmic trading and professional Python — one runnable lesson at a time.
 
-130 self-contained modules · 144 Python files · 7 JavaScript modules · MIT licensed
+134 self-contained modules · 146 Python files · 9 JavaScript modules · MIT licensed
 
 [:material-rocket-launch-outline: Get started](getting-started.md){ .md-button .md-button--primary }
 [:material-map-outline: Learning paths](learning-paths.md){ .md-button }
@@ -94,7 +94,7 @@ hide:
 
     The mathematics underpinning modern finance, implemented from first principles.
 
-    [:octicons-arrow-right-24: 25 modules](Quantitative Methods - Bayesian Inference.md)
+    [:octicons-arrow-right-24: 26 modules](Quantitative Methods - Bayesian Inference.md)
 
 -   :material-chart-bell-curve:{ .lg .middle } __Options, Derivatives & Finance__
 
@@ -110,7 +110,7 @@ hide:
 
     Measure what can go wrong and how well a strategy actually performed.
 
-    [:octicons-arrow-right-24: 11 modules](Finance - Calmar Ratio.md)
+    [:octicons-arrow-right-24: 12 modules](Finance - Calmar Ratio.md)
 
 -   :material-briefcase-outline:{ .lg .middle } __Portfolio Management__
 
@@ -118,7 +118,7 @@ hide:
 
     Construct, optimise and rebalance multi-asset portfolios.
 
-    [:octicons-arrow-right-24: 6 modules](Monte Carlo Portfolio Simulator.md)
+    [:octicons-arrow-right-24: 7 modules](Monte Carlo Portfolio Simulator.md)
 
 -   :material-trending-up:{ .lg .middle } __Strategies__
 
@@ -134,7 +134,7 @@ hide:
 
     Data-driven models: random forests, deep learning, RL and NLP for markets.
 
-    [:octicons-arrow-right-24: 13 modules](AI Development.md)
+    [:octicons-arrow-right-24: 14 modules](AI Development.md)
 
 -   :material-pulse:{ .lg .middle } __Market Microstructure__
 

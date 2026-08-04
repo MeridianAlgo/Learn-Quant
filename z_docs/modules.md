@@ -250,6 +250,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Factor models explain asset returns as a linear combination of systematic **factors** plus a stock-specific residual. The **Fama-French 3-Factor Model (1992)** extended CAPM by adding two well-documented risk premia: the **Size premium** (SMB) and the **Value premium** (HML), dramatically improving the explanation of cross-sectional stock returns.
 
+-   __[Quantitative Methods - Fourier Analysis](Quantitative Methods - Fourier Analysis.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    A price series is a sum of waves if you are willing to look at it that way.
+
 -   __[Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)__
 
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
@@ -584,6 +590,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
 
     Comprehensive drawdown metrics for quantifying portfolio loss risk over time. Drawdown measures capture both the **depth** and **duration** of losses — dimensions VaR ignores.
 
+-   __[Risk Metrics - JavaScript](Risk Metrics - JavaScript.md)__
+
+    <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">JavaScript</span>
+
+    Every number in this file answers the same question from a different angle.
+
 -   __[Risk Metrics - Stress Testing](Risk Metrics - Stress Testing.md)__
 
     <span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-lang">Python</span>
@@ -615,6 +627,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     This utility helps you forecast possible futures for a portfolio using random simulations—a key idea in finance, risk management, and statistics!
+
+-   __[Portfolio Analytics - JavaScript](Portfolio Analytics - JavaScript.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">JavaScript</span>
+
+    A portfolio is not the sum of its holdings, and the whole of portfolio theory
 
 -   __[Portfolio Management](Portfolio Management.md)__
 
@@ -769,6 +787,12 @@ Every Learn-Quant lesson, grouped by track. Each card links to the full write-up
     <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
 
     This module provides a basic implementation of a Random Forest Predictor for quantitative finance. It uses scikit-learn's `RandomForestRegressor` to predict time series data or returns based on a set of features.
+
+-   __[Machine Learning - Support Vector Machine](Machine Learning - Support Vector Machine.md)__
+
+    <span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-lang">Python</span>
+
+    Most classifiers stop as soon as they find a line that separates the two
 
 -   __[Machine Learning Time Series](Machine Learning Time Series.md)__
 

@@ -151,6 +151,7 @@ nav:
           - "Quantitative Methods - Entropy": Quantitative Methods - Entropy.md
           - "Quantitative Methods - Extreme Value Theory": Quantitative Methods - Extreme Value Theory.md
           - "Quantitative Methods - Factor Models": Quantitative Methods - Factor Models.md
+          - "Quantitative Methods - Fourier Analysis": Quantitative Methods - Fourier Analysis.md
           - "Quantitative Methods - GARCH": Quantitative Methods - GARCH.md
           - "Quantitative Methods - Hypothesis Testing": Quantitative Methods - Hypothesis Testing.md
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
@@ -206,11 +207,13 @@ nav:
           - "Finance - Treynor Ratio": Finance - Treynor Ratio.md
           - "Risk Metrics": Risk Metrics.md
           - "Risk Metrics - Drawdown Analysis": Risk Metrics - Drawdown Analysis.md
+          - "Risk Metrics - JavaScript": Risk Metrics - JavaScript.md
           - "Risk Metrics - Stress Testing": Risk Metrics - Stress Testing.md
           - "Sharpe and Sortino Ratio": Sharpe and Sortino Ratio.md
           - "Value at Risk (VaR)": Value at Risk (VaR).md
       - Portfolio Management:
           - "Monte Carlo Portfolio Simulator": Monte Carlo Portfolio Simulator.md
+          - "Portfolio Analytics - JavaScript": Portfolio Analytics - JavaScript.md
           - "Portfolio Management": Portfolio Management.md
           - "Portfolio Management - Black Litterman": Portfolio Management - Black Litterman.md
           - "Portfolio Management - Risk Parity": Portfolio Management - Risk Parity.md
@@ -236,6 +239,7 @@ nav:
       - "Machine Learning - Logistic Regression": Machine Learning - Logistic Regression.md
       - "Machine Learning - Naive Bayes": Machine Learning - Naive Bayes.md
       - "Machine Learning - Random Forest": Machine Learning - Random Forest.md
+      - "Machine Learning - Support Vector Machine": Machine Learning - Support Vector Machine.md
       - "Machine Learning Time Series": Machine Learning Time Series.md
       - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md
       - "Sentiment Analysis on News": Sentiment Analysis on News.md
