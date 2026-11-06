@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Data Structures</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Data Structures - Tuples and Sets"
-    python "tuples_sets_tutorial.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Tuples%20and%20Sets)
-
----
 # Data Structures – Tuples and Sets
+
+<p class="lq-meta">Beginner <span>/</span> Data Structures <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Tuples%20and%20Sets">source</a></p>
+
 
 ## Overview
 
@@ -128,22 +120,17 @@ correlations = {
 
 ---
 
-## Continue in Data Structures
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Data Structures - Tuples and Sets"
+python "tuples_sets_tutorial.py"
+```
 
--   :material-database-outline: __[Data Structures - Arrays](Data Structures - Arrays.md)__
+## More in Data Structures
 
-    Welcome to the comprehensive guide to NumPy arrays! This utility is designed to help both beginners and experienced Python programmers master array operations for data analysis, scientific computing, and quantitative finance.
+- [Data Structures - Arrays](Data Structures - Arrays.md): Welcome to the comprehensive guide to NumPy arrays!
+- [Data Structures - Dictionaries](Data Structures - Dictionaries.md): This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings.
+- [Data Structures - Lists](Data Structures - Lists.md): Lists are Python's most fundamental data structure—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values.
 
--   :material-database-outline: __[Data Structures - Dictionaries](Data Structures - Dictionaries.md)__
-
-    This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings. Dictionaries are the backbone of feature engineering and data lookup in quantitative finance.
-
--   :material-database-outline: __[Data Structures - Lists](Data Structures - Lists.md)__
-
-    Lists are Python's **most fundamental data structure**—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values. Master list operations and you unlock efficient data processing essential for trading systems and quantitative analysis.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

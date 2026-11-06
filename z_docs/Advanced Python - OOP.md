@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Advanced Python</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Advanced Python - OOP"
-    python "oop_tutorial.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Advanced%20Python%20-%20OOP)
-
----
 # Advanced Python – Object-Oriented Programming
+
+<p class="lq-meta">Intermediate <span>/</span> Advanced Python <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Advanced%20Python%20-%20OOP">source</a></p>
+
 
 ## Overview
 
@@ -282,30 +274,19 @@ class Bot:
 
 ---
 
-## Continue in Advanced Python
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Advanced Python - OOP"
+python "oop_tutorial.py"
+```
 
--   :material-cog-outline: __[Advanced Python - AsyncIO](Advanced Python - AsyncIO.md)__
+## More in Advanced Python
 
-    In quantitative finance, speed is edge. Python's `asyncio` library allows for **concurrency**, letting your program handle multiple tasks (like fetching data from 10 different exchanges) at once, rather than waiting for one to finish before starting the next.
+- [Advanced Python - AsyncIO](Advanced Python - AsyncIO.md): In quantitative finance, speed is edge.
+- [Advanced Python - Context Managers](Advanced Python - Context Managers.md): Context Managers are a powerful Python feature for resource management.
+- [Advanced Python - Decorators and Generators](Advanced Python - Decorators and Generators.md): Decorators and Generators are powerful Python features that separate professional code from beginner scripts.
+- [Advanced Python - Error Handling](Advanced Python - Error Handling.md): Robust error handling is what separates a script that crashes overnight from a professional trading system that runs for years.
+- [Advanced Python - Multiprocessing](Advanced Python - Multiprocessing.md): Python Global Interpreter Lock prevents multiple threads from executing Python bytecode at the same time.
 
--   :material-cog-outline: __[Advanced Python - Context Managers](Advanced Python - Context Managers.md)__
-
-    Context Managers are a powerful Python feature for resource management. They allow you to allocate and release resources precisely when you want to. The most common usage is the `with` statement.
-
--   :material-cog-outline: __[Advanced Python - Decorators and Generators](Advanced Python - Decorators and Generators.md)__
-
-    Decorators and Generators are powerful Python features that separate professional code from beginner scripts. Decorators allow you to modify function behavior cleanly, while Generators enable memory-efficient processing of large financial datasets.
-
--   :material-cog-outline: __[Advanced Python - Error Handling](Advanced Python - Error Handling.md)__
-
-    Robust error handling is what separates a script that crashes overnight from a professional trading system that runs for years. This module teaches you how to anticipate, catch, and manage errors gracefully.
-
--   :material-cog-outline: __[Advanced Python - Multiprocessing](Advanced Python - Multiprocessing.md)__
-
-    Python Global Interpreter Lock prevents multiple threads from executing Python bytecode at the same time. This makes threads useless for intense algorithmic work. The multiprocessing module bypasses the lock entirely by spawning separate operating system processes. Each process has its own Python interpreter and memory space, enabling true parallelism across all processing cores.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

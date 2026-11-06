@@ -1,9 +1,9 @@
 site_name: Learn-Quant
-site_description: Master quantitative finance, algorithmic trading, and professional Python engineering — one runnable lesson at a time.
+site_description: Runnable lessons in quantitative finance and Python. One folder per topic, each with an explanation, an implementation and a test.
 site_url: https://meridianalgo.github.io/Learn-Quant/
 repo_url: https://github.com/MeridianAlgo/Learn-Quant
 repo_name: MeridianAlgo/Learn-Quant
-copyright: Copyright &copy; MeridianAlgo — MIT Licensed
+copyright: MeridianAlgo, MIT licence
 edit_uri: edit/main/
 
 theme:
@@ -11,46 +11,37 @@ theme:
   language: en
   icon:
     repo: fontawesome/brands/github
-    logo: material/chart-line
+    logo: material/sigma
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.footer
     - navigation.instant
-    - navigation.instant.prefetch
     - navigation.tracking
     - toc.follow
     - search.suggest
     - search.highlight
-    - search.share
     - content.code.copy
-    - content.code.annotate
-    - content.tooltips
   palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: deep purple
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+        icon: material/weather-night
+        name: Dark theme
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: deep purple
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+        icon: material/weather-sunny
+        name: Light theme
   font:
-    text: Inter
-    code: JetBrains Mono
+    text: IBM Plex Sans
+    code: IBM Plex Mono
 
 extra_css:
   - stylesheets/extra.css
@@ -103,13 +94,13 @@ plugins:
 
 nav:
   - Home: index.md
-  - Get Started:
-      - Getting Started: getting-started.md
-      - Learning Paths: learning-paths.md
-      - All Modules: modules.md
+  - Start here:
+      - Getting started: getting-started.md
+      - Learning paths: learning-paths.md
+      - All modules: modules.md
       - Glossary: glossary.md
-      - FAQ & Contributing: faq.md
-  - Python Fundamentals:
+      - FAQ and contributing: faq.md
+  - Python:
       - "Python Basics - Comprehensions": Python Basics - Comprehensions.md
       - "Python Basics - Control Flow": Python Basics - Control Flow.md
       - "Python Basics - Dates and Times": Python Basics - Dates and Times.md
@@ -120,7 +111,7 @@ nav:
       - "Python Basics - Numbers": Python Basics - Numbers.md
       - "Python Basics - Pandas": Python Basics - Pandas.md
       - "Python Basics - Strings": Python Basics - Strings.md
-  - Python Advanced:
+  - Engineering:
       - Advanced Python:
           - "Advanced Python - AsyncIO": Advanced Python - AsyncIO.md
           - "Advanced Python - Context Managers": Advanced Python - Context Managers.md
@@ -157,6 +148,7 @@ nav:
           - "Quantitative Methods - Interest Rate Models": Quantitative Methods - Interest Rate Models.md
           - "Quantitative Methods - Interpolation": Quantitative Methods - Interpolation.md
           - "Quantitative Methods - Kalman Filter": Quantitative Methods - Kalman Filter.md
+          - "Quantitative Methods - Kernel Density Estimation": Quantitative Methods - Kernel Density Estimation.md
           - "Quantitative Methods - Linear Algebra": Quantitative Methods - Linear Algebra.md
           - "Quantitative Methods - Markov Chains": Quantitative Methods - Markov Chains.md
           - "Quantitative Methods - Monte Carlo Integration": Quantitative Methods - Monte Carlo Integration.md
@@ -170,7 +162,7 @@ nav:
           - "Quantitative Methods - Stochastic Processes": Quantitative Methods - Stochastic Processes.md
           - "Quantitative Methods - TVM": Quantitative Methods - TVM.md
           - "Quantitative Methods - Time Series": Quantitative Methods - Time Series.md
-      - Finance & Options:
+      - Options and Finance:
           - "Advanced Options Pricing": Advanced Options Pricing.md
           - "Black-Scholes Option Pricing": Black-Scholes Option Pricing.md
           - "Bond Price and Yield": Bond Price and Yield.md
@@ -198,7 +190,7 @@ nav:
           - "Options Pricing - Binomial Tree": Options Pricing - Binomial Tree.md
           - "Options Pricing - JavaScript": Options Pricing - JavaScript.md
           - "Technical Indicators": Technical Indicators.md
-      - Risk & Performance:
+      - Risk and Performance:
           - "Finance - Calmar Ratio": Finance - Calmar Ratio.md
           - "Finance - Information Ratio": Finance - Information Ratio.md
           - "Finance - Jensens Alpha": Finance - Jensens Alpha.md
@@ -216,6 +208,7 @@ nav:
           - "Portfolio Analytics - JavaScript": Portfolio Analytics - JavaScript.md
           - "Portfolio Management": Portfolio Management.md
           - "Portfolio Management - Black Litterman": Portfolio Management - Black Litterman.md
+          - "Portfolio Management - Hierarchical Risk Parity": Portfolio Management - Hierarchical Risk Parity.md
           - "Portfolio Management - Risk Parity": Portfolio Management - Risk Parity.md
           - "Portfolio Optimizer": Portfolio Optimizer.md
           - "Portfolio Tracker": Portfolio Tracker.md
@@ -225,10 +218,11 @@ nav:
           - "Strategies - Market Making": Strategies - Market Making.md
           - "Strategies - Mean Reversion": Strategies - Mean Reversion.md
           - "Strategies - Momentum Trading": Strategies - Momentum Trading.md
+          - "Strategies - Optimal Execution": Strategies - Optimal Execution.md
           - "Strategies - Pairs Trading": Strategies - Pairs Trading.md
           - "Strategies - Statistical Arbitrage": Strategies - Statistical Arbitrage.md
           - "Strategies - Trend Following": Strategies - Trend Following.md
-  - AI & Machine Learning:
+  - Machine Learning:
       - "AI Development": AI Development.md
       - "Learning Platform": Learning Platform.md
       - "Machine Learning - Cross Validation": Machine Learning - Cross Validation.md
@@ -243,16 +237,19 @@ nav:
       - "Machine Learning Time Series": Machine Learning Time Series.md
       - "Reinforcement Learning Q Learning": Reinforcement Learning Q Learning.md
       - "Sentiment Analysis on News": Sentiment Analysis on News.md
-  - Utilities & Tools:
-      - "High Frequency Trading": High Frequency Trading.md
-      - "Market Microstructure": Market Microstructure.md
-      - "Core Utilities": Core Utilities.md
-      - "Currency Converter": Currency Converter.md
-      - "Data Processing": Data Processing.md
-      - "Economic Calendar": Economic Calendar.md
-      - "Historical Data": Historical Data.md
-      - "Logging": Logging.md
-      - "Market Data": Market Data.md
-      - "News Fetching": News Fetching.md
-      - "System Utilities": System Utilities.md
-      - "Websocket Connection": Websocket Connection.md
+  - Markets and Tools:
+      - Market Microstructure:
+          - "High Frequency Trading": High Frequency Trading.md
+          - "Market Microstructure": Market Microstructure.md
+          - "Market Microstructure - Liquidity Measures": Market Microstructure - Liquidity Measures.md
+      - Utilities:
+          - "Core Utilities": Core Utilities.md
+          - "Currency Converter": Currency Converter.md
+          - "Data Processing": Data Processing.md
+          - "Economic Calendar": Economic Calendar.md
+          - "Historical Data": Historical Data.md
+          - "Logging": Logging.md
+          - "Market Data": Market Data.md
+          - "News Fetching": News Fetching.md
+          - "System Utilities": System Utilities.md
+          - "Websocket Connection": Websocket Connection.md

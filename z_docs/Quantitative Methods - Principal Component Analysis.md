@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Quantitative Methods</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Quantitative Methods - Principal Component Analysis"
-    python "pca.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Quantitative%20Methods%20-%20Principal%20Component%20Analysis)
-
----
 # Principal Component Analysis (PCA)
+
+<p class="lq-meta">Advanced <span>/</span> Quantitative Methods <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Quantitative%20Methods%20-%20Principal%20Component%20Analysis">source</a></p>
+
 
 PCA finds the orthogonal directions that explain the most variance in a dataset. In finance it powers **yield-curve decomposition** (level/slope/curvature), **statistical factor extraction**, **dimensionality reduction**, and **covariance de-noising**.
 
@@ -49,37 +41,22 @@ print(result["scores"].shape)                  # (500, 3) factor time series
 - Standardise first (`standardize`) when variables have different units, so you analyse the **correlation** matrix rather than the covariance matrix.
 - Eigenvector signs are arbitrary; interpret loadings by their *relative* signs and magnitudes, not absolute sign.
 
-
 ---
 
-## Continue in Quantitative Methods
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Quantitative Methods - Principal Component Analysis"
+python "pca.py"
+```
 
--   :material-function-variant: __[Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md)__
+## More in Quantitative Methods
 
-    A strategy wins 7 of its first 10 trades. Is its true win rate 70%? Almost
+- [Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md): A strategy wins 7 of its first 10 trades.
+- [Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md): The bootstrap estimates the sampling distribution of any statistic by resampling the observed data with replacement — no normality assumption required.
+- [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md): Cointegration: two non-stationary series whose linear combination is stationary.
+- [Quantitative Methods - Copulas](Quantitative Methods - Copulas.md): This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
+- [Quantitative Methods - Entropy](Quantitative Methods - Entropy.md): Entropy measures how surprised you should expect to be.
+- [Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md): Most risk models assume returns are normally distributed.
 
--   :material-function-variant: __[Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)__
-
-    The bootstrap estimates the sampling distribution of **any** statistic by resampling the observed data with replacement — no normality assumption required. It is the honest way to put confidence intervals around backtest metrics like Sharpe ratio, mean return, or maximum drawdown.
-
--   :material-function-variant: __[Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)__
-
-    Cointegration: two non-stationary series whose **linear combination is stationary**. Backbone of statistical arbitrage and pairs trading.
-
--   :material-function-variant: __[Quantitative Methods - Copulas](Quantitative Methods - Copulas.md)__
-
-    This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
-
--   :material-function-variant: __[Quantitative Methods - Entropy](Quantitative Methods - Entropy.md)__
-
-    Entropy measures how surprised you should expect to be. A coin that always
-
--   :material-function-variant: __[Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)__
-
-    Most risk models assume returns are normally distributed. They are not —
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

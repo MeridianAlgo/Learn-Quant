@@ -1,30 +1,30 @@
-# Getting Started
+# Getting started
 
-Learn-Quant is a collection of **134 self-contained modules**. There is no
-package to install and no build step — you clone the repo and run whichever
-lesson you want to learn from.
+Learn-Quant is 138 separate folders. There is no package to
+install and nothing to build. Clone it, install the requirements once, and run
+whichever lesson you want.
 
-## 1. Install
+## Install
 
 ```bash
 git clone https://github.com/MeridianAlgo/Learn-Quant
 cd Learn-Quant
 python -m venv .venv
-# Windows:  .venv\Scripts\activate
-# macOS/Linux: source .venv/bin/activate
+# Windows:      .venv\Scripts\activate
+# macOS/Linux:  source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-A few JavaScript modules also need [Node.js](https://nodejs.org) (v18+).
+The JavaScript lessons need [Node.js](https://nodejs.org) 18 or later and
+nothing else.
 
-!!! note "Requirements"
-    The core stack is `numpy`, `pandas`, `scipy`, `scikit-learn` and
-    `matplotlib`. Everything is pinned in `requirements.txt`; development tools
-    (`ruff`, `pytest`) live in `requirements-dev.txt`.
+The Python requirements are `numpy`, `pandas`, `scipy`, `scikit-learn` and
+`matplotlib`, plus a couple of small extras. Linting and test tools are in
+`requirements-dev.txt`.
 
-## 2. Run a module
+## Run a lesson
 
-Every folder is independent. Change into it and run the main script:
+Change into a folder and run its main file:
 
 ```bash
 cd "Black-Scholes Option Pricing"
@@ -36,38 +36,38 @@ cd "Options Pricing - JavaScript"
 node blackScholes.js
 ```
 
-Modules whose file name ends in `_tutorial.py` are **interactive** — they walk
-you through the concept with worked examples and quizzes.
+Files ending in `_tutorial.py` are interactive and will ask you questions as
+they go.
 
-## 3. How a module is laid out
+## What is in a folder
 
 ```text
 Quantitative Methods - GARCH/
-├── README.md      ← the lesson: theory, formulas, usage, pitfalls
-└── garch.py       ← the implementation with a runnable __main__ demo
+├── README.md      the explanation: idea, formula, usage, caveats
+└── garch.py       the code, with a demo under if __name__ == "__main__"
 ```
 
-Read the `README.md` for the *why*, then open the `.py` file for the *how*. The
-two are written to be read side by side.
+Read the README first, then open the code next to it. They are written to be
+read together.
 
-## 4. Suggested order
+## A rough order
 
-If you are working through the whole curriculum, follow the
-[learning paths](learning-paths.md). In short:
+If you want to go through everything, the tabs along the top are already in a
+sensible order:
 
-1. **Python Fundamentals** → **Data Structures & Algorithms**
-2. **Advanced Python** for production patterns
-3. **Quantitative Methods** for the maths
-4. **Options & Finance** → **Risk & Portfolio** → **Strategies**
-5. **AI / ML** and **Market Microstructure** to specialise
+1. Python Fundamentals, then data structures and algorithms
+2. Advanced Python
+3. Quantitative Methods
+4. Options and finance, then risk, portfolios and strategies
+5. Machine learning and market microstructure
 
-## 5. Run the tests (optional)
+The [learning paths](learning-paths.md) page has shorter routes for specific
+goals.
+
+## Tests
 
 ```bash
 pip install -r requirements-dev.txt
 pytest z_tests -q
 ruff check .
 ```
-
-Ready? Head to the [module index](modules.md) or pick a
-[learning path](learning-paths.md).

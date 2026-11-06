@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Market Microstructure</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "High Frequency Trading"
-    python "latency_optimizer.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/High%20Frequency%20Trading)
-
----
 # High Frequency Trading
+
+<p class="lq-meta">Advanced <span>/</span> Market Microstructure <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/High%20Frequency%20Trading">source</a></p>
+
 
 ## Overview
 
@@ -99,17 +91,18 @@ python latency_optimizer.py
 - **Focus on tail latency**: Strategies that are fast on average but slow occasionally (high P99) will underperform in production — tail events are when execution matters most.
 - **Understand queue position**: On limit order exchanges, earlier-submitted orders at the same price have priority. Latency advantage determines queue position.
 
-
 ---
 
-## Continue in Market Microstructure
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "High Frequency Trading"
+python "latency_optimizer.py"
+```
 
--   :material-pulse: __[Market Microstructure](Market Microstructure.md)__
+## More in Market Microstructure
 
-    Market microstructure studies how trading mechanisms — the rules, protocols, and participants in a market — affect price formation, liquidity, and transaction costs. Understanding microstructure is essential for designing realistic execution algorithms, building order books, estimating market impact, and analysing bid-ask spreads.
+- [Market Microstructure](Market Microstructure.md): Market microstructure studies how trading mechanisms — the rules, protocols, and participants in a market — affect price formation, liquidity, and transaction costs.
+- [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md): Every strategy pays to trade, and the size of that bill decides whether a backtest survives contact with a real market.
 
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Data Structures</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Data Structures - Lists"
-    python "lists.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Lists)
-
----
 # Data Structures – Lists
+
+<p class="lq-meta">Beginner <span>/</span> Data Structures <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Lists">source</a></p>
+
 
 ## Overview
 
@@ -440,25 +432,19 @@ list1 = [x for x in list1 if x <= 5]
 - Sorting guide: https://docs.python.org/3/howto/sorting.html
 - List comprehensions: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
 
-
 ---
 
-## Continue in Data Structures
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Data Structures - Lists"
+python "lists.py"
+```
 
--   :material-database-outline: __[Data Structures - Arrays](Data Structures - Arrays.md)__
+## More in Data Structures
 
-    Welcome to the comprehensive guide to NumPy arrays! This utility is designed to help both beginners and experienced Python programmers master array operations for data analysis, scientific computing, and quantitative finance.
+- [Data Structures - Arrays](Data Structures - Arrays.md): Welcome to the comprehensive guide to NumPy arrays!
+- [Data Structures - Dictionaries](Data Structures - Dictionaries.md): This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings.
+- [Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md): Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries.
 
--   :material-database-outline: __[Data Structures - Dictionaries](Data Structures - Dictionaries.md)__
-
-    This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings. Dictionaries are the backbone of feature engineering and data lookup in quantitative finance.
-
--   :material-database-outline: __[Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md)__
-
-    Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries. Understanding when to use them is key to writing efficient, Pythonic code for financial applications.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

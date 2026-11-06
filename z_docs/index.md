@@ -4,183 +4,61 @@ hide:
   - toc
 ---
 
-<div class="lq-hero" markdown>
-
 # Learn-Quant
 
-### Master quantitative finance, algorithmic trading and professional Python — one runnable lesson at a time.
-
-134 self-contained modules · 146 Python files · 9 JavaScript modules · MIT licensed
-
-[:material-rocket-launch-outline: Get started](getting-started.md){ .md-button .md-button--primary }
-[:material-map-outline: Learning paths](learning-paths.md){ .md-button }
-[:simple-github: Star on GitHub](https://github.com/MeridianAlgo/Learn-Quant){ .md-button }
-
-</div>
-
-## Why Learn-Quant?
-
-<div class="grid cards" markdown>
-
--   :material-play-circle-outline:{ .lg .middle } __Every folder runs__
-
-    ---
-
-    No frameworks to install, no notebooks to wire up. Each module is a single
-    folder you can run from the command line and read top to bottom.
-
--   :material-book-open-page-variant-outline:{ .lg .middle } __Theory *and* code__
-
-    ---
-
-    The maths is explained, then implemented from first principles — you see the
-    formula and the line of code that makes it real.
-
--   :material-stairs:{ .lg .middle } __A real curriculum__
-
-    ---
-
-    Seven levels take you from `print("hello")` to GARCH volatility models,
-    Black-Litterman allocation and reinforcement-learning agents.
-
--   :material-test-tube:{ .lg .middle } __Tested & linted__
-
-    ---
-
-    Modules ship with unit tests and pass `ruff` in CI, so the code you learn
-    from is the code you can trust.
-
-</div>
-
-## Explore by topic
-
-<div class="grid cards" markdown>
-
--   :material-language-python:{ .lg .middle } __Python Fundamentals__
-
-    ---
-
-    Core Python for financial analysis — start here if you are new to code.
-
-    [:octicons-arrow-right-24: 10 modules](Python Basics - Comprehensions.md)
-
--   :material-database-outline:{ .lg .middle } __Data Structures__
-
-    ---
-
-    The right container for the job: arrays, lists, dicts, sets on market data.
-
-    [:octicons-arrow-right-24: 4 modules](Data Structures - Arrays.md)
-
--   :material-sitemap-outline:{ .lg .middle } __Algorithms__
-
-    ---
-
-    Classic computer-science algorithms applied to price and order data.
-
-    [:octicons-arrow-right-24: 8 modules](Algorithms - Backtracking.md)
-
--   :material-cog-outline:{ .lg .middle } __Advanced Python__
-
-    ---
-
-    Production engineering: async, OOP, concurrency, resilient error handling.
-
-    [:octicons-arrow-right-24: 6 modules](Advanced Python - AsyncIO.md)
-
--   :material-function-variant:{ .lg .middle } __Quantitative Methods__
-
-    ---
-
-    The mathematics underpinning modern finance, implemented from first principles.
-
-    [:octicons-arrow-right-24: 26 modules](Quantitative Methods - Bayesian Inference.md)
-
--   :material-chart-bell-curve:{ .lg .middle } __Options, Derivatives & Finance__
-
-    ---
-
-    Pricing, Greeks, fixed income and valuation of financial instruments.
-
-    [:octicons-arrow-right-24: 27 modules](Advanced Options Pricing.md)
-
--   :material-shield-alert-outline:{ .lg .middle } __Risk & Performance__
-
-    ---
-
-    Measure what can go wrong and how well a strategy actually performed.
-
-    [:octicons-arrow-right-24: 12 modules](Finance - Calmar Ratio.md)
-
--   :material-briefcase-outline:{ .lg .middle } __Portfolio Management__
-
-    ---
-
-    Construct, optimise and rebalance multi-asset portfolios.
-
-    [:octicons-arrow-right-24: 7 modules](Monte Carlo Portfolio Simulator.md)
-
--   :material-trending-up:{ .lg .middle } __Strategies__
-
-    ---
-
-    End-to-end trading strategies with signals, backtests and execution.
-
-    [:octicons-arrow-right-24: 8 modules](Order Execution Simulator.md)
-
--   :material-robot-outline:{ .lg .middle } __AI & Machine Learning__
-
-    ---
-
-    Data-driven models: random forests, deep learning, RL and NLP for markets.
-
-    [:octicons-arrow-right-24: 14 modules](AI Development.md)
-
--   :material-pulse:{ .lg .middle } __Market Microstructure__
-
-    ---
-
-    Order books, spreads and the low-latency mechanics of how trades happen.
-
-    [:octicons-arrow-right-24: 2 modules](High Frequency Trading.md)
-
--   :material-tools:{ .lg .middle } __Utilities & Tools__
-
-    ---
-
-    The plumbing: data ingestion, logging, FX, calendars and helpers.
-
-    [:octicons-arrow-right-24: 10 modules](Core Utilities.md)
-
-</div>
-
-## A guided path
-
-```mermaid
-flowchart LR
-    A[Python Fundamentals] --> B[Data Structures & Algorithms]
-    B --> C[Advanced Python]
-    C --> D[Quantitative Methods]
-    D --> E[Options & Finance]
-    E --> F[Risk & Portfolio]
-    F --> G[Strategies]
-    G --> H[AI / ML & Microstructure]
-```
-
-New here? Follow the [recommended learning paths](learning-paths.md) — curated
-sequences for beginners, options traders, quant researchers and ML engineers.
-
-## Quick start
+<p class="lq-lede">138 small, runnable lessons on quantitative finance and the
+Python it is written in. Each folder covers one idea. The README explains it,
+the code implements it without leaning on a library to do the hard part, and
+a test checks the code does what the README says.</p>
+
+<p class="lq-meta">150 Python files <span>/</span> 9 JavaScript files <span>/</span> MIT licence <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant">GitHub</a></p>
+
+## Where to start
+
+- **New to Python.** Begin with [Python Basics - Numbers](Python Basics - Numbers.md)
+  and work down the Python Fundamentals tab.
+- **Comfortable with Python, new to finance.** Read
+  [Quantitative Methods - Statistics](Quantitative Methods - Statistics.md), then
+  [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md).
+- **Looking for one topic.** Press <kbd>/</kbd> to search, or scan the
+  [module index](modules.md).
+
+There are also [reading orders](learning-paths.md) for a few common goals.
+
+## Tracks
+
+| Track | Lessons | Covers |
+|---|---:|---|
+| [Python Fundamentals](Python Basics - Comprehensions.md) | 10 | Numbers, strings, functions, NumPy and pandas, using market data as the running example. |
+| [Data Structures](Data Structures - Arrays.md) | 4 | Arrays, lists, dicts and sets, and when each one is the right container. |
+| [Algorithms](Algorithms - Backtracking.md) | 8 | Sorting, searching, graphs and dynamic programming applied to prices and orders. |
+| [Advanced Python](Advanced Python - AsyncIO.md) | 6 | Async, OOP, multiprocessing and error handling for code that has to keep running. |
+| [Quantitative Methods](Quantitative Methods - Bayesian Inference.md) | 27 | Statistics, time series, stochastic processes and numerical methods, built from scratch. |
+| [Options, Derivatives & Finance](Advanced Options Pricing.md) | 27 | Option pricing and Greeks, bonds and yield curves, valuation and sizing. |
+| [Risk & Performance](Finance - Calmar Ratio.md) | 12 | VaR, drawdowns and the ratios used to judge whether a track record is any good. |
+| [Portfolio Management](Monte Carlo Portfolio Simulator.md) | 8 | Mean variance, risk parity, Black Litterman and other ways to size a book. |
+| [Strategies](Order Execution Simulator.md) | 9 | Signals, backtests and execution for the standard strategy families. |
+| [AI & Machine Learning](AI Development.md) | 14 | Classifiers, clustering, trees and reinforcement learning, with the leakage traps spelled out. |
+| [Market Microstructure](High Frequency Trading.md) | 3 | Order books, spreads, liquidity and the cost of actually trading. |
+| [Utilities & Tools](Core Utilities.md) | 10 | Data feeds, logging, FX conversion, calendars and other plumbing. |
+
+## Recently added
+
+- [Portfolio Management - Hierarchical Risk Parity](Portfolio Management - Hierarchical Risk Parity.md): Markowitz optimisation needs the inverse of the covariance matrix, and the inverse of a noisy matrix is mostly noise.
+- [Quantitative Methods - Kernel Density Estimation](Quantitative Methods - Kernel Density Estimation.md): A histogram of returns looks different every time you move the bin edges.
+- [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md): Every strategy pays to trade, and the size of that bill decides whether a backtest survives contact with a real market.
+- [Strategies - Optimal Execution](Strategies - Optimal Execution.md): A signal tells you what to own. It does not tell you how to get there.
+
+## Running a lesson
 
 ```bash
 git clone https://github.com/MeridianAlgo/Learn-Quant
 cd Learn-Quant
 pip install -r requirements.txt
 
-# run any module, e.g.
 cd "Quantitative Methods - GARCH"
 python garch.py
 ```
 
-See the [Getting Started guide](getting-started.md) for the full setup, or jump
-straight to the [complete module index](modules.md).
+The [getting started page](getting-started.md) covers virtual environments,
+the JavaScript lessons and running the tests.

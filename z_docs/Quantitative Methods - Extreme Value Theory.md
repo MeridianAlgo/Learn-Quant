@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Quantitative Methods</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Quantitative Methods - Extreme Value Theory"
-    python "extreme_value_theory.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Quantitative%20Methods%20-%20Extreme%20Value%20Theory)
-
----
 # Extreme Value Theory (EVT) for Tail Risk
+
+<p class="lq-meta">Advanced <span>/</span> Quantitative Methods <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Quantitative%20Methods%20-%20Extreme%20Value%20Theory">source</a></p>
+
 
 Most risk models assume returns are normally distributed. They are not —
 markets crash far more often than a bell curve allows. **Extreme Value Theory**
@@ -90,37 +82,22 @@ gap the normal assumption hides.
 - The Hill estimator is simple but sensitive to `k`; plot `xi_hat` against `k`
   and look for a stable region.
 
-
 ---
 
-## Continue in Quantitative Methods
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Quantitative Methods - Extreme Value Theory"
+python "extreme_value_theory.py"
+```
 
--   :material-function-variant: __[Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md)__
+## More in Quantitative Methods
 
-    A strategy wins 7 of its first 10 trades. Is its true win rate 70%? Almost
+- [Quantitative Methods - Bayesian Inference](Quantitative Methods - Bayesian Inference.md): A strategy wins 7 of its first 10 trades.
+- [Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md): The bootstrap estimates the sampling distribution of any statistic by resampling the observed data with replacement — no normality assumption required.
+- [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md): Cointegration: two non-stationary series whose linear combination is stationary.
+- [Quantitative Methods - Copulas](Quantitative Methods - Copulas.md): This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
+- [Quantitative Methods - Entropy](Quantitative Methods - Entropy.md): Entropy measures how surprised you should expect to be.
+- [Quantitative Methods - Factor Models](Quantitative Methods - Factor Models.md): Factor models explain asset returns as a linear combination of systematic factors plus a stock-specific residual.
 
--   :material-function-variant: __[Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)__
-
-    The bootstrap estimates the sampling distribution of **any** statistic by resampling the observed data with replacement — no normality assumption required. It is the honest way to put confidence intervals around backtest metrics like Sharpe ratio, mean return, or maximum drawdown.
-
--   :material-function-variant: __[Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)__
-
-    Cointegration: two non-stationary series whose **linear combination is stationary**. Backbone of statistical arbitrage and pairs trading.
-
--   :material-function-variant: __[Quantitative Methods - Copulas](Quantitative Methods - Copulas.md)__
-
-    This module demonstrates the concept of Copulas, specifically the Gaussian Copula, used in quantitative finance to model the dependency structure between multivariate random variables.
-
--   :material-function-variant: __[Quantitative Methods - Entropy](Quantitative Methods - Entropy.md)__
-
-    Entropy measures how surprised you should expect to be. A coin that always
-
--   :material-function-variant: __[Quantitative Methods - Factor Models](Quantitative Methods - Factor Models.md)__
-
-    Factor models explain asset returns as a linear combination of systematic **factors** plus a stock-specific residual. The **Fama-French 3-Factor Model (1992)** extended CAPM by adding two well-documented risk premia: the **Size premium** (SMB) and the **Value premium** (HML), dramatically improving the explanation of cross-sectional stock returns.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

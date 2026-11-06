@@ -1,78 +1,102 @@
 # Glossary
 
-A quick reference for the terms that show up across the modules. Each entry
-points you to the lesson where the concept is implemented.
+Short definitions for terms that come up across the lessons, with a pointer to
+where each one is implemented.
 
-## Markets & instruments
+## Markets
 
-`Bid / Ask`
-:   The best price a buyer will pay (bid) and a seller will accept (ask). The
-    gap between them is the **spread**. See *Market Microstructure*.
+Bid and ask
+:   The best price a buyer will pay and a seller will accept. The gap is the
+    spread. See [Market Microstructure](Market Microstructure.md).
 
-`Derivative`
-:   A contract whose value derives from an underlying asset (e.g. an option on
-    a stock). See *Black-Scholes Option Pricing*.
+Effective spread
+:   Twice the distance between a trade price and the midquote at the time,
+    which is what the trade actually cost. See
+    [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md).
 
-`Greeks`
-:   Sensitivities of an option's price — Delta, Gamma, Theta, Vega, Rho. See
-    *Finance - Greeks Calculator*.
+Kyle's lambda
+:   How far price moves per unit of net order flow. Higher means a thinner
+    market. See
+    [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md).
 
-`Implied Volatility`
-:   The volatility that, fed into a pricing model, reproduces the market price
-    of an option. See *Finance - Implied Volatility Surface*.
+Implementation shortfall
+:   The difference between the price when you decided to trade and the price
+    you actually got, across the whole order. See
+    [Strategies - Optimal Execution](Strategies - Optimal Execution.md).
+
+## Options
+
+Derivative
+:   A contract whose value depends on some underlying asset, such as an
+    option on a stock. See [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md).
+
+Greeks
+:   The sensitivities of an option price: delta, gamma, theta, vega, rho. See
+    [Finance - Greeks Calculator](Finance - Greeks Calculator.md).
+
+Implied volatility
+:   The volatility that makes a pricing model match the market price of an
+    option. See [Finance - Implied Volatility Surface](Finance - Implied Volatility Surface.md).
 
 ## Risk
 
-`VaR (Value at Risk)`
-:   The loss not expected to be exceeded over a horizon at a given confidence
-    level. See *Value at Risk (VaR)*.
+Value at Risk
+:   A loss level not expected to be exceeded over a horizon at a given
+    confidence. See [Value at Risk (VaR)](Value at Risk (VaR).md).
 
-`Expected Shortfall / CVaR`
-:   The average loss *given* that the VaR threshold is breached — a coherent
-    tail-risk measure. See *Finance - Expected Shortfall*.
+Expected shortfall
+:   The average loss on the days that are worse than VaR. See
+    [Finance - Expected Shortfall](Finance - Expected Shortfall.md).
 
-`Drawdown`
-:   The peak-to-trough decline of an equity curve. See
-    *Risk Metrics - Drawdown Analysis*.
+Drawdown
+:   The fall from the highest point of an equity curve to a later low. See
+    [Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md).
 
-`Sharpe Ratio`
-:   Excess return per unit of total volatility. See
-    *Sharpe and Sortino Ratio*.
+Sharpe ratio
+:   Excess return divided by volatility. See
+    [Sharpe and Sortino Ratio](Sharpe and Sortino Ratio.md).
 
-## Statistics & models
+## Statistics
 
-`Stationarity`
-:   A series whose statistical properties do not change over time — a
-    prerequisite for many time-series methods. See
-    *Quantitative Methods - Statistics*.
+Stationarity
+:   A series whose mean, variance and autocorrelation do not drift over time.
+    Many methods assume it. See [Quantitative Methods - Time Series](Quantitative Methods - Time Series.md).
 
-`Cointegration`
-:   Two non-stationary series whose linear combination *is* stationary — the
-    basis of pairs trading. See *Quantitative Methods - Cointegration*.
+Cointegration
+:   Two wandering series whose spread does not wander. The basis of pairs
+    trading. See [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md).
 
-`GARCH`
-:   A model for time-varying volatility that captures volatility clustering.
-    See *Quantitative Methods - GARCH*.
+GARCH
+:   A model where today's volatility depends on yesterday's shock and
+    yesterday's volatility, which produces volatility clustering. See
+    [Quantitative Methods - GARCH](Quantitative Methods - GARCH.md).
 
-`Monte Carlo`
-:   Estimating outcomes by simulating many random paths. See
-    *Monte Carlo Portfolio Simulator*.
+Bandwidth
+:   The width of the bump placed on each point in a kernel density estimate.
+    It matters far more than the bump's shape. See
+    [Quantitative Methods - Kernel Density Estimation](Quantitative Methods - Kernel Density Estimation.md).
 
-## Portfolio
+Monte Carlo
+:   Estimating something by simulating many random outcomes and averaging. See
+    [Monte Carlo Portfolio Simulator](Monte Carlo Portfolio Simulator.md).
 
-`Efficient Frontier`
-:   The set of portfolios with the best return for each level of risk. See
-    *Portfolio Optimizer*.
+## Portfolios
 
-`Risk Parity`
-:   Allocating so each asset contributes equally to portfolio risk. See
-    *Portfolio Management - Risk Parity*.
+Efficient frontier
+:   The best achievable return for each level of risk. See
+    [Portfolio Optimizer](Portfolio Optimizer.md).
 
-`Beta`
-:   Sensitivity of an asset's return to the market. See *CAPM* and
-    *Finance - Beta Calculator*.
+Risk parity
+:   Weighting assets so each contributes the same amount of risk. See
+    [Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md).
 
-!!! info
-    Missing a term? Open an issue on
-    [GitHub](https://github.com/MeridianAlgo/Learn-Quant/issues) and we will add
-    it.
+Hierarchical risk parity
+:   Risk parity applied down a tree of correlated clusters, which avoids
+    inverting the covariance matrix. See
+    [Portfolio Management - Hierarchical Risk Parity](Portfolio Management - Hierarchical Risk Parity.md).
+
+Beta
+:   How much an asset moves with the market. See [CAPM](CAPM.md) and
+    [Finance - Beta Calculator](Finance - Beta Calculator.md).
+
+Something missing? [Open an issue](https://github.com/MeridianAlgo/Learn-Quant/issues).

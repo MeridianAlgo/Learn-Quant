@@ -1,16 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Options, Derivatives & Finance</span><span class="lq-badge lq-lang">Python · JavaScript</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Technical Indicators"
-    python "technical_indicators.py"
-    node "technicalIndicators.js"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Technical%20Indicators)
-
----
 # Technical Indicators Calculator Utility (NO API)
+
+<p class="lq-meta">Intermediate <span>/</span> Options, Derivatives & Finance <span>/</span> Python, JavaScript <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Technical%20Indicators">source</a></p>
+
 
 **This utility does NOT use any external APIs.** All calculations are done locally for learning and experimentation.
 
@@ -69,37 +60,23 @@ Enter prices separated by commas: 100,101,102,103,104
 ## License
 MIT
 
-
 ---
 
-## Continue in Options, Derivatives & Finance
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Technical Indicators"
+python "technical_indicators.py"
+node "technicalIndicators.js"
+```
 
--   :material-chart-bell-curve: __[Advanced Options Pricing](Advanced Options Pricing.md)__
+## More in Options, Derivatives & Finance
 
-    This module covers advanced mathematical techniques for pricing financial derivatives. The focus is on models beyond the standard assumptions. Rather than assuming constant volatility, we explore dynamic and local volatility models. These models are crucial for correctly valuing exotic options and managing the risks of complex derivatives portfolios.
+- [Advanced Options Pricing](Advanced Options Pricing.md): This module covers advanced mathematical techniques for pricing financial derivatives.
+- [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md): This module lets you price basic stock options (calls and puts) using the Black-Scholes formula, a foundation of modern financial analysis.
+- [Bond Price and Yield](Bond Price and Yield.md): This utility lets you calculate the fair price of a bond or estimate its yield to maturity (YTM), two of the most basic (and important!) ideas in investing.
+- [CAPM](CAPM.md): CAPM is the idea that won a Nobel Prize and still anchors how the industry thinks about return and risk.
+- [Discounted Cash Flow (DCF)](Discounted Cash Flow (DCF).md): This tool calculates the present value of a series of future cash flows—the basic principle behind valuing businesses, real estate, projects, and stocks!
+- [Dividend Tracker](Dividend Tracker.md): This tool lets you track upcoming dividends for a list of stocks, calculate expected income, and view a dividend calendar.
 
--   :material-chart-bell-curve: __[Black-Scholes Option Pricing](Black-Scholes Option Pricing.md)__
-
-    This module lets you price basic stock options (calls and puts) using the Black-Scholes formula, a foundation of modern financial analysis.
-
--   :material-chart-bell-curve: __[Bond Price and Yield](Bond Price and Yield.md)__
-
-    This utility lets you calculate the fair price of a bond or estimate its yield to maturity (YTM), two of the most basic (and important!) ideas in investing.
-
--   :material-chart-bell-curve: __[CAPM](CAPM.md)__
-
-    CAPM is the idea that won a Nobel Prize and still anchors how the industry
-
--   :material-chart-bell-curve: __[Discounted Cash Flow (DCF)](Discounted Cash Flow (DCF).md)__
-
-    This tool calculates the present value of a series of future cash flows—the basic principle behind valuing businesses, real estate, projects, and stocks!
-
--   :material-chart-bell-curve: __[Dividend Tracker](Dividend Tracker.md)__
-
-    **This utility does NOT use any external APIs.** All data is managed locally for learning and experimentation.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

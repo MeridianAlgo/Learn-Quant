@@ -1,12 +1,12 @@
-# Learn-Quant: Master Quantitative Finance & Python (v2.15.0)
+# Learn-Quant: Quantitative Finance & Python (v2.16.0)
 
 [![Lint](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/lint.yml)
 [![Auto Format](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml/badge.svg)](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/autoformat.yml)
 [![Docs](https://github.com/MeridianAlgo/Learn-Quant/actions/workflows/pages.yml/badge.svg)](https://meridianalgo.github.io/Learn-Quant/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Modules](https://img.shields.io/badge/modules-134-6930c3.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
-[![Tests](https://img.shields.io/badge/tests-763%20passing-2a9d8f.svg)](z_tests/)
+[![Modules](https://img.shields.io/badge/modules-138-0f6b4c.svg)](https://meridianalgo.github.io/Learn-Quant/modules/)
+[![Tests](https://img.shields.io/badge/tests-839%20passing-0f6b4c.svg)](z_tests/)
 
 **Welcome to Learn-Quant**, your all-in-one, open-source toolkit for mastering algorithmic trading, quantitative finance theory, and professional Python engineering. Every folder is a fully self-contained lesson: run it, read it, extend it.
 
@@ -19,20 +19,21 @@ difficulty badges and copy-paste run commands.
 
 ---
 
-## What is New in v2.15.0
+## What is New in v2.16.0
 
-Four new modules, two in Python and two in JavaScript, covering the frequency view of a price series, the classifier that maximises its own margin, and the risk and portfolio maths that most people reach for a library to do.
+Four new lessons on how portfolios get built and how orders get filled, plus a redesign of the docs site.
 
-* **Quantitative Methods, Fourier Analysis** finds the cycle length hiding in a series, filters out the fast wiggles with no lag at all, and computes autocorrelation at every lag at once, while being blunt about why a trend has to come out first and why the no lag filter cannot be traded live.
-* **Machine Learning, Support Vector Machine** fits the widest possible corridor between two classes with a soft margin and hinge loss, identifies the handful of support vectors the boundary actually rests on, and refuses hyperparameters that would silently diverge into arithmetic garbage.
-* **Risk Metrics, JavaScript** brings drawdown with a proper running peak, Sharpe, Sortino, Calmar, historical VaR, conditional VaR and the ulcer index to pure Node.js with no dependencies at all.
-* **Portfolio Analytics, JavaScript** builds covariance from returns, solves for minimum variance and tangency weights with its own Gauss Jordan routine, and shows how far equal weights are from equal risk.
-* **Test suite grows** with 61 new Python unit tests that bring the suite to **763 passing**, up from 702, plus 91 new JavaScript assertions across two Node test files.
-* **Docs auto extend** because the new folders are picked up by the docs builder with badges, run commands, and related links, and they pass the strict documentation build.
+* **Portfolio Management, Hierarchical Risk Parity** clusters assets by correlation, reorders the covariance matrix into blocks, and splits capital down the tree without ever inverting a matrix, with the clustering written out by hand.
+* **Quantitative Methods, Kernel Density Estimation** smooths a return distribution with Gaussian or Epanechnikov kernels, explains why Silverman's bandwidth beats Scott's on fat tailed data, and reads VaR off the smoothed CDF.
+* **Market Microstructure, Liquidity Measures** backs trading costs out of cheap data with the Roll, Corwin Schultz, Amihud and Kyle estimators, plus effective and realised spreads when you do have quotes.
+* **Strategies, Optimal Execution** solves Almgren and Chriss in closed form, traces the cost against risk frontier, and shows why the first step away from TWAP is cheap.
+* **Docs site redesign** drops the gradient hero and icon cards for a plain reading layout: serif headings, one accent colour, tables for the module index, and a short metadata line on each lesson.
+* **Test suite grows** with 76 new unit tests, bringing it to **839 passing**, up from 763.
 
 ### Previous Releases
 | Version | Highlights |
 |---|---|
+| v2.15.0 | Fourier Analysis, Support Vector Machine, JavaScript Risk Metrics and Portfolio Analytics, suite to 763 tests |
 | v2.14.0 | Jensen's Alpha, K Nearest Neighbors, Entropy, suite to 702 tests |
 | v2.13.0 | Treynor Ratio, Interpolation, Naive Bayes, suite to 645 tests |
 | v2.12.0 | Omega Ratio, Cross Validation, Monte Carlo Integration, suite to 612 tests |
@@ -53,7 +54,7 @@ Four new modules, two in Python and two in JavaScript, covering the frequency vi
 
 ## Overview
 
-Learn-Quant is a curated collection of **134 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
+Learn-Quant is a curated collection of **138 self-contained modules** designed to bridge the gap between academic theory and production-grade code. Whether you are a student, a software engineer moving into finance, or a trader learning to code, this repository gives you the building blocks to go from Python fundamentals all the way to HFT execution systems and ML-driven strategies.
 
 ### Key Learning Outcomes
 - **Master Quant Strategies**: Pairs Trading, Momentum, Mean Reversion, Market Making, Statistical Arbitrage
@@ -149,6 +150,7 @@ Learn-Quant is a curated collection of **134 self-contained modules** designed t
 | `Quantitative Methods - Extreme Value Theory` | Peaks-Over-Threshold GPD fitting, EVT VaR/ES for the deep tail, Hill tail-index estimator |
 | `Quantitative Methods - Numerical Methods` | Bisection, Newton-Raphson, secant root finders; central differences; trapezoid and Simpson integration |
 | `Quantitative Methods - Bayesian Inference` | Beta-Binomial and Normal-Normal conjugate updating, credible intervals, shrinkage of noisy estimates |
+| `Quantitative Methods - Kernel Density Estimation` | Gaussian and Epanechnikov KDE, Silverman and Scott bandwidths, smoothed CDF, KDE VaR, smoothed bootstrap |
 | `Quantitative Methods - Hypothesis Testing` | One sample and Welch two sample t tests, z test, confidence intervals, p values for telling a real edge from noise |
 
 ---
@@ -220,6 +222,7 @@ Learn-Quant is a curated collection of **134 self-contained modules** designed t
 | `Portfolio Management` | Portfolio construction, rebalancing rules, turnover constraints |
 | `Portfolio Management - Black Litterman` | Black-Litterman model, investor views, posterior allocation |
 | `Portfolio Management - Risk Parity` | Inverse-volatility, Equal Risk Contribution (ERC), and custom risk-budget portfolios |
+| `Portfolio Management - Hierarchical Risk Parity` | Correlation distance, single linkage clustering, quasi diagonalisation, recursive bisection |
 | `Monte Carlo Portfolio Simulator` | Multi-path portfolio simulation, probability-of-ruin, wealth distribution |
 
 **Strategies**
@@ -233,6 +236,7 @@ Learn-Quant is a curated collection of **134 self-contained modules** designed t
 | `Strategies - Market Making` | Bid/ask spread optimisation, inventory management, Avellaneda-Stoikov |
 | `Strategies - Statistical Arbitrage` | Factor-neutral stat arb, residual momentum, cross-sectional z-score |
 | `Strategies - Backtesting Engine` | Look-ahead-free, cost-aware vectorised backtester; CAGR, Sharpe, Sortino, drawdown, Calmar, turnover |
+| `Strategies - Optimal Execution` | Almgren-Chriss trajectories, urgency and half life, expected cost and variance, efficient frontier |
 | `Order Execution Simulator` | VWAP, TWAP, POV execution algorithms; market impact simulation |
 
 ---
@@ -268,6 +272,7 @@ Learn-Quant is a curated collection of **134 self-contained modules** designed t
 | Module | What you will learn |
 |---|---|
 | `Market Microstructure` | Order book implementation, spread analysis, market impact models |
+| `Market Microstructure - Liquidity Measures` | Roll and Corwin-Schultz spreads, Amihud illiquidity, Kyle's lambda, effective and realised spreads |
 | `High Frequency Trading` | Latency optimisation, co-location considerations, HFT execution strategies |
 
 **Utilities & Tools**
@@ -336,12 +341,19 @@ node blackScholes.js
 cd "Monte Carlo Simulation - JavaScript"
 node monteCarlo.js
 
-# New in v2.15.0
+# JavaScript risk and portfolio maths
 cd "Risk Metrics - JavaScript"
 node riskMetrics.js
 
 cd "Portfolio Analytics - JavaScript"
 node portfolioAnalytics.js
+
+# New in v2.16.0
+cd "Portfolio Management - Hierarchical Risk Parity"
+python hrp.py
+
+cd "Strategies - Optimal Execution"
+python optimal_execution.py
 ```
 
 ### Recommended Learning Path
@@ -369,12 +381,12 @@ Prefer a goal-driven route? The docs site has curated **[learning paths](https:/
 
 | Category | Count |
 |---|---|
-| Total modules | 134 |
-| Python lesson files | 146 |
+| Total modules | 138 |
+| Python lesson files | 150 |
 | JavaScript modules | 9 |
 | Modules with interactive tutorials | 4 |
-| Test files | 92 |
-| Tests passing | 763 |
+| Test files | 96 |
+| Tests passing | 839 |
 
 ---
 
@@ -391,6 +403,6 @@ This project is open-sourced under the MIT License.
 
 ---
 
-**Learn-Quant v2.15.0**
+**Learn-Quant v2.16.0**
 *Quantitative Finance | Algorithmic Trading | Python Mastery*
 **Maintained by MeridianAlgo**

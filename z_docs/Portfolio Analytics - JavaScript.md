@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">Portfolio Management</span><span class="lq-badge lq-lang">JavaScript</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Portfolio Analytics - JavaScript"
-    node "portfolioAnalytics.js"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Portfolio%20Analytics%20-%20JavaScript)
-
----
 # Portfolio Analytics, JavaScript
+
+<p class="lq-meta">Advanced <span>/</span> Portfolio Management <span>/</span> JavaScript <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Portfolio%20Analytics%20-%20JavaScript">source</a></p>
+
 
 A portfolio is not the sum of its holdings, and the whole of portfolio theory
 follows from that one fact. Two assets that each move ten percent a year can
@@ -120,37 +112,22 @@ console.log(riskContributions(weights, cov).percent);
 * For better covariance estimates than the sample one see
   [`Finance - Covariance Estimation`](Finance - Covariance Estimation.md).
 
-
 ---
 
-## Continue in Portfolio Management
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Portfolio Analytics - JavaScript"
+node "portfolioAnalytics.js"
+```
 
--   :material-briefcase-outline: __[Monte Carlo Portfolio Simulator](Monte Carlo Portfolio Simulator.md)__
+## More in Portfolio Management
 
-    This utility helps you forecast possible futures for a portfolio using random simulations—a key idea in finance, risk management, and statistics!
+- [Monte Carlo Portfolio Simulator](Monte Carlo Portfolio Simulator.md): This utility helps you forecast possible futures for a portfolio using random simulations—a key idea in finance, risk management, and statistics!
+- [Portfolio Management](Portfolio Management.md): This folder contains utilities for portfolio management, risk analysis, and investment optimization.
+- [Portfolio Management - Black Litterman](Portfolio Management - Black Litterman.md): The Black-Litterman (1990) model addresses the instability of mean-variance optimization by blending market equilibrium returns with investor views using Bayesian updating.
+- [Portfolio Management - Hierarchical Risk Parity](Portfolio Management - Hierarchical Risk Parity.md): Markowitz optimisation needs the inverse of the covariance matrix, and the inverse of a noisy matrix is mostly noise.
+- [Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md): Risk parity builds a portfolio where every asset contributes the same amount of risk to the total — not the same amount of capital.
+- [Portfolio Optimizer](Portfolio Optimizer.md): This utility helps you find the best mix of assets for a portfolio, balancing risk and return using the foundation of Modern Portfolio Theory (MPT).
 
--   :material-briefcase-outline: __[Portfolio Management](Portfolio Management.md)__
-
-    This folder contains utilities for portfolio management, risk analysis, and investment optimization.
-
--   :material-briefcase-outline: __[Portfolio Management - Black Litterman](Portfolio Management - Black Litterman.md)__
-
-    The Black-Litterman (1990) model addresses the instability of mean-variance optimization by blending **market equilibrium returns** with **investor views** using Bayesian updating.
-
--   :material-briefcase-outline: __[Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md)__
-
-    Risk parity builds a portfolio where **every asset contributes the same amount of risk** to the total — not the same amount of capital. A naive 60/40 stock/bond portfolio is ~90% *equity risk* despite being only 60% equity *capital*; risk parity fixes that imbalance.
-
--   :material-briefcase-outline: __[Portfolio Optimizer](Portfolio Optimizer.md)__
-
-    This utility helps you find the best mix of assets for a portfolio, balancing risk and return using the foundation of Modern Portfolio Theory (MPT).
-
--   :material-briefcase-outline: __[Portfolio Tracker](Portfolio Tracker.md)__
-
-    **This utility uses the yfinance API to fetch current prices automatically.** All other calculations and data are managed locally for learning and experimentation.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

@@ -1,16 +1,17 @@
 """Learn-Quant documentation builder.
 
-Turns the repository of self-contained lesson folders into a polished
-MkDocs Material site. For every module it:
+Turns the repository of self-contained lesson folders into the MkDocs site.
+For every module it:
 
 * copies the module ``README.md`` into ``z_docs/``,
-* augments the page with a metadata header (category, difficulty, language,
-  "run this" command, GitHub source link) and a footer of related modules,
+* adds a one line metadata strip under the title (level, track, language,
+  source link), a "Running it" section and a list of other lessons in the
+  same track,
 
-and on top of the module pages it hand-builds a rich landing page, a card-grid
-module index, and several standalone guides (getting started, learning paths,
-glossary, FAQ). Finally it regenerates ``mkdocs.yml`` so the navigation always
-matches what is on disk.
+and on top of the module pages it writes the home page, a single page index
+of every module, and a few standalone guides (getting started, learning
+paths, glossary, FAQ). Finally it regenerates ``mkdocs.yml`` so the
+navigation always matches what is on disk.
 
 Run it with ``python docs_builder.py``. The output is consumed by
 ``mkdocs build`` (see ``.github/workflows/pages.yml``).
@@ -40,8 +41,16 @@ SKIP_DIRS = {
     "site",
 }
 
+# Lessons added in the latest release, shown on the home page.
+RECENT = [
+    "Portfolio Management - Hierarchical Risk Parity",
+    "Quantitative Methods - Kernel Density Estimation",
+    "Market Microstructure - Liquidity Measures",
+    "Strategies - Optimal Execution",
+]
+
 # ---------------------------------------------------------------------------
-# Category model: ordering, icon, one-line blurb and a default difficulty.
+# Tracks: ordering, a one line description and a default level.
 # ---------------------------------------------------------------------------
 CATEGORY_ORDER = [
     "Python Fundamentals",
@@ -61,98 +70,128 @@ CATEGORY_ORDER = [
 
 CATEGORY_META = {
     "Python Fundamentals": {
-        "icon": ":material-language-python:",
-        "blurb": "Core Python for financial analysis — start here if you are new to code.",
+        "blurb": "Numbers, strings, functions, NumPy and pandas, using market data as the running example.",
         "difficulty": "Beginner",
     },
     "Data Structures": {
-        "icon": ":material-database-outline:",
-        "blurb": "The right container for the job: arrays, lists, dicts, sets on market data.",
+        "blurb": "Arrays, lists, dicts and sets, and when each one is the right container.",
         "difficulty": "Beginner",
     },
     "Algorithms": {
-        "icon": ":material-sitemap-outline:",
-        "blurb": "Classic computer-science algorithms applied to price and order data.",
+        "blurb": "Sorting, searching, graphs and dynamic programming applied to prices and orders.",
         "difficulty": "Intermediate",
     },
     "Advanced Python": {
-        "icon": ":material-cog-outline:",
-        "blurb": "Production engineering: async, OOP, concurrency, resilient error handling.",
+        "blurb": "Async, OOP, multiprocessing and error handling for code that has to keep running.",
         "difficulty": "Intermediate",
     },
     "Quantitative Methods": {
-        "icon": ":material-function-variant:",
-        "blurb": "The mathematics underpinning modern finance, implemented from first principles.",
+        "blurb": "Statistics, time series, stochastic processes and numerical methods, built from scratch.",
         "difficulty": "Advanced",
     },
     "Options, Derivatives & Finance": {
-        "icon": ":material-chart-bell-curve:",
-        "blurb": "Pricing, Greeks, fixed income and valuation of financial instruments.",
+        "blurb": "Option pricing and Greeks, bonds and yield curves, valuation and sizing.",
         "difficulty": "Intermediate",
     },
     "Risk & Performance": {
-        "icon": ":material-shield-alert-outline:",
-        "blurb": "Measure what can go wrong and how well a strategy actually performed.",
+        "blurb": "VaR, drawdowns and the ratios used to judge whether a track record is any good.",
         "difficulty": "Intermediate",
     },
     "Portfolio Management": {
-        "icon": ":material-briefcase-outline:",
-        "blurb": "Construct, optimise and rebalance multi-asset portfolios.",
+        "blurb": "Mean variance, risk parity, Black Litterman and other ways to size a book.",
         "difficulty": "Advanced",
     },
     "Strategies": {
-        "icon": ":material-trending-up:",
-        "blurb": "End-to-end trading strategies with signals, backtests and execution.",
+        "blurb": "Signals, backtests and execution for the standard strategy families.",
         "difficulty": "Advanced",
     },
     "AI & Machine Learning": {
-        "icon": ":material-robot-outline:",
-        "blurb": "Data-driven models: random forests, deep learning, RL and NLP for markets.",
+        "blurb": "Classifiers, clustering, trees and reinforcement learning, with the leakage traps spelled out.",
         "difficulty": "Advanced",
     },
     "Market Microstructure": {
-        "icon": ":material-pulse:",
-        "blurb": "Order books, spreads and the low-latency mechanics of how trades happen.",
+        "blurb": "Order books, spreads, liquidity and the cost of actually trading.",
         "difficulty": "Advanced",
     },
     "Utilities & Tools": {
-        "icon": ":material-tools:",
-        "blurb": "The plumbing: data ingestion, logging, FX, calendars and helpers.",
+        "blurb": "Data feeds, logging, FX conversion, calendars and other plumbing.",
         "difficulty": "Beginner",
     },
     "Other": {
-        "icon": ":material-shape-outline:",
-        "blurb": "Additional modules.",
+        "blurb": "Lessons that do not fit a track yet.",
         "difficulty": "Intermediate",
     },
-}
-
-DIFFICULTY_CLASS = {
-    "Beginner": "beginner",
-    "Intermediate": "intermediate",
-    "Advanced": "advanced",
 }
 
 
 # ---------------------------------------------------------------------------
 # README parsing helpers.
 # ---------------------------------------------------------------------------
+def _first_sentence(text, limit=220):
+    text = re.sub(r"\*\*|__|`", "", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    ends = [m.start() for m in re.finditer(r"(?<=[.!?])\s", text)]
+    sentence = text[: ends[0]] if ends else text
+    # A very short opener ("You found an edge.") reads better with its follow up.
+    if len(sentence) < 40 and len(ends) > 1:
+        sentence = text[: ends[1]]
+    if len(sentence) > limit:
+        sentence = sentence[:limit].rsplit(" ", 1)[0] + "..."
+    return sentence
+
+
 def extract_description(readme_path):
-    """Return ``(title, first_prose_paragraph)`` from a module README."""
+    """Return ``(title, first_sentence_of_first_paragraph)`` from a module README.
+
+    READMEs wrap their prose, so the whole first paragraph is collected before
+    the first sentence is taken. Badges, lists, tables, quotes and code are
+    skipped.
+    """
     try:
         with open(readme_path, encoding="utf-8") as f:
-            lines = f.readlines()
-        title = ""
-        description = ""
-        for i, line in enumerate(lines):
-            if line.startswith("# ") and not title:
-                title = line.replace("# ", "").strip()
-            elif title and i > 0 and line.strip() and not line.startswith("#"):
-                description = line.strip()
-                break
-        return title, description
-    except Exception:
+            lines = f.read().splitlines()
+    except OSError:
         return "", ""
+
+    title = ""
+    paragraphs = []
+    current = []
+    in_code = False
+
+    def flush():
+        if current:
+            paragraphs.append(" ".join(current))
+            current.clear()
+
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            in_code = not in_code
+            flush()
+            continue
+        if in_code:
+            continue
+        if stripped.startswith("# ") and not title:
+            title = stripped[2:].strip()
+            continue
+        if not title:
+            continue
+        is_list = re.match(r"([-*+]|\d+\.)\s", stripped)
+        if not stripped or is_list or stripped.startswith(("#", "[!", "!", "|", ">", "<", "---")):
+            flush()
+            continue
+        current.append(stripped)
+    flush()
+
+    # Skip lead-ins that only introduce a list ("You'll learn:") and the
+    # "no external APIs" disclaimer several utility READMEs open with.
+    for para in paragraphs:
+        sentence = _first_sentence(para)
+        if sentence.rstrip().endswith(":") or "external API" in sentence:
+            continue
+        return title, sentence
+    return title, ""
 
 
 def categorize(name):
@@ -282,13 +321,13 @@ def detect_assets(module_dir):
             commands.append(f'node "{f}"')
 
     if py_files and js_files:
-        language = "Python · JavaScript"
+        language = "Python, JavaScript"
     elif js_files:
         language = "JavaScript"
     elif py_files:
         language = "Python"
     else:
-        language = "—"
+        language = "Reference"
     return language, commands
 
 
@@ -316,6 +355,34 @@ def rewrite_relative_links(body, module_dirs):
     return re.sub(r"\]\(\.\./((?:[^()]|\([^()]*\))+)\)", repl, body)
 
 
+def _link(mod):
+    return f"[{mod['dir']}]({mod['file']})"
+
+
+def _cell(text):
+    return text.replace("|", "\\|")
+
+
+# Folder prefixes that just repeat the track name and can be dropped in tables.
+_TRACK_PREFIXES = {
+    "Python Basics",
+    "Data Structures",
+    "Algorithms",
+    "Advanced Python",
+    "Quantitative Methods",
+    "Finance",
+    "Machine Learning",
+    "Strategies",
+    "Portfolio Management",
+    "Market Microstructure",
+}
+
+
+def _short_name(name):
+    prefix, sep, rest = name.partition(" - ")
+    return rest if sep and prefix in _TRACK_PREFIXES else name
+
+
 # ---------------------------------------------------------------------------
 # Per-module page assembly.
 # ---------------------------------------------------------------------------
@@ -323,78 +390,56 @@ def build_module_page(mod, siblings, module_dirs):
     """Return the augmented markdown for a single module page."""
     with open(os.path.join(mod["dir"], "README.md"), encoding="utf-8") as f:
         body = f.read()
-    body = rewrite_relative_links(body, module_dirs)
+    body = rewrite_relative_links(body, module_dirs).rstrip() + "\n"
 
-    meta = CATEGORY_META[mod["category"]]
-    diff = mod["difficulty"]
-    diff_class = DIFFICULTY_CLASS.get(diff, "intermediate")
     source_url = f"{REPO_URL}/tree/main/{quote(mod['dir'])}"
-
-    badges = (
-        f'<span class="lq-badge lq-{diff_class}">{diff}</span>'
-        f'<span class="lq-badge lq-cat">{mod["category"]}</span>'
-        f'<span class="lq-badge lq-lang">{mod["language"]}</span>'
+    meta = (
+        f'<p class="lq-meta">{mod["difficulty"]} <span>/</span> {mod["category"]} '
+        f'<span>/</span> {mod["language"]} <span>/</span> <a href="{source_url}">source</a></p>'
     )
 
-    header = [f'<p class="lq-badges">{badges}</p>', ""]
-
-    run_block = ""
-    if mod["commands"]:
-        joined = "\n".join([f'cd "{mod["dir"]}"'] + mod["commands"])
-        run_block = f"\n```bash\n{joined}\n```\n"
-
-    header.append('!!! tip "Run this module"')
-    if run_block:
-        for line in run_block.strip("\n").splitlines():
-            header.append(f"    {line}")
+    # Put the metadata strip directly under the README's own title.
+    lines = body.splitlines()
+    h1 = next((i for i, line in enumerate(lines) if line.startswith("# ")), None)
+    if h1 is None:
+        lines = [meta, ""] + lines
     else:
-        header.append("    This module is a reference/utility — import it from your own code.")
-    header.append(f"\n    [:octicons-mark-github-16: View source on GitHub]({source_url})")
-    header.append("")
-    header.append("---")
-    header.append("")
+        lines = lines[: h1 + 1] + ["", meta, ""] + lines[h1 + 1 :]
 
-    # Footer: sibling modules in the same category for lateral navigation.
+    tail = ["", "---", "", "## Running it", ""]
+    if mod["commands"]:
+        tail += ["```bash", f'cd "{mod["dir"]}"', *mod["commands"], "```"]
+    else:
+        tail.append("Nothing to run directly. Import the module from your own code.")
+    tail.append("")
+
     related = [s for s in siblings if s["dir"] != mod["dir"]][:6]
-    footer = ["", "", "---", "", f"## Continue in {mod['category']}", ""]
     if related:
-        footer.append('<div class="grid cards" markdown>')
-        footer.append("")
+        tail += [f"## More in {mod['category']}", ""]
         for s in related:
-            footer.append(f"-   {meta['icon']} __[{s['dir']}]({s['file']})__")
-            footer.append("")
-            if s["desc"]:
-                footer.append(f"    {s['desc']}")
-                footer.append("")
-        footer.append("</div>")
-    footer.append("")
-    footer.append(
-        "[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } "
-        "[:material-school-outline: Learning paths](learning-paths.md){ .md-button }"
-    )
-    footer.append("")
+            tail.append(f"- {_link(s)}" + (f": {s['desc']}" if s["desc"] else ""))
+        tail.append("")
+    tail.append("[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).")
+    tail.append("")
 
-    return "\n".join(header) + body + "\n".join(footer)
+    return "\n".join(lines + tail)
 
 
 # ---------------------------------------------------------------------------
 # Standalone pages.
 # ---------------------------------------------------------------------------
-def build_index(stats, categories):
-    cards = []
+def build_index(stats, categories, by_dir):
+    track_rows = ["| Track | Lessons | Covers |", "|---|---:|---|"]
     for cat in CATEGORY_ORDER:
         mods = categories.get(cat, [])
         if not mods:
             continue
-        meta = CATEGORY_META[cat]
-        first = mods[0]["file"]
-        cards.append(
-            f"-   {meta['icon']}{{ .lg .middle }} __{cat}__\n\n"
-            f"    ---\n\n"
-            f"    {meta['blurb']}\n\n"
-            f"    [:octicons-arrow-right-24: {len(mods)} modules]({first})\n"
-        )
-    cards_block = '<div class="grid cards" markdown>\n\n' + "\n".join(cards) + "\n</div>"
+        track_rows.append(f"| [{cat}]({mods[0]['file']}) | {len(mods)} | {CATEGORY_META[cat]['blurb']} |")
+    tracks = "\n".join(track_rows)
+
+    recent = "\n".join(
+        f"- {_link(by_dir[d])}" + (f": {by_dir[d]['desc']}" if by_dir[d]["desc"] else "") for d in RECENT if d in by_dir
+    )
 
     return f"""---
 hide:
@@ -402,155 +447,102 @@ hide:
   - toc
 ---
 
-<div class="lq-hero" markdown>
-
 # Learn-Quant
 
-### Master quantitative finance, algorithmic trading and professional Python — one runnable lesson at a time.
+<p class="lq-lede">{stats["modules"]} small, runnable lessons on quantitative finance and the
+Python it is written in. Each folder covers one idea. The README explains it,
+the code implements it without leaning on a library to do the hard part, and
+a test checks the code does what the README says.</p>
 
-{stats["modules"]} self-contained modules · {stats["py"]} Python files · {stats["js"]} JavaScript modules · MIT licensed
+<p class="lq-meta">{stats["py"]} Python files <span>/</span> {stats["js"]} JavaScript files <span>/</span> MIT licence <span>/</span> <a href="{REPO_URL}">GitHub</a></p>
 
-[:material-rocket-launch-outline: Get started](getting-started.md){{ .md-button .md-button--primary }}
-[:material-map-outline: Learning paths](learning-paths.md){{ .md-button }}
-[:simple-github: Star on GitHub]({REPO_URL}){{ .md-button }}
+## Where to start
 
-</div>
+- **New to Python.** Begin with [Python Basics - Numbers](Python Basics - Numbers.md)
+  and work down the Python Fundamentals tab.
+- **Comfortable with Python, new to finance.** Read
+  [Quantitative Methods - Statistics](Quantitative Methods - Statistics.md), then
+  [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md).
+- **Looking for one topic.** Press <kbd>/</kbd> to search, or scan the
+  [module index](modules.md).
 
-## Why Learn-Quant?
+There are also [reading orders](learning-paths.md) for a few common goals.
 
-<div class="grid cards" markdown>
+## Tracks
 
--   :material-play-circle-outline:{{ .lg .middle }} __Every folder runs__
+{tracks}
 
-    ---
+## Recently added
 
-    No frameworks to install, no notebooks to wire up. Each module is a single
-    folder you can run from the command line and read top to bottom.
+{recent}
 
--   :material-book-open-page-variant-outline:{{ .lg .middle }} __Theory *and* code__
-
-    ---
-
-    The maths is explained, then implemented from first principles — you see the
-    formula and the line of code that makes it real.
-
--   :material-stairs:{{ .lg .middle }} __A real curriculum__
-
-    ---
-
-    Seven levels take you from `print("hello")` to GARCH volatility models,
-    Black-Litterman allocation and reinforcement-learning agents.
-
--   :material-test-tube:{{ .lg .middle }} __Tested & linted__
-
-    ---
-
-    Modules ship with unit tests and pass `ruff` in CI, so the code you learn
-    from is the code you can trust.
-
-</div>
-
-## Explore by topic
-
-{cards_block}
-
-## A guided path
-
-```mermaid
-flowchart LR
-    A[Python Fundamentals] --> B[Data Structures & Algorithms]
-    B --> C[Advanced Python]
-    C --> D[Quantitative Methods]
-    D --> E[Options & Finance]
-    E --> F[Risk & Portfolio]
-    F --> G[Strategies]
-    G --> H[AI / ML & Microstructure]
-```
-
-New here? Follow the [recommended learning paths](learning-paths.md) — curated
-sequences for beginners, options traders, quant researchers and ML engineers.
-
-## Quick start
+## Running a lesson
 
 ```bash
 git clone {REPO_URL}
 cd Learn-Quant
 pip install -r requirements.txt
 
-# run any module, e.g.
 cd "Quantitative Methods - GARCH"
 python garch.py
 ```
 
-See the [Getting Started guide](getting-started.md) for the full setup, or jump
-straight to the [complete module index](modules.md).
+The [getting started page](getting-started.md) covers virtual environments,
+the JavaScript lessons and running the tests.
 """
 
 
 def build_modules(categories):
     out = [
-        "# All Modules",
+        "# All modules",
         "",
-        "Every Learn-Quant lesson, grouped by track. Each card links to the full"
-        " write-up with runnable code and worked examples.",
+        "Every lesson on one page, grouped by track. The level is a rough guide,",
+        "not a gate.",
         "",
     ]
     for cat in CATEGORY_ORDER:
         mods = categories.get(cat, [])
         if not mods:
             continue
-        meta = CATEGORY_META[cat]
-        out.append(f"## {meta['icon']} {cat}")
-        out.append("")
-        out.append(f"*{meta['blurb']}*")
-        out.append("")
-        out.append('<div class="grid cards" markdown>')
-        out.append("")
+        out += [f"## {cat}", "", CATEGORY_META[cat]["blurb"], ""]
+        out += ["| Module | Level | Language | About |", "|---|---|---|---|"]
         for m in mods:
-            diff_class = DIFFICULTY_CLASS.get(m["difficulty"], "intermediate")
-            out.append(f"-   __[{m['dir']}]({m['file']})__")
-            out.append("")
+            desc = m["desc"] or m["title"] or m["dir"]
             out.append(
-                f'    <span class="lq-badge lq-{diff_class}">{m["difficulty"]}</span>'
-                f'<span class="lq-badge lq-lang">{m["language"]}</span>'
+                f"| [{_short_name(m['dir'])}]({m['file']}) | {m['difficulty']} | {m['language']} | {_cell(desc)} |"
             )
-            out.append("")
-            desc = m["desc"] or (m["title"] or m["dir"])
-            out.append(f"    {desc}")
-            out.append("")
-        out.append("</div>")
         out.append("")
     return "\n".join(out)
 
 
 def build_getting_started(stats):
-    return f"""# Getting Started
+    return f"""# Getting started
 
-Learn-Quant is a collection of **{stats["modules"]} self-contained modules**. There is no
-package to install and no build step — you clone the repo and run whichever
-lesson you want to learn from.
+Learn-Quant is {stats["modules"]} separate folders. There is no package to
+install and nothing to build. Clone it, install the requirements once, and run
+whichever lesson you want.
 
-## 1. Install
+## Install
 
 ```bash
 git clone {REPO_URL}
 cd Learn-Quant
 python -m venv .venv
-# Windows:  .venv\\Scripts\\activate
-# macOS/Linux: source .venv/bin/activate
+# Windows:      .venv\\Scripts\\activate
+# macOS/Linux:  source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-A few JavaScript modules also need [Node.js](https://nodejs.org) (v18+).
+The JavaScript lessons need [Node.js](https://nodejs.org) 18 or later and
+nothing else.
 
-!!! note "Requirements"
-    The core stack is `numpy`, `pandas`, `scipy`, `scikit-learn` and
-    `matplotlib`. Everything is pinned in `requirements.txt`; development tools
-    (`ruff`, `pytest`) live in `requirements-dev.txt`.
+The Python requirements are `numpy`, `pandas`, `scipy`, `scikit-learn` and
+`matplotlib`, plus a couple of small extras. Linting and test tools are in
+`requirements-dev.txt`.
 
-## 2. Run a module
+## Run a lesson
 
-Every folder is independent. Change into it and run the main script:
+Change into a folder and run its main file:
 
 ```bash
 cd "Black-Scholes Option Pricing"
@@ -562,268 +554,283 @@ cd "Options Pricing - JavaScript"
 node blackScholes.js
 ```
 
-Modules whose file name ends in `_tutorial.py` are **interactive** — they walk
-you through the concept with worked examples and quizzes.
+Files ending in `_tutorial.py` are interactive and will ask you questions as
+they go.
 
-## 3. How a module is laid out
+## What is in a folder
 
 ```text
 Quantitative Methods - GARCH/
-├── README.md      ← the lesson: theory, formulas, usage, pitfalls
-└── garch.py       ← the implementation with a runnable __main__ demo
+├── README.md      the explanation: idea, formula, usage, caveats
+└── garch.py       the code, with a demo under if __name__ == "__main__"
 ```
 
-Read the `README.md` for the *why*, then open the `.py` file for the *how*. The
-two are written to be read side by side.
+Read the README first, then open the code next to it. They are written to be
+read together.
 
-## 4. Suggested order
+## A rough order
 
-If you are working through the whole curriculum, follow the
-[learning paths](learning-paths.md). In short:
+If you want to go through everything, the tabs along the top are already in a
+sensible order:
 
-1. **Python Fundamentals** → **Data Structures & Algorithms**
-2. **Advanced Python** for production patterns
-3. **Quantitative Methods** for the maths
-4. **Options & Finance** → **Risk & Portfolio** → **Strategies**
-5. **AI / ML** and **Market Microstructure** to specialise
+1. Python Fundamentals, then data structures and algorithms
+2. Advanced Python
+3. Quantitative Methods
+4. Options and finance, then risk, portfolios and strategies
+5. Machine learning and market microstructure
 
-## 5. Run the tests (optional)
+The [learning paths](learning-paths.md) page has shorter routes for specific
+goals.
+
+## Tests
 
 ```bash
 pip install -r requirements-dev.txt
 pytest z_tests -q
 ruff check .
 ```
-
-Ready? Head to the [module index](modules.md) or pick a
-[learning path](learning-paths.md).
 """
 
 
 def build_learning_paths():
-    return """# Learning Paths
+    return """# Learning paths
 
-Pick the track that matches your goal. Each path is an ordered sequence of
-modules — finish one before moving to the next.
+Shorter routes through the material for a few common goals. Each list is in
+reading order. If something in a lesson is unfamiliar, the earlier lessons in
+its track usually cover it.
 
-## :material-school-outline: Complete Beginner → Quant Developer
+## From zero to a first backtest
 
-The full curriculum, in order. Budget a few weeks and you will go from basic
-syntax to pricing derivatives and backtesting strategies.
+1. [Python Basics - Numbers](Python Basics - Numbers.md)
+2. [Python Basics - Functions](Python Basics - Functions.md)
+3. [Python Basics - NumPy](Python Basics - NumPy.md)
+4. [Python Basics - Pandas](Python Basics - Pandas.md)
+5. [Data Structures - Arrays](Data Structures - Arrays.md)
+6. [Advanced Python - OOP](Advanced Python - OOP.md)
+7. [Quantitative Methods - Statistics](Quantitative Methods - Statistics.md)
+8. [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md)
+9. [Risk Metrics](Risk Metrics.md)
+10. [Portfolio Optimizer](Portfolio Optimizer.md)
+11. [Strategies - Pairs Trading](Strategies - Pairs Trading.md)
+12. [Strategies - Backtesting Engine](Strategies - Backtesting Engine.md)
 
-```mermaid
-flowchart TD
-    A[Python Basics - Numbers] --> B[Python Basics - Functions]
-    B --> C[Python Basics - NumPy]
-    C --> D[Python Basics - Pandas]
-    D --> E[Data Structures - Arrays]
-    E --> F[Algorithms - Sorting]
-    F --> G[Advanced Python - OOP]
-    G --> H[Quantitative Methods - Statistics]
-    H --> I[Black-Scholes Option Pricing]
-    I --> J[Risk Metrics]
-    J --> K[Portfolio Optimizer]
-    K --> L[Strategies - Pairs Trading]
-```
-
-## :material-chart-bell-curve: Options & Derivatives Trader
-
-For traders who want to understand pricing and risk:
+## Options and derivatives
 
 1. [Python Basics - NumPy](Python Basics - NumPy.md)
 2. [Quantitative Methods - Stochastic Processes](Quantitative Methods - Stochastic Processes.md)
 3. [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md)
 4. [Finance - Greeks Calculator](Finance - Greeks Calculator.md)
-5. [Advanced Options Pricing](Advanced Options Pricing.md)
-6. [Finance - Exotic Options](Finance - Exotic Options.md)
-7. [Finance - Implied Volatility Surface](Finance - Implied Volatility Surface.md)
-8. [Finance - Options Strategies](Finance - Options Strategies.md)
+5. [Options Pricing - Binomial Tree](Options Pricing - Binomial Tree.md)
+6. [Advanced Options Pricing](Advanced Options Pricing.md)
+7. [Finance - Exotic Options](Finance - Exotic Options.md)
+8. [Finance - Implied Volatility Surface](Finance - Implied Volatility Surface.md)
+9. [Finance - Options Strategies](Finance - Options Strategies.md)
 
-## :material-function-variant: Quant Researcher
-
-For the statistically minded building signals and models:
+## Quant research
 
 1. [Quantitative Methods - Statistics](Quantitative Methods - Statistics.md)
-2. [Quantitative Methods - Regression Analysis](Quantitative Methods - Regression Analysis.md)
-3. [Quantitative Methods - Time Series](Quantitative Methods - Time Series.md)
-4. [Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)
-5. [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)
-6. [Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)
-7. [Strategies - Statistical Arbitrage](Strategies - Statistical Arbitrage.md)
-8. [Strategies - Backtesting Engine](Strategies - Backtesting Engine.md)
+2. [Quantitative Methods - Hypothesis Testing](Quantitative Methods - Hypothesis Testing.md)
+3. [Quantitative Methods - Regression Analysis](Quantitative Methods - Regression Analysis.md)
+4. [Quantitative Methods - Kernel Density Estimation](Quantitative Methods - Kernel Density Estimation.md)
+5. [Quantitative Methods - Time Series](Quantitative Methods - Time Series.md)
+6. [Quantitative Methods - GARCH](Quantitative Methods - GARCH.md)
+7. [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md)
+8. [Quantitative Methods - Extreme Value Theory](Quantitative Methods - Extreme Value Theory.md)
+9. [Strategies - Statistical Arbitrage](Strategies - Statistical Arbitrage.md)
+10. [Quantitative Methods - Bootstrap](Quantitative Methods - Bootstrap.md)
 
-## :material-robot-outline: ML / AI Engineer
-
-For applying machine learning to markets:
+## Machine learning on market data
 
 1. [Python Basics - Pandas](Python Basics - Pandas.md)
 2. [Algorithms - Machine Learning](Algorithms - Machine Learning.md)
 3. [Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)
-4. [Machine Learning - Random Forest](Machine Learning - Random Forest.md)
-5. [Machine Learning Time Series](Machine Learning Time Series.md)
-6. [Reinforcement Learning Q Learning](Reinforcement Learning Q Learning.md)
-7. [Sentiment Analysis on News](Sentiment Analysis on News.md)
+4. [Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)
+5. [Machine Learning - Logistic Regression](Machine Learning - Logistic Regression.md)
+6. [Machine Learning - Random Forest](Machine Learning - Random Forest.md)
+7. [Machine Learning Time Series](Machine Learning Time Series.md)
+8. [Reinforcement Learning Q Learning](Reinforcement Learning Q Learning.md)
 
-## :material-briefcase-outline: Portfolio & Risk Manager
-
-For allocation, risk budgeting and performance measurement:
+## Portfolio and risk
 
 1. [CAPM](CAPM.md)
 2. [Finance - Covariance Estimation](Finance - Covariance Estimation.md)
 3. [Portfolio Optimizer](Portfolio Optimizer.md)
 4. [Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md)
-5. [Portfolio Management - Black Litterman](Portfolio Management - Black Litterman.md)
-6. [Risk Metrics](Risk Metrics.md)
+5. [Portfolio Management - Hierarchical Risk Parity](Portfolio Management - Hierarchical Risk Parity.md)
+6. [Portfolio Management - Black Litterman](Portfolio Management - Black Litterman.md)
 7. [Value at Risk (VaR)](Value at Risk (VaR).md)
-8. [Finance - Information Ratio](Finance - Information Ratio.md)
+8. [Finance - Expected Shortfall](Finance - Expected Shortfall.md)
+9. [Finance - Information Ratio](Finance - Information Ratio.md)
 
-!!! tip
-    Not sure where you sit? Start with
-    [Python Basics - NumPy](Python Basics - NumPy.md) and
-    [Quantitative Methods - Statistics](Quantitative Methods - Statistics.md) —
-    they are the backbone every other path leans on.
+## Execution and trading costs
+
+1. [Market Microstructure](Market Microstructure.md)
+2. [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md)
+3. [Finance - Transaction Cost Analysis](Finance - Transaction Cost Analysis.md)
+4. [Strategies - Optimal Execution](Strategies - Optimal Execution.md)
+5. [Order Execution Simulator](Order Execution Simulator.md)
+6. [Strategies - Market Making](Strategies - Market Making.md)
+
+If you are not sure where you fit, [Python Basics - NumPy](Python Basics - NumPy.md)
+and [Quantitative Methods - Statistics](Quantitative Methods - Statistics.md)
+are used by nearly everything else.
 """
 
 
 def build_glossary():
     return """# Glossary
 
-A quick reference for the terms that show up across the modules. Each entry
-points you to the lesson where the concept is implemented.
+Short definitions for terms that come up across the lessons, with a pointer to
+where each one is implemented.
 
-## Markets & instruments
+## Markets
 
-`Bid / Ask`
-:   The best price a buyer will pay (bid) and a seller will accept (ask). The
-    gap between them is the **spread**. See *Market Microstructure*.
+Bid and ask
+:   The best price a buyer will pay and a seller will accept. The gap is the
+    spread. See [Market Microstructure](Market Microstructure.md).
 
-`Derivative`
-:   A contract whose value derives from an underlying asset (e.g. an option on
-    a stock). See *Black-Scholes Option Pricing*.
+Effective spread
+:   Twice the distance between a trade price and the midquote at the time,
+    which is what the trade actually cost. See
+    [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md).
 
-`Greeks`
-:   Sensitivities of an option's price — Delta, Gamma, Theta, Vega, Rho. See
-    *Finance - Greeks Calculator*.
+Kyle's lambda
+:   How far price moves per unit of net order flow. Higher means a thinner
+    market. See
+    [Market Microstructure - Liquidity Measures](Market Microstructure - Liquidity Measures.md).
 
-`Implied Volatility`
-:   The volatility that, fed into a pricing model, reproduces the market price
-    of an option. See *Finance - Implied Volatility Surface*.
+Implementation shortfall
+:   The difference between the price when you decided to trade and the price
+    you actually got, across the whole order. See
+    [Strategies - Optimal Execution](Strategies - Optimal Execution.md).
+
+## Options
+
+Derivative
+:   A contract whose value depends on some underlying asset, such as an
+    option on a stock. See [Black-Scholes Option Pricing](Black-Scholes Option Pricing.md).
+
+Greeks
+:   The sensitivities of an option price: delta, gamma, theta, vega, rho. See
+    [Finance - Greeks Calculator](Finance - Greeks Calculator.md).
+
+Implied volatility
+:   The volatility that makes a pricing model match the market price of an
+    option. See [Finance - Implied Volatility Surface](Finance - Implied Volatility Surface.md).
 
 ## Risk
 
-`VaR (Value at Risk)`
-:   The loss not expected to be exceeded over a horizon at a given confidence
-    level. See *Value at Risk (VaR)*.
+Value at Risk
+:   A loss level not expected to be exceeded over a horizon at a given
+    confidence. See [Value at Risk (VaR)](Value at Risk (VaR).md).
 
-`Expected Shortfall / CVaR`
-:   The average loss *given* that the VaR threshold is breached — a coherent
-    tail-risk measure. See *Finance - Expected Shortfall*.
+Expected shortfall
+:   The average loss on the days that are worse than VaR. See
+    [Finance - Expected Shortfall](Finance - Expected Shortfall.md).
 
-`Drawdown`
-:   The peak-to-trough decline of an equity curve. See
-    *Risk Metrics - Drawdown Analysis*.
+Drawdown
+:   The fall from the highest point of an equity curve to a later low. See
+    [Risk Metrics - Drawdown Analysis](Risk Metrics - Drawdown Analysis.md).
 
-`Sharpe Ratio`
-:   Excess return per unit of total volatility. See
-    *Sharpe and Sortino Ratio*.
+Sharpe ratio
+:   Excess return divided by volatility. See
+    [Sharpe and Sortino Ratio](Sharpe and Sortino Ratio.md).
 
-## Statistics & models
+## Statistics
 
-`Stationarity`
-:   A series whose statistical properties do not change over time — a
-    prerequisite for many time-series methods. See
-    *Quantitative Methods - Statistics*.
+Stationarity
+:   A series whose mean, variance and autocorrelation do not drift over time.
+    Many methods assume it. See [Quantitative Methods - Time Series](Quantitative Methods - Time Series.md).
 
-`Cointegration`
-:   Two non-stationary series whose linear combination *is* stationary — the
-    basis of pairs trading. See *Quantitative Methods - Cointegration*.
+Cointegration
+:   Two wandering series whose spread does not wander. The basis of pairs
+    trading. See [Quantitative Methods - Cointegration](Quantitative Methods - Cointegration.md).
 
-`GARCH`
-:   A model for time-varying volatility that captures volatility clustering.
-    See *Quantitative Methods - GARCH*.
+GARCH
+:   A model where today's volatility depends on yesterday's shock and
+    yesterday's volatility, which produces volatility clustering. See
+    [Quantitative Methods - GARCH](Quantitative Methods - GARCH.md).
 
-`Monte Carlo`
-:   Estimating outcomes by simulating many random paths. See
-    *Monte Carlo Portfolio Simulator*.
+Bandwidth
+:   The width of the bump placed on each point in a kernel density estimate.
+    It matters far more than the bump's shape. See
+    [Quantitative Methods - Kernel Density Estimation](Quantitative Methods - Kernel Density Estimation.md).
 
-## Portfolio
+Monte Carlo
+:   Estimating something by simulating many random outcomes and averaging. See
+    [Monte Carlo Portfolio Simulator](Monte Carlo Portfolio Simulator.md).
 
-`Efficient Frontier`
-:   The set of portfolios with the best return for each level of risk. See
-    *Portfolio Optimizer*.
+## Portfolios
 
-`Risk Parity`
-:   Allocating so each asset contributes equally to portfolio risk. See
-    *Portfolio Management - Risk Parity*.
+Efficient frontier
+:   The best achievable return for each level of risk. See
+    [Portfolio Optimizer](Portfolio Optimizer.md).
 
-`Beta`
-:   Sensitivity of an asset's return to the market. See *CAPM* and
-    *Finance - Beta Calculator*.
+Risk parity
+:   Weighting assets so each contributes the same amount of risk. See
+    [Portfolio Management - Risk Parity](Portfolio Management - Risk Parity.md).
 
-!!! info
-    Missing a term? Open an issue on
-    [GitHub](https://github.com/MeridianAlgo/Learn-Quant/issues) and we will add
-    it.
+Hierarchical risk parity
+:   Risk parity applied down a tree of correlated clusters, which avoids
+    inverting the covariance matrix. See
+    [Portfolio Management - Hierarchical Risk Parity](Portfolio Management - Hierarchical Risk Parity.md).
+
+Beta
+:   How much an asset moves with the market. See [CAPM](CAPM.md) and
+    [Finance - Beta Calculator](Finance - Beta Calculator.md).
+
+Something missing? [Open an issue](https://github.com/MeridianAlgo/Learn-Quant/issues).
 """
 
 
 def build_faq():
-    return """# FAQ & Contributing
+    return """# FAQ and contributing
 
-## Frequently asked questions
+### Do I need to install Learn-Quant as a package?
 
-??? question "Do I need to install Learn-Quant as a package?"
-    No. It is a collection of standalone folders. Clone the repo, install the
-    requirements once, and run any module directly.
+No. It is a folder of folders. Install the requirements once and run any
+lesson directly.
 
-??? question "Which Python version should I use?"
-    Python 3.9+ works for every module. CI runs on 3.11.
+### Which Python version?
 
-??? question "Some modules import `scipy` / `scikit-learn` — are those required?"
-    They are listed in `requirements.txt`. A handful of modules use them for
-    optimisation or ML; the README of each module notes any extra dependency.
+3.9 or later. CI runs 3.11.
 
-??? question "Can I use this code in my own project?"
-    Yes — it is MIT licensed. It is written for learning, so audit and adapt
-    before putting anything near real capital.
+### Can I use the code in my own project?
 
-??? question "How do I run the JavaScript modules?"
-    Install [Node.js](https://nodejs.org) 18+ and run `node <file>.js` inside
-    the module folder.
+Yes, it is MIT licensed. It is written to be read, not to be fast or battle
+tested, so check it before it goes anywhere near real money.
 
-??? question "Is any of this investment advice?"
-    No. Everything here is educational. Markets carry risk; do your own research.
+### How do I run the JavaScript lessons?
+
+Install Node.js 18 or later and run `node <file>.js` in the lesson's folder.
+They have no dependencies.
+
+### Is this investment advice?
+
+No. It is teaching material.
 
 ## Contributing
 
-Contributions are very welcome.
+Bug reports and pull requests are welcome on
+[GitHub](https://github.com/MeridianAlgo/Learn-Quant). To change a page on
+this site, edit the `README.md` in the lesson's folder. The site is rebuilt
+from those on every push to `main`.
 
-- :material-bug-outline: **Found a bug?** Open an
-  [issue](https://github.com/MeridianAlgo/Learn-Quant/issues).
-- :material-lightbulb-on-outline: **Have a new module or strategy?** Fork the
-  repo and open a pull request.
-- :material-book-edit-outline: **Improving the docs?** Edit the relevant
-  module `README.md` — the site rebuilds automatically.
+A new lesson should have:
 
-### Module conventions
+1. A `README.md` that explains the idea, gives the formula, shows usage and
+   lists the caveats.
+2. One focused `.py` (or `.js`) file with a demo under `__main__`.
+3. A test in `z_tests/` named `test_<module>.py`.
 
-A good module folder contains:
-
-1. A `README.md` with **theory → formula → usage → pitfalls**.
-2. A single-purpose `.py` implementation with type hints and a runnable
-   `__main__` demonstration.
-3. A matching test in `z_tests/` (`test_<module>.py`).
-
-Before opening a PR:
+Before opening a pull request:
 
 ```bash
 ruff check .
 ruff format .
 pytest z_tests -q
-python docs_builder.py   # regenerate the site
+python docs_builder.py
 ```
-
-Thanks for helping more people learn quant. :material-heart:
 """
 
 
@@ -833,11 +840,11 @@ Thanks for helping more people learn quant. :material-heart:
 def build_mkdocs_yaml(nav_items):
     nav = "\n".join(nav_items)
     return f"""site_name: Learn-Quant
-site_description: Master quantitative finance, algorithmic trading, and professional Python engineering — one runnable lesson at a time.
+site_description: Runnable lessons in quantitative finance and Python. One folder per topic, each with an explanation, an implementation and a test.
 site_url: https://meridianalgo.github.io/Learn-Quant/
 repo_url: {REPO_URL}
 repo_name: MeridianAlgo/Learn-Quant
-copyright: Copyright &copy; MeridianAlgo — MIT Licensed
+copyright: MeridianAlgo, MIT licence
 edit_uri: edit/main/
 
 theme:
@@ -845,46 +852,37 @@ theme:
   language: en
   icon:
     repo: fontawesome/brands/github
-    logo: material/chart-line
+    logo: material/sigma
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.footer
     - navigation.instant
-    - navigation.instant.prefetch
     - navigation.tracking
     - toc.follow
     - search.suggest
     - search.highlight
-    - search.share
     - content.code.copy
-    - content.code.annotate
-    - content.tooltips
   palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: deep purple
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+        icon: material/weather-night
+        name: Dark theme
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: deep purple
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+        icon: material/weather-sunny
+        name: Light theme
   font:
-    text: Inter
-    code: JetBrains Mono
+    text: IBM Plex Sans
+    code: IBM Plex Mono
 
 extra_css:
   - stylesheets/extra.css
@@ -940,94 +938,238 @@ nav:
 """
 
 
-EXTRA_CSS = """/* Learn-Quant docs theme extras */
+EXTRA_CSS = """/* Learn-Quant site styles.
+   Plain documentation look: paper background, ink text, one accent colour,
+   serif headings, thin rules instead of shadows and cards. */
 
-:root {
-  --lq-grad-1: #5e60ce;
-  --lq-grad-2: #6930c3;
-  --lq-grad-3: #7400b8;
-}
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap");
 
-/* ---- Hero ---- */
-.lq-hero {
-  text-align: center;
-  padding: 3.5rem 1rem 2.5rem;
-  margin: -1rem -0.8rem 2rem;
-  border-radius: 0 0 1.25rem 1.25rem;
-  background: linear-gradient(135deg, var(--lq-grad-1), var(--lq-grad-3));
-  color: #fff;
-}
-.lq-hero h1 {
-  color: #fff;
-  font-weight: 800;
-  font-size: 3rem;
-  margin-bottom: 0.25rem;
-  letter-spacing: -0.02em;
-}
-.lq-hero h3 {
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 500;
-  max-width: 46rem;
-  margin: 0 auto 1rem;
-}
-.lq-hero p { color: rgba(255, 255, 255, 0.85); }
-.lq-hero .md-button {
-  margin: 0.3rem;
-  border-color: rgba(255, 255, 255, 0.9);
-  color: #fff;
-}
-.lq-hero .md-button--primary {
-  background: #fff;
-  color: var(--lq-grad-3);
-  border-color: #fff;
-}
-.lq-hero .md-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #fff;
-  color: #fff;
-}
-.lq-hero .md-button--primary:hover {
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--lq-grad-3);
+:root,
+[data-md-color-scheme="default"] {
+  --lq-paper: #fbfaf6;
+  --lq-ink: #1f1e1b;
+  --lq-muted: #6d695f;
+  --lq-rule: #e3dfd4;
+  --lq-accent: #0f6b4c;
+  --lq-code: #f2efe7;
+  --lq-field: rgba(31, 30, 27, 0.06);
+
+  --md-primary-fg-color: var(--lq-paper);
+  --md-primary-fg-color--light: var(--lq-paper);
+  --md-primary-fg-color--dark: var(--lq-paper);
+  --md-primary-bg-color: var(--lq-ink);
+  --md-primary-bg-color--light: var(--lq-muted);
+  --md-accent-fg-color: var(--lq-accent);
+  --md-accent-fg-color--transparent: rgba(15, 107, 76, 0.08);
+  --md-default-bg-color: var(--lq-paper);
+  --md-typeset-a-color: var(--lq-accent);
+  --md-code-bg-color: var(--lq-code);
+  --md-footer-bg-color: var(--lq-paper);
+  --md-footer-bg-color--dark: var(--lq-paper);
+  --md-footer-fg-color: var(--lq-ink);
+  --md-footer-fg-color--light: var(--lq-muted);
+  --md-footer-fg-color--lighter: var(--lq-muted);
 }
 
-/* ---- Badges ---- */
-.lq-badges { margin: 0 0 0.5rem; }
-.lq-badge {
-  display: inline-block;
+[data-md-color-scheme="slate"] {
+  --lq-paper: #161614;
+  --lq-ink: #e6e3dc;
+  --lq-muted: #9d998f;
+  --lq-rule: #2d2c28;
+  --lq-accent: #63c29b;
+  --lq-code: #1f1f1c;
+  --lq-field: rgba(230, 227, 220, 0.07);
+
+  --md-hue: 45;
+  --md-primary-fg-color: var(--lq-paper);
+  --md-primary-fg-color--light: var(--lq-paper);
+  --md-primary-fg-color--dark: var(--lq-paper);
+  --md-primary-bg-color: var(--lq-ink);
+  --md-primary-bg-color--light: var(--lq-muted);
+  --md-accent-fg-color: var(--lq-accent);
+  --md-accent-fg-color--transparent: rgba(99, 194, 155, 0.1);
+  --md-default-bg-color: var(--lq-paper);
+  --md-typeset-a-color: var(--lq-accent);
+  --md-code-bg-color: var(--lq-code);
+  --md-footer-bg-color: var(--lq-paper);
+  --md-footer-bg-color--dark: var(--lq-paper);
+  --md-footer-fg-color: var(--lq-ink);
+  --md-footer-fg-color--light: var(--lq-muted);
+  --md-footer-fg-color--lighter: var(--lq-muted);
+}
+
+/* ---- Header and tabs: flat, ruled ---- */
+.md-header,
+.md-header--shadow {
+  box-shadow: none;
+  border-bottom: 1px solid var(--lq-rule);
+}
+.md-tabs {
+  border-bottom: 1px solid var(--lq-rule);
+}
+.md-tabs__link {
   font-size: 0.68rem;
+  opacity: 0.75;
+}
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  opacity: 1;
+  color: var(--lq-accent);
+}
+.md-header__title {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Search field sits on a light header, so give it a light fill. */
+@media screen and (min-width: 60em) {
+  .md-search__form,
+  .md-search__form:hover {
+    background-color: var(--lq-field);
+    border-radius: 3px;
+  }
+  .md-search__input {
+    color: var(--lq-ink);
+  }
+}
+.md-search__input::placeholder,
+.md-search__input ~ .md-search__icon {
+  color: var(--lq-muted);
+}
+
+/* ---- Type ---- */
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+  color: var(--lq-ink);
+  letter-spacing: -0.005em;
+}
+.md-typeset h1 {
   font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  padding: 0.15rem 0.55rem;
-  margin: 0.1rem 0.25rem 0.1rem 0;
-  border-radius: 1rem;
-  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 0.4em;
+}
+.md-typeset h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-top: 2em;
+  padding-top: 0.9em;
+  border-top: 1px solid var(--lq-rule);
+}
+.md-typeset h3 {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.md-typeset a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--lq-accent) 35%, transparent);
+}
+.md-typeset a:hover {
+  text-decoration-color: currentColor;
+}
+.md-typeset .headerlink {
+  text-decoration: none;
+}
+
+/* ---- Metadata strip under each title ---- */
+.md-typeset .lq-meta {
+  font-family: var(--md-code-font-family);
+  font-size: 0.66rem;
+  color: var(--lq-muted);
+  margin: -0.6em 0 1.6em;
+}
+.md-typeset .lq-meta span {
+  margin: 0 0.35em;
+  opacity: 0.6;
+}
+.md-typeset .lq-meta a {
+  color: inherit;
+}
+
+.md-typeset .lq-lede {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  max-width: 36rem;
+  margin-top: 0;
+}
+
+/* ---- Code ---- */
+.md-typeset pre > code,
+.md-typeset code {
+  border-radius: 2px;
+}
+.md-typeset pre > code {
+  border: 1px solid var(--lq-rule);
+}
+
+/* ---- Tables: rules, no boxes ---- */
+.md-typeset table:not([class]) {
+  border: none;
+  border-radius: 0;
+  font-size: 0.74rem;
+  box-shadow: none;
+}
+.md-typeset table:not([class]) th {
+  background: transparent;
+  color: var(--lq-ink);
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--lq-ink);
+}
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--lq-rule);
+  vertical-align: top;
+}
+.md-typeset table:not([class]) tr:hover {
+  background: transparent;
+  box-shadow: none;
+}
+.md-typeset table:not([class]) td:first-child {
+  min-width: 11rem;
+}
+.md-typeset table:not([class]) td:nth-child(2),
+.md-typeset table:not([class]) td:nth-child(3) {
   white-space: nowrap;
 }
-.lq-beginner { background: #2a9d8f; }
-.lq-intermediate { background: #e09f3e; }
-.lq-advanced { background: #e63946; }
-.lq-cat { background: #5e60ce; }
-.lq-lang { background: #495057; }
 
-/* ---- Card grid polish ---- */
-.md-typeset .grid.cards > ul > li,
-.md-typeset .grid.cards > :is(ul, ol) > li {
-  border-radius: 0.6rem;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+/* ---- Admonitions and buttons, toned down ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0 0 0 3px;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--lq-code);
+  font-size: 0.76rem;
 }
-.md-typeset .grid.cards > ul > li:hover,
-.md-typeset .grid.cards > :is(ul, ol) > li:hover {
-  border-color: var(--lq-grad-1);
-  box-shadow: 0 0.4rem 1.2rem rgba(94, 96, 206, 0.18);
-  transform: translateY(-2px);
+.md-typeset .md-button {
+  border-radius: 2px;
+  font-weight: 500;
 }
 
-/* Slightly tighter hero on small screens */
+/* ---- Definition lists in the glossary ---- */
+.md-typeset dt {
+  font-weight: 600;
+  margin-top: 1.1em;
+}
+
+/* ---- Footer ---- */
+.md-footer {
+  border-top: 1px solid var(--lq-rule);
+}
+.md-footer-meta {
+  background: var(--lq-paper);
+}
+
 @media screen and (max-width: 44.9em) {
-  .lq-hero h1 { font-size: 2.1rem; }
-  .lq-hero { padding: 2.5rem 0.75rem 1.75rem; }
+  .md-typeset h1 { font-size: 1.6rem; }
+  .md-typeset table:not([class]) td:first-child { min-width: 0; }
 }
 """
 
@@ -1067,9 +1209,10 @@ def build_docs():
     categories = {cat: [] for cat in CATEGORY_ORDER}
     for mod in modules:
         categories[mod["category"]].append(mod)
+    by_dir = {m["dir"]: m for m in modules}
 
     # Write augmented module pages.
-    module_dirs = {m["dir"] for m in modules}
+    module_dirs = set(by_dir)
     for mod in modules:
         siblings = categories[mod["category"]]
         page = build_module_page(mod, siblings, module_dirs)
@@ -1083,7 +1226,7 @@ def build_docs():
 
     # Standalone pages.
     pages = {
-        "index.md": build_index(stats, categories),
+        "index.md": build_index(stats, categories, by_dir),
         "modules.md": build_modules(categories),
         "getting-started.md": build_getting_started(stats),
         "learning-paths.md": build_learning_paths(),
@@ -1096,43 +1239,45 @@ def build_docs():
             f.write(content)
 
     # Navigation.
-    def entries(cat, pad):
-        return [f'{pad}- "{m["dir"]}": {m["file"]}' for m in categories.get(cat, [])]
+    def entries(cat):
+        return [f'- "{m["dir"]}": {m["file"]}' for m in categories.get(cat, [])]
 
     nav_items = [
         "  - Home: index.md",
-        "  - Get Started:",
-        "      - Getting Started: getting-started.md",
-        "      - Learning Paths: learning-paths.md",
-        "      - All Modules: modules.md",
+        "  - Start here:",
+        "      - Getting started: getting-started.md",
+        "      - Learning paths: learning-paths.md",
+        "      - All modules: modules.md",
         "      - Glossary: glossary.md",
-        "      - FAQ & Contributing: faq.md",
-        "  - Python Fundamentals:",
-        *[f"      {e}" for e in entries("Python Fundamentals", "")],
-        "  - Python Advanced:",
+        "      - FAQ and contributing: faq.md",
+        "  - Python:",
+        *[f"      {e}" for e in entries("Python Fundamentals")],
+        "  - Engineering:",
         "      - Advanced Python:",
-        *[f"          {e}" for e in entries("Advanced Python", "")],
+        *[f"          {e}" for e in entries("Advanced Python")],
         "      - Data Structures:",
-        *[f"          {e}" for e in entries("Data Structures", "")],
+        *[f"          {e}" for e in entries("Data Structures")],
         "      - Algorithms:",
-        *[f"          {e}" for e in entries("Algorithms", "")],
+        *[f"          {e}" for e in entries("Algorithms")],
         "  - Quant:",
         "      - Quantitative Methods:",
-        *[f"          {e}" for e in entries("Quantitative Methods", "")],
-        "      - Finance & Options:",
-        *[f"          {e}" for e in entries("Options, Derivatives & Finance", "")],
-        "      - Risk & Performance:",
-        *[f"          {e}" for e in entries("Risk & Performance", "")],
+        *[f"          {e}" for e in entries("Quantitative Methods")],
+        "      - Options and Finance:",
+        *[f"          {e}" for e in entries("Options, Derivatives & Finance")],
+        "      - Risk and Performance:",
+        *[f"          {e}" for e in entries("Risk & Performance")],
         "      - Portfolio Management:",
-        *[f"          {e}" for e in entries("Portfolio Management", "")],
+        *[f"          {e}" for e in entries("Portfolio Management")],
         "      - Strategies:",
-        *[f"          {e}" for e in entries("Strategies", "")],
-        "  - AI & Machine Learning:",
-        *[f"      {e}" for e in entries("AI & Machine Learning", "")],
-        "  - Utilities & Tools:",
-        *[f"      {e}" for e in entries("Market Microstructure", "")],
-        *[f"      {e}" for e in entries("Utilities & Tools", "")],
-        *[f"      {e}" for e in entries("Other", "")],
+        *[f"          {e}" for e in entries("Strategies")],
+        "  - Machine Learning:",
+        *[f"      {e}" for e in entries("AI & Machine Learning")],
+        "  - Markets and Tools:",
+        "      - Market Microstructure:",
+        *[f"          {e}" for e in entries("Market Microstructure")],
+        "      - Utilities:",
+        *[f"          {e}" for e in entries("Utilities & Tools")],
+        *[f"          {e}" for e in entries("Other")],
     ]
 
     with open("mkdocs.yml", "w", encoding="utf-8") as f:
@@ -1140,8 +1285,8 @@ def build_docs():
 
     total = len(modules)
     used = sum(1 for v in categories.values() if v)
-    print(f"Docs built: {total} modules indexed across {used} categories")
-    print(f"  Python files: {py_count}  ·  JavaScript modules: {js_count}")
+    print(f"Docs built: {total} modules indexed across {used} tracks")
+    print(f"  Python files: {py_count}, JavaScript files: {js_count}")
     for cat in CATEGORY_ORDER:
         if categories[cat]:
             print(f"  {cat}: {len(categories[cat])} modules")

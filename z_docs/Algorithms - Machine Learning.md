@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Algorithms</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Algorithms - Machine Learning"
-    python "ml_algorithms.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Algorithms%20-%20Machine%20Learning)
-
----
 # Algorithms – Machine Learning
+
+<p class="lq-meta">Intermediate <span>/</span> Algorithms <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Algorithms%20-%20Machine%20Learning">source</a></p>
+
 
 ## Overview
 
@@ -85,37 +77,22 @@ python ml_algorithms.py
 - **Out-of-sample is everything**: A model that fits the training period perfectly but fails out-of-sample is worse than useless in production.
 - **Beware of non-stationarity**: Financial time series change regime over time — models trained on 2010–2015 data may fail completely in 2020.
 
-
 ---
 
-## Continue in Algorithms
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Algorithms - Machine Learning"
+python "ml_algorithms.py"
+```
 
--   :material-sitemap-outline: __[Algorithms - Backtracking](Algorithms - Backtracking.md)__
+## More in Algorithms
 
-    Backtracking is a general algorithmic technique for solving problems by building candidates incrementally and abandoning a candidate ("backtracking") as soon as it is determined to violate the problem constraints. It is a systematic form of exhaustive search that prunes the search space to avoid exploring clearly invalid paths.
+- [Algorithms - Backtracking](Algorithms - Backtracking.md): Backtracking is a general algorithmic technique for solving problems by building candidates incrementally and abandoning a candidate ("backtracking") as soon as it is determined to violate the problem constraints.
+- [Algorithms - Dynamic Programming](Algorithms - Dynamic Programming.md): Dynamic Programming (DP) is an algorithmic technique for solving problems by breaking them into overlapping subproblems, solving each subproblem once, and storing the result to avoid redundant computation.
+- [Algorithms - Graph](Algorithms - Graph.md): Graph algorithms operate on structures composed of vertices (nodes) and edges (connections).
+- [Algorithms - Searching](Algorithms - Searching.md): Searching algorithms find a target value within a data structure.
+- [Algorithms - Sorting](Algorithms - Sorting.md): A comprehensive implementation of fundamental sorting algorithms with detailed explanations, complexity analysis, and performance comparisons.
+- [Algorithms - String](Algorithms - String.md): String algorithms handle efficient manipulation, searching, and analysis of text data.
 
--   :material-sitemap-outline: __[Algorithms - Dynamic Programming](Algorithms - Dynamic Programming.md)__
-
-    Dynamic Programming (DP) is an algorithmic technique for solving problems by breaking them into overlapping subproblems, solving each subproblem once, and storing the result to avoid redundant computation. It converts exponential-time recursive solutions into polynomial-time ones.
-
--   :material-sitemap-outline: __[Algorithms - Graph](Algorithms - Graph.md)__
-
-    Graph algorithms operate on structures composed of vertices (nodes) and edges (connections). Many financial problems are naturally modelled as graphs: currency markets form weighted directed graphs, asset correlation matrices define undirected weighted graphs, and order routing networks are flow graphs.
-
--   :material-sitemap-outline: __[Algorithms - Searching](Algorithms - Searching.md)__
-
-    Searching algorithms find a target value within a data structure. The choice of algorithm determines whether a search takes O(n) time (checking every element) or O(log n) time (dividing the search space in half each step). In latency-sensitive financial systems, this difference is meaningful at scale.
-
--   :material-sitemap-outline: __[Algorithms - Sorting](Algorithms - Sorting.md)__
-
-    A comprehensive implementation of fundamental sorting algorithms with detailed explanations, complexity analysis, and performance comparisons.
-
--   :material-sitemap-outline: __[Algorithms - String](Algorithms - String.md)__
-
-    String algorithms handle efficient manipulation, searching, and analysis of text data. In quantitative finance, string processing is essential for parsing market data feeds, extracting information from news and filings, matching ticker symbols, and cleaning raw data from APIs.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

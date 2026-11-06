@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Utilities & Tools</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Data Processing"
-    python "data_validation_utils.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Processing)
-
----
 # Data Processing Utilities
+
+<p class="lq-meta">Beginner <span>/</span> Utilities & Tools <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Processing">source</a></p>
+
 
 This folder contains utilities for data processing, validation, and manipulation in financial applications.
 
@@ -69,37 +61,22 @@ python string_utils.py
 - **Currency Handling**: Process monetary values correctly
 - **API Integration**: Validate data from external APIs
 
-
 ---
 
-## Continue in Utilities & Tools
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Data Processing"
+python "data_validation_utils.py"
+```
 
--   :material-tools: __[Core Utilities](Core Utilities.md)__
+## More in Utilities & Tools
 
-    This folder contains core mathematical and date/time utilities that form the foundation for quantitative finance calculations.
+- [Core Utilities](Core Utilities.md): This folder contains core mathematical and date/time utilities that form the foundation for quantitative finance calculations.
+- [Currency Converter](Currency Converter.md): This tool lets you convert between currencies using user-supplied exchange rates.
+- [Economic Calendar](Economic Calendar.md): This tool lets you simulate and explore economic events (like FOMC meetings, CPI releases, etc.) and see how they might impact markets.
+- [Historical Data](Historical Data.md): A Node.js script that fetches historical bars (OHLCV data) for stocks or crypto from the Alpaca Market Data API.
+- [Logging](Logging.md): A pair of minimal, dependency-light logging utilities implemented in both Python and JavaScript.
+- [Market Data](Market Data.md): This folder contains utilities for processing, analyzing, and fetching market data for financial applications.
 
--   :material-tools: __[Currency Converter](Currency Converter.md)__
-
-    **This utility does NOT use any external APIs.** All exchange rates are entered manually for learning and experimentation.
-
--   :material-tools: __[Economic Calendar](Economic Calendar.md)__
-
-    **This utility does NOT use any external APIs.** All data is managed locally for learning and experimentation.
-
--   :material-tools: __[Historical Data](Historical Data.md)__
-
-    A Node.js script that fetches historical bars (OHLCV data) for stocks or crypto from the Alpaca Market Data API. It prompts interactively for the symbol type, symbol, timeframe, and date range, then prints the results as JSON.
-
--   :material-tools: __[Logging](Logging.md)__
-
-    A pair of minimal, dependency-light logging utilities implemented in both Python and JavaScript. Each supports adding, reading, editing, and deleting log entries through an interactive command-line menu. All entries are persisted to a plain-text `log.txt` file in the working directory.
-
--   :material-tools: __[Market Data](Market Data.md)__
-
-    This folder contains utilities for processing, analyzing, and fetching market data for financial applications.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

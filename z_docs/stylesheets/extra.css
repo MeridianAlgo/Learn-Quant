@@ -1,89 +1,233 @@
-/* Learn-Quant docs theme extras */
+/* Learn-Quant site styles.
+   Plain documentation look: paper background, ink text, one accent colour,
+   serif headings, thin rules instead of shadows and cards. */
 
-:root {
-  --lq-grad-1: #5e60ce;
-  --lq-grad-2: #6930c3;
-  --lq-grad-3: #7400b8;
-}
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap");
 
-/* ---- Hero ---- */
-.lq-hero {
-  text-align: center;
-  padding: 3.5rem 1rem 2.5rem;
-  margin: -1rem -0.8rem 2rem;
-  border-radius: 0 0 1.25rem 1.25rem;
-  background: linear-gradient(135deg, var(--lq-grad-1), var(--lq-grad-3));
-  color: #fff;
-}
-.lq-hero h1 {
-  color: #fff;
-  font-weight: 800;
-  font-size: 3rem;
-  margin-bottom: 0.25rem;
-  letter-spacing: -0.02em;
-}
-.lq-hero h3 {
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 500;
-  max-width: 46rem;
-  margin: 0 auto 1rem;
-}
-.lq-hero p { color: rgba(255, 255, 255, 0.85); }
-.lq-hero .md-button {
-  margin: 0.3rem;
-  border-color: rgba(255, 255, 255, 0.9);
-  color: #fff;
-}
-.lq-hero .md-button--primary {
-  background: #fff;
-  color: var(--lq-grad-3);
-  border-color: #fff;
-}
-.lq-hero .md-button:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #fff;
-  color: #fff;
-}
-.lq-hero .md-button--primary:hover {
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--lq-grad-3);
+:root,
+[data-md-color-scheme="default"] {
+  --lq-paper: #fbfaf6;
+  --lq-ink: #1f1e1b;
+  --lq-muted: #6d695f;
+  --lq-rule: #e3dfd4;
+  --lq-accent: #0f6b4c;
+  --lq-code: #f2efe7;
+  --lq-field: rgba(31, 30, 27, 0.06);
+
+  --md-primary-fg-color: var(--lq-paper);
+  --md-primary-fg-color--light: var(--lq-paper);
+  --md-primary-fg-color--dark: var(--lq-paper);
+  --md-primary-bg-color: var(--lq-ink);
+  --md-primary-bg-color--light: var(--lq-muted);
+  --md-accent-fg-color: var(--lq-accent);
+  --md-accent-fg-color--transparent: rgba(15, 107, 76, 0.08);
+  --md-default-bg-color: var(--lq-paper);
+  --md-typeset-a-color: var(--lq-accent);
+  --md-code-bg-color: var(--lq-code);
+  --md-footer-bg-color: var(--lq-paper);
+  --md-footer-bg-color--dark: var(--lq-paper);
+  --md-footer-fg-color: var(--lq-ink);
+  --md-footer-fg-color--light: var(--lq-muted);
+  --md-footer-fg-color--lighter: var(--lq-muted);
 }
 
-/* ---- Badges ---- */
-.lq-badges { margin: 0 0 0.5rem; }
-.lq-badge {
-  display: inline-block;
+[data-md-color-scheme="slate"] {
+  --lq-paper: #161614;
+  --lq-ink: #e6e3dc;
+  --lq-muted: #9d998f;
+  --lq-rule: #2d2c28;
+  --lq-accent: #63c29b;
+  --lq-code: #1f1f1c;
+  --lq-field: rgba(230, 227, 220, 0.07);
+
+  --md-hue: 45;
+  --md-primary-fg-color: var(--lq-paper);
+  --md-primary-fg-color--light: var(--lq-paper);
+  --md-primary-fg-color--dark: var(--lq-paper);
+  --md-primary-bg-color: var(--lq-ink);
+  --md-primary-bg-color--light: var(--lq-muted);
+  --md-accent-fg-color: var(--lq-accent);
+  --md-accent-fg-color--transparent: rgba(99, 194, 155, 0.1);
+  --md-default-bg-color: var(--lq-paper);
+  --md-typeset-a-color: var(--lq-accent);
+  --md-code-bg-color: var(--lq-code);
+  --md-footer-bg-color: var(--lq-paper);
+  --md-footer-bg-color--dark: var(--lq-paper);
+  --md-footer-fg-color: var(--lq-ink);
+  --md-footer-fg-color--light: var(--lq-muted);
+  --md-footer-fg-color--lighter: var(--lq-muted);
+}
+
+/* ---- Header and tabs: flat, ruled ---- */
+.md-header,
+.md-header--shadow {
+  box-shadow: none;
+  border-bottom: 1px solid var(--lq-rule);
+}
+.md-tabs {
+  border-bottom: 1px solid var(--lq-rule);
+}
+.md-tabs__link {
   font-size: 0.68rem;
+  opacity: 0.75;
+}
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  opacity: 1;
+  color: var(--lq-accent);
+}
+.md-header__title {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Search field sits on a light header, so give it a light fill. */
+@media screen and (min-width: 60em) {
+  .md-search__form,
+  .md-search__form:hover {
+    background-color: var(--lq-field);
+    border-radius: 3px;
+  }
+  .md-search__input {
+    color: var(--lq-ink);
+  }
+}
+.md-search__input::placeholder,
+.md-search__input ~ .md-search__icon {
+  color: var(--lq-muted);
+}
+
+/* ---- Type ---- */
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+  color: var(--lq-ink);
+  letter-spacing: -0.005em;
+}
+.md-typeset h1 {
   font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  padding: 0.15rem 0.55rem;
-  margin: 0.1rem 0.25rem 0.1rem 0;
-  border-radius: 1rem;
-  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 0.4em;
+}
+.md-typeset h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-top: 2em;
+  padding-top: 0.9em;
+  border-top: 1px solid var(--lq-rule);
+}
+.md-typeset h3 {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.md-typeset a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--lq-accent) 35%, transparent);
+}
+.md-typeset a:hover {
+  text-decoration-color: currentColor;
+}
+.md-typeset .headerlink {
+  text-decoration: none;
+}
+
+/* ---- Metadata strip under each title ---- */
+.md-typeset .lq-meta {
+  font-family: var(--md-code-font-family);
+  font-size: 0.66rem;
+  color: var(--lq-muted);
+  margin: -0.6em 0 1.6em;
+}
+.md-typeset .lq-meta span {
+  margin: 0 0.35em;
+  opacity: 0.6;
+}
+.md-typeset .lq-meta a {
+  color: inherit;
+}
+
+.md-typeset .lq-lede {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  max-width: 36rem;
+  margin-top: 0;
+}
+
+/* ---- Code ---- */
+.md-typeset pre > code,
+.md-typeset code {
+  border-radius: 2px;
+}
+.md-typeset pre > code {
+  border: 1px solid var(--lq-rule);
+}
+
+/* ---- Tables: rules, no boxes ---- */
+.md-typeset table:not([class]) {
+  border: none;
+  border-radius: 0;
+  font-size: 0.74rem;
+  box-shadow: none;
+}
+.md-typeset table:not([class]) th {
+  background: transparent;
+  color: var(--lq-ink);
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--lq-ink);
+}
+.md-typeset table:not([class]) td {
+  border-top: 1px solid var(--lq-rule);
+  vertical-align: top;
+}
+.md-typeset table:not([class]) tr:hover {
+  background: transparent;
+  box-shadow: none;
+}
+.md-typeset table:not([class]) td:first-child {
+  min-width: 11rem;
+}
+.md-typeset table:not([class]) td:nth-child(2),
+.md-typeset table:not([class]) td:nth-child(3) {
   white-space: nowrap;
 }
-.lq-beginner { background: #2a9d8f; }
-.lq-intermediate { background: #e09f3e; }
-.lq-advanced { background: #e63946; }
-.lq-cat { background: #5e60ce; }
-.lq-lang { background: #495057; }
 
-/* ---- Card grid polish ---- */
-.md-typeset .grid.cards > ul > li,
-.md-typeset .grid.cards > :is(ul, ol) > li {
-  border-radius: 0.6rem;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+/* ---- Admonitions and buttons, toned down ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0 0 0 3px;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--lq-code);
+  font-size: 0.76rem;
 }
-.md-typeset .grid.cards > ul > li:hover,
-.md-typeset .grid.cards > :is(ul, ol) > li:hover {
-  border-color: var(--lq-grad-1);
-  box-shadow: 0 0.4rem 1.2rem rgba(94, 96, 206, 0.18);
-  transform: translateY(-2px);
+.md-typeset .md-button {
+  border-radius: 2px;
+  font-weight: 500;
 }
 
-/* Slightly tighter hero on small screens */
+/* ---- Definition lists in the glossary ---- */
+.md-typeset dt {
+  font-weight: 600;
+  margin-top: 1.1em;
+}
+
+/* ---- Footer ---- */
+.md-footer {
+  border-top: 1px solid var(--lq-rule);
+}
+.md-footer-meta {
+  background: var(--lq-paper);
+}
+
 @media screen and (max-width: 44.9em) {
-  .lq-hero h1 { font-size: 2.1rem; }
-  .lq-hero { padding: 2.5rem 0.75rem 1.75rem; }
+  .md-typeset h1 { font-size: 1.6rem; }
+  .md-typeset table:not([class]) td:first-child { min-width: 0; }
 }

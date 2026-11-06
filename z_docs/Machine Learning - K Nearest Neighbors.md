@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">AI & Machine Learning</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Machine Learning - K Nearest Neighbors"
-    python "knn.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Machine%20Learning%20-%20K%20Nearest%20Neighbors)
-
----
 # Machine Learning, K Nearest Neighbors
+
+<p class="lq-meta">Advanced <span>/</span> AI & Machine Learning <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Machine%20Learning%20-%20K%20Nearest%20Neighbors">source</a></p>
+
 
 Most models squeeze a training set down into a handful of parameters and then
 discard the data. K nearest neighbors refuses. It keeps every example it was
@@ -89,37 +81,22 @@ print(model.predict_proba([[0.0, 0.0]]))
 * For the unsupervised cousin that also lives on distances see
   [`Machine Learning - K-Means Clustering`](Machine Learning - K-Means Clustering.md).
 
-
 ---
 
-## Continue in AI & Machine Learning
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Machine Learning - K Nearest Neighbors"
+python "knn.py"
+```
 
--   :material-robot-outline: __[AI Development](AI Development.md)__
+## More in AI & Machine Learning
 
-    Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js. This module demonstrates how to integrate a hosted large language model into a simple interactive application.
+- [AI Development](AI Development.md): Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js.
+- [Learning Platform](Learning Platform.md): An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface.
+- [Machine Learning - Cross Validation](Machine Learning - Cross Validation.md): A model scored on the data it was trained on is a student grading their own exam.
+- [Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md): The dirty secret of quant machine learning: the model is rarely the bottleneck.
+- [Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md): Gradient descent is the engine inside almost every model that learns.
+- [Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md): Given a few hundred stocks and their return characteristics, which ones behave alike?
 
--   :material-robot-outline: __[Learning Platform](Learning Platform.md)__
-
-    An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
-
--   :material-robot-outline: __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
-
-    A model scored on the data it was trained on is a student grading their own
-
--   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
-
-    The dirty secret of quant machine learning: the model is rarely the bottleneck.
-
--   :material-robot-outline: __[Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md)__
-
-    Gradient descent is the engine inside almost every model that learns. The idea
-
--   :material-robot-outline: __[Machine Learning - K-Means Clustering](Machine Learning - K-Means Clustering.md)__
-
-    Given a few hundred stocks and their return characteristics, which ones behave
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

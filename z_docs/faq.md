@@ -1,56 +1,47 @@
-# FAQ & Contributing
+# FAQ and contributing
 
-## Frequently asked questions
+### Do I need to install Learn-Quant as a package?
 
-??? question "Do I need to install Learn-Quant as a package?"
-    No. It is a collection of standalone folders. Clone the repo, install the
-    requirements once, and run any module directly.
+No. It is a folder of folders. Install the requirements once and run any
+lesson directly.
 
-??? question "Which Python version should I use?"
-    Python 3.9+ works for every module. CI runs on 3.11.
+### Which Python version?
 
-??? question "Some modules import `scipy` / `scikit-learn` — are those required?"
-    They are listed in `requirements.txt`. A handful of modules use them for
-    optimisation or ML; the README of each module notes any extra dependency.
+3.9 or later. CI runs 3.11.
 
-??? question "Can I use this code in my own project?"
-    Yes — it is MIT licensed. It is written for learning, so audit and adapt
-    before putting anything near real capital.
+### Can I use the code in my own project?
 
-??? question "How do I run the JavaScript modules?"
-    Install [Node.js](https://nodejs.org) 18+ and run `node <file>.js` inside
-    the module folder.
+Yes, it is MIT licensed. It is written to be read, not to be fast or battle
+tested, so check it before it goes anywhere near real money.
 
-??? question "Is any of this investment advice?"
-    No. Everything here is educational. Markets carry risk; do your own research.
+### How do I run the JavaScript lessons?
+
+Install Node.js 18 or later and run `node <file>.js` in the lesson's folder.
+They have no dependencies.
+
+### Is this investment advice?
+
+No. It is teaching material.
 
 ## Contributing
 
-Contributions are very welcome.
+Bug reports and pull requests are welcome on
+[GitHub](https://github.com/MeridianAlgo/Learn-Quant). To change a page on
+this site, edit the `README.md` in the lesson's folder. The site is rebuilt
+from those on every push to `main`.
 
-- :material-bug-outline: **Found a bug?** Open an
-  [issue](https://github.com/MeridianAlgo/Learn-Quant/issues).
-- :material-lightbulb-on-outline: **Have a new module or strategy?** Fork the
-  repo and open a pull request.
-- :material-book-edit-outline: **Improving the docs?** Edit the relevant
-  module `README.md` — the site rebuilds automatically.
+A new lesson should have:
 
-### Module conventions
+1. A `README.md` that explains the idea, gives the formula, shows usage and
+   lists the caveats.
+2. One focused `.py` (or `.js`) file with a demo under `__main__`.
+3. A test in `z_tests/` named `test_<module>.py`.
 
-A good module folder contains:
-
-1. A `README.md` with **theory → formula → usage → pitfalls**.
-2. A single-purpose `.py` implementation with type hints and a runnable
-   `__main__` demonstration.
-3. A matching test in `z_tests/` (`test_<module>.py`).
-
-Before opening a PR:
+Before opening a pull request:
 
 ```bash
 ruff check .
 ruff format .
 pytest z_tests -q
-python docs_builder.py   # regenerate the site
+python docs_builder.py
 ```
-
-Thanks for helping more people learn quant. :material-heart:

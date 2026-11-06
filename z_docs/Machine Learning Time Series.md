@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-advanced">Advanced</span><span class="lq-badge lq-cat">AI & Machine Learning</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Machine Learning Time Series"
-    python "lstm_predictor.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Machine%20Learning%20Time%20Series)
-
----
 # Machine Learning for Sequential Financial Data
+
+<p class="lq-meta">Advanced <span>/</span> AI & Machine Learning <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Machine%20Learning%20Time%20Series">source</a></p>
+
 
 ## Overview
 
@@ -52,37 +44,22 @@ When heavily utilizing absolute deep learning parameter modeling for elite quant
 
 The heavily upgraded continuous provided programmatic Python execution samples flawlessly demonstrate technically the heavily absolute necessary algorithmic sequential programmatic steps extensively required to appropriately numerically mathematically aggregate, cleanly statistically transform, fundamentally strictly correctly evaluate, and graphically cleanly visually output dense internal sequential continuous numerical temporal data streams accurately. The included code explicitly mathematically natively features perfectly exceptionally heavily scalable deeply continuous modeling techniques technically mathematically engineered uniquely explicitly successfully to reliably natively be comprehensively overwhelmingly robust across utterly completely vastly widely varied global extreme statistical macro numerical market regimes continuously constantly everywhere always.
 
-
 ---
 
-## Continue in AI & Machine Learning
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Machine Learning Time Series"
+python "lstm_predictor.py"
+```
 
--   :material-robot-outline: __[AI Development](AI Development.md)__
+## More in AI & Machine Learning
 
-    Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js. This module demonstrates how to integrate a hosted large language model into a simple interactive application.
+- [AI Development](AI Development.md): Command-line chatbots for Google's Gemini API, implemented in both Python and Node.js.
+- [Learning Platform](Learning Platform.md): An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface.
+- [Machine Learning - Cross Validation](Machine Learning - Cross Validation.md): A model scored on the data it was trained on is a student grading their own exam.
+- [Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md): The dirty secret of quant machine learning: the model is rarely the bottleneck.
+- [Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md): Gradient descent is the engine inside almost every model that learns.
+- [Machine Learning - K Nearest Neighbors](Machine Learning - K Nearest Neighbors.md): Most models squeeze a training set down into a handful of parameters and then discard the data.
 
--   :material-robot-outline: __[Learning Platform](Learning Platform.md)__
-
-    An all-in-one learning hub that delivers progressive Python lessons through both a guided CLI and a hostable Flask web interface. Lessons combine narrative walkthroughs, executable code examples, mini quizzes, and follow-up practice ideas geared toward aspiring quantitative developers.
-
--   :material-robot-outline: __[Machine Learning - Cross Validation](Machine Learning - Cross Validation.md)__
-
-    A model scored on the data it was trained on is a student grading their own
-
--   :material-robot-outline: __[Machine Learning - Feature Engineering](Machine Learning - Feature Engineering.md)__
-
-    The dirty secret of quant machine learning: the model is rarely the bottleneck.
-
--   :material-robot-outline: __[Machine Learning - Gradient Descent](Machine Learning - Gradient Descent.md)__
-
-    Gradient descent is the engine inside almost every model that learns. The idea
-
--   :material-robot-outline: __[Machine Learning - K Nearest Neighbors](Machine Learning - K Nearest Neighbors.md)__
-
-    Most models squeeze a training set down into a handful of parameters and then
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

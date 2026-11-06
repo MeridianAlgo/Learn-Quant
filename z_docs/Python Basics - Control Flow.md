@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Python Fundamentals</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Python Basics - Control Flow"
-    python "control_flow_tutorial.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Python%20Basics%20-%20Control%20Flow)
-
----
 # Python Basics – Control Flow
+
+<p class="lq-meta">Beginner <span>/</span> Python Fundamentals <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Python%20Basics%20-%20Control%20Flow">source</a></p>
+
 
 ## Overview
 
@@ -532,37 +524,22 @@ A: Always have an exit condition that WILL eventually be met. Test locally befor
 - Python docs: https://docs.python.org/3/tutorial/controlflow.html
 - Loop patterns: https://www.python.org/dev/peps/pep-0202/ (list comprehensions)
 
-
 ---
 
-## Continue in Python Fundamentals
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Python Basics - Control Flow"
+python "control_flow_tutorial.py"
+```
 
--   :material-language-python: __[Python Basics - Comprehensions](Python Basics - Comprehensions.md)__
+## More in Python Fundamentals
 
-    Comprehensions are Python's most elegant way to transform data—replacing loops with readable, performant one-liners. This module teaches **list, dict, set comprehensions**, **generator expressions**, and **functional tools** (`map`, `filter`, `reduce`, `accumulate`) used constantly in quantitative finance for data cleaning, signal generation, and portfolio calculations.
+- [Python Basics - Comprehensions](Python Basics - Comprehensions.md): Comprehensions are Python's most elegant way to transform data—replacing loops with readable, performant one-liners.
+- [Python Basics - Dates and Times](Python Basics - Dates and Times.md): Markets run on a calendar, not a clock. Interest accrues over days, options expire on a date, and any backtest that miscounts trading days will quietly misreport every annualised number it produces.
+- [Python Basics - Essential Libraries](Python Basics - Essential Libraries.md): A working quant leans on a small set of libraries for almost everything.
+- [Python Basics - Functions](Python Basics - Functions.md): This utility teaches Python functions - the building blocks of modular, reusable code.
+- [Python Basics - Imports and Modules](Python Basics - Imports and Modules.md): Almost every Python program begins with a few import lines.
+- [Python Basics - NumPy](Python Basics - NumPy.md): Covers the NumPy primitives that appear in virtually every quant codebase — from vectorised return calculations to portfolio variance via the quadratic form.
 
--   :material-language-python: __[Python Basics - Dates and Times](Python Basics - Dates and Times.md)__
-
-    Markets run on a calendar, not a clock. Interest accrues over **days**, options
-
--   :material-language-python: __[Python Basics - Essential Libraries](Python Basics - Essential Libraries.md)__
-
-    A working quant leans on a small set of libraries for almost everything. A few of
-
--   :material-language-python: __[Python Basics - Functions](Python Basics - Functions.md)__
-
-    This utility teaches Python functions - the building blocks of modular, reusable code. Learn to write efficient trading algorithms and financial tools using proper function design.
-
--   :material-language-python: __[Python Basics - Imports and Modules](Python Basics - Imports and Modules.md)__
-
-    Almost every Python program begins with a few import lines. An import is how you
-
--   :material-language-python: __[Python Basics - NumPy](Python Basics - NumPy.md)__
-
-    Covers the NumPy primitives that appear in virtually every quant codebase — from vectorised return calculations to portfolio variance via the quadratic form. All examples use realistic financial data so the connection between the NumPy API and actual quant work is immediate.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

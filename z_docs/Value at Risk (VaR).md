@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-intermediate">Intermediate</span><span class="lq-badge lq-cat">Risk & Performance</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Value at Risk (VaR)"
-    python "var_calculator.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Value%20at%20Risk%20%28VaR%29)
-
----
 # Value at Risk (VaR) & Conditional VaR
+
+<p class="lq-meta">Intermediate <span>/</span> Risk & Performance <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Value%20at%20Risk%20%28VaR%29">source</a></p>
+
 
 **Value at Risk** is the single most widely quoted number in financial risk
 management. It compresses "how bad could it get?" into one figure:
@@ -87,37 +79,22 @@ too few means it wastes capital.
 - VaR is a *probabilistic* statement, not a worst case. The maximum loss is
   always larger than VaR — that is the whole point of also tracking CVaR.
 
-
 ---
 
-## Continue in Risk & Performance
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Value at Risk (VaR)"
+python "var_calculator.py"
+```
 
--   :material-shield-alert-outline: __[Finance - Calmar Ratio](Finance - Calmar Ratio.md)__
+## More in Risk & Performance
 
-    The Sharpe ratio judges a strategy by how much its returns wobble around their
+- [Finance - Calmar Ratio](Finance - Calmar Ratio.md): The Sharpe ratio judges a strategy by how much its returns wobble around their average.
+- [Finance - Information Ratio](Finance - Information Ratio.md): When a portfolio is judged against a benchmark, what matters is how much it beat the benchmark by — and how *reliably*.
+- [Finance - Jensens Alpha](Finance - Jensens Alpha.md): Beta tells you how much of a portfolio's return came from simply riding the market.
+- [Finance - Omega Ratio](Finance - Omega Ratio.md): The Sharpe ratio squeezes a whole return distribution into a mean and a standard deviation, which throws away everything interesting about its shape.
+- [Finance - Performance Attribution](Finance - Performance Attribution.md): Brinson decomposition splits portfolio active return into allocation and selection effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
+- [Finance - Treynor Ratio](Finance - Treynor Ratio.md): The Sharpe ratio divides excess return by total volatility, which mixes two very different kinds of risk.
 
--   :material-shield-alert-outline: __[Finance - Information Ratio](Finance - Information Ratio.md)__
-
-    When a portfolio is judged **against a benchmark**, what matters is how much it beat the benchmark by — and how *reliably*. These are the core metrics of active management: active return, tracking error, Information Ratio, and the appraisal ratio.
-
--   :material-shield-alert-outline: __[Finance - Jensens Alpha](Finance - Jensens Alpha.md)__
-
-    Beta tells you how much of a portfolio's return came from simply riding the
-
--   :material-shield-alert-outline: __[Finance - Omega Ratio](Finance - Omega Ratio.md)__
-
-    The Sharpe ratio squeezes a whole return distribution into a mean and a
-
--   :material-shield-alert-outline: __[Finance - Performance Attribution](Finance - Performance Attribution.md)__
-
-    Brinson decomposition splits portfolio active return into **allocation** and **selection** effects — answering *"did we beat the benchmark by picking the right sectors or the right stocks?"*
-
--   :material-shield-alert-outline: __[Finance - Treynor Ratio](Finance - Treynor Ratio.md)__
-
-    The Sharpe ratio divides excess return by total volatility, which mixes two
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).

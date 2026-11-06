@@ -1,15 +1,7 @@
-<p class="lq-badges"><span class="lq-badge lq-beginner">Beginner</span><span class="lq-badge lq-cat">Data Structures</span><span class="lq-badge lq-lang">Python</span></p>
-
-!!! tip "Run this module"
-    ```bash
-    cd "Data Structures - Arrays"
-    python "arrays.py"
-    ```
-
-    [:octicons-mark-github-16: View source on GitHub](https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Arrays)
-
----
 # Arrays - Complete Guide to NumPy for Beginners and Beyond
+
+<p class="lq-meta">Beginner <span>/</span> Data Structures <span>/</span> Python <span>/</span> <a href="https://github.com/MeridianAlgo/Learn-Quant/tree/main/Data%20Structures%20-%20Arrays">source</a></p>
+
 
 ## Overview
 
@@ -417,22 +409,17 @@ python -m pytest tests/test_arrays.py -v
 
 ---
 
-## Continue in Data Structures
+## Running it
 
-<div class="grid cards" markdown>
+```bash
+cd "Data Structures - Arrays"
+python "arrays.py"
+```
 
--   :material-database-outline: __[Data Structures - Dictionaries](Data Structures - Dictionaries.md)__
+## More in Data Structures
 
-    This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings. Dictionaries are the backbone of feature engineering and data lookup in quantitative finance.
+- [Data Structures - Dictionaries](Data Structures - Dictionaries.md): This utility provides comprehensive Python dictionary operations essential for financial data organization, lookup tables, and key-value mappings.
+- [Data Structures - Lists](Data Structures - Lists.md): Lists are Python's most fundamental data structure—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values.
+- [Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md): Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries.
 
--   :material-database-outline: __[Data Structures - Lists](Data Structures - Lists.md)__
-
-    Lists are Python's **most fundamental data structure**—ordered, mutable collections used for storing time series data, portfolio holdings, transaction logs, and any sequence of values. Master list operations and you unlock efficient data processing essential for trading systems and quantitative analysis.
-
--   :material-database-outline: __[Data Structures - Tuples and Sets](Data Structures - Tuples and Sets.md)__
-
-    Tuples and Sets are fundamental Python data structures that complement Lists and Dictionaries. Understanding when to use them is key to writing efficient, Pythonic code for financial applications.
-
-</div>
-
-[:material-view-grid-plus-outline: Browse all modules](modules.md){ .md-button } [:material-school-outline: Learning paths](learning-paths.md){ .md-button }
+[Every module on one page](modules.md) or [suggested reading orders](learning-paths.md).
